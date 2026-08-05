@@ -9,10 +9,10 @@
         :root {
             --primary: #ff4757;
             --primary-hover: #e84118;
-            --bg-body: #f4f5f7;
-            --card-bg: #ffffff;
-            --text-dark: #2f3542;
-            --text-muted: #747d8c;
+            --bg-body: #1e1e24;
+            --card-bg: #2b2b36;
+            --text-dark: #ffffff;
+            --text-muted: #a4b0be;
             --green-discount: #2ed573;
             --badge-store: #70a1ff;
         }
@@ -30,10 +30,10 @@
             padding-bottom: 40px;
         }
 
-        /* Topo e Header Estilo Promobit */
+        /* Topo e Header */
         header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background-color: #121216;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -49,7 +49,7 @@
             gap: 20px;
         }
 
-        /* Área da Logo / Brand Banner */
+        /* Área da Logo */
         .brand-logo {
             display: flex;
             align-items: center;
@@ -78,7 +78,7 @@
         .brand-logo-text .main-title {
             font-size: 20px;
             font-weight: 900;
-            color: #1e272e;
+            color: #ffffff;
             letter-spacing: -0.5px;
             line-height: 1;
         }
@@ -90,16 +90,9 @@
         .brand-logo-text .sub-title {
             font-size: 10px;
             font-weight: 700;
-            color: #808e9b;
+            color: #a4b0be;
             letter-spacing: 2px;
             margin-top: 3px;
-        }
-
-        /* Se tiver imagem de logo pronta, descomente o CSS e use a tag <img> no HTML */
-        .custom-logo-img {
-            max-height: 45px;
-            width: auto;
-            object-fit: contain;
         }
 
         .search-bar {
@@ -111,9 +104,10 @@
         .search-bar input {
             width: 100%;
             padding: 10px 15px 10px 40px;
-            border: 1px solid #e1e8ef;
+            border: 1px solid #3d3d4e;
             border-radius: 20px;
-            background: #f8f9fa;
+            background: #2b2b36;
+            color: #fff;
             outline: none;
             font-size: 14px;
         }
@@ -149,8 +143,8 @@
         .banner-text p { font-size: 13px; opacity: 0.9; }
 
         .btn-wpp {
-            background: white;
-            color: #128C7E;
+            background: #075e54;
+            color: white;
             padding: 10px 20px;
             border-radius: 25px;
             font-weight: bold;
@@ -169,13 +163,13 @@
         }
 
         .cat-chip {
-            background: white;
+            background: #2b2b36;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
             color: var(--text-muted);
-            border: 1px solid #e1e8ef;
+            border: 1px solid #3d3d4e;
             cursor: pointer;
             white-space: nowrap;
             transition: all 0.2s;
@@ -201,7 +195,7 @@
         .card-oferta {
             background: var(--card-bg);
             border-radius: 12px;
-            border: 1px solid #e8ecef;
+            border: 1px solid #3d3d4e;
             padding: 15px;
             display: flex;
             flex-direction: column;
@@ -211,7 +205,7 @@
 
         .card-oferta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         .badge-desconto {
@@ -235,6 +229,8 @@
             justify-content: center;
             margin-bottom: 12px;
             padding: 10px;
+            background: #ffffff;
+            border-radius: 8px;
         }
 
         .img-container img {
@@ -317,7 +313,6 @@
     <header>
         <div class="header-container">
             <a href="#" class="brand-logo">
-                <!-- Se tiver um arquivo de imagem da logo no futuro, troque a div abaixo por: <img src="URL_DA_LOGO.png" class="custom-logo-img" alt="Click Ofertas VIP"> -->
                 <div class="brand-logo-icon">
                     <i class="fa-solid fa-bolt"></i>
                 </div>
@@ -361,7 +356,7 @@
         <article class="card-oferta">
             <span class="badge-desconto">-38%</span>
             <div class="img-container">
-                <img src="https://m.media-amazon.com/images/I/61y493A544L._AC_SL1200_.jpg" alt="Air Fryer">
+                <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80" alt="Air Fryer">
             </div>
             <span class="store-tag">Amazon</span>
             <h2 class="card-title">Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W</h2>
@@ -376,7 +371,7 @@
         <article class="card-oferta">
             <span class="badge-desconto">-45%</span>
             <div class="img-container">
-                <img src="https://m.media-amazon.com/images/I/61-A1OUpf3L._AC_SL1500_.jpg" alt="Fone Bluetooth">
+                <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80" alt="Fone Bluetooth">
             </div>
             <span class="store-tag">Shopee</span>
             <h2 class="card-title">Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura</h2>
@@ -391,7 +386,7 @@
         <article class="card-oferta">
             <span class="badge-desconto">-25%</span>
             <div class="img-container">
-                <img src="https://m.media-amazon.com/images/I/61N40NqO-uL._AC_SL1000_.jpg" alt="Smartwatch">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" alt="Smartwatch">
             </div>
             <span class="store-tag">Mercado Livre</span>
             <h2 class="card-title">Smartwatch Relógio Inteligente com Monitor Cardíaco e Notificações</h2>
@@ -406,7 +401,7 @@
         <article class="card-oferta">
             <span class="badge-desconto">-30%</span>
             <div class="img-container">
-                <img src="https://m.media-amazon.com/images/I/719El3y3S+L._AC_SL1500_.jpg" alt="Caixa de Som">
+                <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=400&q=80" alt="Caixa de Som">
             </div>
             <span class="store-tag">Magalu</span>
             <h2 class="card-title">Caixa de Som Portátil Bluetooth À Prova D'água Potente</h2>
