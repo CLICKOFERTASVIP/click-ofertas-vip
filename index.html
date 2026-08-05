@@ -1091,20 +1091,6 @@
 
         <main class="feed-container">
             <article class="card-oferta">
-                <span class="badge-desconto">-5%</span>
-                <div class="img-container">
-                    <img src="https://m.media-amazon.com/images/I/51h1VqQ4XSL._AC_SX679_.jpg" alt="Geladeira Frost Free 337L Inox Consul">
-                </div>
-                <span class="store-tag">Amazon</span>
-                <h2 class="card-title">Geladeira Frost Free 337L com Espaço Extra Frio Inox Consul - CRB39MK</h2>
-                <div class="price-section">
-                    <span class="old-price">R$ 2.179,00</span>
-                    <div class="current-price">R$ 2.049,99</div>
-                </div>
-                <a href="https://link.amazon/B0alObYcW" target="_blank" class="btn-pegar">IR PARA A LOJA</a>
-            </article>
-
-            <article class="card-oferta">
                 <span class="badge-desconto">-38%</span>
                 <div class="img-container">
                     <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80" alt="Air Fryer">
@@ -1128,6 +1114,20 @@
                 <div class="price-section">
                     <span class="old-price">R$ 120,00</span>
                     <div class="current-price">R$ 65,90</div>
+                </div>
+                <a href="#" class="btn-pegar">IR PARA A LOJA</a>
+            </article>
+
+            <article class="card-oferta">
+                <span class="badge-desconto">-25%</span>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" alt="Headphone">
+                </div>
+                <span class="store-tag">Amazon</span>
+                <h2 class="card-title">Headphone Gamer Over-Ear com Microfone Redução de Ruído</h2>
+                <div class="price-section">
+                    <span class="old-price">R$ 299,00</span>
+                    <div class="current-price">R$ 224,10</div>
                 </div>
                 <a href="#" class="btn-pegar">IR PARA A LOJA</a>
             </article>
@@ -1271,25 +1271,7 @@
             document.getElementById('categoryTitle').innerText = categoryName;
             const feed = document.getElementById('categoryFeed');
 
-            if (categoryName === 'Geladeiras e Freezers') {
-                feed.innerHTML = `
-                    <article class="card-oferta">
-                        <span class="badge-desconto">-5%</span>
-                        <div class="img-container">
-                            <img src="https://m.media-amazon.com/images/I/51h1VqQ4XSL._AC_SX679_.jpg" alt="Geladeira Inox Consul">
-                        </div>
-                        <span class="store-tag">Amazon</span>
-                        <h2 class="card-title">Geladeira Frost Free 337L com Espaço Extra Frio Inox Consul - CRB39MK</h2>
-                        <div class="price-section">
-                            <span class="old-price">R$ 2.179,00</span>
-                            <div class="current-price">R$ 2.049,99</div>
-                        </div>
-                        <a href="https://link.amazon/B0alObYcW" target="_blank" class="btn-pegar">IR PARA A LOJA</a>
-                    </article>
-                `;
-            } else {
-                feed.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1;">Nenhuma oferta cadastrada nesta subcategoria no momento.</p>`;
-            }
+            feed.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1;">Nenhuma oferta cadastrada nesta subcategoria no momento.</p>`;
         }
 
         function openStoreOffers(storeKey) {
@@ -1323,14 +1305,6 @@
                 storePhysicalCheck.innerHTML = '<i class="fa-solid fa-xmark"></i> Não possui loja física';
 
                 storeFeed.innerHTML = `
-                    <article class="card-oferta">
-                        <span class="badge-desconto">-5%</span>
-                        <div class="img-container"><img src="https://m.media-amazon.com/images/I/51h1VqQ4XSL._AC_SX679_.jpg"></div>
-                        <span class="store-tag">Amazon</span>
-                        <h2 class="card-title">Geladeira Frost Free 337L com Espaço Extra Frio Inox Consul - CRB39MK</h2>
-                        <div class="price-section"><span class="old-price">R$ 2.179,00</span><div class="current-price">R$ 2.049,99</div></div>
-                        <a href="https://link.amazon/B0alObYcW" target="_blank" class="btn-pegar">IR PARA A LOJA</a>
-                    </article>
                     <article class="card-oferta">
                         <span class="badge-desconto">-38%</span>
                         <div class="img-container"><img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80"></div>
