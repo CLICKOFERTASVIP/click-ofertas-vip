@@ -405,6 +405,29 @@
 
         .img-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
+        .gallery-thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .thumb-img {
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 6px;
+            padding: 4px;
+            border: 2px solid #2b2b36;
+            cursor: pointer;
+            object-fit: contain;
+            transition: border-color 0.2s;
+        }
+
+        .thumb-img:hover, .thumb-img.active {
+            border-color: var(--primary);
+        }
+
         .store-tag {
             font-size: 11px;
             font-weight: 700;
@@ -865,6 +888,7 @@
                 <div class="main-img-box">
                     <img id="detailImg" src="" alt="Produto">
                 </div>
+                <div class="gallery-thumbnails" id="detailThumbnails"></div>
             </div>
 
             <div class="detail-info">
@@ -962,7 +986,16 @@
                 discount: '-9%',
                 installments: 'Em até 12x de R$ 225,10 sem juros',
                 affiliateLink: 'https://link.amazon/B0gBXsKfJ',
-                image: 'https://m.media-amazon.com/images/I/51wXkY7f8sL._AC_SL1000_.jpg',
+                images: [
+                    'https://m.media-amazon.com/images/I/4173h2WLFLL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/41dkOziMhyL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61q4aT4C3uL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/71dF5gDW8BL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/71oRPJ-KlyL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61f6CCLxtYL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/51grJl+ZfRL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71yIyMTdwwL._AC_SL1500_.jpg'
+                ],
                 rating: '4,8 (5 avaliações)',
                 specs: {
                     'Dimensões': '72P x 70,2L x 174,5A cm',
@@ -983,7 +1016,9 @@
                 discount: '-38%',
                 installments: 'Em até 5x de R$ 55,80 sem juros',
                 affiliateLink: 'https://amzn.to/exemplo',
-                image: 'https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80'
+                ],
                 rating: '4,7 (1.240 avaliações)',
                 specs: {
                     'Capacidade': '4 Litros',
@@ -1002,7 +1037,9 @@
                 discount: '-45%',
                 installments: 'À vista ou parcelado',
                 affiliateLink: 'https://magalu.to/exemplo',
-                image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80',
+                images: [
+                    'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80'
+                ],
                 rating: '4,5 (320 avaliações)',
                 specs: {
                     'Conectividade': 'Bluetooth 5.3',
@@ -1013,11 +1050,12 @@
         ];
 
         function renderProductCard(p) {
+            const coverImage = p.images && p.images.length > 0 ? p.images[0] : (p.image || '');
             return `
                 <article class="card-oferta" onclick="openProductDetail('${p.id}')">
                     <span class="badge-desconto">${p.discount}</span>
                     <div class="img-container">
-                        <img src="${p.image}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/200?text=Produto'">
+                        <img src="${coverImage}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/200?text=Produto'">
                     </div>
                     <span class="store-tag">${p.store}</span>
                     <h2 class="card-title">${p.title}</h2>
@@ -1039,9 +1077,23 @@
             const product = productsDatabase.find(p => p.id === productId);
             if (!product) return;
 
+            const images = product.images && product.images.length > 0 ? product.images : [product.image];
+
             document.getElementById('detailBreadcrumbCat').innerText = product.subcat;
             document.getElementById('detailBreadcrumbTitle').innerText = product.title;
-            document.getElementById('detailImg').src = product.image;
+            
+            const detailImg = document.getElementById('detailImg');
+            detailImg.src = images[0];
+            
+            const thumbsContainer = document.getElementById('detailThumbnails');
+            if (images.length > 1) {
+                thumbsContainer.innerHTML = images.map((imgUrl, index) => `
+                    <img src="${imgUrl}" class="thumb-img ${index === 0 ? 'active' : ''}" onclick="changeDetailImage('${imgUrl}', this)" alt="Miniatura ${index + 1}">
+                `).join('');
+            } else {
+                thumbsContainer.innerHTML = '';
+            }
+
             document.getElementById('detailStore').innerText = product.store;
             document.getElementById('detailTitle').innerText = product.title;
             document.getElementById('detailRatingText').innerText = product.rating;
@@ -1061,6 +1113,12 @@
             `).join('');
 
             switchPage('productDetailPage');
+        }
+
+        function changeDetailImage(imgUrl, element) {
+            document.getElementById('detailImg').src = imgUrl;
+            document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
         }
 
         function switchPage(pageId) {
