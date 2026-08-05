@@ -748,7 +748,7 @@
 
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <div class="mega-sidebar">
-                    <div class="mega-cat-item active" data-target="cat-eletronicos">
+                    <div class="mega-cat-item" data-target="cat-eletronicos">
                         <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
                         <span>Smartphones, Eletrônicos e TV</span>
                     </div>
@@ -788,7 +788,7 @@
 
                 <div class="mega-content">
                     <!-- 1. ELETRONICOS -->
-                    <div class="subcat-group active" id="cat-eletronicos">
+                    <div class="subcat-group" id="cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Celulares e Telefonia</h4>
                             <a onclick="openCategoryPage('Smartphones Android')">Smartphones Android</a>
@@ -1229,6 +1229,8 @@
         const storesBtn = document.getElementById('storesMenuBtn');
         const storesPanel = document.getElementById('storesMenuPanel');
         const megaContent = document.querySelector('.mega-content');
+        const catItems = document.querySelectorAll('.mega-cat-item');
+        const subcatGroups = document.querySelectorAll('.subcat-group');
 
         megaBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1257,28 +1259,34 @@
             }
         });
 
-        const catItems = document.querySelectorAll('.mega-cat-item');
-        const subcatGroups = document.querySelectorAll('.subcat-group');
-
         catItems.forEach(item => {
             const targetId = item.getAttribute('data-target');
             const targetSubcat = document.getElementById(targetId);
 
-            function setupMobileAccordion() {
+            function setupMenuLayout() {
                 if (window.innerWidth <= 768) {
                     item.after(targetSubcat);
+                    // Garante que no celular o menu inicie totalmente fechado
+                    item.classList.remove('active');
+                    targetSubcat.classList.remove('active');
                 } else {
                     megaContent.appendChild(targetSubcat);
+                    // No desktop, garante a primeira opção ativa por padrão
+                    if (!document.querySelector('.mega-cat-item.active')) {
+                        catItems[0].classList.add('active');
+                        subcatGroups[0].classList.add('active');
+                    }
                 }
             }
 
-            setupMobileAccordion();
-            window.addEventListener('resize', setupMobileAccordion);
+            setupMenuLayout();
+            window.addEventListener('resize', setupMenuLayout);
 
             const toggleCategory = (e) => {
                 e.stopPropagation();
                 const isActive = item.classList.contains('active');
 
+                // Permite fechar a categoria no celular se tocar nela novamente
                 if (window.innerWidth <= 768 && isActive) {
                     item.classList.remove('active');
                     targetSubcat.classList.remove('active');
