@@ -9,8 +9,10 @@
         :root {
             --primary: #ff4757;
             --primary-hover: #e84118;
-            --bg-body: #1e1e24;
-            --card-bg: #2b2b36;
+            --bg-body: #121216;
+            --card-bg: #1e1e24;
+            --panel-bg: #18181c;
+            --panel-hover: #2b2b36;
             --text-dark: #ffffff;
             --text-muted: #a4b0be;
             --green-discount: #2ed573;
@@ -30,13 +32,14 @@
             padding-bottom: 40px;
         }
 
-        /* Header Estilo Promobit */
+        /* Header Principal */
         header {
-            background-color: #121216;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background-color: #0d0d11;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            border-bottom: 1px solid #23232c;
         }
 
         .header-container {
@@ -69,11 +72,6 @@
             box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
         }
 
-        .brand-logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
         .brand-logo-text .main-title {
             font-size: 20px;
             font-weight: 900;
@@ -96,16 +94,16 @@
 
         .search-bar {
             flex: 1;
-            max-width: 500px;
+            max-width: 450px;
             position: relative;
         }
 
         .search-bar input {
             width: 100%;
             padding: 10px 15px 10px 40px;
-            border: 1px solid #3d3d4e;
+            border: 1px solid #23232c;
             border-radius: 20px;
-            background: #2b2b36;
+            background: #18181c;
             color: #fff;
             outline: none;
             font-size: 14px;
@@ -119,7 +117,152 @@
             color: var(--text-muted);
         }
 
-        /* Banner VIP WhatsApp */
+        /* Nav Bar com Botão Categorias Promobit */
+        .top-nav {
+            background-color: #121216;
+            border-bottom: 1px solid #23232c;
+        }
+
+        .top-nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .btn-categories-trigger {
+            background: #18181c;
+            color: #fff;
+            border: 1px solid #2b2b36;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-categories-trigger:hover, .btn-categories-trigger.active {
+            background: #2b2b36;
+            border-color: var(--primary);
+        }
+
+        .nav-link-simple {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px;
+            transition: color 0.2s;
+        }
+
+        .nav-link-simple:hover {
+            color: #fff;
+        }
+
+        /* MEGA MENU ESTILO PROMOBIT (DropdownFlutuante) */
+        .mega-menu-panel {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 20px;
+            width: 850px;
+            background: #18181c;
+            border: 1px solid #2b2b36;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+            z-index: 999;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .mega-menu-panel.open {
+            display: flex;
+        }
+
+        /* Coluna da Esquerda (Categorias Principais) */
+        .mega-sidebar {
+            width: 280px;
+            background: #121216;
+            padding: 10px;
+            border-right: 1px solid #23232c;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mega-cat-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            color: var(--text-muted);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .mega-cat-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .mega-cat-item:hover, .mega-cat-item.active {
+            background: #2b2b36;
+            color: #ffffff;
+        }
+
+        /* Coluna da Direita (Subcategorias Dinâmicas) */
+        .mega-content {
+            flex: 1;
+            padding: 20px;
+            background: #18181c;
+            max-height: 480px;
+            overflow-y: auto;
+        }
+
+        .subcat-group {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .subcat-group.active {
+            display: grid;
+        }
+
+        .subcat-column h4 {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #2b2b36;
+            padding-bottom: 6px;
+        }
+
+        .subcat-column a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .subcat-column a:hover {
+            color: var(--primary);
+        }
+
+        /* Banner VIP WhatsApp (MANTIDO) */
         .banner-vip {
             max-width: 1100px;
             margin: 20px auto 15px auto;
@@ -157,53 +300,6 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* Categorias limpas e responsivas */
-        .categories-wrapper {
-            max-width: 1100px;
-            margin: 0 auto 20px auto;
-            padding: 0 20px;
-        }
-
-        .categories-menu {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .categories-menu::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .categories-menu::-webkit-scrollbar-thumb {
-            background: #3d3d4e;
-            border-radius: 4px;
-        }
-
-        .cat-chip {
-            background: #2b2b36;
-            padding: 9px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-            border: 1px solid #3d3d4e;
-            cursor: pointer;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .cat-chip.active, .cat-chip:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
         /* Feed de Ofertas */
         .feed-container {
             max-width: 1100px;
@@ -218,7 +314,7 @@
         .card-oferta {
             background: var(--card-bg);
             border-radius: 12px;
-            border: 1px solid #3d3d4e;
+            border: 1px solid #2b2b36;
             padding: 15px;
             display: flex;
             flex-direction: column;
@@ -228,7 +324,7 @@
 
         .card-oferta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
 
         .badge-desconto {
@@ -319,6 +415,26 @@
             background: var(--primary-hover);
         }
 
+        /* Ajustes para Celular (Mobile Responsivo) */
+        @media (max-width: 850px) {
+            .mega-menu-panel {
+                width: calc(100vw - 40px);
+                flex-direction: column;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .mega-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #23232c;
+            }
+
+            .subcat-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 600px) {
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; }
@@ -332,7 +448,7 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header Principal -->
     <header>
         <div class="header-container">
             <a href="#" class="brand-logo">
@@ -352,7 +468,138 @@
         </div>
     </header>
 
-    <!-- Banner WhatsApp Clicável -->
+    <!-- Barra de Navegação Superior com Menu Flutuante -->
+    <nav class="top-nav">
+        <div class="top-nav-container">
+            <button class="btn-categories-trigger" id="megaMenuBtn">
+                Categorias <i class="fa-solid fa-chevron-down" id="menuArrow"></i>
+            </button>
+            <a href="#" class="nav-link-simple">Lojas</a>
+            <a href="#" class="nav-link-simple">Cupons</a>
+
+            <!-- PAINEL DO MEGA MENU (Abre ao Clicar/Hover em Categorias) -->
+            <div class="mega-menu-panel" id="megaMenuPanel">
+                <!-- Sidebar de Categorias -->
+                <div class="mega-sidebar">
+                    <div class="mega-cat-item active" data-target="cat-eletronicos">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                        <span>Smartphones, Eletrônicos e TV</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-informatica">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>Informática e Games</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-casa">
+                        <i class="fa-solid fa-couch"></i>
+                        <span>Casa e Eletrodomésticos</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-moda">
+                        <i class="fa-solid fa-shirt"></i>
+                        <span>Moda e Acessórios</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-bebes">
+                        <i class="fa-solid fa-baby-carriage"></i>
+                        <span>Bebês e Crianças</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-saude">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <span>Saúde e Beleza</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-esporte">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <span>Esporte e Suplementos</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-mercado">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Supermercado e Delivery</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-ferramentas">
+                        <i class="fa-solid fa-wrench"></i>
+                        <span>Ferramentas e Jardim</span>
+                    </div>
+                </div>
+
+                <!-- Conteúdo das Subcategorias -->
+                <div class="mega-content">
+                    
+                    <!-- Grupo Eletrônicos -->
+                    <div class="subcat-group active" id="cat-eletronicos">
+                        <div class="subcat-column">
+                            <h4>Eletrônicos, Áudio e Vídeo</h4>
+                            <a href="#">Caixa de Som</a>
+                            <a href="#">Fone de ouvido</a>
+                            <a href="#">Home Theater</a>
+                            <a href="#">Projetores</a>
+                            <a href="#">Soundbar</a>
+                            <a href="#">TVs</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Smartphones e Tablets</h4>
+                            <a href="#">Acessórios para smartphones</a>
+                            <a href="#">Android</a>
+                            <a href="#">iPhones</a>
+                            <a href="#">Smartwatch e Smartband</a>
+                            <a href="#">Tablets</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Câmeras e Drones</h4>
+                            <a href="#">Câmera de ação / GoPro</a>
+                            <a href="#">Câmera de segurança</a>
+                            <a href="#">Drones</a>
+                        </div>
+                    </div>
+
+                    <!-- Grupo Informática & Games -->
+                    <div class="subcat-group" id="cat-informatica">
+                        <div class="subcat-column">
+                            <h4>Computadores</h4>
+                            <a href="#">Notebooks</a>
+                            <a href="#">Desktops e PC Gamer</a>
+                            <a href="#">Monitores</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Consoles e Jogos</h4>
+                            <a href="#">PlayStation 5</a>
+                            <a href="#">Xbox Series</a>
+                            <a href="#">Nintendo Switch</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Periféricos</h4>
+                            <a href="#">Teclados e Mouses</a>
+                            <a href="#">Cadeiras Gamer</a>
+                            <a href="#">Placas de Vídeo</a>
+                        </div>
+                    </div>
+
+                    <!-- Grupo Casa & Eletro -->
+                    <div class="subcat-group" id="cat-casa">
+                        <div class="subcat-column">
+                            <h4>Eletrodomésticos</h4>
+                            <a href="#">Geladeira e Freezer</a>
+                            <a href="#">Máquina de Lavar</a>
+                            <a href="#">Micro-ondas</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Eletroportáteis</h4>
+                            <a href="#">Air Fryer</a>
+                            <a href="#">Cafeteiras</a>
+                            <a href="#">Aspirador de Pó</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Móveis</h4>
+                            <a href="#">Sofás e Poltronas</a>
+                            <a href="#">Colchões e Cama</a>
+                        </div>
+                    </div>
+
+                    <!-- Outras categorias podem ser adicionadas seguindo o mesmo padrão -->
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner WhatsApp Clicável (Mantido) -->
     <div class="banner-vip">
         <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
             <div class="banner-text">
@@ -361,21 +608,6 @@
             </div>
             <span class="btn-wpp">ENTRAR NO GRUPO</span>
         </a>
-    </div>
-
-    <!-- Categorias Limpas (Padrão Promobit) -->
-    <div class="categories-wrapper">
-        <div class="categories-menu">
-            <a href="#" class="cat-chip active"><i class="fa-solid fa-fire"></i> Destaques</a>
-            <a href="#" class="cat-chip"><i class="fa-solid fa-mobile-screen"></i> Smartphones</a>
-            <a href="#" class="cat-chip"><i class="fa-solid fa-tv"></i> TV & Áudio</a>
-            <a href="#" class="cat-chip"><i class="fa-solid fa-laptop"></i> Informática</a>
-            <a href="#" class="cat-chip"><i class="fa-solid fa-gamepad"></i> Games</a>
-            <a href="#" class="cat-chip"><i class="fa-solid fa-couch"></i> Casa & Eletro</a>
-            <a href="#" class="cat-chip"><i class="fa-solid fa-shirt"></i> Moda</a>
-            <a href="#" class="cat-chip"><i class="fa-solid fa-pump-soap"></i> Beleza & Saúde</a>
-            <a href="#" class="cat-chip"><i class="fa-solid fa-cart-shopping"></i> Mercado</a>
-        </div>
     </div>
 
     <!-- Feed de Produtos -->
@@ -442,6 +674,47 @@
         </article>
 
     </main>
+
+    <!-- JavaScript para controle do Mega Menu Promobit -->
+    <script>
+        const megaBtn = document.getElementById('megaMenuBtn');
+        const megaPanel = document.getElementById('megaMenuPanel');
+        const menuArrow = document.getElementById('menuArrow');
+        const catItems = document.querySelectorAll('.mega-cat-item');
+        const subcatGroups = document.querySelectorAll('.subcat-group');
+
+        // Toggle do Menu ao Clicar no botão Categorias
+        megaBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            megaPanel.classList.toggle('open');
+            megaBtn.classList.toggle('active');
+            menuArrow.classList.toggle('fa-chevron-up');
+            menuArrow.classList.toggle('fa-chevron-down');
+        });
+
+        // Fechar ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
+                megaPanel.classList.remove('open');
+                megaBtn.classList.remove('active');
+                menuArrow.classList.add('fa-chevron-down');
+                menuArrow.classList.remove('fa-chevron-up');
+            }
+        });
+
+        // Alternar subcategorias ao passar o mouse ou clicar nas categorias
+        catItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => g.classList.remove('active'));
+
+                item.classList.add('active');
+                const targetId = item.getAttribute('data-target');
+                const targetGroup = document.getElementById(targetId);
+                if (targetGroup) targetGroup.classList.add('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
