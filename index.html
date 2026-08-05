@@ -206,7 +206,6 @@
         .store-info-text strong { color: #ffffff; font-size: 14px; }
         .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
 
-        /* LAYOUT DESKTOP DO MEGA MENU */
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -616,7 +615,6 @@
             background: #e68a00;
         }
 
-        /* LAYOUT MOBILE & SANFONA (ACCORDION) */
         @media (max-width: 768px) {
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; max-width: 100%; }
@@ -787,7 +785,6 @@
                 </div>
 
                 <div class="mega-content">
-                    <!-- 1. ELETRONICOS -->
                     <div class="subcat-group" id="cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Celulares e Telefonia</h4>
@@ -812,7 +809,6 @@
                         </div>
                     </div>
 
-                    <!-- 2. INFORMATICA -->
                     <div class="subcat-group" id="cat-informatica">
                         <div class="subcat-column">
                             <h4>Informática Geral</h4>
@@ -837,7 +833,6 @@
                         </div>
                     </div>
 
-                    <!-- 3. CASA -->
                     <div class="subcat-group" id="cat-casa">
                         <div class="subcat-column">
                             <h4>Eletrodomésticos</h4>
@@ -852,113 +847,63 @@
                             <a onclick="openCategoryPage('Aspiradores')">Aspiradores e Robôs</a>
                             <a onclick="openCategoryPage('Cafeteiras')">Cafeteiras Elétricas</a>
                             <a onclick="openCategoryPage('Liquidificadores')">Liquidificadores e Batedeiras</a>
+                            <a onclick="openCategoryPage('Micro-ondas')">Fornos de Micro-ondas</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Móveis e Decoração</h4>
+                            <h4>Móveis e Organização</h4>
+                            <a onclick="openCategoryPage('Potes e Mantimentos')">Potes e Organização de Cozinha</a>
                             <a onclick="openCategoryPage('Sofás')">Sofás e Poltronas</a>
                             <a onclick="openCategoryPage('Camas')">Camas e Colchões</a>
-                            <a onclick="openCategoryPage('Iluminação')">Iluminação e Lâmpadas Smart</a>
-                            <a onclick="openCategoryPage('Organização')">Organização da Casa</a>
                         </div>
                     </div>
 
-                    <!-- 4. MODA E BELEZA -->
                     <div class="subcat-group" id="cat-moda">
                         <div class="subcat-column">
                             <h4>Moda Masculina e Feminina</h4>
                             <a onclick="openCategoryPage('Roupas')">Roupas e Camisetas</a>
                             <a onclick="openCategoryPage('Calçados')">Tênis e Sapatos</a>
-                            <a onclick="openCategoryPage('Acessórios de Moda')">Relógios e Óculos</a>
                         </div>
                         <div class="subcat-column">
                             <h4>Perfumaria e Cosméticos</h4>
                             <a onclick="openCategoryPage('Perfumes')">Perfumes Importados e Nacionais</a>
                             <a onclick="openCategoryPage('Maquiagem')">Maquiagem e Skincare</a>
-                            <a onclick="openCategoryPage('Cabelos')">Cuidado com os Cabelos</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Cuidados Pessoais</h4>
-                            <a onclick="openCategoryPage('Barbeadores')">Barbeadores e Aparadores</a>
-                            <a onclick="openCategoryPage('Secadores')">Secadores e Pranchas</a>
-                            <a onclick="openCategoryPage('Higiene')">Higiene Pessoal</a>
                         </div>
                     </div>
 
-                    <!-- 5. ESPORTE E LAZER -->
                     <div class="subcat-group" id="cat-esporte">
                         <div class="subcat-column">
                             <h4>Fitness e Musculação</h4>
                             <a onclick="openCategoryPage('Suplementos')">Suplementos e Whey Protein</a>
-                            <a onclick="openCategoryPage('Equipamentos')">Halteres e Elásticos</a>
-                            <a onclick="openCategoryPage('Roupas Esportivas')">Roupas de Academia</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Ciclismo e Mobilidade</h4>
-                            <a onclick="openCategoryPage('Bicicletas')">Bicicletas e Acessórios</a>
-                            <a onclick="openCategoryPage('Patinetes')">Patinetes Elétricos</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Camping e Lazer</h4>
-                            <a onclick="openCategoryPage('Barracas')">Barracas e Mochilas</a>
-                            <a onclick="openCategoryPage('Garrafas')">Garrafas e Copos Térmicos</a>
                         </div>
                     </div>
 
-                    <!-- 6. BEBES E BRINQUEDOS -->
                     <div class="subcat-group" id="cat-bebes">
                         <div class="subcat-column">
                             <h4>Mundo Bebê</h4>
                             <a onclick="openCategoryPage('Fraldas')">Fraldas e Lencinhos</a>
-                            <a onclick="openCategoryPage('Carrinhos')">Carrinhos de Bebê e Cadeirinhas</a>
-                            <a onclick="openCategoryPage('Alimentação Bebê')">Mamadeiras e Chupetas</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Brinquedos e Jogos</h4>
-                            <a onclick="openCategoryPage('Bonecos')">Bonecos e Action Figures</a>
-                            <a onclick="openCategoryPage('Lego')">Lego e Blocos de Montar</a>
-                            <a onclick="openCategoryPage('Jogos de Tabuleiro')">Jogos de Tabuleiro</a>
                         </div>
                     </div>
 
-                    <!-- 7. FERRAMENTAS E CONSTRUCAO -->
                     <div class="subcat-group" id="cat-ferramentas">
                         <div class="subcat-column">
                             <h4>Ferramentas Elétricas</h4>
                             <a onclick="openCategoryPage('Furadeiras')">Furadeiras e Parafusadeiras</a>
-                            <a onclick="openCategoryPage('Serras')">Serras e Lixadeiras</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Manuais e Organização</h4>
-                            <a onclick="openCategoryPage('Maletas')">Maletas de Ferramentas</a>
-                            <a onclick="openCategoryPage('Kits Ferramentas')">Kits de Chaves e Alicates</a>
                         </div>
                     </div>
 
-                    <!-- 8. AUTOMOTIVO -->
                     <div class="subcat-group" id="cat-automotivo">
                         <div class="subcat-column">
                             <h4>Acessórios Automotivos</h4>
                             <a onclick="openCategoryPage('Som Automotivo')">Som e Central Multimídia</a>
-                            <a onclick="openCategoryPage('Pneus')">Pneus e Rodas</a>
-                            <a onclick="openCategoryPage('Manutenção Auto')">Óleos e Limpeza Automotiva</a>
                         </div>
                     </div>
 
-                    <!-- 9. SUPERMERCADO -->
                     <div class="subcat-group" id="cat-supermercado">
                         <div class="subcat-column">
                             <h4>Alimentos e Bebidas</h4>
                             <a onclick="openCategoryPage('Café e Chá')">Café, Chás e Cápsulas</a>
-                            <a onclick="openCategoryPage('Chocolates')">Chocolates e Doces</a>
-                            <a onclick="openCategoryPage('Bebidas Alcoólicas')">Cervejas, Vinhos e Destilados</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Limpeza da Casa</h4>
-                            <a onclick="openCategoryPage('Sabão em Pó')">Sabão em Pó e Amaciante</a>
-                            <a onclick="openCategoryPage('Detergentes')">Detergentes e Desinfetantes</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -1070,58 +1015,90 @@
     <script>
         const productsDatabase = [
             {
-                id: 'consul-crm50mb',
-                title: 'Geladeira CRM50MB 412 Litros Frost Free Duplex Consul',
+                id: 'mondial-l99fb',
+                title: 'MONDIAL Liquidificador Turbo Power, Preto, 550W, 220V - L-99 FB',
                 store: 'Amazon',
-                subcat: 'Geladeiras e Freezers',
-                oldPrice: 'R$ 2.999,00',
-                price: 'R$ 2.699,99',
-                discount: '-9%',
-                installments: 'Em até 12x de R$ 225,10 sem juros',
-                affiliateLink: 'https://link.amazon/B0gBXsKfJ',
+                subcat: 'Liquidificadores e Batedeiras',
+                oldPrice: 'R$ 159,90',
+                price: 'R$ 85,93',
+                discount: '-46%',
+                installments: 'Em até 2x de R$ 42,97 sem juros',
+                affiliateLink: 'https://link.amazon/B046VH0Ty',
                 images: [
-                    'https://m.media-amazon.com/images/I/4173h2WLFLL._AC_SX679_.jpg',
-                    'https://m.media-amazon.com/images/I/41dkOziMhyL._AC_SX679_.jpg',
-                    'https://m.media-amazon.com/images/I/61q4aT4C3uL._AC_SX522_.jpg'
+                    'https://m.media-amazon.com/images/I/71KFAoTV+hL._AC_SY879_.jpg',
+                    'https://m.media-amazon.com/images/I/71snJPAj-dL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71zq9XPnksL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71mpLyEfFUL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71B-8Yh8JCL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71u1y+7HtVL._AC_SL1500_.jpg'
                 ],
-                rating: '4,8 (5 avaliações)',
+                rating: '4,7 (19.727 avaliações)',
                 specs: {
-                    'Dimensões': '72P x 70,2L x 174,5A cm',
-                    'Marca': 'Consul',
-                    'Capacidade': '412 Litros'
+                    'Marca': 'MONDIAL',
+                    'Potência': '550W',
+                    'Voltagem': '220V',
+                    'Cor': 'Preto'
                 },
-                about: 'A Geladeira Consul Frost Free 412L tem freezer espaçoso, Função Turbo e Filtro Antiodor.'
+                about: 'Liquidificador Mondial Turbo Power com 550W de potência, copo resistente e lâminas em aço inox para preparar sucos, vitaminas e muito mais.'
             },
             {
-                id: 'consul-crb39mk',
-                title: 'Geladeira Frost Free 337L com Espaço Extra Frio Inox Consul - CRB39MK (110 Volts)',
+                id: 'electrolux-potes',
+                title: 'Electrolux Kit 12 Potes Herméticos de Plástico Retangulares, Multiuso, Vedação Silicone, BPA Free',
                 store: 'Amazon',
-                subcat: 'Geladeiras e Freezers',
-                oldPrice: 'R$ 2.179,00',
-                price: 'R$ 2.049,99',
-                discount: '-5%',
-                installments: 'Em até 12x de R$ 170,86 sem juros',
-                affiliateLink: 'https://link.amazon/B06EhGyA2',
+                subcat: 'Potes e Mantimentos',
+                oldPrice: 'R$ 129,90',
+                price: 'R$ 89,90',
+                discount: '-30%',
+                installments: 'Em até 12x de R$ 8,30 com juros',
+                affiliateLink: 'https://link.amazon/B06ra4bMQ',
                 images: [
-                    'https://m.media-amazon.com/images/I/5137tW5ScKL._AC_SX522_.jpg',
-                    'https://m.media-amazon.com/images/I/51MtulxaAjL._AC_SX522_.jpg',
-                    'https://m.media-amazon.com/images/I/61XtSxboE6L._AC_SX522_.jpg',
-                    'https://m.media-amazon.com/images/I/61ePcUxgNYL._AC_SX522_.jpg',
-                    'https://m.media-amazon.com/images/I/61ZpFEUX84L._AC_SX522_.jpg',
-                    'https://m.media-amazon.com/images/I/71HuoP6lEjL._AC_SX522_.jpg',
-                    'https://m.media-amazon.com/images/I/71jvb3IhIyL._AC_SL1500_.jpg',
-                    'https://m.media-amazon.com/images/I/719fAKNoDlL._AC_SL1500_.jpg',
-                    'https://m.media-amazon.com/images/I/7140R2pdrOL._AC_SL1500_.jpg'
+                    'https://m.media-amazon.com/images/I/51uccv-jBiL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61mDXbMLe4L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51t1RYU3t9L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/517N5X5p4NL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51BSUCQnNBL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51tw6VngCdL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51kdyALdvCL._AC_SL1000_.jpg'
                 ],
-                rating: '4,6 (19 avaliações)',
+                rating: '4,9 (53.261 avaliações)',
                 specs: {
-                    'Dimensões': '65P x 63L x 172A cm',
-                    'Marca': 'Consul',
-                    'Capacidade': '337 Litros',
-                    'Cor': 'Cinza',
-                    'Característica Especial': 'Livre de gelo'
+                    'Marca': 'Electrolux',
+                    'Material': 'Plástico BPA Free',
+                    'Quantidade': 'Kit com 12 Potes',
+                    'Vedação': 'Silicone Hermética'
                 },
-                about: 'O Consul Frost Free 337 litros evita gelo nas paredes, facilita a limpeza e economiza até 13% de energia ao ano. Com congelador espaçoso.'
+                about: 'Kit com 12 potes herméticos multiuso Electrolux com vedação em silicone para manter seus alimentos frescos por muito mais tempo.'
+            },
+            {
+                id: 'philco-pmo23b',
+                title: 'Micro-ondas Philco 20L Branco Pmo23b 220v',
+                store: 'Amazon',
+                subcat: 'Fornos de Micro-ondas',
+                oldPrice: 'R$ 594,50',
+                price: 'R$ 467,36',
+                discount: '-21%',
+                installments: 'Em até 9x de R$ 54,69 sem juros',
+                affiliateLink: 'https://link.amazon/B0f7syb1B',
+                images: [
+                    'https://m.media-amazon.com/images/I/41XTKM4Cg4L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51+i9EopBQL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/41CYNPe-nXL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61DsZgIt3aL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61+WX+hOEFL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61WWBUUtS8L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51etb6EHPvL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51j1OrH6cEL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/41HU0t+g+QL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/611ByJFkbZL._AC_SL1200_.jpg'
+                ],
+                rating: '4,6 (3.026 avaliações)',
+                specs: {
+                    'Marca': 'Philco',
+                    'Capacidade': '20 Litros',
+                    'Voltagem': '220V',
+                    'Cor': 'Branco'
+                },
+                about: 'Micro-ondas Philco 20 litros na cor branca, prático, com várias funções de descongelamento e preparo rápido para o dia a dia.'
             }
         ];
 
