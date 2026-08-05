@@ -1093,26 +1093,6 @@
                 about: 'A Geladeira Consul Frost Free 412L tem freezer espaçoso, Função Turbo e Filtro Antiodor.'
             },
             {
-                id: 'airfryer-mondial',
-                title: 'Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W',
-                store: 'Amazon',
-                subcat: 'Air Fryers',
-                oldPrice: 'R$ 449,90',
-                price: 'R$ 279,00',
-                discount: '-38%',
-                installments: 'Em até 5x de R$ 55,80 sem juros',
-                affiliateLink: 'https://amzn.to/exemplo',
-                images: [
-                    'https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80'
-                ],
-                rating: '4,7 (1.240 avaliações)',
-                specs: {
-                    'Capacidade': '4 Litros',
-                    'Potência': '1500W'
-                },
-                about: 'Fritadeira sem óleo ideal para preparar refeições saudáveis e rápidas com facilidade.'
-            },
-            {
                 id: 'consul-crb39mk',
                 title: 'Geladeira Frost Free 337L com Espaço Extra Frio Inox Consul - CRB39MK (110 Volts)',
                 store: 'Amazon',
@@ -1297,12 +1277,10 @@
             function setupMenuLayout() {
                 if (window.innerWidth <= 768) {
                     item.after(targetSubcat);
-                    // Garante que no celular o menu inicie totalmente fechado
                     item.classList.remove('active');
                     targetSubcat.classList.remove('active');
                 } else {
                     megaContent.appendChild(targetSubcat);
-                    // No desktop, garante a primeira opção ativa por padrão
                     if (!document.querySelector('.mega-cat-item.active')) {
                         catItems[0].classList.add('active');
                         subcatGroups[0].classList.add('active');
@@ -1317,7 +1295,6 @@
                 e.stopPropagation();
                 const isActive = item.classList.contains('active');
 
-                // Permite fechar a categoria no celular se tocar nela novamente
                 if (window.innerWidth <= 768 && isActive) {
                     item.classList.remove('active');
                     targetSubcat.classList.remove('active');
