@@ -218,7 +218,7 @@
         .store-info-text strong { color: #ffffff; font-size: 14px; }
         .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
 
-        /* MEGA MENU (DESKTOP) */
+        /* MEGA MENU PADRÃO */
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -281,18 +281,6 @@
         .mega-cat-item:hover .cat-icon-circle, 
         .mega-cat-item.active .cat-icon-circle { background-color: #383846; }
 
-        .mega-cat-item .mobile-arrow {
-            display: none;
-            margin-left: auto;
-            font-size: 12px;
-            transition: transform 0.2s;
-        }
-
-        /* Oculta os itens accordion mobile no Desktop */
-        .mobile-subcat-container {
-            display: none !important;
-        }
-
         .mega-content {
             flex: 1;
             padding: 20px;
@@ -329,7 +317,7 @@
 
         .subcat-column a:hover { color: var(--primary); }
 
-        /* VIEWS (HOME, LOJA, HUB CUPONS, DETALHE CUPONS) */
+        /* VIEWS */
         .page-view {
             display: none;
             max-width: 1100px;
@@ -713,15 +701,7 @@
             .stores-menu-panel { left: 10px; width: calc(100vw - 20px); grid-template-columns: 1fr; }
             .mega-menu-panel { width: calc(100vw - 40px); flex-direction: column; max-height: 75vh; overflow-y: auto; }
             .mega-sidebar { width: 100%; border-right: none; padding: 5px; }
-            .mega-cat-item .mobile-arrow { display: block; }
-            .mega-cat-item.active .mobile-arrow { transform: rotate(180deg); }
-            .mega-content { display: none; }
-            
-            /* Ativa o accordion apenas no mobile */
-            .mobile-subcat-container { display: none; padding: 10px 15px 15px 45px; background: #18181c; border-left: 2px solid var(--primary); margin: 5px 0; border-radius: 0 0 8px 8px; }
-            .mobile-subcat-container.open { display: block !important; }
-            .mobile-subcat-container h4 { color: #fff; font-size: 13px; margin: 10px 0 5px 0; }
-            .mobile-subcat-container a { display: block; color: var(--text-muted); text-decoration: none; font-size: 13px; padding: 4px 0; }
+            .subcat-group { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 600px) {
@@ -798,73 +778,62 @@
                 </div>
             </div>
 
-            <!-- PAINEL DO MEGA MENU CATEGORIAS -->
+            <!-- PAINEL DO MEGA MENU CATEGORIAS (PADRÃO) -->
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <div class="mega-sidebar">
                     <div class="mega-cat-item active" data-target="cat-eletronicos">
                         <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
                         <span>Smartphones, Eletrônicos e TV</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
                     
                     <div class="mega-cat-item" data-target="cat-informatica">
                         <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
                         <span>Informática e Games</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-casa">
                         <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
                         <span>Casa e Eletrodomésticos</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-moda">
                         <div class="cat-icon-circle"><i class="fa-solid fa-shirt"></i></div>
                         <span>Moda e Acessórios</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-bebes">
                         <div class="cat-icon-circle"><i class="fa-solid fa-baby-carriage"></i></div>
                         <span>Bebês e Crianças</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-saude">
                         <div class="cat-icon-circle"><i class="fa-solid fa-heart-pulse"></i></div>
                         <span>Saúde e Beleza</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-esporte">
                         <div class="cat-icon-circle"><i class="fa-solid fa-dumbbell"></i></div>
                         <span>Esporte e Suplementos</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-mercado">
                         <div class="cat-icon-circle"><i class="fa-solid fa-cart-shopping"></i></div>
                         <span>Supermercado e Delivery</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-livros">
                         <div class="cat-icon-circle"><i class="fa-solid fa-book"></i></div>
                         <span>Livros, Ebooks e eReaders</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-ferramentas">
                         <div class="cat-icon-circle"><i class="fa-solid fa-wrench"></i></div>
                         <span>Ferramentas e Jardim</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-diversos">
                         <div class="cat-icon-circle"><i class="fa-solid fa-bag-shopping"></i></div>
                         <span>Diversos</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
                 </div>
 
@@ -1212,44 +1181,20 @@
             }
         });
 
-        // Alternar categorias no Mega Menu (Desktop & Mobile)
+        // Troca de Categorias Padrão
         catItems.forEach(item => {
-            const targetId = item.getAttribute('data-target');
-            const targetGroup = document.getElementById(targetId);
-
-            // Container exclusivo para mobile
-            const mobileContainer = document.createElement('div');
-            mobileContainer.className = 'mobile-subcat-container';
-            if (targetGroup) mobileContainer.innerHTML = targetGroup.innerHTML;
-            item.after(mobileContainer);
-
-            // Troca no Desktop ao passar o mouse ou clicar
-            const selectDesktopCategory = () => {
-                if (window.innerWidth > 880) {
-                    catItems.forEach(i => i.classList.remove('active'));
-                    document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
-                    item.classList.add('active');
-                    if (targetGroup) targetGroup.classList.add('active');
-                }
+            const selectCategory = () => {
+                catItems.forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+                
+                item.classList.add('active');
+                const targetId = item.getAttribute('data-target');
+                const targetGroup = document.getElementById(targetId);
+                if (targetGroup) targetGroup.classList.add('active');
             };
 
-            item.addEventListener('mouseenter', selectDesktopCategory);
-
-            item.addEventListener('click', (e) => {
-                if (window.innerWidth <= 880) {
-                    e.stopPropagation();
-                    const isOpen = mobileContainer.classList.contains('open');
-                    document.querySelectorAll('.mobile-subcat-container').forEach(c => c.classList.remove('open'));
-                    catItems.forEach(i => i.classList.remove('active'));
-
-                    if (!isOpen) {
-                        item.classList.add('active');
-                        mobileContainer.classList.add('open');
-                    }
-                } else {
-                    selectDesktopCategory();
-                }
-            });
+            item.addEventListener('mouseenter', selectCategory);
+            item.addEventListener('click', selectCategory);
         });
     </script>
 </body>
