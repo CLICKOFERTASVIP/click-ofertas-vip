@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click Ofertas VIP | Melhores Promoções e Cupons</title>
+    <title>Click Ofertas VIP | Ofertas e Cupons</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -19,1186 +19,223 @@
             --badge-store: #70a1ff;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-dark); padding-bottom: 40px; }
 
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-dark);
-            padding-bottom: 40px;
-        }
+        /* Header */
+        header { background-color: #0d0d11; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #23232c; }
+        .header-container { max-width: 1100px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .brand-logo { display: flex; align-items: center; text-decoration: none; gap: 10px; cursor: pointer; }
+        .brand-logo-icon { background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%); color: white; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+        .brand-logo-text .main-title { font-size: 20px; font-weight: 900; color: #ffffff; }
+        .brand-logo-text .main-title span { color: var(--primary); }
+        .brand-logo-text .sub-title { font-size: 10px; font-weight: 700; color: #a4b0be; letter-spacing: 2px; }
 
-        /* Header Principal */
-        header {
-            background-color: #0d0d11;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #23232c;
-        }
+        .search-bar { flex: 1; max-width: 450px; position: relative; }
+        .search-bar input { width: 100%; padding: 10px 15px 10px 40px; border: 1px solid #23232c; border-radius: 20px; background: #18181c; color: #fff; outline: none; }
+        .search-bar i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
 
-        .header-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .brand-logo-icon {
-            background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
-            color: white;
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
-        }
-
-        .brand-logo-text .main-title {
-            font-size: 20px;
-            font-weight: 900;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-            line-height: 1;
-        }
-
-        .brand-logo-text .main-title span {
-            color: var(--primary);
-        }
-
-        .brand-logo-text .sub-title {
-            font-size: 10px;
-            font-weight: 700;
-            color: #a4b0be;
-            letter-spacing: 2px;
-            margin-top: 3px;
-        }
-
-        .search-bar {
-            flex: 1;
-            max-width: 450px;
-            position: relative;
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 10px 15px 10px 40px;
-            border: 1px solid #23232c;
-            border-radius: 20px;
-            background: #18181c;
-            color: #fff;
-            outline: none;
-            font-size: 14px;
-        }
-
-        .search-bar i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-        }
-
-        /* Nav Bar */
-        .top-nav {
-            background-color: #121216;
-            border-bottom: 1px solid #23232c;
-        }
-
-        .top-nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            position: relative;
-        }
-
-        .btn-categories-trigger, .btn-stores-trigger {
-            background: #18181c;
-            color: #fff;
-            border: 1px solid #2b2b36;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-        }
-
-        .btn-categories-trigger:hover, .btn-categories-trigger.active,
-        .btn-stores-trigger:hover, .btn-stores-trigger.active {
-            background: #2b2b36;
-            border-color: var(--primary);
-        }
-
-        .nav-link-simple {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            padding: 10px;
-            transition: color 0.2s;
-        }
-
-        .nav-link-simple:hover { color: #fff; }
+        /* Nav */
+        .top-nav { background-color: #121216; border-bottom: 1px solid #23232c; }
+        .top-nav-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 15px; position: relative; }
+        .btn-stores-trigger, .nav-link-simple { background: #18181c; color: #fff; border: 1px solid #2b2b36; padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .btn-stores-trigger:hover, .nav-link-simple:hover { background: #2b2b36; border-color: var(--primary); }
 
         /* DROPDOWN LOJAS */
-        .stores-menu-panel {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 160px;
-            width: 480px;
-            background: #18181c;
-            border: 1px solid #2b2b36;
-            border-radius: 12px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-            z-index: 999;
-            margin-top: 5px;
-            padding: 15px;
-        }
-
-        .stores-menu-panel.open {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .store-card-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #121216;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid #2b2b36;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .store-card-item:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            background: #202028;
-        }
-
-        .store-icon-circle {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 18px;
-            flex-shrink: 0;
-            color: #fff;
-        }
-
+        .stores-menu-panel { display: none; position: absolute; top: 100%; left: 20px; width: 480px; background: #18181c; border: 1px solid #2b2b36; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.7); z-index: 999; margin-top: 5px; padding: 15px; }
+        .stores-menu-panel.open { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .store-card-item { display: flex; align-items: center; gap: 12px; background: #121216; padding: 12px; border-radius: 10px; border: 1px solid #2b2b36; cursor: pointer; }
+        .store-card-item:hover { border-color: var(--primary); background: #202028; }
+        .store-icon-circle { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; color: #fff; flex-shrink: 0; }
         .store-icon-circle.amazon { background: #FF9900; color: #000; }
         .store-icon-circle.magalu { background: #0086FF; }
 
-        .store-info-text { display: flex; flex-direction: column; }
-        .store-info-text strong { color: #ffffff; font-size: 14px; }
-        .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+        /* PAGINAS (HOME / LOJA / HUB CUPONS / DETALHE CUPONS) */
+        .page-view { display: none; max-width: 1100px; margin: 20px auto 0 auto; padding: 0 20px; }
+        .page-view.active { display: block; }
 
-        /* MEGA MENU (DESKTOP) */
-        .mega-menu-panel {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 20px;
-            width: 880px;
-            background: #18181c;
-            border: 1px solid #2b2b36;
-            border-radius: 12px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-            z-index: 999;
-            margin-top: 5px;
-            overflow: hidden;
-        }
-
-        .mega-menu-panel.open { display: flex; }
-
-        .mega-sidebar {
-            width: 290px;
-            background: #121216;
-            padding: 10px;
-            border-right: 1px solid #23232c;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .mega-cat-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 12px;
-            color: var(--text-muted);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .cat-icon-circle {
-            width: 32px;
-            height: 32px;
-            background-color: #24242c;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: background-color 0.2s;
-        }
-
-        .cat-icon-circle i { color: #4da6ff; font-size: 13px; }
-
-        .mega-cat-item:hover, .mega-cat-item.active {
-            background: #2b2b36;
-            color: #ffffff;
-        }
-
-        .mega-cat-item:hover .cat-icon-circle, 
-        .mega-cat-item.active .cat-icon-circle { background-color: #383846; }
-
-        .mega-cat-item .mobile-arrow {
-            display: none;
-            margin-left: auto;
-            font-size: 12px;
-            transition: transform 0.2s;
-        }
-
-        .mega-content {
-            flex: 1;
-            padding: 20px;
-            background: #18181c;
-            max-height: 480px;
-            overflow-y: auto;
-        }
-
-        .subcat-group {
-            display: none;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .subcat-group.active { display: grid; }
-
-        .subcat-column h4 {
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            border-bottom: 1px solid #2b2b36;
-            padding-bottom: 6px;
-        }
-
-        .subcat-column a {
-            display: block;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 13px;
-            margin-bottom: 8px;
-            transition: color 0.2s;
-        }
-
-        .subcat-column a:hover { color: var(--primary); }
-
-        /* BANNER HOMEPAGE */
-        .banner-vip {
-            max-width: 1100px;
-            margin: 20px auto 15px auto;
-            padding: 0 20px;
-        }
-
-        .banner-content {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            padding: 16px 24px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-
-        .banner-content:hover { transform: scale(1.01); }
-        .banner-text h3 { font-size: 18px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
-        .banner-text p { font-size: 13px; opacity: 0.9; }
-
-        .btn-wpp {
-            background: #ffffff;
-            color: #075e54;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 14px;
-            white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        /* ESTRUTURA DE PAGINAS DE LOJA (MODELO PROMOBIT) */
-        .store-page-container {
-            max-width: 1100px;
-            margin: 20px auto 0 auto;
-            padding: 0 20px;
-            display: none;
-        }
-
-        .store-page-container.active-page {
-            display: block;
-        }
-
-        .breadcrumb {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .breadcrumb a {
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-
+        .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
         .breadcrumb a:hover { color: #fff; }
 
-        .store-page-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
+        /* GRID DA HUB DE CUPONS (ESTILO PROMOBIT) */
+        .cupons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; margin-top: 20px; }
+        .cupom-store-card { background: #18181c; border: 1px solid #2b2b36; border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .cupom-store-card:hover { border-color: var(--primary); transform: translateY(-3px); background: #202028; }
+        .cupom-store-card .store-icon-circle { width: 60px; height: 60px; font-size: 24px; }
+        .cupom-store-card span { font-weight: bold; font-size: 14px; color: #fff; }
 
-        .store-header-logo {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
+        /* LISTA DE CUPONS */
+        .cupons-list-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-top: 20px; }
+        .cupom-card { background: #1e1e24; border: 2px dashed #2b2b36; border-radius: 12px; padding: 20px; position: relative; }
+        .cupom-code-badge { background: #121216; border: 1px solid var(--primary); color: var(--primary); font-weight: 800; font-size: 16px; padding: 8px 12px; border-radius: 6px; display: inline-block; margin: 10px 0; letter-spacing: 1px; }
+        .cupom-date { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
 
-        .store-header-logo.amazon { background: #FF9900; color: #000; }
-        .store-header-logo.magalu { background: #0086FF; }
-
-        .store-header-info h1 {
-            font-size: 24px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .store-header-info h1 i {
-            color: #0086FF;
-            font-size: 18px;
-        }
-
-        .store-header-info span {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .store-banner-promobit {
-            width: 100%;
-            border-radius: 16px;
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            margin-bottom: 25px;
-        }
-
-        .store-banner-promobit.amazon {
-            background: linear-gradient(135deg, #ff7b00 0%, #e65100 100%);
-        }
-
-        .store-banner-promobit.magalu {
-            background: linear-gradient(135deg, #0086FF 0%, #0056b3 100%);
-        }
-
-        .banner-left-content h2 {
-            font-size: 32px;
-            font-weight: 900;
-            color: #ffffff;
-            line-height: 1.2;
-            max-width: 450px;
-            margin-bottom: 10px;
-        }
-
-        .banner-left-content p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 15px;
-        }
-
-        .banner-center-phone {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: #121216;
-            width: 220px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        .banner-center-phone .phone-tag {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .banner-center-phone .product-name {
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .banner-center-phone .price {
-            font-size: 16px;
-            color: #2ed573;
-            font-weight: 800;
-        }
-
-        .banner-btn-wpp {
-            background: #25D366;
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
-        }
-
-        .banner-btn-wpp:hover { transform: scale(1.05); }
-
-        .store-page-body {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 25px;
-        }
-
-        .filter-pills {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .pill-btn {
-            background: #18181c;
-            border: 1px solid #2b2b36;
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .pill-btn.active {
-            background: #0086FF;
-            color: #fff;
-            border-color: #0086FF;
-        }
-
-        .sidebar-info-card {
-            background: #18181c;
-            border: 1px solid #2b2b36;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .sidebar-info-card h3 {
-            font-size: 16px;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-
-        .rating-stars {
-            color: #FFC107;
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .rating-stars span {
-            color: var(--text-muted);
-            font-size: 12px;
-        }
-
-        .sidebar-info-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .store-check-list {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .store-check-list li {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .store-check-list li.check { color: #2ed573; }
-        .store-check-list li.cross { color: #ff4757; }
-
-        /* FEED DE OFERTAS GENERICO */
-        .feed-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .feed-container-store {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
-        }
-
-        .card-oferta {
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid #2b2b36;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card-oferta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-        }
-
-        .badge-desconto {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: var(--green-discount);
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 6px;
-            z-index: 2;
-        }
-
-        .img-container {
-            width: 100%;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-            padding: 10px;
-            background: #ffffff;
-            border-radius: 8px;
-        }
-
-        .img-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .store-tag {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--badge-store);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-
-        .card-title {
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1.4;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            height: 40px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        .price-section {
-            margin-top: auto;
-            margin-bottom: 12px;
-        }
-
-        .old-price {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-decoration: line-through;
-        }
-
-        .current-price {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .btn-pegar {
-            display: block;
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 14px;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .btn-pegar:hover { background: var(--primary-hover); }
-
-        /* AJUSTES RESPONSIVOS MOBILE */
-        @media (max-width: 880px) {
-            .store-page-body { grid-template-columns: 1fr; }
-            .store-banner-promobit { flex-direction: column; text-align: center; gap: 15px; }
-            .banner-left-content h2 { font-size: 24px; }
-            .stores-menu-panel { left: 10px; width: calc(100vw - 20px); grid-template-columns: 1fr; }
-            .mega-menu-panel { width: calc(100vw - 40px); flex-direction: column; max-height: 75vh; overflow-y: auto; }
-            .mega-sidebar { width: 100%; border-right: none; padding: 5px; }
-            .mega-cat-item .mobile-arrow { display: block; }
-            .mega-cat-item.active .mobile-arrow { transform: rotate(180deg); }
-            .mega-content { display: none; }
-            .mobile-subcat-container { display: none; padding: 10px 15px 15px 45px; background: #18181c; border-left: 2px solid var(--primary); margin: 5px 0; border-radius: 0 0 8px 8px; }
-            .mobile-subcat-container.open { display: block; }
-            .mobile-subcat-container h4 { color: #fff; font-size: 13px; margin: 10px 0 5px 0; }
-            .mobile-subcat-container a { display: block; color: var(--text-muted); text-decoration: none; font-size: 13px; padding: 4px 0; }
-        }
-
-        @media (max-width: 600px) {
-            .header-container { flex-direction: column; }
-            .search-bar { width: 100%; }
-            .banner-content { flex-direction: column; text-align: center; gap: 12px; }
-            .feed-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-            .card-oferta { padding: 10px; }
-            .img-container { height: 130px; }
-            .current-price { font-size: 16px; }
-        }
+        /* FEED GERAGEL */
+        .feed-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        .card-oferta { background: var(--card-bg); border-radius: 12px; border: 1px solid #2b2b36; padding: 15px; display: flex; flex-direction: column; }
+        .img-container { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; background: #ffffff; border-radius: 8px; padding: 10px; }
+        .img-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .btn-pegar { background: var(--primary); color: white; text-align: center; padding: 10px 0; border-radius: 8px; font-weight: bold; font-size: 14px; text-decoration: none; margin-top: auto; }
     </style>
 </head>
 <body>
 
-    <!-- Header Principal -->
     <header>
         <div class="header-container">
-            <div class="brand-logo" id="homeLogoBtn">
-                <div class="brand-logo-icon">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
+            <div class="brand-logo" onclick="switchPage('homePage')">
+                <div class="brand-logo-icon"><i class="fa-solid fa-bolt"></i></div>
                 <div class="brand-logo-text">
                     <span class="main-title">CLICK<span>OFERTAS</span></span>
                     <span class="sub-title">CLUB VIP</span>
                 </div>
             </div>
-            
             <div class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Buscar produto, marca ou loja...">
+                <input type="text" placeholder="Buscar oferta ou cupom...">
             </div>
         </div>
     </header>
 
-    <!-- Barra de Navegação -->
     <nav class="top-nav">
         <div class="top-nav-container">
-            <!-- Botão Categorias -->
-            <button class="btn-categories-trigger" id="megaMenuBtn">
-                Categorias <i class="fa-solid fa-chevron-down" id="menuArrow"></i>
-            </button>
-
-            <!-- Botão Lojas -->
             <button class="btn-stores-trigger" id="storesMenuBtn">
-                Lojas <i class="fa-solid fa-chevron-down" id="storesArrow"></i>
+                Lojas <i class="fa-solid fa-chevron-down"></i>
             </button>
 
-            <a href="#" class="nav-link-simple">Cupons</a>
+            <a href="#" class="nav-link-simple" onclick="switchPage('cuponsHubPage')"><i class="fa-solid fa-ticket"></i> Cupons</a>
 
-            <!-- DROPDOWN DE LOJAS -->
             <div class="stores-menu-panel" id="storesMenuPanel">
-                <div class="store-card-item" onclick="openStorePage('amazon')">
-                    <div class="store-icon-circle amazon">
-                        <i class="fa-brands fa-amazon"></i>
-                    </div>
-                    <div class="store-info-text">
-                        <strong>Amazon</strong>
-                        <span>amazon.com.br</span>
-                    </div>
+                <div class="store-card-item" onclick="openStoreOffers('amazon')">
+                    <div class="store-icon-circle amazon"><i class="fa-brands fa-amazon"></i></div>
+                    <div><strong>Amazon</strong><br><small style="color:#a4b0be">amazon.com.br</small></div>
                 </div>
-
-                <div class="store-card-item" onclick="openStorePage('magalu')">
-                    <div class="store-icon-circle magalu">
-                        Lu
-                    </div>
-                    <div class="store-info-text">
-                        <strong>Magazine Luiza</strong>
-                        <span>magazineluiza.com.br</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PAINEL DO MEGA MENU CATEGORIAS -->
-            <div class="mega-menu-panel" id="megaMenuPanel">
-                <div class="mega-sidebar">
-                    <div class="mega-cat-item active" data-target="cat-eletronicos">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                        <span>Smartphones, Eletrônicos e TV</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-                    
-                    <div class="mega-cat-item" data-target="cat-informatica">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
-                        <span>Informática e Games</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-
-                    <div class="mega-cat-item" data-target="cat-casa">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
-                        <span>Casa e Eletrodomésticos</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-
-                    <div class="mega-cat-item" data-target="cat-moda">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-shirt"></i></div>
-                        <span>Moda e Acessórios</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-
-                    <div class="mega-cat-item" data-target="cat-bebes">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-baby-carriage"></i></div>
-                        <span>Bebês e Crianças</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-
-                    <div class="mega-cat-item" data-target="cat-saude">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-heart-pulse"></i></div>
-                        <span>Saúde e Beleza</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-
-                    <div class="mega-cat-item" data-target="cat-esporte">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-dumbbell"></i></div>
-                        <span>Esporte e Suplementos</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-
-                    <div class="mega-cat-item" data-target="cat-mercado">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-cart-shopping"></i></div>
-                        <span>Supermercado e Delivery</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-
-                    <div class="mega-cat-item" data-target="cat-livros">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-book"></i></div>
-                        <span>Livros, Ebooks e eReaders</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-
-                    <div class="mega-cat-item" data-target="cat-ferramentas">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-wrench"></i></div>
-                        <span>Ferramentas e Jardim</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-
-                    <div class="mega-cat-item" data-target="cat-diversos">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-bag-shopping"></i></div>
-                        <span>Diversos</span>
-                        <i class="fa-solid fa-chevron-down mobile-arrow"></i>
-                    </div>
-                </div>
-
-                <div class="mega-content">
-                    <div class="subcat-group active" id="cat-eletronicos">
-                        <div class="subcat-column">
-                            <h4>Eletrônicos, Áudio e Vídeo</h4>
-                            <a href="#">Caixa de Som</a>
-                            <a href="#">Fone de ouvido</a>
-                            <a href="#">TVs</a>
-                        </div>
-                    </div>
+                <div class="store-card-item" onclick="openStoreOffers('magalu')">
+                    <div class="store-icon-circle magalu">Lu</div>
+                    <div><strong>Magazine Luiza</strong><br><small style="color:#a4b0be">magazineluiza.com.br</small></div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- VIEW HOMEPAGE -->
-    <div id="homePage">
-        <!-- Banner VIP WhatsApp -->
-        <div class="banner-vip">
-            <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
-                <div class="banner-text">
-                    <h3><i class="fa-brands fa-whatsapp"></i> Receba Ofertas e Cupons no WhatsApp!</h3>
-                    <p>Grupo VIP gratuito com os menores preços do dia em tempo real.</p>
-                </div>
-                <span class="btn-wpp">ENTRAR NO GRUPO</span>
-            </a>
-        </div>
-
-        <!-- Feed de Produtos Geral -->
+    <!-- 1. HOME PAGE -->
+    <div id="homePage" class="page-view active">
+        <h2 style="margin-bottom: 15px;">Destaques do Dia</h2>
         <main class="feed-container">
             <article class="card-oferta">
-                <span class="badge-desconto">-38%</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80" alt="Air Fryer">
-                </div>
-                <span class="store-tag">Amazon</span>
-                <h2 class="card-title">Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W</h2>
-                <div class="price-section">
-                    <span class="old-price">R$ 449,90</span>
-                    <div class="current-price">R$ 279,00</div>
-                </div>
-                <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-            </article>
-
-            <article class="card-oferta">
-                <span class="badge-desconto">-45%</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80" alt="Fone Bluetooth">
-                </div>
-                <span class="store-tag">Magazine Luiza</span>
-                <h2 class="card-title">Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura</h2>
-                <div class="price-section">
-                    <span class="old-price">R$ 120,00</span>
-                    <div class="current-price">R$ 65,90</div>
-                </div>
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80"></div>
+                <span style="color:#70a1ff; font-weight:bold; font-size:12px;">AMAZON</span>
+                <h3 style="font-size:14px; margin: 5px 0 10px 0;">Air Fryer Mondial Inox 4L</h3>
+                <div style="font-size:18px; font-weight:bold; margin-bottom:10px;">R$ 279,00</div>
                 <a href="#" class="btn-pegar">IR PARA A LOJA</a>
             </article>
         </main>
     </div>
 
-    <!-- VIEW PAGINA DA LOJA (AMAZON OU MAGALU) -->
-    <div id="storePage" class="store-page-container">
-        <div class="breadcrumb">
-            <a href="#" onclick="showHomePage()"><i class="fa-solid fa-house"></i> Home</a> &gt; <a href="#">Lojas</a> &gt; <span id="storeBreadcrumbName">Amazon</span>
-        </div>
-
-        <div class="store-page-header">
-            <div class="store-header-logo amazon" id="storeLogoIcon">
-                <i class="fa-brands fa-amazon" id="storeLogoIconChild"></i>
+    <!-- 2. HUB DE CUPONS (SELEÇÃO DE LOJA) -->
+    <div id="cuponsHubPage" class="page-view">
+        <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')">Home</a> &gt; Cupons</div>
+        <h2>Encontre cupons das melhores lojas</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-top: 5px;">Selecione a loja para visualizar os cupons ativos acumulados nos últimos 7 dias.</p>
+        
+        <div class="cupons-grid">
+            <div class="cupom-store-card" onclick="openStoreCupons('amazon')">
+                <div class="store-icon-circle amazon"><i class="fa-brands fa-amazon"></i></div>
+                <span>Amazon</span>
             </div>
-            <div class="store-header-info">
-                <h1 id="storeTitle">Ofertas Amazon em Agosto 2026 <i class="fa-solid fa-circle-check"></i></h1>
-                <span id="storeDomain">amazon.com.br</span>
+            <div class="cupom-store-card" onclick="openStoreCupons('magalu')">
+                <div class="store-icon-circle magalu">Lu</div>
+                <span>Magazine Luiza</span>
             </div>
-        </div>
-
-        <!-- Banner Promobit -->
-        <div class="store-banner-promobit amazon" id="storeBanner">
-            <div class="banner-left-content">
-                <h2 id="bannerTitle">As melhores ofertas da Amazon no seu WhatsApp</h2>
-                <p>Receba em tempo real e não perca nenhuma promoção.</p>
-            </div>
-
-            <div class="banner-center-phone">
-                <div class="phone-tag">Grupo CLICK OFERTAS VIP</div>
-                <div class="product-name">PlayStation 5 Slim 1TB</div>
-                <div class="price">R$ 3.299,00</div>
-            </div>
-
-            <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-btn-wpp">
-                <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i> Entre Agora!
-            </a>
-        </div>
-
-        <!-- Conteudo Principal da Loja -->
-        <div class="store-page-body">
-            <div>
-                <div class="filter-pills">
-                    <button class="pill-btn"><i class="fa-solid fa-ticket"></i> Cupons (12)</button>
-                    <button class="pill-btn active"><i class="fa-solid fa-fire"></i> Ofertas (25+)</button>
-                </div>
-
-                <div class="feed-container-store" id="storeFeed">
-                    <!-- Injetado por JS de acordo com a loja -->
-                </div>
-            </div>
-
-            <!-- Sidebar Informativa -->
-            <aside>
-                <div class="sidebar-info-card">
-                    <h3>Resumo de <span id="sidebarStoreName">Amazon</span></h3>
-                    <div class="rating-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                        <span>4.5/5 (120 avaliações)</span>
-                    </div>
-
-                    <h4 style="font-size: 14px; margin-top: 15px; margin-bottom: 8px;">Informações sobre a Loja</h4>
-                    <p id="sidebarStoreDesc">Uma das maiores plataformas de comércio eletrônico do mundo, com rápida entrega e milhares de produtos com frete grátis Prime.</p>
-
-                    <h4 style="font-size: 14px; margin-top: 15px; margin-bottom: 8px;">Opiniões</h4>
-                    <ul class="store-check-list">
-                        <li class="check"><i class="fa-solid fa-check"></i> Loja verificada</li>
-                        <li class="check"><i class="fa-solid fa-check"></i> CNPJ verificado</li>
-                        <li class="cross" id="storePhysicalCheck"><i class="fa-solid fa-xmark"></i> Não possui loja física</li>
-                    </ul>
-                </div>
-            </aside>
         </div>
     </div>
 
-    <!-- JavaScript -->
-    <script>
-        // Elementos Categorias
-        const megaBtn = document.getElementById('megaMenuBtn');
-        const megaPanel = document.getElementById('megaMenuPanel');
-        const menuArrow = document.getElementById('menuArrow');
+    <!-- 3. DETALHE DOS CUPONS DA LOJA -->
+    <div id="cuponsDetailPage" class="page-view">
+        <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')">Home</a> &gt; <a href="#" onclick="switchPage('cuponsHubPage')">Cupons</a> &gt; <span id="cupomStoreBreadcrumb">Loja</span></div>
+        <h2 id="cupomStoreTitle">Cupons Exclusivos</h2>
+        <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;"><i class="fa-solid fa-clock-rotate-left"></i> Atualizado diariamente. Cupons válidos apenas por 7 dias a contar da publicação.</p>
 
-        // Elementos Lojas
+        <div class="cupons-list-container" id="cuponsList">
+            <!-- Renderizado via Javascript -->
+        </div>
+    </div>
+
+    <script>
+        // BASE DE DADOS SIMULADA DE CUPONS (COM DATAS DE PUBLICAÇÃO YYYY-MM-DD)
+        const hoje = new Date();
+        const subDays = (d) => new Date(new Date().setDate(hoje.getDate() - d)).toISOString().split('T')[0];
+
+        const cuponsDatabase = [
+            // Cupons Válidos (Postados de 0 a 6 dias atrás)
+            { id: 1, loja: 'amazon', codigo: 'AMAZON10', desc: 'R$ 10 OFF em Livros e Ebooks', data: subDays(1) },
+            { id: 2, loja: 'amazon', codigo: 'PRIME20', desc: 'R$ 20 OFF para membros Prime', data: subDays(3) },
+            { id: 3, loja: 'magalu', codigo: 'MAGALU50', desc: 'R$ 50 OFF em Eletrodomésticos selecionados', data: subDays(2) },
+            { id: 4, loja: 'magalu', codigo: 'LUIZA10', desc: '10% OFF em Smartphones', data: subDays(5) },
+
+            // Cupons Expirados (Postados há mais de 7 dias) -> O SCRIPT VAI FILTRAR E APAGAR AUTOMATICAMENTE!
+            { id: 5, loja: 'amazon', codigo: 'OLDAMZ', desc: 'Cupom Antigo Expirado', data: subDays(8) },
+            { id: 6, loja: 'magalu', codigo: 'OLDMAGA', desc: 'Cupom Antigo Expirado', data: subDays(10) }
+        ];
+
+        // Mapeamento de Navegação
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Dropdown Toggle
         const storesBtn = document.getElementById('storesMenuBtn');
         const storesPanel = document.getElementById('storesMenuPanel');
-        const storesArrow = document.getElementById('storesArrow');
-
-        const catItems = document.querySelectorAll('.mega-cat-item');
-        const homePage = document.getElementById('homePage');
-        const storePage = document.getElementById('storePage');
-        const homeLogoBtn = document.getElementById('homeLogoBtn');
-
-        // Alternar para a Home
-        function showHomePage() {
-            storePage.classList.remove('active-page');
-            homePage.style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        homeLogoBtn.addEventListener('click', showHomePage);
-
-        // Alternar para Página da Loja
-        function openStorePage(storeKey) {
-            storesPanel.classList.remove('open');
-            storesBtn.classList.remove('active');
-            
-            homePage.style.display = 'none';
-            storePage.classList.add('active-page');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            const storeBreadcrumbName = document.getElementById('storeBreadcrumbName');
-            const storeTitle = document.getElementById('storeTitle');
-            const storeDomain = document.getElementById('storeDomain');
-            const storeLogoIcon = document.getElementById('storeLogoIcon');
-            const storeBanner = document.getElementById('storeBanner');
-            const bannerTitle = document.getElementById('bannerTitle');
-            const sidebarStoreName = document.getElementById('sidebarStoreName');
-            const sidebarStoreDesc = document.getElementById('sidebarStoreDesc');
-            const storePhysicalCheck = document.getElementById('storePhysicalCheck');
-            const storeFeed = document.getElementById('storeFeed');
-
-            if (storeKey === 'amazon') {
-                storeBreadcrumbName.innerText = 'Amazon';
-                storeTitle.innerHTML = 'Ofertas Amazon em Agosto 2026 <i class="fa-solid fa-circle-check"></i>';
-                storeDomain.innerText = 'amazon.com.br';
-                
-                storeLogoIcon.className = 'store-header-logo amazon';
-                storeLogoIcon.innerHTML = '<i class="fa-brands fa-amazon"></i>';
-
-                storeBanner.className = 'store-banner-promobit amazon';
-                bannerTitle.innerText = 'As melhores ofertas da Amazon no seu WhatsApp';
-
-                sidebarStoreName.innerText = 'Amazon';
-                sidebarStoreDesc.innerText = 'A Amazon brasileira oferece catálogo completo com entrega rápida e frete grátis via Amazon Prime.';
-                storePhysicalCheck.className = 'cross';
-                storePhysicalCheck.innerHTML = '<i class="fa-solid fa-xmark"></i> Não possui loja física';
-
-                storeFeed.innerHTML = `
-                    <article class="card-oferta">
-                        <span class="badge-desconto">-38%</span>
-                        <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80" alt="Air Fryer">
-                        </div>
-                        <span class="store-tag">Amazon</span>
-                        <h2 class="card-title">Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W</h2>
-                        <div class="price-section">
-                            <span class="old-price">R$ 449,90</span>
-                            <div class="current-price">R$ 279,00</div>
-                        </div>
-                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-                    </article>
-                    <article class="card-oferta">
-                        <span class="badge-desconto">-20%</span>
-                        <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=80" alt="Kindle">
-                        </div>
-                        <span class="store-tag">Amazon</span>
-                        <h2 class="card-title">Kindle 11ª Geração Tela de 6 polegadas 16GB</h2>
-                        <div class="price-section">
-                            <span class="old-price">R$ 499,00</span>
-                            <div class="current-price">R$ 399,00</div>
-                        </div>
-                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-                    </article>
-                `;
-            } else if (storeKey === 'magalu') {
-                storeBreadcrumbName.innerText = 'Magazine Luiza';
-                storeTitle.innerHTML = 'Ofertas Magazine Luiza em Agosto 2026 <i class="fa-solid fa-circle-check"></i>';
-                storeDomain.innerText = 'magazineluiza.com.br';
-                
-                storeLogoIcon.className = 'store-header-logo magalu';
-                storeLogoIcon.innerHTML = 'Lu';
-
-                storeBanner.className = 'store-banner-promobit magalu';
-                bannerTitle.innerText = 'As melhores ofertas do Magalu no seu WhatsApp';
-
-                sidebarStoreName.innerText = 'Magazine Luiza';
-                sidebarStoreDesc.innerText = 'O Magazine Luiza é uma das maiores redes do varejo nacional, com retirada grátis em lojas físicas em todo o Brasil.';
-                storePhysicalCheck.className = 'check';
-                storePhysicalCheck.innerHTML = '<i class="fa-solid fa-check"></i> Possui loja física';
-
-                storeFeed.innerHTML = `
-                    <article class="card-oferta">
-                        <span class="badge-desconto">-45%</span>
-                        <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80" alt="Fone Bluetooth">
-                        </div>
-                        <span class="store-tag">Magazine Luiza</span>
-                        <h2 class="card-title">Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura</h2>
-                        <div class="price-section">
-                            <span class="old-price">R$ 120,00</span>
-                            <div class="current-price">R$ 65,90</div>
-                        </div>
-                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-                    </article>
-                    <article class="card-oferta">
-                        <span class="badge-desconto">-30%</span>
-                        <div class="img-container">
-                            <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=400&q=80" alt="Smart TV">
-                        </div>
-                        <span class="store-tag">Magazine Luiza</span>
-                        <h2 class="card-title">Smart TV 50" Crystal UHD 4K Samsung 50CU7700</h2>
-                        <div class="price-section">
-                            <span class="old-price">R$ 2.899,00</span>
-                            <div class="current-price">R$ 2.029,00</div>
-                        </div>
-                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-                    </article>
-                `;
-            }
-        }
-
-        // Toggle Categorias
-        megaBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            storesPanel.classList.remove('open');
-            storesBtn.classList.remove('active');
-            megaPanel.classList.toggle('open');
-            megaBtn.classList.toggle('active');
-        });
-
-        // Toggle Lojas
         storesBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            megaPanel.classList.remove('open');
-            megaBtn.classList.remove('active');
             storesPanel.classList.toggle('open');
-            storesBtn.classList.toggle('active');
         });
+        document.addEventListener('click', () => storesPanel.classList.remove('open'));
 
-        // Fechar ao clicar fora
-        document.addEventListener('click', (e) => {
-            if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
-                megaPanel.classList.remove('open');
-                megaBtn.classList.remove('active');
-            }
-            if (!storesPanel.contains(e.target) && !storesBtn.contains(e.target)) {
-                storesPanel.classList.remove('open');
-                storesBtn.classList.remove('active');
-            }
-        });
+        // SISTEMA DE RENDERIZAÇÃO E EXPIRAÇÃO DE 7 DIAS
+        function openStoreCupons(lojaKey) {
+            switchPage('cuponsDetailPage');
+            
+            const breadcrumb = document.getElementById('cupomStoreBreadcrumb');
+            const title = document.getElementById('cupomStoreTitle');
+            const list = document.getElementById('cuponsList');
 
-        // Mobile Accordion
-        catItems.forEach(item => {
-            const targetId = item.getAttribute('data-target');
-            const targetGroup = document.getElementById(targetId);
+            const nomeLoja = lojaKey === 'amazon' ? 'Amazon' : 'Magazine Luiza';
+            breadcrumb.innerText = nomeLoja;
+            title.innerText = `Cupons de Desconto ${nomeLoja}`;
 
-            const mobileContainer = document.createElement('div');
-            mobileContainer.className = 'mobile-subcat-container';
-            if (targetGroup) mobileContainer.innerHTML = targetGroup.innerHTML;
-            item.after(mobileContainer);
+            // REGRA DOS 7 DIAS: Filtra apenas cupons publicados nos últimos 7 dias (>= HOJE - 7 DIAS)
+            const cuponsValidos = cuponsDatabase.filter(cupom => {
+                if (cupom.loja !== lojaKey) return false;
+                
+                const dataCupom = new Date(cupom.data);
+                const limiteDias = new Date();
+                limiteDias.setDate(hoje.getDate() - 7);
 
-            item.addEventListener('click', (e) => {
-                if (window.innerWidth <= 880) {
-                    e.stopPropagation();
-                    const isOpen = mobileContainer.classList.contains('open');
-                    document.querySelectorAll('.mobile-subcat-container').forEach(c => c.classList.remove('open'));
-                    catItems.forEach(i => i.classList.remove('active'));
-
-                    if (!isOpen) {
-                        item.classList.add('active');
-                        mobileContainer.classList.add('open');
-                    }
-                }
+                return dataCupom >= limiteDias; // Remove automaticamente qualquer cupom com mais de 7 dias
             });
-        });
-    </script>
 
+            if (cuponsValidos.length === 0) {
+                list.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1;">Nenhum cupom ativo no momento para esta loja. Novos cupons são adicionados diariamente!</p>`;
+                return;
+            }
+
+            list.innerHTML = cuponsValidos.map(c => `
+                <div class="cupom-card">
+                    <div class="cupom-date"><i class="fa-regular fa-calendar"></i> Publicado em: ${c.data.split('-').reverse().join('/')}</div>
+                    <div style="font-weight:bold; margin-top:8px; font-size:15px;">${c.desc}</div>
+                    <div class="cupom-code-badge">${c.codigo}</div>
+                    <button onclick="navigator.clipboard.writeText('${c.codigo}'); alert('Código copiado: ${c.codigo}');" class="btn-pegar" style="border:none; cursor:pointer;">COPIAR CÓDIGO</button>
+                </div>
+            `).join('');
+        }
+
+        function openStoreOffers(lojaKey) {
+            storesPanel.classList.remove('open');
+            switchPage('homePage');
+        }
+    </script>
 </body>
 </html>
