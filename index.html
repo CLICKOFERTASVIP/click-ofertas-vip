@@ -410,6 +410,7 @@
             gap: 10px;
             justify-content: center;
             margin-top: 10px;
+            flex-wrap: wrap;
         }
 
         .thumb-img {
@@ -620,6 +621,7 @@
             background: #e68a00;
         }
 
+        /* REGRAS RESPONSIVAS AJUSTADAS */
         @media (max-width: 880px) {
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
             .main-img-box { height: 260px; }
@@ -635,14 +637,28 @@
             .mega-cat-item .cat-arrow { display: block; }
             .mega-cat-item.active .cat-arrow { transform: rotate(180deg); }
             
-            .mega-content { padding: 10px 5px; background: transparent; }
-            .subcat-group { grid-template-columns: 1fr; gap: 10px; }
+            .mega-content { 
+                display: block; 
+                padding: 10px; 
+                background: #121216; 
+                max-height: none; 
+            }
+
+            .subcat-group { 
+                display: none; 
+                grid-template-columns: 1fr; 
+                gap: 10px; 
+            }
             
             .subcat-group.active {
-                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                padding: 12px;
                 background: #18181c;
                 border-radius: 8px;
-                margin-bottom: 8px;
+                border: 1px solid #2b2b36;
+                margin-top: 5px;
+                margin-bottom: 10px;
             }
         }
 
@@ -1164,7 +1180,6 @@
         const megaPanel = document.getElementById('megaMenuPanel');
         const storesBtn = document.getElementById('storesMenuBtn');
         const storesPanel = document.getElementById('storesMenuPanel');
-        const megaContent = document.getElementById('megaContent');
         const catItems = document.querySelectorAll('.mega-cat-item');
 
         megaBtn.addEventListener('click', (e) => {
@@ -1194,14 +1209,29 @@
             }
         });
 
+        // LÓGICA DE CLIQUE NAS CATEGORIAS (PC E MOBILE)
         catItems.forEach(item => {
-            item.addEventListener('click', () => {
+            item.addEventListener('click', (e) => {
                 const targetId = item.getAttribute('data-target');
-                catItems.forEach(i => i.classList.remove('active'));
-                document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
-                item.classList.add('active');
                 const targetGroup = document.getElementById(targetId);
-                if (targetGroup) targetGroup.classList.add('active');
+
+                if (window.innerWidth <= 880) {
+                    const isAlreadyActive = item.classList.contains('active');
+                    
+                    catItems.forEach(i => i.classList.remove('active'));
+                    document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+
+                    if (!isAlreadyActive && targetGroup) {
+                        item.classList.add('active');
+                        targetGroup.classList.add('active');
+                    }
+                } else {
+                    catItems.forEach(i => i.classList.remove('active'));
+                    document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+                    
+                    item.classList.add('active');
+                    if (targetGroup) targetGroup.classList.add('active');
+                }
             });
         });
 
