@@ -57,6 +57,7 @@
             align-items: center;
             text-decoration: none;
             gap: 10px;
+            cursor: pointer;
         }
 
         .brand-logo-icon {
@@ -163,9 +164,7 @@
             transition: color 0.2s;
         }
 
-        .nav-link-simple:hover {
-            color: #fff;
-        }
+        .nav-link-simple:hover { color: #fff; }
 
         /* DROPDOWN LOJAS */
         .stores-menu-panel {
@@ -198,6 +197,7 @@
             border-radius: 10px;
             border: 1px solid #2b2b36;
             text-decoration: none;
+            cursor: pointer;
             transition: all 0.2s ease;
         }
 
@@ -220,30 +220,12 @@
             color: #fff;
         }
 
-        .store-icon-circle.amazon {
-            background: #FF9900;
-            color: #000;
-        }
+        .store-icon-circle.amazon { background: #FF9900; color: #000; }
+        .store-icon-circle.magalu { background: #0086FF; }
 
-        .store-icon-circle.magalu {
-            background: #0086FF;
-        }
-
-        .store-info-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .store-info-text strong {
-            color: #ffffff;
-            font-size: 14px;
-        }
-
-        .store-info-text span {
-            color: var(--text-muted);
-            font-size: 11px;
-            margin-top: 2px;
-        }
+        .store-info-text { display: flex; flex-direction: column; }
+        .store-info-text strong { color: #ffffff; font-size: 14px; }
+        .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
 
         /* MEGA MENU (DESKTOP) */
         .mega-menu-panel {
@@ -261,9 +243,7 @@
             overflow: hidden;
         }
 
-        .mega-menu-panel.open {
-            display: flex;
-        }
+        .mega-menu-panel.open { display: flex; }
 
         .mega-sidebar {
             width: 290px;
@@ -300,10 +280,7 @@
             transition: background-color 0.2s;
         }
 
-        .cat-icon-circle i {
-            color: #4da6ff;
-            font-size: 13px;
-        }
+        .cat-icon-circle i { color: #4da6ff; font-size: 13px; }
 
         .mega-cat-item:hover, .mega-cat-item.active {
             background: #2b2b36;
@@ -311,9 +288,7 @@
         }
 
         .mega-cat-item:hover .cat-icon-circle, 
-        .mega-cat-item.active .cat-icon-circle {
-            background-color: #383846;
-        }
+        .mega-cat-item.active .cat-icon-circle { background-color: #383846; }
 
         .mega-cat-item .mobile-arrow {
             display: none;
@@ -336,9 +311,7 @@
             gap: 20px;
         }
 
-        .subcat-group.active {
-            display: grid;
-        }
+        .subcat-group.active { display: grid; }
 
         .subcat-column h4 {
             color: #ffffff;
@@ -358,11 +331,9 @@
             transition: color 0.2s;
         }
 
-        .subcat-column a:hover {
-            color: var(--primary);
-        }
+        .subcat-column a:hover { color: var(--primary); }
 
-        /* BANNER VIP */
+        /* BANNER HOMEPAGE */
         .banner-vip {
             max-width: 1100px;
             margin: 20px auto 15px auto;
@@ -397,7 +368,237 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* FEED DE OFERTAS */
+        /* ESTRUTURA DE PAGINAS DE LOJA (MODELO PROMOBIT) */
+        .store-page-container {
+            max-width: 1100px;
+            margin: 20px auto 0 auto;
+            padding: 0 20px;
+            display: none;
+        }
+
+        .store-page-container.active-page {
+            display: block;
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover { color: #fff; }
+
+        .store-page-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .store-header-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .store-header-logo.amazon { background: #FF9900; color: #000; }
+        .store-header-logo.magalu { background: #0086FF; }
+
+        .store-header-info h1 {
+            font-size: 24px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .store-header-info h1 i {
+            color: #0086FF;
+            font-size: 18px;
+        }
+
+        .store-header-info span {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .store-banner-promobit {
+            width: 100%;
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            margin-bottom: 25px;
+        }
+
+        .store-banner-promobit.amazon {
+            background: linear-gradient(135deg, #ff7b00 0%, #e65100 100%);
+        }
+
+        .store-banner-promobit.magalu {
+            background: linear-gradient(135deg, #0086FF 0%, #0056b3 100%);
+        }
+
+        .banner-left-content h2 {
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.2;
+            max-width: 450px;
+            margin-bottom: 10px;
+        }
+
+        .banner-left-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+        }
+
+        .banner-center-phone {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #121216;
+            width: 220px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .banner-center-phone .phone-tag {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .banner-center-phone .product-name {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .banner-center-phone .price {
+            font-size: 16px;
+            color: #2ed573;
+            font-weight: 800;
+        }
+
+        .banner-btn-wpp {
+            background: #25D366;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        .banner-btn-wpp:hover { transform: scale(1.05); }
+
+        .store-page-body {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 25px;
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pill-btn {
+            background: #18181c;
+            border: 1px solid #2b2b36;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pill-btn.active {
+            background: #0086FF;
+            color: #fff;
+            border-color: #0086FF;
+        }
+
+        .sidebar-info-card {
+            background: #18181c;
+            border: 1px solid #2b2b36;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-info-card h3 {
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .rating-stars {
+            color: #FFC107;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rating-stars span {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .sidebar-info-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .store-check-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .store-check-list li {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .store-check-list li.check { color: #2ed573; }
+        .store-check-list li.cross { color: #ff4757; }
+
+        /* FEED DE OFERTAS GENERICO */
         .feed-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -405,6 +606,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 20px;
+        }
+
+        .feed-container-store {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
         }
 
         .card-oferta {
@@ -511,63 +718,19 @@
 
         /* AJUSTES RESPONSIVOS MOBILE */
         @media (max-width: 880px) {
-            .stores-menu-panel {
-                left: 10px;
-                width: calc(100vw - 20px);
-                grid-template-columns: 1fr;
-            }
-
-            .mega-menu-panel {
-                width: calc(100vw - 40px);
-                flex-direction: column;
-                max-height: 75vh;
-                overflow-y: auto;
-            }
-
-            .mega-sidebar {
-                width: 100%;
-                border-right: none;
-                padding: 5px;
-            }
-
-            .mega-cat-item .mobile-arrow {
-                display: block;
-            }
-
-            .mega-cat-item.active .mobile-arrow {
-                transform: rotate(180deg);
-            }
-
-            .mega-content {
-                display: none;
-            }
-
-            .mobile-subcat-container {
-                display: none;
-                padding: 10px 15px 15px 45px;
-                background: #18181c;
-                border-left: 2px solid var(--primary);
-                margin: 5px 0;
-                border-radius: 0 0 8px 8px;
-            }
-
-            .mobile-subcat-container.open {
-                display: block;
-            }
-
-            .mobile-subcat-container h4 {
-                color: #fff;
-                font-size: 13px;
-                margin: 10px 0 5px 0;
-            }
-
-            .mobile-subcat-container a {
-                display: block;
-                color: var(--text-muted);
-                text-decoration: none;
-                font-size: 13px;
-                padding: 4px 0;
-            }
+            .store-page-body { grid-template-columns: 1fr; }
+            .store-banner-promobit { flex-direction: column; text-align: center; gap: 15px; }
+            .banner-left-content h2 { font-size: 24px; }
+            .stores-menu-panel { left: 10px; width: calc(100vw - 20px); grid-template-columns: 1fr; }
+            .mega-menu-panel { width: calc(100vw - 40px); flex-direction: column; max-height: 75vh; overflow-y: auto; }
+            .mega-sidebar { width: 100%; border-right: none; padding: 5px; }
+            .mega-cat-item .mobile-arrow { display: block; }
+            .mega-cat-item.active .mobile-arrow { transform: rotate(180deg); }
+            .mega-content { display: none; }
+            .mobile-subcat-container { display: none; padding: 10px 15px 15px 45px; background: #18181c; border-left: 2px solid var(--primary); margin: 5px 0; border-radius: 0 0 8px 8px; }
+            .mobile-subcat-container.open { display: block; }
+            .mobile-subcat-container h4 { color: #fff; font-size: 13px; margin: 10px 0 5px 0; }
+            .mobile-subcat-container a { display: block; color: var(--text-muted); text-decoration: none; font-size: 13px; padding: 4px 0; }
         }
 
         @media (max-width: 600px) {
@@ -586,7 +749,7 @@
     <!-- Header Principal -->
     <header>
         <div class="header-container">
-            <a href="#" class="brand-logo">
+            <div class="brand-logo" id="homeLogoBtn">
                 <div class="brand-logo-icon">
                     <i class="fa-solid fa-bolt"></i>
                 </div>
@@ -594,7 +757,7 @@
                     <span class="main-title">CLICK<span>OFERTAS</span></span>
                     <span class="sub-title">CLUB VIP</span>
                 </div>
-            </a>
+            </div>
             
             <div class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -618,9 +781,9 @@
 
             <a href="#" class="nav-link-simple">Cupons</a>
 
-            <!-- DROPDOWN DE LOJAS (Somente Amazon e Magalu) -->
+            <!-- DROPDOWN DE LOJAS -->
             <div class="stores-menu-panel" id="storesMenuPanel">
-                <a href="#" class="store-card-item">
+                <div class="store-card-item" onclick="openStorePage('amazon')">
                     <div class="store-icon-circle amazon">
                         <i class="fa-brands fa-amazon"></i>
                     </div>
@@ -628,9 +791,9 @@
                         <strong>Amazon</strong>
                         <span>amazon.com.br</span>
                     </div>
-                </a>
+                </div>
 
-                <a href="#" class="store-card-item">
+                <div class="store-card-item" onclick="openStorePage('magalu')">
                     <div class="store-icon-circle magalu">
                         Lu
                     </div>
@@ -638,7 +801,7 @@
                         <strong>Magazine Luiza</strong>
                         <span>magazineluiza.com.br</span>
                     </div>
-                </a>
+                </div>
             </div>
 
             <!-- PAINEL DO MEGA MENU CATEGORIAS -->
@@ -711,144 +874,13 @@
                     </div>
                 </div>
 
-                <!-- Conteúdo das Subcategorias (Desktop) -->
                 <div class="mega-content">
                     <div class="subcat-group active" id="cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Eletrônicos, Áudio e Vídeo</h4>
                             <a href="#">Caixa de Som</a>
                             <a href="#">Fone de ouvido</a>
-                            <a href="#">Home Theater</a>
-                            <a href="#">Projetores</a>
-                            <a href="#">Soundbar</a>
-                            <a href="#">Suporte para TV</a>
                             <a href="#">TVs</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Smartphones, Tablets e Telefones</h4>
-                            <a href="#">Acessórios para smartphones</a>
-                            <a href="#">Android</a>
-                            <a href="#">iPhones</a>
-                            <a href="#">Smartwatch e Smartband</a>
-                            <a href="#">Tablets</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Câmeras, Filmadoras e Drones</h4>
-                            <a href="#">Câmera</a>
-                            <a href="#">Câmera de ação / GoPro</a>
-                            <a href="#">Câmera de segurança</a>
-                            <a href="#">Drones</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-informatica">
-                        <div class="subcat-column">
-                            <h4>Computadores</h4>
-                            <a href="#">Notebooks</a>
-                            <a href="#">Desktops e PC Gamer</a>
-                            <a href="#">Monitores</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Consoles e Jogos</h4>
-                            <a href="#">PlayStation 5</a>
-                            <a href="#">Xbox Series</a>
-                            <a href="#">Nintendo Switch</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Periféricos</h4>
-                            <a href="#">Teclados e Mouses</a>
-                            <a href="#">Cadeiras Gamer</a>
-                            <a href="#">Placas de Vídeo</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-casa">
-                        <div class="subcat-column">
-                            <h4>Eletrodomésticos</h4>
-                            <a href="#">Geladeira e Freezer</a>
-                            <a href="#">Máquina de Lavar</a>
-                            <a href="#">Micro-ondas</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Eletroportáteis</h4>
-                            <a href="#">Air Fryer</a>
-                            <a href="#">Cafeteiras</a>
-                            <a href="#">Aspirador de Pó</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Móveis</h4>
-                            <a href="#">Sofás e Poltronas</a>
-                            <a href="#">Colchões e Cama</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-moda">
-                        <div class="subcat-column">
-                            <h4>Moda Masculina</h4>
-                            <a href="#">Calçados masculinos</a>
-                            <a href="#">Roupas masculinas</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Moda Feminina</h4>
-                            <a href="#">Calçados femininos</a>
-                            <a href="#">Roupas femininas</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-bebes">
-                        <div class="subcat-column">
-                            <h4>Bebês e Crianças</h4>
-                            <a href="#">Carrinho de Bebê</a>
-                            <a href="#">Fraldas</a>
-                            <a href="#">Brinquedos</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-saude">
-                        <div class="subcat-column">
-                            <h4>Beleza</h4>
-                            <a href="#">Perfumes</a>
-                            <a href="#">Maquiagem</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-esporte">
-                        <div class="subcat-column">
-                            <h4>Fitness</h4>
-                            <a href="#">Suplementos</a>
-                            <a href="#">Bicicletas</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-mercado">
-                        <div class="subcat-column">
-                            <h4>Mercado</h4>
-                            <a href="#">Bebidas</a>
-                            <a href="#">Limpeza</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-livros">
-                        <div class="subcat-column">
-                            <h4>Livros</h4>
-                            <a href="#">Kindle</a>
-                            <a href="#">Livros Físicos</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-ferramentas">
-                        <div class="subcat-column">
-                            <h4>Ferramentas</h4>
-                            <a href="#">Furadeiras</a>
-                            <a href="#">Ferramentas Manuais</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-diversos">
-                        <div class="subcat-column">
-                            <h4>Diversos</h4>
-                            <a href="#">Pet Shop</a>
-                            <a href="#">Papelaria</a>
                         </div>
                     </div>
                 </div>
@@ -856,47 +888,124 @@
         </div>
     </nav>
 
-    <!-- Banner VIP WhatsApp -->
-    <div class="banner-vip">
-        <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
-            <div class="banner-text">
-                <h3><i class="fa-brands fa-whatsapp"></i> Receba Ofertas e Cupons no WhatsApp!</h3>
-                <p>Grupo VIP gratuito com os menores preços do dia em tempo real.</p>
-            </div>
-            <span class="btn-wpp">ENTRAR NO GRUPO</span>
-        </a>
+    <!-- VIEW HOMEPAGE -->
+    <div id="homePage">
+        <!-- Banner VIP WhatsApp -->
+        <div class="banner-vip">
+            <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
+                <div class="banner-text">
+                    <h3><i class="fa-brands fa-whatsapp"></i> Receba Ofertas e Cupons no WhatsApp!</h3>
+                    <p>Grupo VIP gratuito com os menores preços do dia em tempo real.</p>
+                </div>
+                <span class="btn-wpp">ENTRAR NO GRUPO</span>
+            </a>
+        </div>
+
+        <!-- Feed de Produtos Geral -->
+        <main class="feed-container">
+            <article class="card-oferta">
+                <span class="badge-desconto">-38%</span>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80" alt="Air Fryer">
+                </div>
+                <span class="store-tag">Amazon</span>
+                <h2 class="card-title">Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W</h2>
+                <div class="price-section">
+                    <span class="old-price">R$ 449,90</span>
+                    <div class="current-price">R$ 279,00</div>
+                </div>
+                <a href="#" class="btn-pegar">IR PARA A LOJA</a>
+            </article>
+
+            <article class="card-oferta">
+                <span class="badge-desconto">-45%</span>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80" alt="Fone Bluetooth">
+                </div>
+                <span class="store-tag">Magazine Luiza</span>
+                <h2 class="card-title">Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura</h2>
+                <div class="price-section">
+                    <span class="old-price">R$ 120,00</span>
+                    <div class="current-price">R$ 65,90</div>
+                </div>
+                <a href="#" class="btn-pegar">IR PARA A LOJA</a>
+            </article>
+        </main>
     </div>
 
-    <!-- Feed de Produtos -->
-    <main class="feed-container">
-        <article class="card-oferta">
-            <span class="badge-desconto">-38%</span>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80" alt="Air Fryer">
-            </div>
-            <span class="store-tag">Amazon</span>
-            <h2 class="card-title">Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W</h2>
-            <div class="price-section">
-                <span class="old-price">R$ 449,90</span>
-                <div class="current-price">R$ 279,00</div>
-            </div>
-            <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-        </article>
+    <!-- VIEW PAGINA DA LOJA (AMAZON OU MAGALU) -->
+    <div id="storePage" class="store-page-container">
+        <div class="breadcrumb">
+            <a href="#" onclick="showHomePage()"><i class="fa-solid fa-house"></i> Home</a> &gt; <a href="#">Lojas</a> &gt; <span id="storeBreadcrumbName">Amazon</span>
+        </div>
 
-        <article class="card-oferta">
-            <span class="badge-desconto">-45%</span>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80" alt="Fone Bluetooth">
+        <div class="store-page-header">
+            <div class="store-header-logo amazon" id="storeLogoIcon">
+                <i class="fa-brands fa-amazon" id="storeLogoIconChild"></i>
             </div>
-            <span class="store-tag">Magazine Luiza</span>
-            <h2 class="card-title">Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura</h2>
-            <div class="price-section">
-                <span class="old-price">R$ 120,00</span>
-                <div class="current-price">R$ 65,90</div>
+            <div class="store-header-info">
+                <h1 id="storeTitle">Ofertas Amazon em Agosto 2026 <i class="fa-solid fa-circle-check"></i></h1>
+                <span id="storeDomain">amazon.com.br</span>
             </div>
-            <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-        </article>
-    </main>
+        </div>
+
+        <!-- Banner Promobit -->
+        <div class="store-banner-promobit amazon" id="storeBanner">
+            <div class="banner-left-content">
+                <h2 id="bannerTitle">As melhores ofertas da Amazon no seu WhatsApp</h2>
+                <p>Receba em tempo real e não perca nenhuma promoção.</p>
+            </div>
+
+            <div class="banner-center-phone">
+                <div class="phone-tag">Grupo CLICK OFERTAS VIP</div>
+                <div class="product-name">PlayStation 5 Slim 1TB</div>
+                <div class="price">R$ 3.299,00</div>
+            </div>
+
+            <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-btn-wpp">
+                <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i> Entre Agora!
+            </a>
+        </div>
+
+        <!-- Conteudo Principal da Loja -->
+        <div class="store-page-body">
+            <div>
+                <div class="filter-pills">
+                    <button class="pill-btn"><i class="fa-solid fa-ticket"></i> Cupons (12)</button>
+                    <button class="pill-btn active"><i class="fa-solid fa-fire"></i> Ofertas (25+)</button>
+                </div>
+
+                <div class="feed-container-store" id="storeFeed">
+                    <!-- Injetado por JS de acordo com a loja -->
+                </div>
+            </div>
+
+            <!-- Sidebar Informativa -->
+            <aside>
+                <div class="sidebar-info-card">
+                    <h3>Resumo de <span id="sidebarStoreName">Amazon</span></h3>
+                    <div class="rating-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <span>4.5/5 (120 avaliações)</span>
+                    </div>
+
+                    <h4 style="font-size: 14px; margin-top: 15px; margin-bottom: 8px;">Informações sobre a Loja</h4>
+                    <p id="sidebarStoreDesc">Uma das maiores plataformas de comércio eletrônico do mundo, com rápida entrega e milhares de produtos com frete grátis Prime.</p>
+
+                    <h4 style="font-size: 14px; margin-top: 15px; margin-bottom: 8px;">Opiniões</h4>
+                    <ul class="store-check-list">
+                        <li class="check"><i class="fa-solid fa-check"></i> Loja verificada</li>
+                        <li class="check"><i class="fa-solid fa-check"></i> CNPJ verificado</li>
+                        <li class="cross" id="storePhysicalCheck"><i class="fa-solid fa-xmark"></i> Não possui loja física</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script>
@@ -911,69 +1020,174 @@
         const storesArrow = document.getElementById('storesArrow');
 
         const catItems = document.querySelectorAll('.mega-cat-item');
-        const subcatGroups = document.querySelectorAll('.subcat-group');
+        const homePage = document.getElementById('homePage');
+        const storePage = document.getElementById('storePage');
+        const homeLogoBtn = document.getElementById('homeLogoBtn');
 
-        // Toggle do Menu de Categorias
+        // Alternar para a Home
+        function showHomePage() {
+            storePage.classList.remove('active-page');
+            homePage.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        homeLogoBtn.addEventListener('click', showHomePage);
+
+        // Alternar para Página da Loja
+        function openStorePage(storeKey) {
+            storesPanel.classList.remove('open');
+            storesBtn.classList.remove('active');
+            
+            homePage.style.display = 'none';
+            storePage.classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            const storeBreadcrumbName = document.getElementById('storeBreadcrumbName');
+            const storeTitle = document.getElementById('storeTitle');
+            const storeDomain = document.getElementById('storeDomain');
+            const storeLogoIcon = document.getElementById('storeLogoIcon');
+            const storeBanner = document.getElementById('storeBanner');
+            const bannerTitle = document.getElementById('bannerTitle');
+            const sidebarStoreName = document.getElementById('sidebarStoreName');
+            const sidebarStoreDesc = document.getElementById('sidebarStoreDesc');
+            const storePhysicalCheck = document.getElementById('storePhysicalCheck');
+            const storeFeed = document.getElementById('storeFeed');
+
+            if (storeKey === 'amazon') {
+                storeBreadcrumbName.innerText = 'Amazon';
+                storeTitle.innerHTML = 'Ofertas Amazon em Agosto 2026 <i class="fa-solid fa-circle-check"></i>';
+                storeDomain.innerText = 'amazon.com.br';
+                
+                storeLogoIcon.className = 'store-header-logo amazon';
+                storeLogoIcon.innerHTML = '<i class="fa-brands fa-amazon"></i>';
+
+                storeBanner.className = 'store-banner-promobit amazon';
+                bannerTitle.innerText = 'As melhores ofertas da Amazon no seu WhatsApp';
+
+                sidebarStoreName.innerText = 'Amazon';
+                sidebarStoreDesc.innerText = 'A Amazon brasileira oferece catálogo completo com entrega rápida e frete grátis via Amazon Prime.';
+                storePhysicalCheck.className = 'cross';
+                storePhysicalCheck.innerHTML = '<i class="fa-solid fa-xmark"></i> Não possui loja física';
+
+                storeFeed.innerHTML = `
+                    <article class="card-oferta">
+                        <span class="badge-desconto">-38%</span>
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80" alt="Air Fryer">
+                        </div>
+                        <span class="store-tag">Amazon</span>
+                        <h2 class="card-title">Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W</h2>
+                        <div class="price-section">
+                            <span class="old-price">R$ 449,90</span>
+                            <div class="current-price">R$ 279,00</div>
+                        </div>
+                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
+                    </article>
+                    <article class="card-oferta">
+                        <span class="badge-desconto">-20%</span>
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=80" alt="Kindle">
+                        </div>
+                        <span class="store-tag">Amazon</span>
+                        <h2 class="card-title">Kindle 11ª Geração Tela de 6 polegadas 16GB</h2>
+                        <div class="price-section">
+                            <span class="old-price">R$ 499,00</span>
+                            <div class="current-price">R$ 399,00</div>
+                        </div>
+                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
+                    </article>
+                `;
+            } else if (storeKey === 'magalu') {
+                storeBreadcrumbName.innerText = 'Magazine Luiza';
+                storeTitle.innerHTML = 'Ofertas Magazine Luiza em Agosto 2026 <i class="fa-solid fa-circle-check"></i>';
+                storeDomain.innerText = 'magazineluiza.com.br';
+                
+                storeLogoIcon.className = 'store-header-logo magalu';
+                storeLogoIcon.innerHTML = 'Lu';
+
+                storeBanner.className = 'store-banner-promobit magalu';
+                bannerTitle.innerText = 'As melhores ofertas do Magalu no seu WhatsApp';
+
+                sidebarStoreName.innerText = 'Magazine Luiza';
+                sidebarStoreDesc.innerText = 'O Magazine Luiza é uma das maiores redes do varejo nacional, com retirada grátis em lojas físicas em todo o Brasil.';
+                storePhysicalCheck.className = 'check';
+                storePhysicalCheck.innerHTML = '<i class="fa-solid fa-check"></i> Possui loja física';
+
+                storeFeed.innerHTML = `
+                    <article class="card-oferta">
+                        <span class="badge-desconto">-45%</span>
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80" alt="Fone Bluetooth">
+                        </div>
+                        <span class="store-tag">Magazine Luiza</span>
+                        <h2 class="card-title">Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura</h2>
+                        <div class="price-section">
+                            <span class="old-price">R$ 120,00</span>
+                            <div class="current-price">R$ 65,90</div>
+                        </div>
+                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
+                    </article>
+                    <article class="card-oferta">
+                        <span class="badge-desconto">-30%</span>
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=400&q=80" alt="Smart TV">
+                        </div>
+                        <span class="store-tag">Magazine Luiza</span>
+                        <h2 class="card-title">Smart TV 50" Crystal UHD 4K Samsung 50CU7700</h2>
+                        <div class="price-section">
+                            <span class="old-price">R$ 2.899,00</span>
+                            <div class="current-price">R$ 2.029,00</div>
+                        </div>
+                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
+                    </article>
+                `;
+            }
+        }
+
+        // Toggle Categorias
         megaBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             storesPanel.classList.remove('open');
             storesBtn.classList.remove('active');
-            storesArrow.classList.add('fa-chevron-down');
-            storesArrow.classList.remove('fa-chevron-up');
-
             megaPanel.classList.toggle('open');
             megaBtn.classList.toggle('active');
-            menuArrow.classList.toggle('fa-chevron-up');
-            menuArrow.classList.toggle('fa-chevron-down');
         });
 
-        // Toggle do Menu de Lojas
+        // Toggle Lojas
         storesBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             megaPanel.classList.remove('open');
             megaBtn.classList.remove('active');
-            menuArrow.classList.add('fa-chevron-down');
-            menuArrow.classList.remove('fa-chevron-up');
-
             storesPanel.classList.toggle('open');
             storesBtn.classList.toggle('active');
-            storesArrow.classList.toggle('fa-chevron-up');
-            storesArrow.classList.toggle('fa-chevron-down');
         });
 
-        // Fechar menus ao clicar fora
+        // Fechar ao clicar fora
         document.addEventListener('click', (e) => {
             if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
                 megaPanel.classList.remove('open');
                 megaBtn.classList.remove('active');
-                menuArrow.classList.add('fa-chevron-down');
-                menuArrow.classList.remove('fa-chevron-up');
             }
             if (!storesPanel.contains(e.target) && !storesBtn.contains(e.target)) {
                 storesPanel.classList.remove('open');
                 storesBtn.classList.remove('active');
-                storesArrow.classList.add('fa-chevron-down');
-                storesArrow.classList.remove('fa-chevron-up');
             }
         });
 
-        // Lógica Mobile vs Desktop (Categorias)
+        // Mobile Accordion
         catItems.forEach(item => {
             const targetId = item.getAttribute('data-target');
             const targetGroup = document.getElementById(targetId);
 
             const mobileContainer = document.createElement('div');
             mobileContainer.className = 'mobile-subcat-container';
-            if (targetGroup) {
-                mobileContainer.innerHTML = targetGroup.innerHTML;
-            }
+            if (targetGroup) mobileContainer.innerHTML = targetGroup.innerHTML;
             item.after(mobileContainer);
 
             item.addEventListener('click', (e) => {
                 if (window.innerWidth <= 880) {
                     e.stopPropagation();
                     const isOpen = mobileContainer.classList.contains('open');
-
                     document.querySelectorAll('.mobile-subcat-container').forEach(c => c.classList.remove('open'));
                     catItems.forEach(i => i.classList.remove('active'));
 
@@ -981,16 +1195,6 @@
                         item.classList.add('active');
                         mobileContainer.classList.add('open');
                     }
-                }
-            });
-
-            item.addEventListener('mouseenter', () => {
-                if (window.innerWidth > 880) {
-                    catItems.forEach(i => i.classList.remove('active'));
-                    subcatGroups.forEach(g => g.classList.remove('active'));
-
-                    item.classList.add('active');
-                    if (targetGroup) targetGroup.classList.add('active');
                 }
             });
         });
