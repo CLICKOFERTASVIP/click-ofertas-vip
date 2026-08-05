@@ -206,6 +206,7 @@
         .store-info-text strong { color: #ffffff; font-size: 14px; }
         .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
 
+        /* LAYOUT DESKTOP DO MEGA MENU */
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -615,17 +616,73 @@
             background: #e68a00;
         }
 
-        @media (max-width: 880px) {
+        /* LAYOUT MOBILE & SANFONA (ACCORDION) */
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; }
+            .search-bar { width: 100%; max-width: 100%; }
+
+            .stores-menu-panel {
+                left: 10px;
+                width: calc(100vw - 20px);
+                grid-template-columns: 1fr;
+            }
+
+            .mega-menu-panel {
+                flex-direction: column;
+                width: calc(100vw - 20px);
+                left: 10px;
+                max-height: 75vh;
+                overflow-y: auto;
+            }
+
+            .mega-sidebar {
+                width: 100%;
+                max-height: none;
+                overflow: visible;
+                border-right: none;
+            }
+
+            .mega-content {
+                padding: 0;
+                max-height: none;
+                overflow: visible;
+            }
+
+            .subcat-group {
+                display: none;
+                grid-template-columns: 1fr;
+                padding: 12px 15px;
+                background: #121216;
+                border-bottom: 1px solid #23232c;
+                gap: 15px;
+            }
+
+            .subcat-group.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .mega-cat-item {
+                justify-content: space-between;
+                border-bottom: 1px solid #1a1a22;
+                border-radius: 0;
+                padding: 12px 10px;
+            }
+
+            .mega-cat-item::after {
+                content: '\f078';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                font-size: 11px;
+                transition: transform 0.2s;
+            }
+
+            .mega-cat-item.active::after {
+                transform: rotate(180deg);
+            }
+
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
             .main-img-box { height: 260px; }
-            .mega-menu-panel { width: calc(100vw - 40px); }
-            .mega-sidebar { width: 180px; }
-            .stores-menu-panel { left: 10px; width: calc(100vw - 20px); grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 600px) {
-            .header-container { flex-direction: column; }
-            .search-bar { width: 100%; }
             .banner-content { flex-direction: column; text-align: center; gap: 12px; }
             .feed-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
             .card-oferta { padding: 10px; }
@@ -689,7 +746,6 @@
                 </div>
             </div>
 
-            <!-- MEGA MENU COMPLETO COM TODAS AS 9 CATEGORIAS -->
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <div class="mega-sidebar">
                     <div class="mega-cat-item active" data-target="cat-eletronicos">
@@ -1172,6 +1228,7 @@
         const megaPanel = document.getElementById('megaMenuPanel');
         const storesBtn = document.getElementById('storesMenuBtn');
         const storesPanel = document.getElementById('storesMenuPanel');
+        const megaContent = document.querySelector('.mega-content');
 
         megaBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1204,27 +1261,47 @@
         const subcatGroups = document.querySelectorAll('.subcat-group');
 
         catItems.forEach(item => {
+            const targetId = item.getAttribute('data-target');
+            const targetSubcat = document.getElementById(targetId);
+
+            function setupMobileAccordion() {
+                if (window.innerWidth <= 768) {
+                    item.after(targetSubcat);
+                } else {
+                    megaContent.appendChild(targetSubcat);
+                }
+            }
+
+            setupMobileAccordion();
+            window.addEventListener('resize', setupMobileAccordion);
+
+            const toggleCategory = (e) => {
+                e.stopPropagation();
+                const isActive = item.classList.contains('active');
+
+                if (window.innerWidth <= 768 && isActive) {
+                    item.classList.remove('active');
+                    targetSubcat.classList.remove('active');
+                    return;
+                }
+
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => g.classList.remove('active'));
+
+                item.classList.add('active');
+                if (targetSubcat) targetSubcat.classList.add('active');
+            };
+
             item.addEventListener('mouseenter', () => {
-                const target = item.getAttribute('data-target');
-
-                catItems.forEach(i => i.classList.remove('active'));
-                subcatGroups.forEach(g => g.classList.remove('active'));
-
-                item.classList.add('active');
-                const targetEl = document.getElementById(target);
-                if(targetEl) targetEl.classList.add('active');
+                if (window.innerWidth > 768) {
+                    catItems.forEach(i => i.classList.remove('active'));
+                    subcatGroups.forEach(g => g.classList.remove('active'));
+                    item.classList.add('active');
+                    if (targetSubcat) targetSubcat.classList.add('active');
+                }
             });
-            
-            item.addEventListener('click', () => {
-                const target = item.getAttribute('data-target');
 
-                catItems.forEach(i => i.classList.remove('active'));
-                subcatGroups.forEach(g => g.classList.remove('active'));
-
-                item.classList.add('active');
-                const targetEl = document.getElementById(target);
-                if(targetEl) targetEl.classList.add('active');
-            });
+            item.addEventListener('click', toggleCategory);
         });
 
         loadHomeFeed();
