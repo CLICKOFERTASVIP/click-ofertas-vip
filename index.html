@@ -211,7 +211,7 @@
             position: absolute;
             top: 100%;
             left: 20px;
-            width: 880px;
+            width: 900px;
             background: #18181c;
             border: 1px solid #2b2b36;
             border-radius: 12px;
@@ -224,13 +224,15 @@
         .mega-menu-panel.open { display: flex; }
 
         .mega-sidebar {
-            width: 290px;
+            width: 300px;
             background: #121216;
             padding: 10px;
             border-right: 1px solid #23232c;
             display: flex;
             flex-direction: column;
             gap: 4px;
+            max-height: 520px;
+            overflow-y: auto;
         }
 
         .mega-cat-item {
@@ -272,7 +274,7 @@
             flex: 1;
             padding: 20px;
             background: #18181c;
-            max-height: 480px;
+            max-height: 520px;
             overflow-y: auto;
         }
 
@@ -617,7 +619,7 @@
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
             .main-img-box { height: 260px; }
             .mega-menu-panel { width: calc(100vw - 40px); }
-            .mega-sidebar { width: 200px; }
+            .mega-sidebar { width: 180px; }
             .stores-menu-panel { left: 10px; width: calc(100vw - 20px); grid-template-columns: 1fr; }
         }
 
@@ -687,6 +689,7 @@
                 </div>
             </div>
 
+            <!-- MEGA MENU COMPLETO COM TODAS AS 9 CATEGORIAS -->
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <div class="mega-sidebar">
                     <div class="mega-cat-item active" data-target="cat-eletronicos">
@@ -701,9 +704,34 @@
                         <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
                         <span>Casa e Eletrodomésticos</span>
                     </div>
+                    <div class="mega-cat-item" data-target="cat-moda">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-shirt"></i></div>
+                        <span>Moda e Beleza</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-esporte">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-dumbbell"></i></div>
+                        <span>Esporte e Lazer</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-bebes">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-baby"></i></div>
+                        <span>Bebês e Brinquedos</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-ferramentas">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-wrench"></i></div>
+                        <span>Ferramentas e Construção</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-automotivo">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-car"></i></div>
+                        <span>Automotivo</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-supermercado">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <span>Supermercado e Bebidas</span>
+                    </div>
                 </div>
 
                 <div class="mega-content">
+                    <!-- 1. ELETRONICOS -->
                     <div class="subcat-group active" id="cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Celulares e Telefonia</h4>
@@ -728,6 +756,7 @@
                         </div>
                     </div>
 
+                    <!-- 2. INFORMATICA -->
                     <div class="subcat-group" id="cat-informatica">
                         <div class="subcat-column">
                             <h4>Informática Geral</h4>
@@ -752,6 +781,7 @@
                         </div>
                     </div>
 
+                    <!-- 3. CASA -->
                     <div class="subcat-group" id="cat-casa">
                         <div class="subcat-column">
                             <h4>Eletrodomésticos</h4>
@@ -775,6 +805,104 @@
                             <a onclick="openCategoryPage('Organização')">Organização da Casa</a>
                         </div>
                     </div>
+
+                    <!-- 4. MODA E BELEZA -->
+                    <div class="subcat-group" id="cat-moda">
+                        <div class="subcat-column">
+                            <h4>Moda Masculina e Feminina</h4>
+                            <a onclick="openCategoryPage('Roupas')">Roupas e Camisetas</a>
+                            <a onclick="openCategoryPage('Calçados')">Tênis e Sapatos</a>
+                            <a onclick="openCategoryPage('Acessórios de Moda')">Relógios e Óculos</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Perfumaria e Cosméticos</h4>
+                            <a onclick="openCategoryPage('Perfumes')">Perfumes Importados e Nacionais</a>
+                            <a onclick="openCategoryPage('Maquiagem')">Maquiagem e Skincare</a>
+                            <a onclick="openCategoryPage('Cabelos')">Cuidado com os Cabelos</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Cuidados Pessoais</h4>
+                            <a onclick="openCategoryPage('Barbeadores')">Barbeadores e Aparadores</a>
+                            <a onclick="openCategoryPage('Secadores')">Secadores e Pranchas</a>
+                            <a onclick="openCategoryPage('Higiene')">Higiene Pessoal</a>
+                        </div>
+                    </div>
+
+                    <!-- 5. ESPORTE E LAZER -->
+                    <div class="subcat-group" id="cat-esporte">
+                        <div class="subcat-column">
+                            <h4>Fitness e Musculação</h4>
+                            <a onclick="openCategoryPage('Suplementos')">Suplementos e Whey Protein</a>
+                            <a onclick="openCategoryPage('Equipamentos')">Halteres e Elásticos</a>
+                            <a onclick="openCategoryPage('Roupas Esportivas')">Roupas de Academia</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Ciclismo e Mobilidade</h4>
+                            <a onclick="openCategoryPage('Bicicletas')">Bicicletas e Acessórios</a>
+                            <a onclick="openCategoryPage('Patinetes')">Patinetes Elétricos</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Camping e Lazer</h4>
+                            <a onclick="openCategoryPage('Barracas')">Barracas e Mochilas</a>
+                            <a onclick="openCategoryPage('Garrafas')">Garrafas e Copos Térmicos</a>
+                        </div>
+                    </div>
+
+                    <!-- 6. BEBES E BRINQUEDOS -->
+                    <div class="subcat-group" id="cat-bebes">
+                        <div class="subcat-column">
+                            <h4>Mundo Bebê</h4>
+                            <a onclick="openCategoryPage('Fraldas')">Fraldas e Lencinhos</a>
+                            <a onclick="openCategoryPage('Carrinhos')">Carrinhos de Bebê e Cadeirinhas</a>
+                            <a onclick="openCategoryPage('Alimentação Bebê')">Mamadeiras e Chupetas</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Brinquedos e Jogos</h4>
+                            <a onclick="openCategoryPage('Bonecos')">Bonecos e Action Figures</a>
+                            <a onclick="openCategoryPage('Lego')">Lego e Blocos de Montar</a>
+                            <a onclick="openCategoryPage('Jogos de Tabuleiro')">Jogos de Tabuleiro</a>
+                        </div>
+                    </div>
+
+                    <!-- 7. FERRAMENTAS E CONSTRUCAO -->
+                    <div class="subcat-group" id="cat-ferramentas">
+                        <div class="subcat-column">
+                            <h4>Ferramentas Elétricas</h4>
+                            <a onclick="openCategoryPage('Furadeiras')">Furadeiras e Parafusadeiras</a>
+                            <a onclick="openCategoryPage('Serras')">Serras e Lixadeiras</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Manuais e Organização</h4>
+                            <a onclick="openCategoryPage('Maletas')">Maletas de Ferramentas</a>
+                            <a onclick="openCategoryPage('Kits Ferramentas')">Kits de Chaves e Alicates</a>
+                        </div>
+                    </div>
+
+                    <!-- 8. AUTOMOTIVO -->
+                    <div class="subcat-group" id="cat-automotivo">
+                        <div class="subcat-column">
+                            <h4>Acessórios Automotivos</h4>
+                            <a onclick="openCategoryPage('Som Automotivo')">Som e Central Multimídia</a>
+                            <a onclick="openCategoryPage('Pneus')">Pneus e Rodas</a>
+                            <a onclick="openCategoryPage('Manutenção Auto')">Óleos e Limpeza Automotiva</a>
+                        </div>
+                    </div>
+
+                    <!-- 9. SUPERMERCADO -->
+                    <div class="subcat-group" id="cat-supermercado">
+                        <div class="subcat-column">
+                            <h4>Alimentos e Bebidas</h4>
+                            <a onclick="openCategoryPage('Café e Chá')">Café, Chás e Cápsulas</a>
+                            <a onclick="openCategoryPage('Chocolates')">Chocolates e Doces</a>
+                            <a onclick="openCategoryPage('Bebidas Alcoólicas')">Cervejas, Vinhos e Destilados</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Limpeza da Casa</h4>
+                            <a onclick="openCategoryPage('Sabão em Pó')">Sabão em Pó e Amaciante</a>
+                            <a onclick="openCategoryPage('Detergentes')">Detergentes e Desinfetantes</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -1083,7 +1211,8 @@
                 subcatGroups.forEach(g => g.classList.remove('active'));
 
                 item.classList.add('active');
-                document.getElementById(target).classList.add('active');
+                const targetEl = document.getElementById(target);
+                if(targetEl) targetEl.classList.add('active');
             });
             
             item.addEventListener('click', () => {
@@ -1093,7 +1222,8 @@
                 subcatGroups.forEach(g => g.classList.remove('active'));
 
                 item.classList.add('active');
-                document.getElementById(target).classList.add('active');
+                const targetEl = document.getElementById(target);
+                if(targetEl) targetEl.classList.add('active');
             });
         });
 
