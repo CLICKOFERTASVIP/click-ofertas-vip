@@ -250,7 +250,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 8px 12px;
+            padding: 10px 12px;
             color: var(--text-muted);
             border-radius: 8px;
             cursor: pointer;
@@ -286,6 +286,11 @@
             margin-left: auto;
             font-size: 12px;
             transition: transform 0.2s;
+        }
+
+        /* Oculta os itens accordion mobile no Desktop */
+        .mobile-subcat-container {
+            display: none !important;
         }
 
         .mega-content {
@@ -369,7 +374,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* ESTRUTURA DE PAGINAS DE LOJA (MODELO PROMOBIT) */
+        /* ESTRUTURA DE PAGINAS DE LOJA */
         .breadcrumb {
             font-size: 13px;
             color: var(--text-muted);
@@ -436,13 +441,8 @@
             margin-bottom: 25px;
         }
 
-        .store-banner-promobit.amazon {
-            background: linear-gradient(135deg, #ff7b00 0%, #e65100 100%);
-        }
-
-        .store-banner-promobit.magalu {
-            background: linear-gradient(135deg, #0086FF 0%, #0056b3 100%);
-        }
+        .store-banner-promobit.amazon { background: linear-gradient(135deg, #ff7b00 0%, #e65100 100%); }
+        .store-banner-promobit.magalu { background: linear-gradient(135deg, #0086FF 0%, #0056b3 100%); }
 
         .banner-left-content h2 {
             font-size: 32px;
@@ -453,10 +453,7 @@
             margin-bottom: 10px;
         }
 
-        .banner-left-content p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 15px;
-        }
+        .banner-left-content p { color: rgba(255, 255, 255, 0.9); font-size: 15px; }
 
         .banner-center-phone {
             background: #ffffff;
@@ -468,24 +465,9 @@
             text-align: center;
         }
 
-        .banner-center-phone .phone-tag {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .banner-center-phone .product-name {
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .banner-center-phone .price {
-            font-size: 16px;
-            color: #2ed573;
-            font-weight: 800;
-        }
+        .banner-center-phone .phone-tag { font-size: 11px; color: #666; margin-bottom: 5px; font-weight: bold; }
+        .banner-center-phone .product-name { font-size: 12px; font-weight: bold; margin-bottom: 5px; }
+        .banner-center-phone .price { font-size: 16px; color: #2ed573; font-weight: 800; }
 
         .banner-btn-wpp {
             background: #25D366;
@@ -544,11 +526,7 @@
             margin-bottom: 20px;
         }
 
-        .sidebar-info-card h3 {
-            font-size: 16px;
-            color: #fff;
-            margin-bottom: 12px;
-        }
+        .sidebar-info-card h3 { font-size: 16px; color: #fff; margin-bottom: 12px; }
 
         .rating-stars {
             color: #FFC107;
@@ -559,32 +537,11 @@
             gap: 5px;
         }
 
-        .rating-stars span {
-            color: var(--text-muted);
-            font-size: 12px;
-        }
+        .rating-stars span { color: var(--text-muted); font-size: 12px; }
+        .sidebar-info-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px; }
 
-        .sidebar-info-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .store-check-list {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .store-check-list li {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        .store-check-list { list-style: none; margin-top: 15px; }
+        .store-check-list li { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         .store-check-list li.check { color: #2ed573; }
         .store-check-list li.cross { color: #ff4757; }
 
@@ -616,17 +573,8 @@
             background: #202028;
         }
 
-        .cupom-store-card .store-icon-circle {
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-        }
-
-        .cupom-store-card span {
-            font-weight: bold;
-            font-size: 14px;
-            color: #fff;
-        }
+        .cupom-store-card .store-icon-circle { width: 60px; height: 60px; font-size: 24px; }
+        .cupom-store-card span { font-weight: bold; font-size: 14px; color: #fff; }
 
         /* LISTA DE CUPONS DA LOJA */
         .cupons-list-container {
@@ -657,15 +605,9 @@
             letter-spacing: 1px;
         }
 
-        .cupom-date {
-            font-size: 11px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+        .cupom-date { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
 
-        /* FEED DE OFERTAS GENERICO */
+        /* FEED DE OFERTAS GENERI */
         .feed-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -719,11 +661,7 @@
             border-radius: 8px;
         }
 
-        .img-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
+        .img-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
         .store-tag {
             font-size: 11px;
@@ -747,22 +685,9 @@
             -webkit-box-orient: vertical;
         }
 
-        .price-section {
-            margin-top: auto;
-            margin-bottom: 12px;
-        }
-
-        .old-price {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-decoration: line-through;
-        }
-
-        .current-price {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
+        .price-section { margin-top: auto; margin-bottom: 12px; }
+        .old-price { font-size: 12px; color: var(--text-muted); text-decoration: line-through; }
+        .current-price { font-size: 18px; font-weight: 800; color: var(--text-dark); }
 
         .btn-pegar {
             display: block;
@@ -780,7 +705,7 @@
 
         .btn-pegar:hover { background: var(--primary-hover); }
 
-        /* AJUSTES RESPONSIVOS MOBILE */
+        /* RESPONSIVO MOBILE */
         @media (max-width: 880px) {
             .store-page-body { grid-template-columns: 1fr; }
             .store-banner-promobit { flex-direction: column; text-align: center; gap: 15px; }
@@ -791,8 +716,10 @@
             .mega-cat-item .mobile-arrow { display: block; }
             .mega-cat-item.active .mobile-arrow { transform: rotate(180deg); }
             .mega-content { display: none; }
+            
+            /* Ativa o accordion apenas no mobile */
             .mobile-subcat-container { display: none; padding: 10px 15px 15px 45px; background: #18181c; border-left: 2px solid var(--primary); margin: 5px 0; border-radius: 0 0 8px 8px; }
-            .mobile-subcat-container.open { display: block; }
+            .mobile-subcat-container.open { display: block !important; }
             .mobile-subcat-container h4 { color: #fff; font-size: 13px; margin: 10px 0 5px 0; }
             .mobile-subcat-container a { display: block; color: var(--text-muted); text-decoration: none; font-size: 13px; padding: 4px 0; }
         }
@@ -948,6 +875,22 @@
                             <a href="#">Caixa de Som</a>
                             <a href="#">Fone de ouvido</a>
                             <a href="#">TVs</a>
+                        </div>
+                    </div>
+                    <div class="subcat-group" id="cat-informatica">
+                        <div class="subcat-column">
+                            <h4>Informática e Games</h4>
+                            <a href="#">Notebooks</a>
+                            <a href="#">Monitores</a>
+                            <a href="#">Consoles PS5 / Xbox</a>
+                        </div>
+                    </div>
+                    <div class="subcat-group" id="cat-casa">
+                        <div class="subcat-column">
+                            <h4>Casa e Eletrodomésticos</h4>
+                            <a href="#">Air Fryers</a>
+                            <a href="#">Geladeiras</a>
+                            <a href="#">Aspiradores</a>
                         </div>
                     </div>
                 </div>
@@ -1118,7 +1061,6 @@
             { id: 2, loja: 'amazon', codigo: 'PRIME20', desc: 'R$ 20 OFF para membros Prime', data: subDays(3) },
             { id: 3, loja: 'magalu', codigo: 'MAGALU50', desc: 'R$ 50 OFF em Eletrodomésticos selecionados', data: subDays(2) },
             { id: 4, loja: 'magalu', codigo: 'LUIZA10', desc: '10% OFF em Smartphones', data: subDays(5) },
-            // Cupons expirados (mais de 7 dias) -> O script elimina automaticamente!
             { id: 5, loja: 'amazon', codigo: 'OLDAMZ', desc: 'Cupom Antigo Expirado', data: subDays(8) }
         ];
 
@@ -1270,15 +1212,28 @@
             }
         });
 
-        // Mobile Accordion
+        // Alternar categorias no Mega Menu (Desktop & Mobile)
         catItems.forEach(item => {
             const targetId = item.getAttribute('data-target');
             const targetGroup = document.getElementById(targetId);
 
+            // Container exclusivo para mobile
             const mobileContainer = document.createElement('div');
             mobileContainer.className = 'mobile-subcat-container';
             if (targetGroup) mobileContainer.innerHTML = targetGroup.innerHTML;
             item.after(mobileContainer);
+
+            // Troca no Desktop ao passar o mouse ou clicar
+            const selectDesktopCategory = () => {
+                if (window.innerWidth > 880) {
+                    catItems.forEach(i => i.classList.remove('active'));
+                    document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+                    item.classList.add('active');
+                    if (targetGroup) targetGroup.classList.add('active');
+                }
+            };
+
+            item.addEventListener('mouseenter', selectDesktopCategory);
 
             item.addEventListener('click', (e) => {
                 if (window.innerWidth <= 880) {
@@ -1291,6 +1246,8 @@
                         item.classList.add('active');
                         mobileContainer.classList.add('open');
                     }
+                } else {
+                    selectDesktopCategory();
                 }
             });
         });
