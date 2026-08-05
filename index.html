@@ -133,7 +133,7 @@
             position: relative;
         }
 
-        .btn-categories-trigger {
+        .btn-categories-trigger, .btn-stores-trigger {
             background: #18181c;
             color: #fff;
             border: 1px solid #2b2b36;
@@ -148,7 +148,8 @@
             transition: all 0.2s;
         }
 
-        .btn-categories-trigger:hover, .btn-categories-trigger.active {
+        .btn-categories-trigger:hover, .btn-categories-trigger.active,
+        .btn-stores-trigger:hover, .btn-stores-trigger.active {
             background: #2b2b36;
             border-color: var(--primary);
         }
@@ -164,6 +165,84 @@
 
         .nav-link-simple:hover {
             color: #fff;
+        }
+
+        /* DROPDOWN LOJAS */
+        .stores-menu-panel {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 160px;
+            width: 480px;
+            background: #18181c;
+            border: 1px solid #2b2b36;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+            z-index: 999;
+            margin-top: 5px;
+            padding: 15px;
+        }
+
+        .stores-menu-panel.open {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .store-card-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #121216;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #2b2b36;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .store-card-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            background: #202028;
+        }
+
+        .store-icon-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            flex-shrink: 0;
+            color: #fff;
+        }
+
+        .store-icon-circle.amazon {
+            background: #FF9900;
+            color: #000;
+        }
+
+        .store-icon-circle.magalu {
+            background: #0086FF;
+        }
+
+        .store-info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .store-info-text strong {
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .store-info-text span {
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-top: 2px;
         }
 
         /* MEGA MENU (DESKTOP) */
@@ -430,8 +509,14 @@
 
         .btn-pegar:hover { background: var(--primary-hover); }
 
-        /* AJUSTES RESPONSIVOS MOBILE (SANFONA / ACCORDION) */
+        /* AJUSTES RESPONSIVOS MOBILE */
         @media (max-width: 880px) {
+            .stores-menu-panel {
+                left: 10px;
+                width: calc(100vw - 20px);
+                grid-template-columns: 1fr;
+            }
+
             .mega-menu-panel {
                 width: calc(100vw - 40px);
                 flex-direction: column;
@@ -454,10 +539,9 @@
             }
 
             .mega-content {
-                display: none; /* Esconde o painel lateral em telas pequenas */
+                display: none;
             }
 
-            /* Container sanfona criado via JS para mobile */
             .mobile-subcat-container {
                 display: none;
                 padding: 10px 15px 15px 45px;
@@ -522,100 +606,113 @@
     <!-- Barra de Navegação -->
     <nav class="top-nav">
         <div class="top-nav-container">
+            <!-- Botão Categorias -->
             <button class="btn-categories-trigger" id="megaMenuBtn">
                 Categorias <i class="fa-solid fa-chevron-down" id="menuArrow"></i>
             </button>
-            <a href="#" class="nav-link-simple">Lojas</a>
+
+            <!-- Botão Lojas -->
+            <button class="btn-stores-trigger" id="storesMenuBtn">
+                Lojas <i class="fa-solid fa-chevron-down" id="storesArrow"></i>
+            </button>
+
             <a href="#" class="nav-link-simple">Cupons</a>
 
-            <!-- PAINEL DO MEGA MENU -->
+            <!-- DROPDOWN DE LOJAS (Somente Amazon e Magalu) -->
+            <div class="stores-menu-panel" id="storesMenuPanel">
+                <a href="#" class="store-card-item">
+                    <div class="store-icon-circle amazon">
+                        <i class="fa-brands fa-amazon"></i>
+                    </div>
+                    <div class="store-info-text">
+                        <strong>Amazon</strong>
+                        <span>amazon.com.br</span>
+                    </div>
+                </a>
+
+                <a href="#" class="store-card-item">
+                    <div class="store-icon-circle magalu">
+                        Lu
+                    </div>
+                    <div class="store-info-text">
+                        <strong>Magazine Luiza</strong>
+                        <span>magazineluiza.com.br</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- PAINEL DO MEGA MENU CATEGORIAS -->
             <div class="mega-menu-panel" id="megaMenuPanel">
-                
-                <!-- Sidebar de Categorias -->
                 <div class="mega-sidebar">
-                    
-                    <!-- Item 1 -->
                     <div class="mega-cat-item active" data-target="cat-eletronicos">
                         <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
                         <span>Smartphones, Eletrônicos e TV</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
                     
-                    <!-- Item 2 -->
                     <div class="mega-cat-item" data-target="cat-informatica">
                         <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
                         <span>Informática e Games</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
-                    <!-- Item 3 -->
                     <div class="mega-cat-item" data-target="cat-casa">
                         <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
                         <span>Casa e Eletrodomésticos</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
-                    <!-- Item 4 -->
                     <div class="mega-cat-item" data-target="cat-moda">
                         <div class="cat-icon-circle"><i class="fa-solid fa-shirt"></i></div>
                         <span>Moda e Acessórios</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
-                    <!-- Item 5 -->
                     <div class="mega-cat-item" data-target="cat-bebes">
                         <div class="cat-icon-circle"><i class="fa-solid fa-baby-carriage"></i></div>
                         <span>Bebês e Crianças</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
-                    <!-- Item 6 -->
                     <div class="mega-cat-item" data-target="cat-saude">
                         <div class="cat-icon-circle"><i class="fa-solid fa-heart-pulse"></i></div>
                         <span>Saúde e Beleza</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
-                    <!-- Item 7 -->
                     <div class="mega-cat-item" data-target="cat-esporte">
                         <div class="cat-icon-circle"><i class="fa-solid fa-dumbbell"></i></div>
                         <span>Esporte e Suplementos</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
-                    <!-- Item 8 -->
                     <div class="mega-cat-item" data-target="cat-mercado">
                         <div class="cat-icon-circle"><i class="fa-solid fa-cart-shopping"></i></div>
                         <span>Supermercado e Delivery</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
-                    <!-- Item 9 -->
                     <div class="mega-cat-item" data-target="cat-livros">
                         <div class="cat-icon-circle"><i class="fa-solid fa-book"></i></div>
                         <span>Livros, Ebooks e eReaders</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
-                    <!-- Item 10 -->
                     <div class="mega-cat-item" data-target="cat-ferramentas">
                         <div class="cat-icon-circle"><i class="fa-solid fa-wrench"></i></div>
                         <span>Ferramentas e Jardim</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
 
-                    <!-- Item 11 -->
                     <div class="mega-cat-item" data-target="cat-diversos">
                         <div class="cat-icon-circle"><i class="fa-solid fa-bag-shopping"></i></div>
                         <span>Diversos</span>
                         <i class="fa-solid fa-chevron-down mobile-arrow"></i>
                     </div>
-
                 </div>
 
                 <!-- Conteúdo das Subcategorias (Desktop) -->
                 <div class="mega-content">
-                    
                     <div class="subcat-group active" id="cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Eletrônicos, Áudio e Vídeo</h4>
@@ -754,7 +851,6 @@
                             <a href="#">Papelaria</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -792,7 +888,7 @@
             <div class="img-container">
                 <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80" alt="Fone Bluetooth">
             </div>
-            <span class="store-tag">Shopee</span>
+            <span class="store-tag">Magazine Luiza</span>
             <h2 class="card-title">Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura</h2>
             <div class="price-section">
                 <span class="old-price">R$ 120,00</span>
@@ -804,22 +900,48 @@
 
     <!-- JavaScript -->
     <script>
+        // Elementos Categorias
         const megaBtn = document.getElementById('megaMenuBtn');
         const megaPanel = document.getElementById('megaMenuPanel');
         const menuArrow = document.getElementById('menuArrow');
+
+        // Elementos Lojas
+        const storesBtn = document.getElementById('storesMenuBtn');
+        const storesPanel = document.getElementById('storesMenuPanel');
+        const storesArrow = document.getElementById('storesArrow');
+
         const catItems = document.querySelectorAll('.mega-cat-item');
         const subcatGroups = document.querySelectorAll('.subcat-group');
 
-        // Toggle do Menu Principal
+        // Toggle do Menu de Categorias
         megaBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            storesPanel.classList.remove('open');
+            storesBtn.classList.remove('active');
+            storesArrow.classList.add('fa-chevron-down');
+            storesArrow.classList.remove('fa-chevron-up');
+
             megaPanel.classList.toggle('open');
             megaBtn.classList.toggle('active');
             menuArrow.classList.toggle('fa-chevron-up');
             menuArrow.classList.toggle('fa-chevron-down');
         });
 
-        // Fechar ao clicar fora
+        // Toggle do Menu de Lojas
+        storesBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            megaPanel.classList.remove('open');
+            megaBtn.classList.remove('active');
+            menuArrow.classList.add('fa-chevron-down');
+            menuArrow.classList.remove('fa-chevron-up');
+
+            storesPanel.classList.toggle('open');
+            storesBtn.classList.toggle('active');
+            storesArrow.classList.toggle('fa-chevron-up');
+            storesArrow.classList.toggle('fa-chevron-down');
+        });
+
+        // Fechar menus ao clicar fora
         document.addEventListener('click', (e) => {
             if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
                 megaPanel.classList.remove('open');
@@ -827,14 +949,19 @@
                 menuArrow.classList.add('fa-chevron-down');
                 menuArrow.classList.remove('fa-chevron-up');
             }
+            if (!storesPanel.contains(e.target) && !storesBtn.contains(e.target)) {
+                storesPanel.classList.remove('open');
+                storesBtn.classList.remove('active');
+                storesArrow.classList.add('fa-chevron-down');
+                storesArrow.classList.remove('fa-chevron-up');
+            }
         });
 
-        // Lógica para Mobile vs Desktop
+        // Lógica Mobile vs Desktop (Categorias)
         catItems.forEach(item => {
             const targetId = item.getAttribute('data-target');
             const targetGroup = document.getElementById(targetId);
 
-            // Cria o container de sanfona para o modo mobile
             const mobileContainer = document.createElement('div');
             mobileContainer.className = 'mobile-subcat-container';
             if (targetGroup) {
@@ -842,13 +969,11 @@
             }
             item.after(mobileContainer);
 
-            // Evento no Mobile (Clique para expandir em sanfona)
             item.addEventListener('click', (e) => {
                 if (window.innerWidth <= 880) {
                     e.stopPropagation();
                     const isOpen = mobileContainer.classList.contains('open');
 
-                    // Fecha outros abertos no mobile
                     document.querySelectorAll('.mobile-subcat-container').forEach(c => c.classList.remove('open'));
                     catItems.forEach(i => i.classList.remove('active'));
 
@@ -859,7 +984,6 @@
                 }
             });
 
-            // Evento no Desktop (Hover / Click simples)
             item.addEventListener('mouseenter', () => {
                 if (window.innerWidth > 880) {
                     catItems.forEach(i => i.classList.remove('active'));
