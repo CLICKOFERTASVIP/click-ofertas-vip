@@ -206,7 +206,6 @@
         .store-info-text strong { color: #ffffff; font-size: 14px; }
         .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
 
-        /* MEGA MENU - DESKTOP */
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -245,20 +244,6 @@
             font-size: 13px;
             font-weight: 600;
             transition: all 0.2s;
-        }
-
-        .cat-title-wrap {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-        }
-
-        .mega-cat-item .cat-arrow {
-            margin-left: auto;
-            font-size: 11px;
-            display: none;
-            transition: transform 0.2s;
         }
 
         .cat-icon-circle {
@@ -479,7 +464,6 @@
 
         .btn-pegar:hover { background: var(--primary-hover); }
 
-        /* PAGINA DE DETALHES DO PRODUTO */
         .product-detail-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -629,48 +613,12 @@
             background: #e68a00;
         }
 
-        /* REGRAS RESPONSIVAS AJUSTADAS (MOBILE COMPLETO) */
         @media (max-width: 880px) {
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
             .main-img-box { height: 260px; }
+            .mega-menu-panel { width: calc(100vw - 40px); }
+            .mega-sidebar { width: 200px; }
             .stores-menu-panel { left: 10px; width: calc(100vw - 20px); grid-template-columns: 1fr; }
-            
-            /* TRANSFORMACAO DO MEGA MENU EM SANFONA NO MOBILE */
-            .mega-menu-panel { 
-                width: calc(100vw - 40px); 
-                flex-direction: column; 
-                max-height: 75vh; 
-                overflow-y: auto; 
-            }
-            .mega-sidebar { width: 100%; border-right: none; padding: 5px; }
-            .mega-content { display: none; } /* Oculta a área separada no celular */
-
-            .mega-cat-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 12px;
-            }
-
-            .mega-cat-item .cat-arrow { display: block; }
-            .mega-cat-item.active .cat-arrow { transform: rotate(180deg); }
-
-            /* Exibe o grupo de subcategorias embutido direto na categoria (Accordion) */
-            .mega-cat-item .subcat-group {
-                display: none;
-                width: 100%;
-                margin-top: 10px;
-                padding-top: 10px;
-                border-top: 1px solid #2b2b36;
-            }
-
-            .mega-cat-item.active .subcat-group {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .subcat-column h4 { font-size: 13px; color: var(--primary); }
-            .subcat-column a { font-size: 12px; padding: 4px 0; }
         }
 
         @media (max-width: 600px) {
@@ -739,112 +687,99 @@
                 </div>
             </div>
 
-            <!-- MEGA MENU -->
             <div class="mega-menu-panel" id="megaMenuPanel">
-                <div class="mega-sidebar" id="megaSidebar">
-                    
+                <div class="mega-sidebar">
                     <div class="mega-cat-item active" data-target="cat-eletronicos">
-                        <div class="cat-title-wrap">
-                            <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                            <span>Smartphones, Eletrônicos e TV</span>
-                            <i class="fa-solid fa-chevron-down cat-arrow"></i>
-                        </div>
-                        <div class="subcat-group active" id="cat-eletronicos">
-                            <div class="subcat-column">
-                                <h4>Celulares e Telefonia</h4>
-                                <a onclick="openCategoryPage('Smartphones Android')">Smartphones Android</a>
-                                <a onclick="openCategoryPage('iPhones / iOS')">iPhones / iOS</a>
-                                <a onclick="openCategoryPage('Smartwatches')">Smartwatches e Smartbands</a>
-                                <a onclick="openCategoryPage('Acessórios para Celular')">Acessórios para Celular</a>
-                            </div>
-                            <div class="subcat-column">
-                                <h4>TV e Vídeo</h4>
-                                <a onclick="openCategoryPage('Smart TVs')">Smart TVs 4K / 8K</a>
-                                <a onclick="openCategoryPage('Projetores')">Projetores</a>
-                                <a onclick="openCategoryPage('TV Box')">TV Box e Streaming Stick</a>
-                                <a onclick="openCategoryPage('Soundbar')">Home Theater e Soundbar</a>
-                            </div>
-                            <div class="subcat-column">
-                                <h4>Áudio e Acessórios</h4>
-                                <a onclick="openCategoryPage('Fones de Ouvido')">Fone de Ouvido Bluetooth</a>
-                                <a onclick="openCategoryPage('Caixas de Som')">Caixas de Som Portáteis</a>
-                                <a onclick="openCategoryPage('Microfones')">Microfones</a>
-                                <a onclick="openCategoryPage('Câmeras')">Câmeras e Filmadora</a>
-                            </div>
-                        </div>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <span>Smartphones, Eletrônicos e TV</span>
                     </div>
-
                     <div class="mega-cat-item" data-target="cat-informatica">
-                        <div class="cat-title-wrap">
-                            <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
-                            <span>Informática e Games</span>
-                            <i class="fa-solid fa-chevron-down cat-arrow"></i>
-                        </div>
-                        <div class="subcat-group" id="cat-informatica">
-                            <div class="subcat-column">
-                                <h4>Informática Geral</h4>
-                                <a onclick="openCategoryPage('Notebooks')">Notebooks e Laptops</a>
-                                <a onclick="openCategoryPage('Desktops')">Desktops e PC Gamer</a>
-                                <a onclick="openCategoryPage('Monitores')">Monitores</a>
-                                <a onclick="openCategoryPage('Tablets')">Tablets e Acessórios</a>
-                            </div>
-                            <div class="subcat-column">
-                                <h4>Periféricos e Hardware</h4>
-                                <a onclick="openCategoryPage('Mouses e Teclados')">Mouses e Teclados</a>
-                                <a onclick="openCategoryPage('Placas de Vídeo')">Placas de Vídeo e Processadores</a>
-                                <a onclick="openCategoryPage('SSDs')">HDs e SSDs Internos/Externos</a>
-                                <a onclick="openCategoryPage('Roteadores')">Roteadores e Redes</a>
-                            </div>
-                            <div class="subcat-column">
-                                <h4>Mundo Gamer</h4>
-                                <a onclick="openCategoryPage('Consoles')">Consoles (PS5, Xbox, Switch)</a>
-                                <a onclick="openCategoryPage('Jogos')">Jogos e Mídias Físicas</a>
-                                <a onclick="openCategoryPage('Cadeiras Gamers')">Cadeiras Gamers</a>
-                                <a onclick="openCategoryPage('Controles')">Controles e Volantes</a>
-                            </div>
-                        </div>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
+                        <span>Informática e Games</span>
                     </div>
-
                     <div class="mega-cat-item" data-target="cat-casa">
-                        <div class="cat-title-wrap">
-                            <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
-                            <span>Casa e Eletrodomésticos</span>
-                            <i class="fa-solid fa-chevron-down cat-arrow"></i>
-                        </div>
-                        <div class="subcat-group" id="cat-casa">
-                            <div class="subcat-column">
-                                <h4>Eletrodomésticos</h4>
-                                <a onclick="openCategoryPage('Geladeiras e Freezers')">Geladeiras e Freezers</a>
-                                <a onclick="openCategoryPage('Lavadoras')">Máquinas de Lavar e Secar</a>
-                                <a onclick="openCategoryPage('Fogões')">Fogões e Cooktops</a>
-                                <a onclick="openCategoryPage('Ar-Condicionado')">Ar-Condicionado e Ventiladores</a>
-                            </div>
-                            <div class="subcat-column">
-                                <h4>Eletroportáteis</h4>
-                                <a onclick="openCategoryPage('Air Fryers')">Air Fryers e Fritadeiras</a>
-                                <a onclick="openCategoryPage('Aspiradores')">Aspiradores e Robôs</a>
-                                <a onclick="openCategoryPage('Cafeteiras')">Cafeteiras Elétricas</a>
-                                <a onclick="openCategoryPage('Liquidificadores')">Liquidificadores e Batedeiras</a>
-                            </div>
-                            <div class="subcat-column">
-                                <h4>Móveis e Decoração</h4>
-                                <a onclick="openCategoryPage('Sofás')">Sofás e Poltronas</a>
-                                <a onclick="openCategoryPage('Camas')">Camas e Colchões</a>
-                                <a onclick="openCategoryPage('Iluminação')">Iluminação e Lâmpadas Smart</a>
-                                <a onclick="openCategoryPage('Organização')">Organização da Casa</a>
-                            </div>
-                        </div>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
+                        <span>Casa e Eletrodomésticos</span>
                     </div>
-
                 </div>
 
-                <!-- CONTEUDO DO MENU LATERAL NO DESKTOP -->
-                <div class="mega-content" id="megaContent"></div>
+                <div class="mega-content">
+                    <div class="subcat-group active" id="cat-eletronicos">
+                        <div class="subcat-column">
+                            <h4>Celulares e Telefonia</h4>
+                            <a onclick="openCategoryPage('Smartphones Android')">Smartphones Android</a>
+                            <a onclick="openCategoryPage('iPhones / iOS')">iPhones / iOS</a>
+                            <a onclick="openCategoryPage('Smartwatches')">Smartwatches e Smartbands</a>
+                            <a onclick="openCategoryPage('Acessórios para Celular')">Acessórios para Celular</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>TV e Vídeo</h4>
+                            <a onclick="openCategoryPage('Smart TVs')">Smart TVs 4K / 8K</a>
+                            <a onclick="openCategoryPage('Projetores')">Projetores</a>
+                            <a onclick="openCategoryPage('TV Box')">TV Box e Streaming Stick</a>
+                            <a onclick="openCategoryPage('Soundbar')">Home Theater e Soundbar</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Áudio e Acessórios</h4>
+                            <a onclick="openCategoryPage('Fones de Ouvido')">Fone de Ouvido Bluetooth</a>
+                            <a onclick="openCategoryPage('Caixas de Som')">Caixas de Som Portáteis</a>
+                            <a onclick="openCategoryPage('Microfones')">Microfones</a>
+                            <a onclick="openCategoryPage('Câmeras')">Câmeras e Filmadora</a>
+                        </div>
+                    </div>
+
+                    <div class="subcat-group" id="cat-informatica">
+                        <div class="subcat-column">
+                            <h4>Informática Geral</h4>
+                            <a onclick="openCategoryPage('Notebooks')">Notebooks e Laptops</a>
+                            <a onclick="openCategoryPage('Desktops')">Desktops e PC Gamer</a>
+                            <a onclick="openCategoryPage('Monitores')">Monitores</a>
+                            <a onclick="openCategoryPage('Tablets')">Tablets e Acessórios</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Periféricos e Hardware</h4>
+                            <a onclick="openCategoryPage('Mouses e Teclados')">Mouses e Teclados</a>
+                            <a onclick="openCategoryPage('Placas de Vídeo')">Placas de Vídeo e Processadores</a>
+                            <a onclick="openCategoryPage('SSDs')">HDs e SSDs Internos/Externos</a>
+                            <a onclick="openCategoryPage('Roteadores')">Roteadores e Redes</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Mundo Gamer</h4>
+                            <a onclick="openCategoryPage('Consoles')">Consoles (PS5, Xbox, Switch)</a>
+                            <a onclick="openCategoryPage('Jogos')">Jogos e Mídias Físicas</a>
+                            <a onclick="openCategoryPage('Cadeiras Gamers')">Cadeiras Gamers</a>
+                            <a onclick="openCategoryPage('Controles')">Controles e Volantes</a>
+                        </div>
+                    </div>
+
+                    <div class="subcat-group" id="cat-casa">
+                        <div class="subcat-column">
+                            <h4>Eletrodomésticos</h4>
+                            <a onclick="openCategoryPage('Geladeiras e Freezers')">Geladeiras e Freezers</a>
+                            <a onclick="openCategoryPage('Lavadoras')">Máquinas de Lavar e Secar</a>
+                            <a onclick="openCategoryPage('Fogões')">Fogões e Cooktops</a>
+                            <a onclick="openCategoryPage('Ar-Condicionado')">Ar-Condicionado e Ventiladores</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Eletroportáteis</h4>
+                            <a onclick="openCategoryPage('Air Fryers')">Air Fryers e Fritadeiras</a>
+                            <a onclick="openCategoryPage('Aspiradores')">Aspiradores e Robôs</a>
+                            <a onclick="openCategoryPage('Cafeteiras')">Cafeteiras Elétricas</a>
+                            <a onclick="openCategoryPage('Liquidificadores')">Liquidificadores e Batedeiras</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Móveis e Decoração</h4>
+                            <a onclick="openCategoryPage('Sofás')">Sofás e Poltronas</a>
+                            <a onclick="openCategoryPage('Camas')">Camas e Colchões</a>
+                            <a onclick="openCategoryPage('Iluminação')">Iluminação e Lâmpadas Smart</a>
+                            <a onclick="openCategoryPage('Organização')">Organização da Casa</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- VIEW 1: HOMEPAGE -->
     <div id="homePage" class="page-view active-page">
         <div class="banner-vip">
             <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
@@ -861,7 +796,6 @@
         <main class="feed-container" id="homeFeed"></main>
     </div>
 
-    <!-- VIEW DETALHES DO PRODUTO -->
     <div id="productDetailPage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; 
@@ -908,7 +842,6 @@
         </div>
     </div>
 
-    <!-- VIEW CATEGORIA ESPECÍFICA -->
     <div id="categoryPage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <span id="categoryBreadcrumbName">Categoria</span>
@@ -917,7 +850,6 @@
         <div class="feed-container" id="categoryFeed"></div>
     </div>
 
-    <!-- VIEW 2: PAGINA DA LOJA -->
     <div id="storePage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <a href="#">Lojas</a> &gt; <span id="storeBreadcrumbName">Amazon</span>
@@ -936,7 +868,6 @@
         <div class="feed-container" id="storeFeed"></div>
     </div>
 
-    <!-- VIEW 3: HUB DE CUPONS -->
     <div id="cuponsHubPage" class="page-view">
         <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons</div>
         <h2>Encontre cupons das melhores lojas</h2>
@@ -1109,13 +1040,10 @@
             document.getElementById('storeFeed').innerHTML = filtered.map(p => renderProductCard(p)).join('');
         }
 
-        // ELEMENTOS E EVENTOS DE MENU
         const megaBtn = document.getElementById('megaMenuBtn');
         const megaPanel = document.getElementById('megaMenuPanel');
         const storesBtn = document.getElementById('storesMenuBtn');
         const storesPanel = document.getElementById('storesMenuPanel');
-        const catItems = document.querySelectorAll('.mega-cat-item');
-        const megaContent = document.getElementById('megaContent');
 
         megaBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1123,12 +1051,6 @@
             storesBtn.classList.remove('active');
             megaPanel.classList.toggle('open');
             megaBtn.classList.toggle('active');
-            
-            // Carrega o primeiro item ativo no desktop quando abre
-            if (window.innerWidth > 880 && megaPanel.classList.contains('open')) {
-                const activeItem = document.querySelector('.mega-cat-item.active') || catItems[0];
-                syncDesktopMenu(activeItem);
-            }
         });
 
         storesBtn.addEventListener('click', (e) => {
@@ -1150,39 +1072,31 @@
             }
         });
 
-        // REPLICAR CONTEUDO PARA PC DE FORMA DINÂMICA
-        function syncDesktopMenu(item) {
-            catItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-            const subcatGroup = item.querySelector('.subcat-group');
-            if (subcatGroup) {
-                megaContent.innerHTML = subcatGroup.outerHTML;
-                const activeSubcat = megaContent.querySelector('.subcat-group');
-                if (activeSubcat) activeSubcat.classList.add('active');
-            }
-        }
+        const catItems = document.querySelectorAll('.mega-cat-item');
+        const subcatGroups = document.querySelectorAll('.subcat-group');
 
-        // MANIPULAÇÃO DE CLIQUE NAS CATEGORIAS
         catItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                // Se o clique foi numa subcategoria (link), não faz toggle
-                if (e.target.tagName === 'A') return;
+            item.addEventListener('mouseenter', () => {
+                const target = item.getAttribute('data-target');
 
-                if (window.innerWidth <= 880) {
-                    // MODO CELULAR (Accordion)
-                    const isAlreadyActive = item.classList.contains('active');
-                    catItems.forEach(i => i.classList.remove('active'));
-                    if (!isAlreadyActive) {
-                        item.classList.add('active');
-                    }
-                } else {
-                    // MODO DESKTOP
-                    syncDesktopMenu(item);
-                }
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => g.classList.remove('active'));
+
+                item.classList.add('active');
+                document.getElementById(target).classList.add('active');
+            });
+            
+            item.addEventListener('click', () => {
+                const target = item.getAttribute('data-target');
+
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => g.classList.remove('active'));
+
+                item.classList.add('active');
+                document.getElementById(target).classList.add('active');
             });
         });
 
-        // INICIALIZACAO
         loadHomeFeed();
     </script>
 </body>
