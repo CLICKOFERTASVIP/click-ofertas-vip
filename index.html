@@ -166,13 +166,13 @@
             color: #fff;
         }
 
-        /* MEGA MENU ESTILO PROMOBIT (DropdownFlutuante) */
+        /* MEGA MENU ESTILO PROMOBIT (Dropdown Flutuante) */
         .mega-menu-panel {
             display: none;
             position: absolute;
             top: 100%;
             left: 20px;
-            width: 850px;
+            width: 880px;
             background: #18181c;
             border: 1px solid #2b2b36;
             border-radius: 12px;
@@ -188,7 +188,7 @@
 
         /* Coluna da Esquerda (Categorias Principais) */
         .mega-sidebar {
-            width: 280px;
+            width: 290px;
             background: #121216;
             padding: 10px;
             border-right: 1px solid #23232c;
@@ -262,7 +262,7 @@
             color: var(--primary);
         }
 
-        /* Banner VIP WhatsApp (MANTIDO) */
+        /* Banner VIP WhatsApp */
         .banner-vip {
             max-width: 1100px;
             margin: 20px auto 15px auto;
@@ -415,8 +415,8 @@
             background: var(--primary-hover);
         }
 
-        /* Ajustes para Celular (Mobile Responsivo) */
-        @media (max-width: 850px) {
+        /* Ajustes Responsivos */
+        @media (max-width: 880px) {
             .mega-menu-panel {
                 width: calc(100vw - 40px);
                 flex-direction: column;
@@ -477,7 +477,7 @@
             <a href="#" class="nav-link-simple">Lojas</a>
             <a href="#" class="nav-link-simple">Cupons</a>
 
-            <!-- PAINEL DO MEGA MENU (Abre ao Clicar/Hover em Categorias) -->
+            <!-- PAINEL DO MEGA MENU -->
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <!-- Sidebar de Categorias -->
                 <div class="mega-sidebar">
@@ -513,16 +513,24 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span>Supermercado e Delivery</span>
                     </div>
+                    <div class="mega-cat-item" data-target="cat-livros">
+                        <i class="fa-solid fa-book"></i>
+                        <span>Livros, Ebooks e eReaders</span>
+                    </div>
                     <div class="mega-cat-item" data-target="cat-ferramentas">
                         <i class="fa-solid fa-wrench"></i>
                         <span>Ferramentas e Jardim</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-diversos">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Diversos</span>
                     </div>
                 </div>
 
                 <!-- Conteúdo das Subcategorias -->
                 <div class="mega-content">
                     
-                    <!-- Grupo Eletrônicos -->
+                    <!-- 1. Smartphones, Eletrônicos e TV -->
                     <div class="subcat-group active" id="cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Eletrônicos, Áudio e Vídeo</h4>
@@ -531,10 +539,11 @@
                             <a href="#">Home Theater</a>
                             <a href="#">Projetores</a>
                             <a href="#">Soundbar</a>
+                            <a href="#">Suporte para TV</a>
                             <a href="#">TVs</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Smartphones e Tablets</h4>
+                            <h4>Smartphones, Tablets e Telefones</h4>
                             <a href="#">Acessórios para smartphones</a>
                             <a href="#">Android</a>
                             <a href="#">iPhones</a>
@@ -542,14 +551,15 @@
                             <a href="#">Tablets</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Câmeras e Drones</h4>
+                            <h4>Câmeras, Filmadoras e Drones</h4>
+                            <a href="#">Câmera</a>
                             <a href="#">Câmera de ação / GoPro</a>
                             <a href="#">Câmera de segurança</a>
                             <a href="#">Drones</a>
                         </div>
                     </div>
 
-                    <!-- Grupo Informática & Games -->
+                    <!-- 2. Informática e Games -->
                     <div class="subcat-group" id="cat-informatica">
                         <div class="subcat-column">
                             <h4>Computadores</h4>
@@ -571,7 +581,7 @@
                         </div>
                     </div>
 
-                    <!-- Grupo Casa & Eletro -->
+                    <!-- 3. Casa e Eletrodomésticos -->
                     <div class="subcat-group" id="cat-casa">
                         <div class="subcat-column">
                             <h4>Eletrodomésticos</h4>
@@ -592,14 +602,175 @@
                         </div>
                     </div>
 
-                    <!-- Outras categorias podem ser adicionadas seguindo o mesmo padrão -->
+                    <!-- 4. Moda e Acessórios (ATUALIZADO) -->
+                    <div class="subcat-group" id="cat-moda">
+                        <div class="subcat-column">
+                            <h4>Moda e Calçados masculinos</h4>
+                            <a href="#">Acessórios masculinos</a>
+                            <a href="#">Calçados masculinos</a>
+                            <a href="#">Jaquetas e casacos</a>
+                            <a href="#">Roupas masculinas</a>
+                            <h4 style="margin-top: 15px;">Mochilas e Malas</h4>
+                            <a href="#">Mala de Viagem</a>
+                            <a href="#">Mochila infantil</a>
+                            <a href="#">Mochila para notebook</a>
+                            <a href="#">Mochilas</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Moda e Calçados Femininos</h4>
+                            <a href="#">Bolsas e Acessórios</a>
+                            <a href="#">Calçados femininos</a>
+                            <a href="#">Lingerie</a>
+                            <a href="#">Roupas femininas</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Relógios e Jóias</h4>
+                            <a href="#">Anéis</a>
+                            <a href="#">Brincos</a>
+                            <a href="#">Pulseiras</a>
+                            <a href="#">Relógios</a>
+                        </div>
+                    </div>
+
+                    <!-- 5. Bebês e Crianças (ATUALIZADO) -->
+                    <div class="subcat-group" id="cat-bebes">
+                        <div class="subcat-column">
+                            <h4>Bebês e Crianças</h4>
+                            <a href="#">Berço</a>
+                            <a href="#">Cadeirinha para automóvel</a>
+                            <a href="#">Calçados infantis</a>
+                            <a href="#">Carrinho de Bebê</a>
+                            <a href="#">Fraldas</a>
+                            <a href="#">Lenço umedecido</a>
+                            <a href="#">Roupas infantis</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Brinquedos e Hobbies</h4>
+                            <a href="#">Barbie</a>
+                            <a href="#">Funko Pop</a>
+                            <a href="#">Hoverboard</a>
+                            <a href="#">Instrumentos Musicais</a>
+                            <a href="#">Jogos de tabuleiro</a>
+                            <a href="#">Lego</a>
+                        </div>
+                    </div>
+
+                    <!-- 6. Saúde e Beleza (ATUALIZADO) -->
+                    <div class="subcat-group" id="cat-saude">
+                        <div class="subcat-column">
+                            <h4>Perfumes e Beleza</h4>
+                            <a href="#">Barbeador e Aparador de pelos</a>
+                            <a href="#">Escova rotativa</a>
+                            <a href="#">Maquiagem</a>
+                            <a href="#">Perfumes e Colônias</a>
+                            <a href="#">Secadores</a>
+                            <a href="#">Skin Care</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Saúde e Higiene</h4>
+                            <a href="#">Desodorante</a>
+                            <a href="#">Escova de dente</a>
+                            <a href="#">Escova de dente elétrica</a>
+                            <a href="#">Monitor cardíaco</a>
+                            <a href="#">Protetor solar</a>
+                            <a href="#">Sabonete</a>
+                        </div>
+                    </div>
+
+                    <!-- 7. Esporte e Suplementos (ATUALIZADO) -->
+                    <div class="subcat-group" id="cat-esporte">
+                        <div class="subcat-column">
+                            <h4>Esporte e Lazer</h4>
+                            <a href="#">Basquete</a>
+                            <a href="#">Bicicleta</a>
+                            <a href="#">Camping</a>
+                            <a href="#">Cooler e Bolsa Térmica</a>
+                            <a href="#">Futebol</a>
+                            <a href="#">Natação</a>
+                            <a href="#">Patins</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Suplementos e Fitness</h4>
+                            <a href="#">Aparelhos e Acessórios</a>
+                            <a href="#">BCAA</a>
+                            <a href="#">Creatina</a>
+                            <a href="#">Pré-treino</a>
+                            <a href="#">Suplementos</a>
+                            <a href="#">Whey Protein</a>
+                        </div>
+                    </div>
+
+                    <!-- 8. Supermercado e Delivery (ATUALIZADO) -->
+                    <div class="subcat-group" id="cat-mercado">
+                        <div class="subcat-column">
+                            <h4>Bebidas</h4>
+                            <a href="#">Cervejas</a>
+                            <a href="#">Outros destilados</a>
+                            <a href="#">Vinhos e Espumantes</a>
+                            <a href="#">Vodka</a>
+                            <a href="#">Whisky</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Supermercado e Delivery</h4>
+                            <a href="#">Comida</a>
+                            <a href="#">Itens de Lavanderia</a>
+                            <a href="#">Não Alcoólico</a>
+                            <a href="#">Produtos de limpeza</a>
+                        </div>
+                    </div>
+
+                    <!-- 9. Livros, Ebooks e eReaders -->
+                    <div class="subcat-group" id="cat-livros">
+                        <div class="subcat-column">
+                            <h4>Livros e Leitores</h4>
+                            <a href="#">Kindle</a>
+                            <a href="#">Livros Físicos</a>
+                            <a href="#">Ebooks</a>
+                        </div>
+                    </div>
+
+                    <!-- 10. Ferramentas e Jardim (ATUALIZADO) -->
+                    <div class="subcat-group" id="cat-ferramentas">
+                        <div class="subcat-column">
+                            <h4>Ferramentas e Jardim</h4>
+                            <a href="#">Compressor de ar</a>
+                            <a href="#">Ferramentas manuais</a>
+                            <a href="#">Furadeira</a>
+                            <a href="#">Lavadora de alta pressão</a>
+                            <a href="#">Móveis para ambientes externos</a>
+                            <a href="#">Parafusadeira</a>
+                            <a href="#">Serra tico-tico</a>
+                            <a href="#">Utensílios para jardim</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Peças e Acessórios para automóveis</h4>
+                            <a href="#">Acessórios para carros e motos</a>
+                            <a href="#">CD e DVD players</a>
+                            <a href="#">Central Multimídia</a>
+                            <a href="#">Pneus</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Casa e Construção</h4>
+                            <a href="#">Construção e Reforma</a>
+                        </div>
+                    </div>
+
+                    <!-- 11. Diversos -->
+                    <div class="subcat-group" id="cat-diversos">
+                        <div class="subcat-column">
+                            <h4>Diversos</h4>
+                            <a href="#">Papelaria</a>
+                            <a href="#">Pet Shop</a>
+                            <a href="#">Viagens</a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Banner WhatsApp Clicável (Mantido) -->
+    <!-- Banner WhatsApp Clicável -->
     <div class="banner-vip">
         <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
             <div class="banner-text">
@@ -675,7 +846,7 @@
 
     </main>
 
-    <!-- JavaScript para controle do Mega Menu Promobit -->
+    <!-- JavaScript para controle do Mega Menu -->
     <script>
         const megaBtn = document.getElementById('megaMenuBtn');
         const megaPanel = document.getElementById('megaMenuPanel');
@@ -702,9 +873,9 @@
             }
         });
 
-        // Alternar subcategorias ao passar o mouse ou clicar nas categorias
+        // Alternar subcategorias
         catItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
+            const activateCategory = () => {
                 catItems.forEach(i => i.classList.remove('active'));
                 subcatGroups.forEach(g => g.classList.remove('active'));
 
@@ -712,7 +883,10 @@
                 const targetId = item.getAttribute('data-target');
                 const targetGroup = document.getElementById(targetId);
                 if (targetGroup) targetGroup.classList.add('active');
-            });
+            };
+
+            item.addEventListener('mouseenter', activateCategory);
+            item.addEventListener('click', activateCategory);
         });
     </script>
 
