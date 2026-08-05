@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Click Ofertas VIP</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background-color: #f4f6f9; color: #333; }
+    header { background-color: #003366; color: #fff; text-align: center; padding: 15px; }
+    header h1 { font-size: 20px; text-transform: uppercase; }
+    
+    /* Banner WhatsApp Chamativo */
+    .banner-wpp { background-color: #25d366; color: white; text-align: center; padding: 15px; margin: 10px; border-radius: 8px; font-weight: bold; text-decoration: none; display: block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    
+    /* Navegação Categorias */
+    nav { display: flex; overflow-x: auto; gap: 10px; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; }
+    nav button { background: #e0e0e0; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; white-space: nowrap; cursor: pointer; }
+    
+    /* Grade de Produtos */
+    .grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; padding: 15px; }
+    .card { background: #fff; border-radius: 8px; padding: 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .card img { max-width: 100%; height: 120px; object-fit: contain; }
+    .card h3 { font-size: 14px; margin: 8px 0; min-height: 36px; }
+    .card .preco { color: #27ae60; font-size: 16px; font-weight: bold; margin-bottom: 8px; }
+    .btn-comprar { background-color: #ff6600; color: white; border: none; padding: 8px; width: 100%; border-radius: 5px; font-weight: bold; text-decoration: none; display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Click Ofertas VIP</h1>
+  </header>
+
+  <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-wpp">
+    📲 ENTRAR NO GRUPO VIP DO WHATSAPP (CUPONS EXCLUSIVOS)
+  </a>
+
+  <nav>
+    <button>🔥 Destaques</button>
+    <button>🍳 Cozinha & Casa</button>
+    <button>🎮 Mundo Gamer</button>
+    <button>⚡ Eletros</button>
+    <button>🎟️ Cupons</button>
+  </nav>
+
+  <main class="grid-produtos">
+    <!-- Produto Exemplo 1 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/150" alt="Air Fryer">
+      <h3>Fritadeira Air Fryer Inox 4L</h3>
+      <div class="preco">R$ 299,00</div>
+      <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="btn-comprar">VER OFERTA</a>
+    </div>
+
+    <!-- Produto Exemplo 2 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/150" alt="Fone Gamer">
+      <h3>Headset Gamer Sem Fio</h3>
+      <div class="preco">R$ 149,90</div>
+      <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="btn-comprar">VER OFERTA</a>
+    </div>
+  </main>
+
+</body>
+</html>
