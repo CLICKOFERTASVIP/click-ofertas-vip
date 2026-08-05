@@ -206,6 +206,7 @@
         .store-info-text strong { color: #ffffff; font-size: 14px; }
         .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
 
+        /* LAYOUT DESKTOP DO MEGA MENU */
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -615,61 +616,7 @@
             background: #e68a00;
         }
 
-        .cupons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .cupom-store-card {
-            background: var(--card-bg);
-            border: 1px solid #2b2b36;
-            padding: 20px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .cupom-store-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .cupom-store-card span {
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .store-page-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: var(--card-bg);
-            border: 1px solid #2b2b36;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .store-header-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #fff;
-        }
-
-        .store-header-logo.amazon { background: #FF9900; color: #000; }
-        .store-header-info h1 { font-size: 20px; margin-bottom: 4px; }
-        .store-header-info span { color: var(--text-muted); font-size: 13px; }
-
+        /* LAYOUT MOBILE & SANFONA (ACCORDION) */
         @media (max-width: 768px) {
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; max-width: 100%; }
@@ -840,6 +787,7 @@
                 </div>
 
                 <div class="mega-content">
+                    <!-- 1. ELETRONICOS -->
                     <div class="subcat-group" id="cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Celulares e Telefonia</h4>
@@ -864,6 +812,7 @@
                         </div>
                     </div>
 
+                    <!-- 2. INFORMATICA -->
                     <div class="subcat-group" id="cat-informatica">
                         <div class="subcat-column">
                             <h4>Informática Geral</h4>
@@ -888,6 +837,7 @@
                         </div>
                     </div>
 
+                    <!-- 3. CASA -->
                     <div class="subcat-group" id="cat-casa">
                         <div class="subcat-column">
                             <h4>Eletrodomésticos</h4>
@@ -912,6 +862,7 @@
                         </div>
                     </div>
 
+                    <!-- 4. MODA E BELEZA -->
                     <div class="subcat-group" id="cat-moda">
                         <div class="subcat-column">
                             <h4>Moda Masculina e Feminina</h4>
@@ -933,6 +884,7 @@
                         </div>
                     </div>
 
+                    <!-- 5. ESPORTE E LAZER -->
                     <div class="subcat-group" id="cat-esporte">
                         <div class="subcat-column">
                             <h4>Fitness e Musculação</h4>
@@ -952,6 +904,7 @@
                         </div>
                     </div>
 
+                    <!-- 6. BEBES E BRINQUEDOS -->
                     <div class="subcat-group" id="cat-bebes">
                         <div class="subcat-column">
                             <h4>Mundo Bebê</h4>
@@ -967,6 +920,7 @@
                         </div>
                     </div>
 
+                    <!-- 7. FERRAMENTAS E CONSTRUCAO -->
                     <div class="subcat-group" id="cat-ferramentas">
                         <div class="subcat-column">
                             <h4>Ferramentas Elétricas</h4>
@@ -980,6 +934,7 @@
                         </div>
                     </div>
 
+                    <!-- 8. AUTOMOTIVO -->
                     <div class="subcat-group" id="cat-automotivo">
                         <div class="subcat-column">
                             <h4>Acessórios Automotivos</h4>
@@ -989,6 +944,7 @@
                         </div>
                     </div>
 
+                    <!-- 9. SUPERMERCADO -->
                     <div class="subcat-group" id="cat-supermercado">
                         <div class="subcat-column">
                             <h4>Alimentos e Bebidas</h4>
@@ -1002,6 +958,7 @@
                             <a onclick="openCategoryPage('Detergentes')">Detergentes e Desinfetantes</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -1099,11 +1056,11 @@
         <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons</div>
         <h2>Encontre cupons das melhores lojas</h2>
         <div class="cupons-grid">
-            <div class="cupom-store-card" onclick="openStoreOffers('amazon')">
+            <div class="cupom-store-card" onclick="openStoreCupons('amazon')">
                 <div class="store-icon-circle amazon"><i class="fa-brands fa-amazon"></i></div>
                 <span>Amazon</span>
             </div>
-            <div class="cupom-store-card" onclick="openStoreOffers('magalu')">
+            <div class="cupom-store-card" onclick="openStoreCupons('magalu')">
                 <div class="store-icon-circle magalu">Lu</div>
                 <span>Magazine Luiza</span>
             </div>
@@ -1133,7 +1090,7 @@
                     'Marca': 'Consul',
                     'Capacidade': '412 Litros'
                 },
-                about: 'A Geladeira Consul Frost Free 412L tem freezer espaçoso, Função Turbo e Filtro Antiodor.'
+                about: 'A Geladeira Consul Frost Free 412L tiene freezer espaçoso, Função Turbo e Filtro Antiodor.'
             },
             {
                 id: 'consul-crb39mk',
@@ -1165,69 +1122,6 @@
                     'Característica Especial': 'Livre de gelo'
                 },
                 about: 'O Consul Frost Free 337 litros evita gelo nas paredes, facilita a limpeza e economiza até 13% de energia ao ano. Com congelador espaçoso.'
-            },
-            {
-                id: 'produto-3',
-                title: 'Smart TV 50" Crystal 4K UHD Samsung 50DU7100',
-                store: 'Amazon',
-                subcat: 'Smart TVs',
-                oldPrice: 'R$ 2.999,00',
-                price: 'R$ 2.299,00',
-                discount: '-23%',
-                installments: 'Em até 10x de R$ 229,90 sem juros',
-                affiliateLink: 'https://link.amazon/exemplo3',
-                images: [
-                    'https://m.media-amazon.com/images/I/71TPzV638UL._AC_SX679_.jpg'
-                ],
-                rating: '4,7 (120 avaliações)',
-                specs: {
-                    'Marca': 'Samsung',
-                    'Tamanho da Tela': '50 Polegadas',
-                    'Resolução': '4K UHD'
-                },
-                about: 'Smart TV Samsung Crystal 4K com design slim, processador Crystal 4K e sistema Tizen.'
-            },
-            {
-                id: 'produto-4',
-                title: 'Fritadeira Sem Óleo Air Fryer 4L Nell Smart',
-                store: 'Magazine Luiza',
-                subcat: 'Air Fryers',
-                oldPrice: 'R$ 399,00',
-                price: 'R$ 249,00',
-                discount: '-38%',
-                installments: 'Em até 5x de R$ 49,80 sem juros',
-                affiliateLink: 'https://link.magalu/exemplo4',
-                images: [
-                    'https://m.media-amazon.com/images/I/61y8B1J-lTL._AC_SX679_.jpg'
-                ],
-                rating: '4,5 (88 avaliações)',
-                specs: {
-                    'Marca': 'Nell',
-                    'Capacidade': '4 Litros',
-                    'Cor': 'Preto'
-                },
-                about: 'Air Fryer Nell Smart com controle de temperatura, timer e cesto antiaderente fácil de limpar.'
-            },
-            {
-                id: 'produto-5',
-                title: 'Console PlayStation 5 Slim Edição Digital',
-                store: 'Amazon',
-                subcat: 'Consoles',
-                oldPrice: 'R$ 3.999,00',
-                price: 'R$ 3.599,00',
-                discount: '-10%',
-                installments: 'Em até 10x de R$ 359,90 sem juros',
-                affiliateLink: 'https://link.amazon/exemplo5',
-                images: [
-                    'https://m.media-amazon.com/images/I/51u871h1wKL._AC_SX679_.jpg'
-                ],
-                rating: '4,9 (300 avaliações)',
-                specs: {
-                    'Marca': 'Sony',
-                    'Modelo': 'PlayStation 5 Slim Digital',
-                    'Armazenamento': '1TB SSD'
-                },
-                about: 'Experimente o carregamento relâmpago com o SSD deultra-alta velocidade, imersão profunda com suporte a feedback tátil.'
             }
         ];
 
