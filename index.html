@@ -218,7 +218,7 @@
         .store-info-text strong { color: #ffffff; font-size: 14px; }
         .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
 
-        /* MEGA MENU PADRÃO */
+        /* MEGA MENU CATEGORIAS COM ACCORDION MOBILE */
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -257,6 +257,13 @@
             font-size: 13px;
             font-weight: 600;
             transition: all 0.2s;
+        }
+
+        .mega-cat-item .cat-arrow {
+            margin-left: auto;
+            font-size: 11px;
+            display: none;
+            transition: transform 0.2s;
         }
 
         .cat-icon-circle {
@@ -325,14 +332,10 @@
             padding: 0 20px;
         }
 
-        .page-view.active-page {
-            display: block;
-        }
+        .page-view.active-page { display: block; }
 
         /* BANNER HOMEPAGE */
-        .banner-vip {
-            margin-bottom: 25px;
-        }
+        .banner-vip { margin-bottom: 25px; }
 
         .banner-content {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
@@ -363,17 +366,8 @@
         }
 
         /* ESTRUTURA DE PAGINAS DE LOJA */
-        .breadcrumb {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .breadcrumb a {
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-
+        .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
         .breadcrumb a:hover { color: #fff; }
 
         .store-page-header {
@@ -406,15 +400,8 @@
             gap: 8px;
         }
 
-        .store-header-info h1 i {
-            color: #0086FF;
-            font-size: 18px;
-        }
-
-        .store-header-info span {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
+        .store-header-info h1 i { color: #0086FF; font-size: 18px; }
+        .store-header-info span { font-size: 13px; color: var(--text-muted); }
 
         .store-banner-promobit {
             width: 100%;
@@ -480,11 +467,7 @@
             gap: 25px;
         }
 
-        .filter-pills {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+        .filter-pills { display: flex; gap: 10px; margin-bottom: 20px; }
 
         .pill-btn {
             background: #18181c;
@@ -693,15 +676,33 @@
 
         .btn-pegar:hover { background: var(--primary-hover); }
 
-        /* RESPONSIVO MOBILE */
+        /* RESPONSIVO MOBILE - ACCORDION PARA O MEGA MENU */
         @media (max-width: 880px) {
             .store-page-body { grid-template-columns: 1fr; }
             .store-banner-promobit { flex-direction: column; text-align: center; gap: 15px; }
             .banner-left-content h2 { font-size: 24px; }
             .stores-menu-panel { left: 10px; width: calc(100vw - 20px); grid-template-columns: 1fr; }
-            .mega-menu-panel { width: calc(100vw - 40px); flex-direction: column; max-height: 75vh; overflow-y: auto; }
+            
+            .mega-menu-panel { 
+                width: calc(100vw - 40px); 
+                flex-direction: column; 
+                max-height: 75vh; 
+                overflow-y: auto; 
+            }
             .mega-sidebar { width: 100%; border-right: none; padding: 5px; }
-            .subcat-group { grid-template-columns: 1fr; }
+            .mega-cat-item .cat-arrow { display: block; }
+            .mega-cat-item.active .cat-arrow { transform: rotate(180deg); }
+            
+            .mega-content { padding: 10px 5px; background: transparent; }
+            .subcat-group { grid-template-columns: 1fr; gap: 10px; }
+            
+            /* Lógica de sanfona no mobile: injeta o conteúdo logo abaixo da categoria */
+            .subcat-group.active {
+                padding: 10px;
+                background: #18181c;
+                border-radius: 8px;
+                margin-bottom: 8px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -778,66 +779,78 @@
                 </div>
             </div>
 
-            <!-- PAINEL DO MEGA MENU CATEGORIAS (PADRÃO) -->
+            <!-- PAINEL DO MEGA MENU CATEGORIAS COM SUPORTE ACCORDION -->
             <div class="mega-menu-panel" id="megaMenuPanel">
-                <div class="mega-sidebar">
+                <div class="mega-sidebar" id="megaSidebar">
+                    
                     <div class="mega-cat-item active" data-target="cat-eletronicos">
                         <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
                         <span>Smartphones, Eletrônicos e TV</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
-                    
+
                     <div class="mega-cat-item" data-target="cat-informatica">
                         <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
                         <span>Informática e Games</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-casa">
                         <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
                         <span>Casa e Eletrodomésticos</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-moda">
                         <div class="cat-icon-circle"><i class="fa-solid fa-shirt"></i></div>
                         <span>Moda e Acessórios</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-bebes">
                         <div class="cat-icon-circle"><i class="fa-solid fa-baby-carriage"></i></div>
                         <span>Bebês e Crianças</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-saude">
                         <div class="cat-icon-circle"><i class="fa-solid fa-heart-pulse"></i></div>
                         <span>Saúde e Beleza</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-esporte">
                         <div class="cat-icon-circle"><i class="fa-solid fa-dumbbell"></i></div>
                         <span>Esporte e Suplementos</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-mercado">
                         <div class="cat-icon-circle"><i class="fa-solid fa-cart-shopping"></i></div>
                         <span>Supermercado e Delivery</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-livros">
                         <div class="cat-icon-circle"><i class="fa-solid fa-book"></i></div>
                         <span>Livros, Ebooks e eReaders</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-ferramentas">
                         <div class="cat-icon-circle"><i class="fa-solid fa-wrench"></i></div>
                         <span>Ferramentas e Jardim</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
 
                     <div class="mega-cat-item" data-target="cat-diversos">
                         <div class="cat-icon-circle"><i class="fa-solid fa-bag-shopping"></i></div>
                         <span>Diversos</span>
+                        <i class="fa-solid fa-chevron-down cat-arrow"></i>
                     </div>
                 </div>
 
-                <div class="mega-content">
+                <div class="mega-content" id="megaContent">
                     <div class="subcat-group active" id="cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Eletrônicos, Áudio e Vídeo</h4>
@@ -869,7 +882,6 @@
 
     <!-- VIEW 1: HOMEPAGE -->
     <div id="homePage" class="page-view active-page">
-        <!-- Banner VIP WhatsApp -->
         <div class="banner-vip">
             <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
                 <div class="banner-text">
@@ -882,7 +894,6 @@
 
         <h2 style="font-size:20px; font-weight:800; margin-bottom: 15px;">Destaques do Dia</h2>
 
-        <!-- Feed de Produtos Geral -->
         <main class="feed-container">
             <article class="card-oferta">
                 <span class="badge-desconto">-38%</span>
@@ -914,7 +925,7 @@
         </main>
     </div>
 
-    <!-- VIEW 2: PAGINA DA LOJA (AMAZON OU MAGALU) -->
+    <!-- VIEW 2: PAGINA DA LOJA -->
     <div id="storePage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <a href="#">Lojas</a> &gt; <span id="storeBreadcrumbName">Amazon</span>
@@ -930,7 +941,6 @@
             </div>
         </div>
 
-        <!-- Banner Promobit -->
         <div class="store-banner-promobit amazon" id="storeBanner">
             <div class="banner-left-content">
                 <h2 id="bannerTitle">As melhores ofertas da Amazon no seu WhatsApp</h2>
@@ -948,7 +958,6 @@
             </a>
         </div>
 
-        <!-- Conteudo Principal da Loja -->
         <div class="store-page-body">
             <div>
                 <div class="filter-pills">
@@ -956,12 +965,9 @@
                     <button class="pill-btn active"><i class="fa-solid fa-fire"></i> Ofertas (25+)</button>
                 </div>
 
-                <div class="feed-container-store" id="storeFeed">
-                    <!-- Injetado por JS -->
-                </div>
+                <div class="feed-container-store" id="storeFeed"></div>
             </div>
 
-            <!-- Sidebar Informativa -->
             <aside>
                 <div class="sidebar-info-card">
                     <h3>Resumo de <span id="sidebarStoreName">Amazon</span></h3>
@@ -975,7 +981,7 @@
                     </div>
 
                     <h4 style="font-size: 14px; margin-top: 15px; margin-bottom: 8px;">Informações sobre a Loja</h4>
-                    <p id="sidebarStoreDesc">Uma das maiores plataformas de comércio eletrônico do mundo, com rápida entrega e milhares de produtos com frete grátis Prime.</p>
+                    <p id="sidebarStoreDesc">A Amazon brasileira oferece catálogo completo com entrega rápida e frete grátis via Amazon Prime.</p>
 
                     <h4 style="font-size: 14px; margin-top: 15px; margin-bottom: 8px;">Opiniões</h4>
                     <ul class="store-check-list">
@@ -988,7 +994,7 @@
         </div>
     </div>
 
-    <!-- VIEW 3: HUB DE CUPONS (SELEÇÃO DA LOJA) -->
+    <!-- VIEW 3: HUB DE CUPONS -->
     <div id="cuponsHubPage" class="page-view">
         <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons</div>
         <h2>Encontre cupons das melhores lojas</h2>
@@ -1012,14 +1018,11 @@
         <h2 id="cupomStoreTitle">Cupons Exclusivos</h2>
         <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;"><i class="fa-solid fa-clock-rotate-left"></i> Atualizado diariamente. Cupons válidos apenas por 7 dias a contar da publicação.</p>
 
-        <div class="cupons-list-container" id="cuponsList">
-            <!-- Renderizado via Javascript -->
-        </div>
+        <div class="cupons-list-container" id="cuponsList"></div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript com Lógica Responsiva Desktop / Accordion Mobile -->
     <script>
-        // Data Base de Cupons (Com datas YYYY-MM-DD)
         const hoje = new Date();
         const subDays = (d) => new Date(new Date().setDate(hoje.getDate() - d)).toISOString().split('T')[0];
 
@@ -1033,21 +1036,20 @@
             { id: 5, loja: 'amazon', codigo: 'OLDAMZ', desc: 'Cupom Antigo Expirado', data: subDays(8) }
         ];
 
-        // Elementos DOM
         const megaBtn = document.getElementById('megaMenuBtn');
         const megaPanel = document.getElementById('megaMenuPanel');
         const storesBtn = document.getElementById('storesMenuBtn');
         const storesPanel = document.getElementById('storesMenuPanel');
+        const megaSidebar = document.getElementById('megaSidebar');
+        const megaContent = document.getElementById('megaContent');
         const catItems = document.querySelectorAll('.mega-cat-item');
 
-        // Navegação de Telas
         function switchPage(pageId) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
             document.getElementById(pageId).classList.add('active-page');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Abrir Página da Loja
         function openStoreOffers(storeKey) {
             currentStoreKey = storeKey;
             storesPanel.classList.remove('open');
@@ -1114,7 +1116,6 @@
             }
         }
 
-        // Abrir Cupons da Loja
         function openStoreCupons(lojaKey) {
             switchPage('cuponsDetailPage');
             const breadcrumb = document.getElementById('cupomStoreBreadcrumb');
@@ -1125,7 +1126,6 @@
             breadcrumb.innerText = nomeLoja;
             title.innerText = `Cupons de Desconto ${nomeLoja}`;
 
-            // FILTRO AUTOMATICO DE 7 DIAS
             const cuponsValidos = cuponsDatabase.filter(c => {
                 if (c.loja !== lojaKey) return false;
                 const dataCupom = new Date(c.data);
@@ -1153,13 +1153,14 @@
             openStoreCupons(currentStoreKey);
         }
 
-        // Dropdowns Toggles
+        // Toggles Dropdown
         megaBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             storesPanel.classList.remove('open');
             storesBtn.classList.remove('active');
             megaPanel.classList.toggle('open');
             megaBtn.classList.toggle('active');
+            adjustMenuLayout();
         });
 
         storesBtn.addEventListener('click', (e) => {
@@ -1181,20 +1182,62 @@
             }
         });
 
-        // Troca de Categorias Padrão
+        // Adaptação Dinâmica Desktop x Mobile Accordion
+        function adjustMenuLayout() {
+            const isMobile = window.innerWidth <= 880;
+            catItems.forEach(item => {
+                const targetId = item.getAttribute('data-target');
+                const subcatGroup = document.getElementById(targetId);
+
+                if (isMobile && subcatGroup) {
+                    if (item.classList.contains('active')) {
+                        item.after(subcatGroup);
+                    }
+                } else if (!isMobile && subcatGroup) {
+                    megaContent.appendChild(subcatGroup);
+                }
+            });
+        }
+
+        window.addEventListener('resize', adjustMenuLayout);
+
+        // Ações de clique e hover para categorias
         catItems.forEach(item => {
-            const selectCategory = () => {
-                catItems.forEach(i => i.classList.remove('active'));
-                document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
-                
-                item.classList.add('active');
+            const handleCategorySelect = (e) => {
+                const isMobile = window.innerWidth <= 880;
                 const targetId = item.getAttribute('data-target');
                 const targetGroup = document.getElementById(targetId);
-                if (targetGroup) targetGroup.classList.add('active');
+
+                if (isMobile) {
+                    if (e.type === 'click') {
+                        const wasActive = item.classList.contains('active');
+                        
+                        catItems.forEach(i => i.classList.remove('active'));
+                        document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+
+                        if (!wasActive && targetGroup) {
+                            item.classList.add('active');
+                            targetGroup.classList.add('active');
+                            item.after(targetGroup);
+                        }
+                    }
+                } else {
+                    catItems.forEach(i => i.classList.remove('active'));
+                    document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+
+                    item.classList.add('active');
+                    if (targetGroup) {
+                        megaContent.appendChild(targetGroup);
+                        targetGroup.classList.add('active');
+                    }
+                }
             };
 
-            item.addEventListener('mouseenter', selectCategory);
-            item.addEventListener('click', selectCategory);
+            item.addEventListener('mouseenter', (e) => {
+                if (window.innerWidth > 880) handleCategorySelect(e);
+            });
+
+            item.addEventListener('click', handleCategorySelect);
         });
     </script>
 </body>
