@@ -201,7 +201,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 12px;
+            padding: 8px 12px;
             color: var(--text-muted);
             border-radius: 8px;
             cursor: pointer;
@@ -210,15 +210,32 @@
             transition: all 0.2s;
         }
 
-        .mega-cat-item i {
-            width: 20px;
-            text-align: center;
-            font-size: 15px;
+        /* Ícone Circular do Menu */
+        .cat-icon-circle {
+            width: 32px;
+            height: 32px;
+            background-color: #24242c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background-color 0.2s;
+        }
+
+        .cat-icon-circle i {
+            color: #4da6ff;
+            font-size: 13px;
         }
 
         .mega-cat-item:hover, .mega-cat-item.active {
             background: #2b2b36;
             color: #ffffff;
+        }
+
+        .mega-cat-item:hover .cat-icon-circle, 
+        .mega-cat-item.active .cat-icon-circle {
+            background-color: #383846;
         }
 
         /* Coluna da Direita (Subcategorias Dinâmicas) */
@@ -479,50 +496,50 @@
 
             <!-- PAINEL DO MEGA MENU -->
             <div class="mega-menu-panel" id="megaMenuPanel">
-                <!-- Sidebar de Categorias -->
+                <!-- Sidebar de Categorias com Ícones Circulares -->
                 <div class="mega-sidebar">
                     <div class="mega-cat-item active" data-target="cat-eletronicos">
-                        <i class="fa-solid fa-mobile-screen"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
                         <span>Smartphones, Eletrônicos e TV</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-informatica">
-                        <i class="fa-solid fa-gamepad"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
                         <span>Informática e Games</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-casa">
-                        <i class="fa-solid fa-couch"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
                         <span>Casa e Eletrodomésticos</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-moda">
-                        <i class="fa-solid fa-shirt"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-shirt"></i></div>
                         <span>Moda e Acessórios</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-bebes">
-                        <i class="fa-solid fa-baby-carriage"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-baby-carriage"></i></div>
                         <span>Bebês e Crianças</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-saude">
-                        <i class="fa-solid fa-heart-pulse"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-heart-pulse"></i></div>
                         <span>Saúde e Beleza</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-esporte">
-                        <i class="fa-solid fa-dumbbell"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-dumbbell"></i></div>
                         <span>Esporte e Suplementos</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-mercado">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-cart-shopping"></i></div>
                         <span>Supermercado e Delivery</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-livros">
-                        <i class="fa-solid fa-book"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-book"></i></div>
                         <span>Livros, Ebooks e eReaders</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-ferramentas">
-                        <i class="fa-solid fa-wrench"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-wrench"></i></div>
                         <span>Ferramentas e Jardim</span>
                     </div>
                     <div class="mega-cat-item" data-target="cat-diversos">
-                        <i class="fa-solid fa-bag-shopping"></i>
+                        <div class="cat-icon-circle"><i class="fa-solid fa-bag-shopping"></i></div>
                         <span>Diversos</span>
                     </div>
                 </div>
@@ -602,7 +619,7 @@
                         </div>
                     </div>
 
-                    <!-- 4. Moda e Acessórios (ATUALIZADO) -->
+                    <!-- 4. Moda e Acessórios -->
                     <div class="subcat-group" id="cat-moda">
                         <div class="subcat-column">
                             <h4>Moda e Calçados masculinos</h4>
@@ -632,7 +649,7 @@
                         </div>
                     </div>
 
-                    <!-- 5. Bebês e Crianças (ATUALIZADO) -->
+                    <!-- 5. Bebês e Crianças -->
                     <div class="subcat-group" id="cat-bebes">
                         <div class="subcat-column">
                             <h4>Bebês e Crianças</h4>
@@ -655,7 +672,7 @@
                         </div>
                     </div>
 
-                    <!-- 6. Saúde e Beleza (ATUALIZADO) -->
+                    <!-- 6. Saúde e Beleza -->
                     <div class="subcat-group" id="cat-saude">
                         <div class="subcat-column">
                             <h4>Perfumes e Beleza</h4>
@@ -677,7 +694,7 @@
                         </div>
                     </div>
 
-                    <!-- 7. Esporte e Suplementos (ATUALIZADO) -->
+                    <!-- 7. Esporte e Suplementos -->
                     <div class="subcat-group" id="cat-esporte">
                         <div class="subcat-column">
                             <h4>Esporte e Lazer</h4>
@@ -700,7 +717,7 @@
                         </div>
                     </div>
 
-                    <!-- 8. Supermercado e Delivery (ATUALIZADO) -->
+                    <!-- 8. Supermercado e Delivery -->
                     <div class="subcat-group" id="cat-mercado">
                         <div class="subcat-column">
                             <h4>Bebidas</h4>
@@ -729,7 +746,7 @@
                         </div>
                     </div>
 
-                    <!-- 10. Ferramentas e Jardim (ATUALIZADO) -->
+                    <!-- 10. Ferramentas e Jardim -->
                     <div class="subcat-group" id="cat-ferramentas">
                         <div class="subcat-column">
                             <h4>Ferramentas e Jardim</h4>
@@ -770,7 +787,7 @@
         </div>
     </nav>
 
-    <!-- Banner WhatsApp Clicável -->
+    <!-- Banner VIP WhatsApp -->
     <div class="banner-vip">
         <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
             <div class="banner-text">
