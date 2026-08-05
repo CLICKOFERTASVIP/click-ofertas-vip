@@ -355,212 +355,6 @@
         .breadcrumb a { color: var(--text-muted); text-decoration: none; }
         .breadcrumb a:hover { color: #fff; }
 
-        .store-page-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .store-header-logo {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .store-header-logo.amazon { background: #FF9900; color: #000; }
-        .store-header-logo.magalu { background: #0086FF; }
-
-        .store-header-info h1 {
-            font-size: 24px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .store-header-info h1 i { color: #0086FF; font-size: 18px; }
-        .store-header-info span { font-size: 13px; color: var(--text-muted); }
-
-        .store-banner-promobit {
-            width: 100%;
-            border-radius: 16px;
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            margin-bottom: 25px;
-        }
-
-        .store-banner-promobit.amazon { background: linear-gradient(135deg, #ff7b00 0%, #e65100 100%); }
-        .store-banner-promobit.magalu { background: linear-gradient(135deg, #0086FF 0%, #0056b3 100%); }
-
-        .banner-left-content h2 {
-            font-size: 32px;
-            font-weight: 900;
-            color: #ffffff;
-            line-height: 1.2;
-            max-width: 450px;
-            margin-bottom: 10px;
-        }
-
-        .banner-left-content p { color: rgba(255, 255, 255, 0.9); font-size: 15px; }
-
-        .banner-center-phone {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: #121216;
-            width: 220px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        .banner-center-phone .phone-tag { font-size: 11px; color: #666; margin-bottom: 5px; font-weight: bold; }
-        .banner-center-phone .product-name { font-size: 12px; font-weight: bold; margin-bottom: 5px; }
-        .banner-center-phone .price { font-size: 16px; color: #2ed573; font-weight: 800; }
-
-        .banner-btn-wpp {
-            background: #25D366;
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
-        }
-
-        .banner-btn-wpp:hover { transform: scale(1.05); }
-
-        .store-page-body {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 25px;
-        }
-
-        .filter-pills { display: flex; gap: 10px; margin-bottom: 20px; }
-
-        .pill-btn {
-            background: #18181c;
-            border: 1px solid #2b2b36;
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .pill-btn.active {
-            background: #0086FF;
-            color: #fff;
-            border-color: #0086FF;
-        }
-
-        .sidebar-info-card {
-            background: #18181c;
-            border: 1px solid #2b2b36;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .sidebar-info-card h3 { font-size: 16px; color: #fff; margin-bottom: 12px; }
-
-        .rating-stars {
-            color: #FFC107;
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .rating-stars span { color: var(--text-muted); font-size: 12px; }
-        .sidebar-info-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px; }
-
-        .store-check-list { list-style: none; margin-top: 15px; }
-        .store-check-list li { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .store-check-list li.check { color: #2ed573; }
-        .store-check-list li.cross { color: #ff4757; }
-
-        .cupons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .cupom-store-card {
-            background: #18181c;
-            border: 1px solid #2b2b36;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .cupom-store-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            background: #202028;
-        }
-
-        .cupom-store-card .store-icon-circle { width: 60px; height: 60px; font-size: 24px; }
-        .cupom-store-card span { font-weight: bold; font-size: 14px; color: #fff; }
-
-        .cupons-list-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .cupom-card {
-            background: #1e1e24;
-            border: 2px dashed #2b2b36;
-            border-radius: 12px;
-            padding: 20px;
-            position: relative;
-        }
-
-        .cupom-code-badge {
-            background: #121216;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 16px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            display: inline-block;
-            margin: 10px 0;
-            letter-spacing: 1px;
-        }
-
-        .cupom-date { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
-
         .feed-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -576,6 +370,7 @@
             flex-direction: column;
             position: relative;
             transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
         }
 
         .card-oferta:hover {
@@ -652,10 +447,159 @@
 
         .btn-pegar:hover { background: var(--primary-hover); }
 
+        /* PAGINA DE DETALHES DO PRODUTO */
+        .product-detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--card-bg);
+            border: 1px solid #2b2b36;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .detail-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .main-img-box {
+            background: #ffffff;
+            border-radius: 12px;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .main-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .detail-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-title {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .detail-rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #FFC107;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .detail-rating span { color: var(--text-muted); font-size: 13px; }
+
+        .detail-price-box {
+            background: #18181c;
+            border: 1px solid #2b2b36;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .detail-badge-off {
+            background: var(--green-discount);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .detail-old-price {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .detail-current-price {
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 4px 0;
+        }
+
+        .detail-installments {
+            font-size: 13px;
+            color: var(--green-discount);
+            font-weight: 600;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        .specs-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #2b2b36;
+        }
+
+        .specs-table td:first-child {
+            color: var(--text-muted);
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .detail-description {
+            margin-top: 20px;
+        }
+
+        .detail-description h4 {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .detail-description p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .btn-buy-now {
+            background: #FF9900;
+            color: #000;
+            font-weight: 800;
+            font-size: 16px;
+            text-align: center;
+            padding: 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn-buy-now:hover {
+            transform: scale(1.02);
+            background: #e68a00;
+        }
+
         @media (max-width: 880px) {
-            .store-page-body { grid-template-columns: 1fr; }
-            .store-banner-promobit { flex-direction: column; text-align: center; gap: 15px; }
-            .banner-left-content h2 { font-size: 24px; }
+            .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
+            .main-img-box { height: 260px; }
             .stores-menu-panel { left: 10px; width: calc(100vw - 20px); grid-template-columns: 1fr; }
             
             .mega-menu-panel { 
@@ -886,190 +830,6 @@
                             <a onclick="openCategoryPage('Organização')">Organização da Casa</a>
                         </div>
                     </div>
-
-                    <div class="subcat-group" id="cat-moda">
-                        <div class="subcat-column">
-                            <h4>Roupas</h4>
-                            <a onclick="openCategoryPage('Masculino')">Masculino</a>
-                            <a onclick="openCategoryPage('Feminino')">Feminino</a>
-                            <a onclick="openCategoryPage('Infantil')">Infantil</a>
-                            <a onclick="openCategoryPage('Roupas Esportivas')">Roupas Esportivas</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Calçados</h4>
-                            <a onclick="openCategoryPage('Tênis')">Tênis Casuais e Esportivos</a>
-                            <a onclick="openCategoryPage('Sapatos')">Sapatos e Botas</a>
-                            <a onclick="openCategoryPage('Sandálias')">Sandálias e Chinelos</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Acessórios</h4>
-                            <a onclick="openCategoryPage('Bolsas')">Bolsas e Mochilas</a>
-                            <a onclick="openCategoryPage('Relógios')">Relógios</a>
-                            <a onclick="openCategoryPage('Óculos')">Óculos de Sol</a>
-                            <a onclick="openCategoryPage('Carteiras')">Carteiras e Cintos</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-bebes">
-                        <div class="subcat-column">
-                            <h4>Para o Bebê</h4>
-                            <a onclick="openCategoryPage('Fraldas')">Fraldas e Lenços</a>
-                            <a onclick="openCategoryPage('Carrinhos')">Carrinhos e Bebê Conforto</a>
-                            <a onclick="openCategoryPage('Berços')">Berços e Chiqueirinhos</a>
-                            <a onclick="openCategoryPage('Amamentação')">Amamentação e Alimentação</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Brinquedos</h4>
-                            <a onclick="openCategoryPage('Jogos')">Jogos de Tabuleiro</a>
-                            <a onclick="openCategoryPage('Bonecas')">Bonecas e Carrinhos</a>
-                            <a onclick="openCategoryPage('Lego')">Lego e Blocos de Montar</a>
-                            <a onclick="openCategoryPage('Brinquedos Educativos')">Brinquedos Educativos</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Moda Infantil</h4>
-                            <a onclick="openCategoryPage('Roupas Bebê')">Roupas para Bebê</a>
-                            <a onclick="openCategoryPage('Calçados Infantis')">Calçados Infantis</a>
-                            <a onclick="openCategoryPage('Acessórios Infantis')">Acessórios Infantis</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-saude">
-                        <div class="subcat-column">
-                            <h4>Beleza e Perfumaria</h4>
-                            <a onclick="openCategoryPage('Perfumes')">Perfumes Importados e Nacionais</a>
-                            <a onclick="openCategoryPage('Maquiagem')">Maquiagem e Cosméticos</a>
-                            <a onclick="openCategoryPage('Skincare')">Cuidados com a Pele (Skincare)</a>
-                            <a onclick="openCategoryPage('Cabelos')">Cabelos (Shampoos e Tratamentos)</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Cuidados Pessoais</h4>
-                            <a onclick="openCategoryPage('Barbeadores')">Barbeadores e Aparadores</a>
-                            <a onclick="openCategoryPage('Secadores')">Secadores e Chapinhas</a>
-                            <a onclick="openCategoryPage('Higiene Oral')">Higiene Oral</a>
-                            <a onclick="openCategoryPage('Protetor Solar')">Protetor Solar</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Saúde e Bem-Estar</h4>
-                            <a onclick="openCategoryPage('Aparelhos Pressão')">Aparelhos de Pressão / Glicemia</a>
-                            <a onclick="openCategoryPage('Termômetros')">Termômetros e Inaladores</a>
-                            <a onclick="openCategoryPage('Massageadores')">Massageadores</a>
-                            <a onclick="openCategoryPage('Vitaminas')">Vitaminas e Suplementos Básicos</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-esporte">
-                        <div class="subcat-column">
-                            <h4>Suplementos</h4>
-                            <a onclick="openCategoryPage('Whey Protein')">Whey Protein e Proteínas</a>
-                            <a onclick="openCategoryPage('Creatina')">Creatina e Pré-Treinos</a>
-                            <a onclick="openCategoryPage('Vitaminas Esporte')">Vitaminas e Minerais</a>
-                            <a onclick="openCategoryPage('Barras de Proteína')">Barras de Proteína</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Equipamentos e Fitness</h4>
-                            <a onclick="openCategoryPage('Halteres')">Halteres e Anilhas</a>
-                            <a onclick="openCategoryPage('Elásticos')">Elásticos e Extensores</a>
-                            <a onclick="openCategoryPage('Esteiras')">Esteiras e Bicicletas Ergométricas</a>
-                            <a onclick="openCategoryPage('Colchonetes')">Colchonetes e Tapetes de Yoga</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Moda e Esportes</h4>
-                            <a onclick="openCategoryPage('Roupas Academia')">Roupas de Academia</a>
-                            <a onclick="openCategoryPage('Ciclismo')">Ciclismo e Acessórios</a>
-                            <a onclick="openCategoryPage('Futebol')">Futebol e Bolas</a>
-                            <a onclick="openCategoryPage('Camping')">Camping e Aventura</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-mercado">
-                        <div class="subcat-column">
-                            <h4>Alimentos e Mercearia</h4>
-                            <a onclick="openCategoryPage('Grãos')">Arroz, Feijão e Grãos</a>
-                            <a onclick="openCategoryPage('Cafés')">Cafés e Matinais</a>
-                            <a onclick="openCategoryPage('Snacks')">Snacks e Biscoitos</a>
-                            <a onclick="openCategoryPage('Chocolates')">Doces e Chocolates</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Bebidas</h4>
-                            <a onclick="openCategoryPage('Cervejas')">Cervejas e Chopp</a>
-                            <a onclick="openCategoryPage('Vinhos')">Vinhos e Espumantes</a>
-                            <a onclick="openCategoryPage('Destilados')">Destilados e Whiskies</a>
-                            <a onclick="openCategoryPage('Refrigerantes')">Refrigerantes e Sucos</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Limpeza e Casa</h4>
-                            <a onclick="openCategoryPage('Sabão')">Sabão em Pó e Líquido</a>
-                            <a onclick="openCategoryPage('Amaciantes')">Amaciantes</a>
-                            <a onclick="openCategoryPage('Desinfetantes')">Desinfetantes e Papel Higiênico</a>
-                            <a onclick="openCategoryPage('Lava-Louças')">Lava-Louças</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-livros">
-                        <div class="subcat-column">
-                            <h4>Gêneros Literários</h4>
-                            <a onclick="openCategoryPage('Romance')">Ficção e Romance</a>
-                            <a onclick="openCategoryPage('Negócios')">Desenvolvimento Pessoal e Negócios</a>
-                            <a onclick="openCategoryPage('Fantasia')">Fantasia e Sci-Fi</a>
-                            <a onclick="openCategoryPage('Biografias')">Biografias e História</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Livros Técnicos e HQ</h4>
-                            <a onclick="openCategoryPage('Didáticos')">Universitários e Didáticos</a>
-                            <a onclick="openCategoryPage('Mangás')">Mangás e HQs</a>
-                            <a onclick="openCategoryPage('Livros Infantis')">Livros Infantis</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Leitura Digital</h4>
-                            <a onclick="openCategoryPage('Kindle')">Kindle e eReaders</a>
-                            <a onclick="openCategoryPage('Acessórios Kindle')">Acessórios para Kindle</a>
-                            <a onclick="openCategoryPage('Ebooks')">Ebooks em Promoção</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-ferramentas">
-                        <div class="subcat-column">
-                            <h4>Ferramentas Elétricas</h4>
-                            <a onclick="openCategoryPage('Furadeiras')">Furadeiras e Parafusadeiras</a>
-                            <a onclick="openCategoryPage('Serras')">Serras e Lixadeiras</a>
-                            <a onclick="openCategoryPage('Compressores')">Compressores</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Ferramentas Manuais</h4>
-                            <a onclick="openCategoryPage('Maletas')">Kits de Ferramentas / Maletas</a>
-                            <a onclick="openCategoryPage('Alicates')">Alicates e Chaves</a>
-                            <a onclick="openCategoryPage('Medição')">Medição e Níveis</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Jardim e Construção</h4>
-                            <a onclick="openCategoryPage('Cortadores de Grama')">Cortadores de Grama</a>
-                            <a onclick="openCategoryPage('Lavadoras Pressão')">Lavadoras de Alta Pressão</a>
-                            <a onclick="openCategoryPage('Mangueiras')">Mangueiras e Irrigação</a>
-                            <a onclick="openCategoryPage('Iluminação Externa')">Iluminação Externa</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-diversos">
-                        <div class="subcat-column">
-                            <h4>Automotivo</h4>
-                            <a onclick="openCategoryPage('Pneus')">Pneus e Rodas</a>
-                            <a onclick="openCategoryPage('Som Automotivo')">Som e Multimídia Automotiva</a>
-                            <a onclick="openCategoryPage('Óleos')">Óleos e Aditivos</a>
-                            <a onclick="openCategoryPage('Acessórios Automotivos')">Acessórios Internos</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Pet Shop</h4>
-                            <a onclick="openCategoryPage('Rações')">Rações e Petiscos</a>
-                            <a onclick="openCategoryPage('Pet Acessórios')">Acessórios para Cães e Gatos</a>
-                            <a onclick="openCategoryPage('Antipulgas')">Higiene e Antipulgas</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Instrumentos Musicais</h4>
-                            <a onclick="openCategoryPage('Violões')">Violões e Guitarras</a>
-                            <a onclick="openCategoryPage('Teclados')">Teclados e Pianos</a>
-                            <a onclick="openCategoryPage('Áudio Pro')">Equipamentos de Áudio Pro</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1089,49 +849,53 @@
 
         <h2 style="font-size:20px; font-weight:800; margin-bottom: 15px;">Destaques do Dia</h2>
 
-        <main class="feed-container">
-            <article class="card-oferta">
-                <span class="badge-desconto">-38%</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80" alt="Air Fryer">
-                </div>
-                <span class="store-tag">Amazon</span>
-                <h2 class="card-title">Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W</h2>
-                <div class="price-section">
-                    <span class="old-price">R$ 449,90</span>
-                    <div class="current-price">R$ 279,00</div>
-                </div>
-                <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-            </article>
+        <main class="feed-container" id="homeFeed"></main>
+    </div>
 
-            <article class="card-oferta">
-                <span class="badge-desconto">-45%</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80" alt="Fone Bluetooth">
-                </div>
-                <span class="store-tag">Magazine Luiza</span>
-                <h2 class="card-title">Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura</h2>
-                <div class="price-section">
-                    <span class="old-price">R$ 120,00</span>
-                    <div class="current-price">R$ 65,90</div>
-                </div>
-                <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-            </article>
+    <!-- VIEW DETALHES DO PRODUTO -->
+    <div id="productDetailPage" class="page-view">
+        <div class="breadcrumb">
+            <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; 
+            <span id="detailBreadcrumbCat">Categoria</span> &gt; 
+            <span id="detailBreadcrumbTitle">Produto</span>
+        </div>
 
-            <article class="card-oferta">
-                <span class="badge-desconto">-25%</span>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" alt="Headphone">
+        <div class="product-detail-layout">
+            <div class="detail-gallery">
+                <div class="main-img-box">
+                    <img id="detailImg" src="" alt="Produto">
                 </div>
-                <span class="store-tag">Amazon</span>
-                <h2 class="card-title">Headphone Gamer Over-Ear com Microfone Redução de Ruído</h2>
-                <div class="price-section">
-                    <span class="old-price">R$ 299,00</span>
-                    <div class="current-price">R$ 224,10</div>
+            </div>
+
+            <div class="detail-info">
+                <span class="store-tag" id="detailStore">Amazon</span>
+                <h1 class="detail-title" id="detailTitle">Nome do Produto</h1>
+
+                <div class="detail-rating" id="detailRating">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    <span id="detailRatingText">4,8 (5 avaliações)</span>
                 </div>
-                <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-            </article>
-        </main>
+
+                <div class="detail-price-box">
+                    <span class="detail-badge-off" id="detailBadge">-9% OFF</span>
+                    <div class="detail-old-price" id="detailOldPrice">De: R$ 2.999,00</div>
+                    <div class="detail-current-price" id="detailCurrentPrice">R$ 2.699,99</div>
+                    <div class="detail-installments" id="detailInstallments">Em até 12x de R$ 225,10 sem juros</div>
+                </div>
+
+                <div class="detail-description">
+                    <h4>Especificações Principais</h4>
+                    <table class="specs-table" id="detailSpecs"></table>
+                    
+                    <h4 style="margin-top: 15px;">Sobre este item</h4>
+                    <p id="detailAbout"></p>
+                </div>
+
+                <a href="#" id="detailAffiliateLink" target="_blank" class="btn-buy-now">
+                    <i class="fa-solid fa-cart-shopping"></i> COMPRAR NA LOJA (LINK OFICIAL)
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- VIEW CATEGORIA ESPECÍFICA -->
@@ -1154,66 +918,18 @@
                 <i class="fa-brands fa-amazon"></i>
             </div>
             <div class="store-header-info">
-                <h1 id="storeTitle">Ofertas Amazon em Agosto 2026 <i class="fa-solid fa-circle-check"></i></h1>
+                <h1 id="storeTitle">Ofertas Amazon <i class="fa-solid fa-circle-check"></i></h1>
                 <span id="storeDomain">amazon.com.br</span>
             </div>
         </div>
 
-        <div class="store-banner-promobit amazon" id="storeBanner">
-            <div class="banner-left-content">
-                <h2 id="bannerTitle">As melhores ofertas da Amazon no seu WhatsApp</h2>
-                <p>Receba em tempo real e não perca nenhuma promoção.</p>
-            </div>
-
-            <div class="banner-center-phone">
-                <div class="phone-tag">Grupo CLICK OFERTAS VIP</div>
-                <div class="product-name">PlayStation 5 Slim 1TB</div>
-                <div class="price">R$ 3.299,00</div>
-            </div>
-
-            <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-btn-wpp">
-                <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i> Entre Agora!
-            </a>
-        </div>
-
-        <div class="store-page-body">
-            <div>
-                <div class="filter-pills">
-                    <button class="pill-btn" onclick="openStoreCuponsFromStorePage()"><i class="fa-solid fa-ticket"></i> Cupons</button>
-                    <button class="pill-btn active"><i class="fa-solid fa-fire"></i> Ofertas</button>
-                </div>
-
-                <div class="feed-container" id="storeFeed"></div>
-            </div>
-
-            <aside>
-                <div class="sidebar-info-card">
-                    <h3>Resumo de <span id="sidebarStoreName">Amazon</span></h3>
-                    <div class="rating-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                        <span>4.5/5 (120 avaliações)</span>
-                    </div>
-
-                    <h4 style="font-size: 14px; margin-top: 15px; margin-bottom: 8px;">Informações sobre a Loja</h4>
-                    <p id="sidebarStoreDesc">A Amazon brasileira oferece catálogo completo com entrega rápida e frete grátis via Amazon Prime.</p>
-
-                    <h4 style="font-size: 14px; margin-top: 15px; margin-bottom: 8px;">Opiniões</h4>
-                    <ul class="store-check-list">
-                        <li class="check"><i class="fa-solid fa-check"></i> Loja verificada</li>
-                        <li class="check"><i class="fa-solid fa-check"></i> CNPJ verificado</li>
-                        <li class="cross" id="storePhysicalCheck"><i class="fa-solid fa-xmark"></i> Não possui loja física</li>
-                    </ul>
-                </div>
-            </aside>
-        </div>
+        <div class="feed-container" id="storeFeed"></div>
     </div>
 
     <!-- VIEW 3: HUB DE CUPONS -->
     <div id="cuponsHubPage" class="page-view">
         <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons</div>
         <h2>Encontre cupons das melhores lojas</h2>
-        <p style="color: var(--text-muted); font-size: 14px; margin-top: 5px;">Selecione a loja abaixo para visualizar os cupons válidos.</p>
-
         <div class="cupons-grid">
             <div class="cupom-store-card" onclick="openStoreCupons('amazon')">
                 <div class="store-icon-circle amazon"><i class="fa-brands fa-amazon"></i></div>
@@ -1230,31 +946,122 @@
     <div id="cuponsDetailPage" class="page-view">
         <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <a href="#" onclick="switchPage('cuponsHubPage')">Cupons</a> &gt; <span id="cupomStoreBreadcrumb">Loja</span></div>
         <h2 id="cupomStoreTitle">Cupons Exclusivos</h2>
-        <p style="color: var(--text-muted); font-size: 13px; margin-top: 5px;"><i class="fa-solid fa-clock-rotate-left"></i> Atualizado diariamente. Cupons válidos apenas por 7 dias a contar da publicação.</p>
-
         <div class="cupons-list-container" id="cuponsList"></div>
     </div>
 
     <script>
-        const hoje = new Date();
-        const subDays = (d) => new Date(new Date().setDate(hoje.getDate() - d)).toISOString().split('T')[0];
-
-        let currentStoreKey = 'amazon';
-
-        const cuponsDatabase = [
-            { id: 1, loja: 'amazon', codigo: 'AMAZON10', desc: 'R$ 10 OFF em Livros e Ebooks', data: subDays(1) },
-            { id: 2, loja: 'amazon', codigo: 'PRIME20', desc: 'R$ 20 OFF para membros Prime', data: subDays(3) },
-            { id: 3, loja: 'magalu', codigo: 'MAGALU50', desc: 'R$ 50 OFF em Eletrodomésticos selecionados', data: subDays(2) },
-            { id: 4, loja: 'magalu', codigo: 'LUIZA10', desc: '10% OFF em Smartphones', data: subDays(5) }
+        // BANCO DE DADOS DE PRODUTOS
+        const productsDatabase = [
+            {
+                id: 'consul-crm50mb',
+                title: 'Geladeira CRM50MB 412 Litros Frost Free Duplex Consul',
+                store: 'Amazon',
+                subcat: 'Geladeiras e Freezers',
+                oldPrice: 'R$ 2.999,00',
+                price: 'R$ 2.699,99',
+                discount: '-9%',
+                installments: 'Em até 12x de R$ 225,10 sem juros',
+                affiliateLink: 'https://link.amazon/B0gBXsKfJ',
+                image: 'https://m.media-amazon.com/images/I/51wXkY7f8sL._AC_SL1000_.jpg',
+                rating: '4,8 (5 avaliações)',
+                specs: {
+                    'Dimensões': '72P x 70,2L x 174,5A cm',
+                    'Marca': 'Consul',
+                    'Capacidade': '412 Litros',
+                    'Configuração': 'Duplex',
+                    'Cor': 'Branco'
+                },
+                about: 'A Geladeira Consul Frost Free 412L tem freezer espaçoso, Função Turbo e Filtro Antiodor. Compartimentos removíveis e organização flexível para guardar tudo!'
+            },
+            {
+                id: 'airfryer-mondial',
+                title: 'Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W',
+                store: 'Amazon',
+                subcat: 'Air Fryers',
+                oldPrice: 'R$ 449,90',
+                price: 'R$ 279,00',
+                discount: '-38%',
+                installments: 'Em até 5x de R$ 55,80 sem juros',
+                affiliateLink: 'https://amzn.to/exemplo',
+                image: 'https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80',
+                rating: '4,7 (1.240 avaliações)',
+                specs: {
+                    'Capacidade': '4 Litros',
+                    'Potência': '1500W',
+                    'Marca': 'Mondial'
+                },
+                about: 'Fritadeira sem óleo ideal para preparar refeições saudáveis e rápidas com facilidade de limpeza.'
+            },
+            {
+                id: 'fone-tws',
+                title: 'Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura',
+                store: 'Magazine Luiza',
+                subcat: 'Fones de Ouvido',
+                oldPrice: 'R$ 120,00',
+                price: 'R$ 65,90',
+                discount: '-45%',
+                installments: 'À vista ou parcelado',
+                affiliateLink: 'https://magalu.to/exemplo',
+                image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80',
+                rating: '4,5 (320 avaliações)',
+                specs: {
+                    'Conectividade': 'Bluetooth 5.3',
+                    'Bateria': 'Até 20 horas'
+                },
+                about: 'Excelente fone bluetooth leve, ergonômico e com cancelamento passivo de ruído.'
+            }
         ];
 
-        const megaBtn = document.getElementById('megaMenuBtn');
-        const megaPanel = document.getElementById('megaMenuPanel');
-        const storesBtn = document.getElementById('storesMenuBtn');
-        const storesPanel = document.getElementById('storesMenuPanel');
-        const megaSidebar = document.getElementById('megaSidebar');
-        const megaContent = document.getElementById('megaContent');
-        const catItems = document.querySelectorAll('.mega-cat-item');
+        function renderProductCard(p) {
+            return `
+                <article class="card-oferta" onclick="openProductDetail('${p.id}')">
+                    <span class="badge-desconto">${p.discount}</span>
+                    <div class="img-container">
+                        <img src="${p.image}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/200?text=Produto'">
+                    </div>
+                    <span class="store-tag">${p.store}</span>
+                    <h2 class="card-title">${p.title}</h2>
+                    <div class="price-section">
+                        <span class="old-price">${p.oldPrice}</span>
+                        <div class="current-price">${p.price}</div>
+                    </div>
+                    <a href="${p.affiliateLink}" target="_blank" onclick="event.stopPropagation()" class="btn-pegar">VER NA LOJA</a>
+                </article>
+            `;
+        }
+
+        function loadHomeFeed() {
+            const feed = document.getElementById('homeFeed');
+            feed.innerHTML = productsDatabase.map(p => renderProductCard(p)).join('');
+        }
+
+        function openProductDetail(productId) {
+            const product = productsDatabase.find(p => p.id === productId);
+            if (!product) return;
+
+            document.getElementById('detailBreadcrumbCat').innerText = product.subcat;
+            document.getElementById('detailBreadcrumbTitle').innerText = product.title;
+            document.getElementById('detailImg').src = product.image;
+            document.getElementById('detailStore').innerText = product.store;
+            document.getElementById('detailTitle').innerText = product.title;
+            document.getElementById('detailRatingText').innerText = product.rating;
+            document.getElementById('detailBadge').innerText = `${product.discount} OFF`;
+            document.getElementById('detailOldPrice').innerText = `De: ${product.oldPrice}`;
+            document.getElementById('detailCurrentPrice').innerText = product.price;
+            document.getElementById('detailInstallments').innerText = product.installments;
+            document.getElementById('detailAbout').innerText = product.about;
+            document.getElementById('detailAffiliateLink').href = product.affiliateLink;
+
+            const specsTable = document.getElementById('detailSpecs');
+            specsTable.innerHTML = Object.entries(product.specs).map(([key, val]) => `
+                <tr>
+                    <td>${key}</td>
+                    <td>${val}</td>
+                </tr>
+            `).join('');
+
+            switchPage('productDetailPage');
+        }
 
         function switchPage(pageId) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
@@ -1269,113 +1076,38 @@
 
             document.getElementById('categoryBreadcrumbName').innerText = categoryName;
             document.getElementById('categoryTitle').innerText = categoryName;
+            
+            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === categoryName.toLowerCase());
             const feed = document.getElementById('categoryFeed');
 
-            feed.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1;">Nenhuma oferta cadastrada nesta subcategoria no momento.</p>`;
+            if (filtered.length === 0) {
+                feed.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1;">Nenhuma oferta cadastrada nesta subcategoria no momento.</p>`;
+            } else {
+                feed.innerHTML = filtered.map(p => renderProductCard(p)).join('');
+            }
         }
 
         function openStoreOffers(storeKey) {
-            currentStoreKey = storeKey;
             storesPanel.classList.remove('open');
             storesBtn.classList.remove('active');
             switchPage('storePage');
 
-            const storeBreadcrumbName = document.getElementById('storeBreadcrumbName');
-            const storeTitle = document.getElementById('storeTitle');
-            const storeDomain = document.getElementById('storeDomain');
-            const storeLogoIcon = document.getElementById('storeLogoIcon');
-            const storeBanner = document.getElementById('storeBanner');
-            const bannerTitle = document.getElementById('bannerTitle');
-            const sidebarStoreName = document.getElementById('sidebarStoreName');
-            const sidebarStoreDesc = document.getElementById('sidebarStoreDesc');
-            const storePhysicalCheck = document.getElementById('storePhysicalCheck');
-            const storeFeed = document.getElementById('storeFeed');
+            const storeName = storeKey === 'amazon' ? 'Amazon' : 'Magazine Luiza';
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeTitle').innerHTML = `Ofertas ${storeName} <i class="fa-solid fa-circle-check"></i>`;
+            document.getElementById('storeDomain').innerText = storeKey === 'amazon' ? 'amazon.com.br' : 'magazineluiza.com.br';
 
-            if (storeKey === 'amazon') {
-                storeBreadcrumbName.innerText = 'Amazon';
-                storeTitle.innerHTML = 'Ofertas Amazon em Agosto 2026 <i class="fa-solid fa-circle-check"></i>';
-                storeDomain.innerText = 'amazon.com.br';
-                storeLogoIcon.className = 'store-header-logo amazon';
-                storeLogoIcon.innerHTML = '<i class="fa-brands fa-amazon"></i>';
-                storeBanner.className = 'store-banner-promobit amazon';
-                bannerTitle.innerText = 'As melhores ofertas da Amazon no seu WhatsApp';
-                sidebarStoreName.innerText = 'Amazon';
-                sidebarStoreDesc.innerText = 'A Amazon brasileira oferece catálogo completo com entrega rápida e frete grátis via Amazon Prime.';
-                storePhysicalCheck.className = 'cross';
-                storePhysicalCheck.innerHTML = '<i class="fa-solid fa-xmark"></i> Não possui loja física';
-
-                storeFeed.innerHTML = `
-                    <article class="card-oferta">
-                        <span class="badge-desconto">-38%</span>
-                        <div class="img-container"><img src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=400&q=80"></div>
-                        <span class="store-tag">Amazon</span>
-                        <h2 class="card-title">Fritadeira Air Fryer Inox 4L Mondial Sem Óleo 1500W</h2>
-                        <div class="price-section"><span class="old-price">R$ 449,90</span><div class="current-price">R$ 279,00</div></div>
-                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-                    </article>
-                `;
-            } else if (storeKey === 'magalu') {
-                storeBreadcrumbName.innerText = 'Magazine Luiza';
-                storeTitle.innerHTML = 'Ofertas Magazine Luiza em Agosto 2026 <i class="fa-solid fa-circle-check"></i>';
-                storeDomain.innerText = 'magazineluiza.com.br';
-                storeLogoIcon.className = 'store-header-logo magalu';
-                storeLogoIcon.innerHTML = 'Lu';
-                storeBanner.className = 'store-banner-promobit magalu';
-                bannerTitle.innerText = 'As melhores ofertas do Magalu no seu WhatsApp';
-                sidebarStoreName.innerText = 'Magazine Luiza';
-                sidebarStoreDesc.innerText = 'O Magazine Luiza é uma das maiores redes do varejo nacional, com retirada grátis em lojas físicas em todo o Brasil.';
-                storePhysicalCheck.className = 'check';
-                storePhysicalCheck.innerHTML = '<i class="fa-solid fa-check"></i> Possui loja física';
-
-                storeFeed.innerHTML = `
-                    <article class="card-oferta">
-                        <span class="badge-desconto">-45%</span>
-                        <div class="img-container"><img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=80"></div>
-                        <span class="store-tag">Magazine Luiza</span>
-                        <h2 class="card-title">Fone de Ouvido Bluetooth Sem Fio TWS Bateria Duradoura</h2>
-                        <div class="price-section"><span class="old-price">R$ 120,00</span><div class="current-price">R$ 65,90</div></div>
-                        <a href="#" class="btn-pegar">IR PARA A LOJA</a>
-                    </article>
-                `;
-            }
+            const filtered = productsDatabase.filter(p => p.store.toLowerCase().includes(storeKey.toLowerCase()));
+            document.getElementById('storeFeed').innerHTML = filtered.map(p => renderProductCard(p)).join('');
         }
 
-        function openStoreCupons(lojaKey) {
-            switchPage('cuponsDetailPage');
-            const breadcrumb = document.getElementById('cupomStoreBreadcrumb');
-            const title = document.getElementById('cupomStoreTitle');
-            const list = document.getElementById('cuponsList');
-
-            const nomeLoja = lojaKey === 'amazon' ? 'Amazon' : 'Magazine Luiza';
-            breadcrumb.innerText = nomeLoja;
-            title.innerText = `Cupons de Desconto ${nomeLoja}`;
-
-            const cuponsValidos = cuponsDatabase.filter(c => {
-                if (c.loja !== lojaKey) return false;
-                const dataCupom = new Date(c.data);
-                const limiteDias = new Date();
-                limiteDias.setDate(hoje.getDate() - 7);
-                return dataCupom >= limiteDias;
-            });
-
-            if (cuponsValidos.length === 0) {
-                list.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1;">Nenhum cupom ativo nos últimos 7 dias para esta loja.</p>`;
-                return;
-            }
-
-            list.innerHTML = cuponsValidos.map(c => `
-                <div class="cupom-card">
-                    <div class="cupom-date"><i class="fa-regular fa-calendar"></i> Publicado em: ${c.data.split('-').reverse().join('/')}</div>
-                    <div style="font-weight:bold; margin-top:8px; font-size:15px;">${c.desc}</div>
-                    <div class="cupom-code-badge">${c.codigo}</div>
-                    <button onclick="navigator.clipboard.writeText('${c.codigo}'); alert('Código copiado: ${c.codigo}');" class="btn-pegar" style="border:none; cursor:pointer;">COPIAR CÓDIGO</button>
-                </div>
-            `).join('');
-        }
-
-        function openStoreCuponsFromStorePage() {
-            openStoreCupons(currentStoreKey);
-        }
+        // ELEMENTOS E EVENTOS DE MENU
+        const megaBtn = document.getElementById('megaMenuBtn');
+        const megaPanel = document.getElementById('megaMenuPanel');
+        const storesBtn = document.getElementById('storesMenuBtn');
+        const storesPanel = document.getElementById('storesMenuPanel');
+        const megaContent = document.getElementById('megaContent');
+        const catItems = document.querySelectorAll('.mega-cat-item');
 
         megaBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1383,7 +1115,6 @@
             storesBtn.classList.remove('active');
             megaPanel.classList.toggle('open');
             megaBtn.classList.toggle('active');
-            adjustMenuLayout();
         });
 
         storesBtn.addEventListener('click', (e) => {
@@ -1405,61 +1136,19 @@
             }
         });
 
-        function adjustMenuLayout() {
-            const isMobile = window.innerWidth <= 880;
-            catItems.forEach(item => {
-                const targetId = item.getAttribute('data-target');
-                const subcatGroup = document.getElementById(targetId);
-
-                if (isMobile && subcatGroup) {
-                    if (item.classList.contains('active')) {
-                        item.after(subcatGroup);
-                    }
-                } else if (!isMobile && subcatGroup) {
-                    megaContent.appendChild(subcatGroup);
-                }
-            });
-        }
-
-        window.addEventListener('resize', adjustMenuLayout);
-
         catItems.forEach(item => {
-            const handleCategorySelect = (e) => {
-                const isMobile = window.innerWidth <= 880;
+            item.addEventListener('click', () => {
                 const targetId = item.getAttribute('data-target');
+                catItems.forEach(i => i.classList.remove('active'));
+                document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+                item.classList.add('active');
                 const targetGroup = document.getElementById(targetId);
-
-                if (isMobile) {
-                    if (e.type === 'click') {
-                        const wasActive = item.classList.contains('active');
-                        
-                        catItems.forEach(i => i.classList.remove('active'));
-                        document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
-
-                        if (!wasActive && targetGroup) {
-                            item.classList.add('active');
-                            targetGroup.classList.add('active');
-                            item.after(targetGroup);
-                        }
-                    }
-                } else {
-                    catItems.forEach(i => i.classList.remove('active'));
-                    document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
-
-                    item.classList.add('active');
-                    if (targetGroup) {
-                        megaContent.appendChild(targetGroup);
-                        targetGroup.classList.add('active');
-                    }
-                }
-            };
-
-            item.addEventListener('mouseenter', (e) => {
-                if (window.innerWidth > 880) handleCategorySelect(e);
+                if (targetGroup) targetGroup.classList.add('active');
             });
-
-            item.addEventListener('click', handleCategorySelect);
         });
+
+        // INICIALIZACAO
+        loadHomeFeed();
     </script>
 </body>
 </html>
