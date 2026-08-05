@@ -119,10 +119,81 @@
             color: var(--text-muted);
         }
 
-        /* Banner VIP WhatsApp */
+        /* Banner Carrossel Promocional (NOVO) */
+        .promo-carousel {
+            max-width: 1100px;
+            margin: 20px auto 10px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .carousel-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 120px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 20px 30px;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            display: flex;
+        }
+
+        .slide-1 { background: linear-gradient(135deg, #e67e22 0%, #d35400 100%); }
+        .slide-2 { background: linear-gradient(135deg, #0984e3 0%, #6c5ce7 100%); }
+        .slide-3 { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); }
+
+        .slide-info h4 { font-size: 20px; font-weight: 800; margin-bottom: 5px; }
+        .slide-info p { font-size: 14px; opacity: 0.9; }
+
+        .slide-btn {
+            background: #ffffff;
+            color: #2d3436;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: white;
+            width: 20px;
+            border-radius: 4px;
+        }
+
+        /* Banner VIP WhatsApp (MANTIDO) */
         .banner-vip {
             max-width: 1100px;
-            margin: 20px auto;
+            margin: 15px auto;
             padding: 0 20px;
         }
 
@@ -157,14 +228,24 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* Categorias */
-        .categories {
+        /* Categorias e Subcategorias Promobit (ATUALIZADO) */
+        .categories-wrapper {
             max-width: 1100px;
             margin: 0 auto 20px auto;
             padding: 0 20px;
+        }
+
+        .categories-menu {
             display: flex;
             gap: 10px;
             overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: thin;
+        }
+
+        .cat-item {
+            position: relative;
+            white-space: nowrap;
         }
 
         .cat-chip {
@@ -176,7 +257,9 @@
             color: var(--text-muted);
             border: 1px solid #3d3d4e;
             cursor: pointer;
-            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             transition: all 0.2s;
         }
 
@@ -184,6 +267,40 @@
             background: var(--primary);
             color: white;
             border-color: var(--primary);
+        }
+
+        /* Subcategorias Dropdown */
+        .subcategories {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #2b2b36;
+            border: 1px solid #3d3d4e;
+            border-radius: 10px;
+            padding: 10px 0;
+            min-width: 220px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            z-index: 50;
+            margin-top: 5px;
+        }
+
+        .cat-item:hover .subcategories {
+            display: block;
+        }
+
+        .subcategories a {
+            display: block;
+            padding: 8px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .subcategories a:hover {
+            background: #3d3d4e;
+            color: #fff;
         }
 
         /* Feed de Ofertas */
@@ -305,6 +422,8 @@
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; }
             .banner-content { flex-direction: column; text-align: center; gap: 12px; }
+            .carousel-container { height: 140px; }
+            .carousel-slide { flex-direction: column; text-align: center; gap: 8px; justify-content: center; padding: 15px; }
             .feed-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
             .card-oferta { padding: 10px; }
             .img-container { height: 130px; }
@@ -334,7 +453,39 @@
         </div>
     </header>
 
-    <!-- Banner WhatsApp Clicavel -->
+    <!-- Banner Carrossel Promocional (Rotativo) -->
+    <div class="promo-carousel">
+        <div class="carousel-container">
+            <a href="#" class="carousel-slide slide-1 active">
+                <div class="slide-info">
+                    <h4><i class="fa-solid fa-fire"></i> Até 60% OFF nas Melhores Categorias</h4>
+                    <p>Cupons exclusivos para Amazon, Mercado Livre e Shopee!</p>
+                </div>
+                <span class="slide-btn">APROVEITAR <i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+            <a href="#" class="carousel-slide slide-2">
+                <div class="slide-info">
+                    <h4><i class="fa-solid fa-mobile-screen-button"></i> Smartphones e Eletrônicos em Oferta</h4>
+                    <p>As melhores oportunidades de informática e celulares do dia.</p>
+                </div>
+                <span class="slide-btn">VER OFERTAS <i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+            <a href="#" class="carousel-slide slide-3">
+                <div class="slide-info">
+                    <h4><i class="fa-solid fa-ticket"></i> Cupons de Desconto Atualizados</h4>
+                    <p>Economize no carrinho usando nossos cupons testados.</p>
+                </div>
+                <span class="slide-btn">PEGAR CUPOM <i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+            <div class="carousel-dots">
+                <div class="dot active" onclick="setSlide(0)"></div>
+                <div class="dot" onclick="setSlide(1)"></div>
+                <div class="dot" onclick="setSlide(2)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner WhatsApp Clicável (Mantido) -->
     <div class="banner-vip">
         <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
             <div class="banner-text">
@@ -345,16 +496,90 @@
         </a>
     </div>
 
-    <!-- Categorias -->
-    <div class="categories">
-        <div class="cat-chip active">Tudo</div>
-        <div class="cat-chip">Tecnologia</div>
-        <div class="cat-chip">Casa & Cozinha</div>
-        <div class="cat-chip">Gamer</div>
-        <div class="cat-chip">Moda & Beleza</div>
+    <!-- Categorias e Subcategorias Promobit -->
+    <div class="categories-wrapper">
+        <div class="categories-menu">
+            <div class="cat-item">
+                <div class="cat-chip active"><i class="fa-solid fa-star"></i> Destaques</div>
+            </div>
+
+            <div class="cat-item">
+                <div class="cat-chip"><i class="fa-solid fa-mobile-screen"></i> Smartphones & Tablets <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></div>
+                <div class="subcategories">
+                    <a href="#">Android</a>
+                    <a href="#">iPhones</a>
+                    <a href="#">Smartwatch e Smartband</a>
+                    <a href="#">Tablets</a>
+                    <a href="#">Acessórios para Celulares</a>
+                </div>
+            </div>
+
+            <div class="cat-item">
+                <div class="cat-chip"><i class="fa-solid fa-tv"></i> TV, Áudio & Vídeo <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></div>
+                <div class="subcategories">
+                    <a href="#">TVs</a>
+                    <a href="#">Caixa de Som</a>
+                    <a href="#">Fone de Ouvido</a>
+                    <a href="#">Soundbar</a>
+                    <a href="#">Home Theater & Projetores</a>
+                </div>
+            </div>
+
+            <div class="cat-item">
+                <div class="cat-chip"><i class="fa-solid fa-laptop"></i> Informática & Games <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></div>
+                <div class="subcategories">
+                    <a href="#">Notebooks</a>
+                    <a href="#">Monitores</a>
+                    <a href="#">Playstation 5 / PS4</a>
+                    <a href="#">Xbox Series / One</a>
+                    <a href="#">Nintendo Switch</a>
+                    <a href="#">Periféricos & Peças</a>
+                </div>
+            </div>
+
+            <div class="cat-item">
+                <div class="cat-chip"><i class="fa-solid fa-couch"></i> Casa & Eletrodomésticos <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></div>
+                <div class="subcategories">
+                    <a href="#">Geladeiras</a>
+                    <a href="#">Máquinas de Lavar</a>
+                    <a href="#">Air Fryer & Eletroportáteis</a>
+                    <a href="#">Móveis & Decoração</a>
+                    <a href="#">Ferramentas & Jardim</a>
+                </div>
+            </div>
+
+            <div class="cat-item">
+                <div class="cat-chip"><i class="fa-solid fa-shirt"></i> Moda & Acessórios <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></div>
+                <div class="subcategories">
+                    <a href="#">Roupas Masculinas</a>
+                    <a href="#">Roupas Femininas</a>
+                    <a href="#">Tênis e Calçados</a>
+                    <a href="#">Relógios e Joias</a>
+                </div>
+            </div>
+
+            <div class="cat-item">
+                <div class="cat-chip"><i class="fa-solid fa-pump-soap"></i> Saúde & Beleza <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></div>
+                <div class="subcategories">
+                    <a href="#">Perfumes & Colônias</a>
+                    <a href="#">Maquiagem & Skin Care</a>
+                    <a href="#">Barbeadores & Secadores</a>
+                    <a href="#">Suplementos & Fitness</a>
+                </div>
+            </div>
+
+            <div class="cat-item">
+                <div class="cat-chip"><i class="fa-solid fa-cart-shopping"></i> Supermercado & Bebidas <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></div>
+                <div class="subcategories">
+                    <a href="#">Cervejas & Vinhos</a>
+                    <a href="#">Destilados</a>
+                    <a href="#">Alimentos & Limpeza</a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Feed de Produtos -->
+    <!-- Feed de Produtos (Pronto para receber seus links) -->
     <main class="feed-container">
 
         <!-- Produto 1 -->
@@ -418,6 +643,26 @@
         </article>
 
     </main>
+
+    <!-- Script para o Carrossel Rotativo -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function setSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        setInterval(() => {
+            let nextSlide = (currentSlide + 1) % slides.length;
+            setSlide(nextSlide);
+        }, 4000);
+    </script>
 
 </body>
 </html>
