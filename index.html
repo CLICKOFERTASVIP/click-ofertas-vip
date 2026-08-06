@@ -145,6 +145,45 @@
             border-color: var(--primary);
         }
 
+        .store-card-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #121216;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #2b2b36;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .store-card-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            background: #202028;
+        }
+
+        .store-icon-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            flex-shrink: 0;
+            color: #fff;
+        }
+
+        .store-icon-circle.amazon { background: #FF9900; color: #000; }
+        .store-icon-circle.magalu { background: #0086FF; }
+
+        .store-info-text { display: flex; flex-direction: column; }
+        .store-info-text strong { color: #ffffff; font-size: 14px; }
+        .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -295,6 +334,265 @@
             gap: 20px;
         }
 
+        .card-oferta {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid #2b2b36;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .card-oferta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        .badge-desconto {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--green-discount);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 6px;
+            z-index: 2;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: #ffffff;
+            border-radius: 8px;
+        }
+
+        .img-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .thumb-img {
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 6px;
+            padding: 4px;
+            border: 2px solid #2b2b36;
+            cursor: pointer;
+            object-fit: contain;
+            transition: border-color 0.2s;
+        }
+
+        .thumb-img:hover, .thumb-img.active {
+            border-color: var(--primary);
+        }
+
+        .store-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--badge-store);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            height: 40px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .price-section { margin-top: auto; margin-bottom: 12px; }
+        .old-price { font-size: 12px; color: var(--text-muted); text-decoration: line-through; }
+        .current-price { font-size: 18px; font-weight: 800; color: var(--text-dark); }
+
+        .btn-pegar {
+            display: block;
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-pegar:hover { background: var(--primary-hover); }
+
+        .product-detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--card-bg);
+            border: 1px solid #2b2b36;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .detail-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .main-img-box {
+            background: #ffffff;
+            border-radius: 12px;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .main-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .detail-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-title {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .detail-rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #FFC107;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .detail-rating span { color: var(--text-muted); font-size: 13px; }
+
+        .detail-price-box {
+            background: #18181c;
+            border: 1px solid #2b2b36;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .detail-badge-off {
+            background: var(--green-discount);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .detail-old-price {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .detail-current-price {
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 4px 0;
+        }
+
+        .detail-installments {
+            font-size: 13px;
+            color: var(--green-discount);
+            font-weight: 600;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        .specs-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #2b2b36;
+        }
+
+        .specs-table td:first-child {
+            color: var(--text-muted);
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .detail-description {
+            margin-top: 20px;
+        }
+
+        .detail-description h4 {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .detail-description p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .btn-buy-now {
+            background: #FF9900;
+            color: #000;
+            font-weight: 800;
+            font-size: 16px;
+            text-align: center;
+            padding: 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn-buy-now:hover {
+            transform: scale(1.02);
+            background: #e68a00;
+        }
+
         @media (max-width: 768px) {
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; max-width: 100%; }
@@ -352,6 +650,14 @@
             .mega-cat-item.active::after {
                 transform: rotate(180deg);
             }
+
+            .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
+            .main-img-box { height: 260px; }
+            .banner-content { flex-direction: column; text-align: center; gap: 12px; }
+            .feed-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+            .card-oferta { padding: 10px; }
+            .img-container { height: 130px; }
+            .current-price { font-size: 16px; }
         }
     </style>
 </head>
@@ -451,7 +757,6 @@
                         </div>
                     </div>
 
-                    <!-- COLUNA DE INFORMÁTICA CORRIGIDA -->
                     <div class="subcat-group" id="cat-informatica">
                         <div class="subcat-column">
                             <h4>Informática Geral</h4>
@@ -493,46 +798,55 @@
                             <a onclick="openCategoryPage('Aspiradores')">Aspiradores e Robôs</a>
                             <a onclick="openCategoryPage('Cafeteiras')">Cafeteiras Elétricas</a>
                             <a onclick="openCategoryPage('Liquidificadores')">Liquidificadores e Batedeiras</a>
+                            <a onclick="openCategoryPage('Panelas de Pressão')">Panelas de Pressão</a>
+                            <a onclick="openCategoryPage('Panelas de Pressão Elétricas')">Panelas de Pressão Elétricas</a>
                         </div>
                         <div class="subcat-column">
                             <h4>Móveis e Decoração</h4>
                             <a onclick="openCategoryPage('Sofás')">Sofás e Poltronas</a>
                             <a onclick="openCategoryPage('Camas')">Camas e Colchões</a>
                             <a onclick="openCategoryPage('Iluminação')">Iluminação e Lâmpadas Smart</a>
+                            <a onclick="openCategoryPage('Organização')">Organização da Casa</a>
                         </div>
                     </div>
 
                     <div class="subcat-group" id="cat-moda">
                         <div class="subcat-column">
-                            <h4>Moda</h4>
+                            <h4>Moda Masculina e Feminina</h4>
                             <a onclick="openCategoryPage('Roupas')">Roupas e Camisetas</a>
                             <a onclick="openCategoryPage('Calçados')">Tênis e Sapatos</a>
+                            <a onclick="openCategoryPage('Acessórios de Moda')">Relógios e Óculos</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Beleza</h4>
+                            <h4>Perfumaria e Cosméticos</h4>
                             <a onclick="openCategoryPage('Perfumes')">Perfumes Importados e Nacionais</a>
                             <a onclick="openCategoryPage('Maquiagem')">Maquiagem e Skincare</a>
+                            <a onclick="openCategoryPage('Cabelos')">Cuidado com os Cabelos</a>
                         </div>
                         <div class="subcat-column">
                             <h4>Cuidados Pessoais</h4>
                             <a onclick="openCategoryPage('Barbeadores')">Barbeadores e Aparadores</a>
                             <a onclick="openCategoryPage('Secadores')">Secadores e Pranchas</a>
+                            <a onclick="openCategoryPage('Higiene')">Higiene Pessoal</a>
                         </div>
                     </div>
 
                     <div class="subcat-group" id="cat-esporte">
                         <div class="subcat-column">
-                            <h4>Fitness</h4>
+                            <h4>Fitness e Musculação</h4>
                             <a onclick="openCategoryPage('Suplementos')">Suplementos e Whey Protein</a>
-                            <a onclick="openCategoryPage('Equipamentos')">Equipamentos de Ginástica</a>
+                            <a onclick="openCategoryPage('Equipamentos')">Halteres e Elásticos</a>
+                            <a onclick="openCategoryPage('Roupas Esportivas')">Roupas de Academia</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Ciclismo</h4>
+                            <h4>Ciclismo e Mobilidade</h4>
                             <a onclick="openCategoryPage('Bicicletas')">Bicicletas e Acessórios</a>
+                            <a onclick="openCategoryPage('Patinetes')">Patinetes Elétricos</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Lazer</h4>
-                            <a onclick="openCategoryPage('Camping')">Barracas e Mochilas</a>
+                            <h4>Camping e Lazer</h4>
+                            <a onclick="openCategoryPage('Barracas')">Barracas e Mochilas</a>
+                            <a onclick="openCategoryPage('Garrafas')">Garrafas e Copos Térmicos</a>
                         </div>
                     </div>
 
@@ -540,38 +854,53 @@
                         <div class="subcat-column">
                             <h4>Mundo Bebê</h4>
                             <a onclick="openCategoryPage('Fraldas')">Fraldas e Lencinhos</a>
-                            <a onclick="openCategoryPage('Carrinhos')">Carrinhos e Cadeirinhas</a>
+                            <a onclick="openCategoryPage('Carrinhos')">Carrinhos de Bebê e Cadeirinhas</a>
+                            <a onclick="openCategoryPage('Alimentação Bebê')">Mamadeiras e Chupetas</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Brinquedos</h4>
+                            <h4>Brinquedos e Jogos</h4>
                             <a onclick="openCategoryPage('Bonecos')">Bonecos e Action Figures</a>
-                            <a onclick="openCategoryPage('Lego')">Lego e Blocos</a>
+                            <a onclick="openCategoryPage('Lego')">Lego e Blocos de Montar</a>
+                            <a onclick="openCategoryPage('Jogos de Tabuleiro')">Jogos de Tabuleiro</a>
                         </div>
                     </div>
 
                     <div class="subcat-group" id="cat-ferramentas">
                         <div class="subcat-column">
-                            <h4>Ferramentas</h4>
+                            <h4>Ferramentas Elétricas</h4>
                             <a onclick="openCategoryPage('Furadeiras e Parafusadeiras')">Furadeiras e Parafusadeiras</a>
                             <a onclick="openCategoryPage('Serras')">Serras e Lixadeiras</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Manuais e Organização</h4>
+                            <a onclick="openCategoryPage('Maletas de Ferramentas')">Maletas de Ferramentas</a>
+                            <a onclick="openCategoryPage('Kits Ferramentas')">Kits de Chaves e Alicates</a>
                         </div>
                     </div>
 
                     <div class="subcat-group" id="cat-automotivo">
                         <div class="subcat-column">
-                            <h4>Automotivo</h4>
+                            <h4>Acessórios Automotivos</h4>
                             <a onclick="openCategoryPage('Som Automotivo')">Som e Central Multimídia</a>
                             <a onclick="openCategoryPage('Pneus')">Pneus e Rodas</a>
+                            <a onclick="openCategoryPage('Manutenção Auto')">Óleos e Limpeza Automotiva</a>
                         </div>
                     </div>
 
                     <div class="subcat-group" id="cat-supermercado">
                         <div class="subcat-column">
-                            <h4>Supermercado</h4>
-                            <a onclick="openCategoryPage('Cafe e Cha')">Café e Chá</a>
-                            <a onclick="openCategoryPage('Bebidas Alcoolicas')">Cervejas e Vinhos</a>
+                            <h4>Alimentos e Bebidas</h4>
+                            <a onclick="openCategoryPage('Café e Chá')">Café, Chás e Cápsulas</a>
+                            <a onclick="openCategoryPage('Chocolates')">Chocolates e Doces</a>
+                            <a onclick="openCategoryPage('Bebidas Alcoólicas')">Cervejas, Vinhos e Destilados</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Limpeza da Casa</h4>
+                            <a onclick="openCategoryPage('Sabão em Pó')">Sabão em Pó e Amaciante</a>
+                            <a onclick="openCategoryPage('Detergentes')">Detergentes e Desinfetantes</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -587,8 +916,97 @@
                 <span class="btn-wpp">ENTRAR NO GRUPO</span>
             </a>
         </div>
+
         <h2 style="font-size:20px; font-weight:800; margin-bottom: 15px;">Destaques do Dia</h2>
+
         <main class="feed-container" id="homeFeed"></main>
+    </div>
+
+    <div id="productDetailPage" class="page-view">
+        <div class="breadcrumb">
+            <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; 
+            <span id="detailBreadcrumbCat">Categoria</span> &gt; 
+            <span id="detailBreadcrumbTitle">Produto</span>
+        </div>
+
+        <div class="product-detail-layout">
+            <div class="detail-gallery">
+                <div class="main-img-box">
+                    <img id="detailImg" src="" alt="Produto">
+                </div>
+                <div class="gallery-thumbnails" id="detailThumbnails"></div>
+            </div>
+
+            <div class="detail-info">
+                <span class="store-tag" id="detailStore">Amazon</span>
+                <h1 class="detail-title" id="detailTitle">Nome do Produto</h1>
+
+                <div class="detail-rating" id="detailRating">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    <span id="detailRatingText">4,8 (5 avaliações)</span>
+                </div>
+
+                <div class="detail-price-box">
+                    <span class="detail-badge-off" id="detailBadge">-9% OFF</span>
+                    <div class="detail-old-price" id="detailOldPrice">De: R$ 2.999,00</div>
+                    <div class="detail-current-price" id="detailCurrentPrice">R$ 2.699,99</div>
+                    <div class="detail-installments" id="detailInstallments">Em até 12x de R$ 225,10 sem juros</div>
+                </div>
+
+                <div class="detail-description">
+                    <h4>Especificações Principais</h4>
+                    <table class="specs-table" id="detailSpecs"></table>
+                    
+                    <h4 style="margin-top: 15px;">Sobre este item</h4>
+                    <p id="detailAbout"></p>
+                </div>
+
+                <a href="#" id="detailAffiliateLink" target="_blank" class="btn-buy-now">
+                    <i class="fa-solid fa-cart-shopping"></i> COMPRAR NA LOJA (LINK OFICIAL)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="categoryPage" class="page-view">
+        <div class="breadcrumb">
+            <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <span id="categoryBreadcrumbName">Categoria</span>
+        </div>
+        <h2 id="categoryTitle" style="font-size: 24px; font-weight: 800; margin-bottom: 20px;">Produtos</h2>
+        <div class="feed-container" id="categoryFeed"></div>
+    </div>
+
+    <div id="storePage" class="page-view">
+        <div class="breadcrumb">
+            <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <a href="#">Lojas</a> &gt; <span id="storeBreadcrumbName">Amazon</span>
+        </div>
+
+        <div class="store-page-header">
+            <div class="store-header-logo amazon" id="storeLogoIcon">
+                <i class="fa-brands fa-amazon"></i>
+            </div>
+            <div class="store-header-info">
+                <h1 id="storeTitle">Ofertas Amazon <i class="fa-solid fa-circle-check"></i></h1>
+                <span id="storeDomain">amazon.com.br</span>
+            </div>
+        </div>
+
+        <div class="feed-container" id="storeFeed"></div>
+    </div>
+
+    <div id="cuponsHubPage" class="page-view">
+        <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons</div>
+        <h2>Encontre cupons das melhores lojas</h2>
+        <div class="cupons-grid">
+            <div class="cupom-store-card" onclick="openStoreCupons('amazon')">
+                <div class="store-icon-circle amazon"><i class="fa-brands fa-amazon"></i></div>
+                <span>Amazon</span>
+            </div>
+            <div class="cupom-store-card" onclick="openStoreCupons('magalu')">
+                <div class="store-icon-circle magalu">Lu</div>
+                <span>Magazine Luiza</span>
+            </div>
+        </div>
     </div>
 </body>
 </html>
