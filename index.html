@@ -597,55 +597,46 @@
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; max-width: 100%; }
 
-            /* Garante que o painel principal se comporte bem no mobile */
+            /* Garante que o painel do menu flutue corretamente logo abaixo da barra */
             .mega-menu-panel {
-                position: relative; /* Mantém no fluxo para empurrar corretamente se necessário, ou ajuste para absolute se preferir flutuante */
+                position: absolute;
+                top: 100%;
+                left: 0;
                 width: 100%;
-                box-shadow: none;
                 background: #121216;
-                padding: 0;
-                margin-top: 10px;
+                padding: 10px;
+                box-sizing: border-box;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+                max-height: 80vh;
+                overflow-y: auto;
+                display: none; /* Controlado pelo seu JS ao abrir o menu */
+                flex-direction: column;
+            }
+
+            .mega-menu-panel.active {
+                display: flex;
             }
 
             .mega-sidebar {
                 width: 100%;
-                max-height: none;
-                overflow: visible;
-                border-right: none;
-            }
-
-            .mega-content {
-                padding: 0;
-                max-height: none;
-                overflow: visible;
-                width: 100%;
-            }
-
-            /* O truque da sanfona: esconde por padrão e abre em bloco logo abaixo */
-            .subcat-group {
-                display: none !important; /* Oculto por padrão */
-                width: 100%;
-                background: #181820;
-                padding: 10px 15px 15px 25px;
-                box-sizing: border-box;
-                border-bottom: 1px for #23232c;
-            }
-
-            /* Quando ativo via JS, ele aparece logo abaixo do item */
-            .subcat-group.active {
-                display: block !important; 
-            }
-
-            .mega-cat-item {
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
+                flex-direction: column;
+                gap: 5px;
+                border-right: none;
+                max-height: none;
+            }
+
+            /* Cada item de categoria no mobile */
+            .mega-cat-item {
                 width: 100%;
                 padding: 14px 15px;
                 background: #1e1e28;
-                margin-bottom: 2px;
                 border-radius: 6px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 box-sizing: border-box;
+                cursor: pointer;
             }
 
             .mega-cat-item::after {
@@ -658,6 +649,34 @@
 
             .mega-cat-item.active::after {
                 transform: rotate(180deg);
+            }
+
+            /* Container de conteúdo que guarda os subcat-groups */
+            .mega-content {
+                width: 100%;
+                padding: 0;
+                background: transparent;
+                max-height: none;
+                overflow: visible;
+            }
+
+            /* Por padrão, esconde todas as subcategorias */
+            .subcat-group {
+                display: none !important;
+                width: 100%;
+                background: #181820;
+                padding: 12px 15px;
+                margin-top: 2px;
+                margin-bottom: 8px;
+                border-radius: 6px;
+                box-sizing: border-box;
+            }
+
+            /* Quando a categoria é clicada, exibe o seu grupo correspondente */
+            .subcat-group.active {
+                display: flex !important;
+                flex-direction: column;
+                gap: 8px;
             }
 
             /* Ajustes gerais de layout mobile */
