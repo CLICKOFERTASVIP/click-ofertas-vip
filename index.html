@@ -597,11 +597,15 @@
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; max-width: 100%; }
 
+            /* CORREÇÃO DO MENU SANFONADO NO CELULAR */
             .mega-menu-panel {
-                flex-direction: column;
-                width: calc(100vw - 20px);
+                position: fixed;
+                top: 110px; /* Ajuste conforme a altura real do seu cabeçalho no mobile */
                 left: 10px;
-                max-height: 75vh;
+                width: calc(100vw - 20px);
+                max-height: calc(100vh - 130px);
+                flex-direction: column;
+                margin-top: 0;
                 overflow-y: auto;
             }
 
@@ -658,6 +662,7 @@
             .card-oferta { padding: 10px; }
             .img-container { height: 130px; }
             .current-price { font-size: 16px; }
+    
         }
     </style>
 </head>
