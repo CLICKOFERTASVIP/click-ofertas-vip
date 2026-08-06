@@ -594,6 +594,7 @@
         .store-icon-circle.amazon { background: #FF9900; color: #000; }
         .store-icon-circle.magalu { background: #0086FF; }
 
+        /* Estilos Mobile Ajustados para o Acordeão */
         @media (max-width: 768px) {
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; max-width: 100%; }
@@ -614,30 +615,16 @@
             }
 
             .mega-content {
+                display: none !important; /* Esconde o painel padrão lateral do desktop */
                 padding: 0;
-                max-height: none;
-                overflow: visible;
-            }
-
-            .subcat-group {
-                display: none;
-                grid-template-columns: 1fr;
-                padding: 12px 15px;
-                background: #121216;
-                border-bottom: 1px solid #23232c;
-                gap: 15px;
-            }
-
-            .subcat-group.active {
-                display: flex;
-                flex-direction: column;
             }
 
             .mega-cat-item {
                 justify-content: space-between;
                 border-bottom: 1px solid #1a1a22;
                 border-radius: 0;
-                padding: 12px 10px;
+                padding: 12px 15px;
+                flex-wrap: wrap; /* Permite que o subcat-group fique abaixo do item no mobile */
             }
 
             .mega-cat-item::after {
@@ -650,6 +637,22 @@
 
             .mega-cat-item.active::after {
                 transform: rotate(180deg);
+            }
+
+            /* Faz com que o grupo de subcategorias apareça direto dentro do item no mobile */
+            .mega-cat-item .subcat-group-mobile {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 10px 5px 10px;
+                background: #141418;
+                margin-top: 10px;
+                border-top: 1px solid #23232c;
+            }
+
+            .mega-cat-item.active .subcat-group-mobile {
+                display: flex;
             }
 
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
@@ -694,47 +697,13 @@
             </button>
 
             <div class="mega-menu-panel" id="megaMenuPanel">
-                <div class="mega-sidebar">
-                    <div class="mega-cat-item" data-target="cat-eletronicos">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                        <span>Smartphones, Eletrônicos e TV</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-informatica">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
-                        <span>Informática e Games</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-casa">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
-                        <span>Casa e Eletrodomésticos</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-moda">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-shirt"></i></div>
-                        <span>Moda e Beleza</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-esporte">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-dumbbell"></i></div>
-                        <span>Esporte e Lazer</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-bebes">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-baby"></i></div>
-                        <span>Bebês e Brinquedos</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-ferramentas">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-wrench"></i></div>
-                        <span>Ferramentas e Construção</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-automotivo">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-car"></i></div>
-                        <span>Automotivo</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-supermercado">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-cart-shopping"></i></div>
-                        <span>Supermercado e Bebidas</span>
-                    </div>
+                <div class="mega-sidebar" id="megaSidebarContainer">
+                    <!-- Itens injetados via JS para suportar o formato acordeão mobile -->
                 </div>
 
-                <div class="mega-content">
-                    <div class="subcat-group" id="cat-eletronicos">
+                <!-- Conteúdo original mantido para telas grandes (Desktop) -->
+                <div class="mega-content" id="megaContentDesktop">
+                    <div class="subcat-group" id="d-cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Celulares e Telefonia</h4>
                             <a onclick="openCategoryPage('Smartphones Android')">Smartphones Android</a>
@@ -758,7 +727,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-informatica">
+                    <div class="subcat-group" id="d-cat-informatica">
                         <div class="subcat-column">
                             <h4>Informática Geral</h4>
                             <a onclick="openCategoryPage('Notebooks')">Notebooks e Laptops</a>
@@ -785,7 +754,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-casa">
+                    <div class="subcat-group" id="d-cat-casa">
                         <div class="subcat-column">
                             <h4>Eletrodomésticos</h4>
                             <a onclick="openCategoryPage('Geladeiras e Freezers')">Geladeiras e Freezers</a>
@@ -813,7 +782,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-moda">
+                    <div class="subcat-group" id="d-cat-moda">
                         <div class="subcat-column">
                             <h4>Moda Masculina e Feminina</h4>
                             <a onclick="openCategoryPage('Roupas')">Roupas e Camisetas</a>
@@ -834,7 +803,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-esporte">
+                    <div class="subcat-group" id="d-cat-esporte">
                         <div class="subcat-column">
                             <h4>Fitness e Musculação</h4>
                             <a onclick="openCategoryPage('Suplementos')">Suplementos e Whey Protein</a>
@@ -853,7 +822,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-bebes">
+                    <div class="subcat-group" id="d-cat-bebes">
                         <div class="subcat-column">
                             <h4>Mundo Bebê</h4>
                             <a onclick="openCategoryPage('Fraldas')">Fraldas e Lencinhos</a>
@@ -868,7 +837,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-ferramentas">
+                    <div class="subcat-group" id="d-cat-ferramentas">
                         <div class="subcat-column">
                             <h4>Ferramentas Elétricas</h4>
                             <a onclick="openCategoryPage('Furadeiras e Parafusadeiras')">Furadeiras e Parafusadeiras</a>
@@ -881,7 +850,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-automotivo">
+                    <div class="subcat-group" id="d-cat-automotivo">
                         <div class="subcat-column">
                             <h4>Acessórios Automotivos</h4>
                             <a onclick="openCategoryPage('Som Automotivo')">Som e Central Multimídia</a>
@@ -890,7 +859,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-supermercado">
+                    <div class="subcat-group" id="d-cat-supermercado">
                         <div class="subcat-column">
                             <h4>Alimentos e Bebidas</h4>
                             <a onclick="openCategoryPage('Café e Chá')">Café, Chás e Cápsulas</a>
@@ -903,7 +872,6 @@
                             <a onclick="openCategoryPage('Detergentes')">Detergentes e Desinfetantes</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -1030,7 +998,7 @@
                 installments: 'Em até 10x de R$ 318,90 sem juros',
                 affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
                 images: [
-                    'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/46bacfe5ca0279c7f5eabfacee0ad762.jpg'
+                    'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-377l-magazineluiza/240425200/46bacfe5ca0279c7f5eabfacee0ad762.jpg'
                 ],
                 rating: '4,8 (1.200 avaliações)',
                 specs: {
@@ -1143,6 +1111,42 @@
             openCategoryPage(storeName);
         }
 
+        // Construção Dinâmica do Menu Lateral para unificar Desktop e Acordeão Mobile com as respectivas subcategorias
+        const categoriesData = [
+            { id: 'eletronicos', name: 'Smartphones, Eletrônicos e TV', icon: 'fa-mobile-screen-button' },
+            { id: 'informatica', name: 'Informática e Games', icon: 'fa-gamepad' },
+            { id: 'casa', name: 'Casa e Eletrodomésticos', icon: 'fa-couch' },
+            { id: 'moda', name: 'Moda e Beleza', icon: 'fa-shirt' },
+            { id: 'esporte', name: 'Esporte e Lazer', icon: 'fa-dumbbell' },
+            { id: 'bebes', name: 'Bebês e Brinquedos', icon: 'fa-baby' },
+            { id: 'ferramentas', name: 'Ferramentas e Construção', icon: 'fa-wrench' },
+            { id: 'automotivo', name: 'Automotivo', icon: 'fa-car' },
+            { id: 'supermercado', name: 'Supermercado e Bebidas', icon: 'fa-cart-shopping' }
+        ];
+
+        function buildMegaMenu() {
+            const sidebar = document.getElementById('megaSidebarContainer');
+            sidebar.innerHTML = '';
+
+            categoriesData.forEach((cat, index) => {
+                const desktopSubcatHTML = document.getElementById(`d-cat-${cat.id}`).innerHTML;
+
+                const item = document.createElement('div');
+                item.className = 'mega-cat-item';
+                item.setAttribute('data-target', cat.id);
+                item.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:12px; flex:1;">
+                        <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
+                        <span>${cat.name}</span>
+                    </div>
+                    <div class="subcat-group-mobile">
+                        ${desktopSubcatHTML}
+                    </div>
+                `;
+                sidebar.appendChild(item);
+            });
+        }
+
         // Controle do Mega Menu
         const megaMenuBtn = document.getElementById('megaMenuBtn');
         const megaMenuPanel = document.getElementById('megaMenuPanel');
@@ -1160,38 +1164,41 @@
             }
         });
 
-        // Alternar abas das categorias no menu lateral
-        const catItems = document.querySelectorAll('.mega-cat-item');
-        const subcatGroups = document.querySelectorAll('.subcat-group');
+        // Eventos de clique e hover nas categorias
+        function initMenuEvents() {
+            const catItems = document.querySelectorAll('.mega-cat-item');
+            const subcatGroups = document.querySelectorAll('#megaContentDesktop .subcat-group');
 
-        catItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                catItems.forEach(i => i.classList.remove('active'));
-                subcatGroups.forEach(g => g.classList.remove('active'));
-
-                item.classList.add('active');
+            catItems.forEach(item => {
                 const targetId = item.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
-            });
 
-            // Para dispositivos mobile (clique)
-            item.addEventListener('click', (e) => {
-                if(window.innerWidth <= 768) {
-                    e.stopPropagation();
-                    const targetId = item.getAttribute('data-target');
-                    const targetGroup = document.getElementById(targetId);
-                    
-                    const isActive = targetGroup.classList.contains('active');
-                    subcatGroups.forEach(g => g.classList.remove('active'));
-                    catItems.forEach(i => i.classList.remove('active'));
+                item.addEventListener('mouseenter', () => {
+                    if(window.innerWidth > 768) {
+                        catItems.forEach(i => i.classList.remove('active'));
+                        subcatGroups.forEach(g => g.classList.remove('active'));
 
-                    if(!isActive) {
                         item.classList.add('active');
-                        targetGroup.classList.add('active');
+                        const desktopGroup = document.getElementById(`d-${targetId}`);
+                        if(desktopGroup) desktopGroup.classList.add('active');
                     }
-                }
+                });
+
+                item.addEventListener('click', (e) => {
+                    if(window.innerWidth <= 768) {
+                        e.stopPropagation();
+                        const isActive = item.classList.contains('active');
+                        
+                        // Fecha todos no mobile
+                        catItems.forEach(i => i.classList.remove('active'));
+
+                        // Se não estava aberto, abre este
+                        if(!isActive) {
+                            item.classList.add('active');
+                        }
+                    }
+                });
             });
-        });
+        }
 
         // Barra de Pesquisa
         document.getElementById('searchInput').addEventListener('input', (e) => {
@@ -1218,7 +1225,12 @@
         // Inicialização
         window.onload = () => {
             renderHomeFeed();
-            if(catItems.length > 0) {
+            buildMegaMenu();
+            initMenuEvents();
+
+            const catItems = document.querySelectorAll('.mega-cat-item');
+            const subcatGroups = document.querySelectorAll('#megaContentDesktop .subcat-group');
+            if(catItems.length > 0 && subcatGroups.length > 0) {
                 catItems[0].classList.add('active');
                 subcatGroups[0].classList.add('active');
             }
