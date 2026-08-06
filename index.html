@@ -597,16 +597,14 @@
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; max-width: 100%; }
 
-            /* CORREÇÃO DO MENU SANFONADO NO CELULAR */
+            /* Garante que o painel principal se comporte bem no mobile */
             .mega-menu-panel {
-                position: fixed;
-                top: 110px; /* Ajuste conforme a altura real do seu cabeçalho no mobile */
-                left: 10px;
-                width: calc(100vw - 20px);
-                max-height: calc(100vh - 130px);
-                flex-direction: column;
-                margin-top: 0;
-                overflow-y: auto;
+                position: relative; /* Mantém no fluxo para empurrar corretamente se necessário, ou ajuste para absolute se preferir flutuante */
+                width: 100%;
+                box-shadow: none;
+                background: #121216;
+                padding: 0;
+                margin-top: 10px;
             }
 
             .mega-sidebar {
@@ -620,27 +618,34 @@
                 padding: 0;
                 max-height: none;
                 overflow: visible;
+                width: 100%;
             }
 
+            /* O truque da sanfona: esconde por padrão e abre em bloco logo abaixo */
             .subcat-group {
-                display: none;
-                grid-template-columns: 1fr;
-                padding: 12px 15px;
-                background: #121216;
-                border-bottom: 1px solid #23232c;
-                gap: 15px;
+                display: none !important; /* Oculto por padrão */
+                width: 100%;
+                background: #181820;
+                padding: 10px 15px 15px 25px;
+                box-sizing: border-box;
+                border-bottom: 1px for #23232c;
             }
 
+            /* Quando ativo via JS, ele aparece logo abaixo do item */
             .subcat-group.active {
-                display: flex;
-                flex-direction: column;
+                display: block !important; 
             }
 
             .mega-cat-item {
+                display: flex;
                 justify-content: space-between;
-                border-bottom: 1px solid #1a1a22;
-                border-radius: 0;
-                padding: 12px 10px;
+                align-items: center;
+                width: 100%;
+                padding: 14px 15px;
+                background: #1e1e28;
+                margin-bottom: 2px;
+                border-radius: 6px;
+                box-sizing: border-box;
             }
 
             .mega-cat-item::after {
@@ -655,6 +660,7 @@
                 transform: rotate(180deg);
             }
 
+            /* Ajustes gerais de layout mobile */
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
             .main-img-box { height: 260px; }
             .banner-content { flex-direction: column; text-align: center; gap: 12px; }
@@ -662,7 +668,6 @@
             .card-oferta { padding: 10px; }
             .img-container { height: 130px; }
             .current-price { font-size: 16px; }
-    
         }
     </style>
 </head>
