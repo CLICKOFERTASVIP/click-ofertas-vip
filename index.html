@@ -594,71 +594,75 @@
         }
 
         @media (max-width: 768px) {
-            .header-container { flex-direction: column; }
-            .search-bar { width: 100%; max-width: 100%; }
+    .header-container { flex-direction: column; }
+    .search-bar { width: 100%; max-width: 100%; }
 
-            .mega-menu-panel {
-                flex-direction: column;
-                width: calc(100vw - 20px);
-                left: 10px;
-                max-height: 75vh;
-                overflow-y: auto;
-            }
+    /* CORREÇÃO AQUI: Garante que o menu flutue e sobreponha os elementos */
+    .mega-menu-panel {
+        position: absolute; /* Mantém o menu flutuante sobre os demais elementos */
+        top: 100%;          /* Cola exatamente abaixo da barra de navegação */
+        left: 10px;
+        width: calc(100vw - 20px);
+        max-height: 75vh;
+        overflow-y: auto;
+        flex-direction: column;
+        z-index: 9999;      /* Garante que fique na camada mais alta da tela */
+    }
 
-            .mega-sidebar {
-                width: 100%;
-                max-height: none;
-                overflow: visible;
-                border-right: none;
-            }
+    .mega-sidebar {
+        width: 100%;
+        max-height: none;
+        overflow: visible;
+        border-right: none;
+    }
 
-            .mega-content {
-                padding: 0;
-                max-height: none;
-                overflow: visible;
-            }
+    .mega-content {
+        padding: 0;
+        max-height: none;
+        overflow: visible;
+    }
 
-            .subcat-group {
-                display: none;
-                grid-template-columns: 1fr;
-                padding: 12px 15px;
-                background: #121216;
-                border-bottom: 1px solid #23232c;
-                gap: 15px;
-            }
+    .subcat-group {
+        display: none;
+        grid-template-columns: 1fr;
+        padding: 12px 15px;
+        background: #121216;
+        border-bottom: 1px solid #23232c;
+        gap: 15px;
+    }
 
-            .subcat-group.active {
-                display: flex;
-                flex-direction: column;
-            }
+    .subcat-group.active {
+        display: flex;
+        flex-direction: column;
+    }
 
-            .mega-cat-item {
-                justify-content: space-between;
-                border-bottom: 1px solid #1a1a22;
-                border-radius: 0;
-                padding: 12px 10px;
-            }
+    .mega-cat-item {
+        justify-content: space-between;
+        border-bottom: 1px solid #1a1a22;
+        border-radius: 0;
+        padding: 12px 10px;
+    }
 
-            .mega-cat-item::after {
-                content: '\f078';
-                font-family: 'Font Awesome 6 Free';
-                font-weight: 900;
-                font-size: 11px;
-                transition: transform 0.2s;
-            }
+    .mega-cat-item::after {
+        content: '\f078';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        font-size: 11px;
+        transition: transform 0.2s;
+    }
 
-            .mega-cat-item.active::after {
-                transform: rotate(180deg);
-            }
+    .mega-cat-item.active::after {
+        transform: rotate(180deg);
+    }
 
-            .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
-            .main-img-box { height: 260px; }
-            .banner-content { flex-direction: column; text-align: center; gap: 12px; }
-            .feed-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-            .card-oferta { padding: 10px; }
-            .img-container { height: 130px; }
-            .current-price { font-size: 16px; }
-        }
+    .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
+    .main-img-box { height: 260px; }
+    .banner-content { flex-direction: column; text-align: center; gap: 12px; }
+    .feed-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+    .card-oferta { padding: 10px; }
+    .img-container { height: 130px; }
+    .current-price { font-size: 16px; }
+}
     </style>
 </head>
 <body>
