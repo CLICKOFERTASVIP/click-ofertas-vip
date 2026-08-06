@@ -123,7 +123,7 @@
             position: relative;
         }
 
-        .btn-categories-trigger, .btn-stores-trigger, .btn-cupons-trigger {
+        .btn-categories-trigger, .btn-cupons-trigger {
             background: #18181c;
             color: #fff;
             border: 1px solid #2b2b36;
@@ -140,31 +140,9 @@
         }
 
         .btn-categories-trigger:hover, .btn-categories-trigger.active,
-        .btn-stores-trigger:hover, .btn-stores-trigger.active,
         .btn-cupons-trigger:hover, .btn-cupons-trigger.active {
             background: #2b2b36;
             border-color: var(--primary);
-        }
-
-        .stores-menu-panel {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 160px;
-            width: 480px;
-            background: #18181c;
-            border: 1px solid #2b2b36;
-            border-radius: 12px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-            z-index: 999;
-            margin-top: 5px;
-            padding: 15px;
-        }
-
-        .stores-menu-panel.open {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
         }
 
         .store-card-item {
@@ -619,12 +597,6 @@
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; max-width: 100%; }
 
-            .stores-menu-panel {
-                left: 10px;
-                width: calc(100vw - 20px);
-                grid-template-columns: 1fr;
-            }
-
             .mega-menu-panel {
                 flex-direction: column;
                 width: calc(100vw - 20px);
@@ -716,33 +688,9 @@
                 Categorias <i class="fa-solid fa-chevron-down" id="menuArrow"></i>
             </button>
 
-            <button class="btn-stores-trigger" id="storesMenuBtn">
-                Lojas <i class="fa-solid fa-chevron-down" id="storesArrow"></i>
-            </button>
-
             <button class="btn-cupons-trigger" onclick="switchPage('cuponsHubPage')">
                 <i class="fa-solid fa-ticket"></i> Cupons
             </button>
-
-            <div class="stores-menu-panel" id="storesMenuPanel">
-                <div class="store-card-item" onclick="openStoreOffers('amazon')">
-                    <div class="store-icon-circle amazon">
-                        <i class="fa-brands fa-amazon"></i>
-                    </div>
-                    <div class="store-info-text">
-                        <strong>Amazon</strong>
-                        <span>amazon.com.br</span>
-                    </div>
-                </div>
-
-                <div class="store-card-item" onclick="openStoreOffers('magalu')">
-                    <div class="store-icon-circle magalu">Lu</div>
-                    <div class="store-info-text">
-                        <strong>Magazine Luiza</strong>
-                        <span>magazineluiza.com.br</span>
-                    </div>
-                </div>
-            </div>
 
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <div class="mega-sidebar">
@@ -1878,8 +1826,6 @@
         }
 
         function openStoreOffers(storeKey) {
-            storesPanel.classList.remove('open');
-            storesBtn.classList.remove('active');
             switchPage('storePage');
 
             const storeName = storeKey === 'amazon' ? 'Amazon' : 'Magazine Luiza';
@@ -1893,36 +1839,20 @@
 
         const megaBtn = document.getElementById('megaMenuBtn');
         const megaPanel = document.getElementById('megaMenuPanel');
-        const storesBtn = document.getElementById('storesMenuBtn');
-        const storesPanel = document.getElementById('storesMenuPanel');
         const megaContent = document.querySelector('.mega-content');
         const catItems = document.querySelectorAll('.mega-cat-item');
         const subcatGroups = document.querySelectorAll('.subcat-group');
 
         megaBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            storesPanel.classList.remove('open');
-            storesBtn.classList.remove('active');
             megaPanel.classList.toggle('open');
             megaBtn.classList.toggle('active');
-        });
-
-        storesBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            megaPanel.classList.remove('open');
-            megaBtn.classList.remove('active');
-            storesPanel.classList.toggle('open');
-            storesBtn.classList.toggle('active');
         });
 
         document.addEventListener('click', (e) => {
             if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
                 megaPanel.classList.remove('open');
                 megaBtn.classList.remove('active');
-            }
-            if (!storesPanel.contains(e.target) && !storesBtn.contains(e.target)) {
-                storesPanel.classList.remove('open');
-                storesBtn.classList.remove('active');
             }
         });
 
