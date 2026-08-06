@@ -2064,63 +2064,91 @@
             switchPage('categoryPage');
             document.getElementById('megaMenuPanel').classList.remove('open');
         }
+// Substitua o trecho de manipulação do Menu / Mega Menu na tag <script> existente pelo código abaixo:
 
-        // Inicialização do Mega Menu e Feed principal
-        document.addEventListener('DOMContentLoaded', () => {
-            renderFeed('homeFeed', productsDatabase);
+document.addEventListener('DOMContentLoaded', () => {
+    const megaMenuBtn = document.getElementById('megaMenuBtn');
+    const megaMenuPanel = document.getElementById('megaMenuPanel');
+    const menuArrow = document.getElementById('menuArrow');
+    const catItems = document.querySelectorAll('.mega-cat-item');
+    const subcatGroups = document.querySelectorAll('.subcat-group');
 
-            const megaBtn = document.getElementById('megaMenuBtn');
-            const megaPanel = document.getElementById('megaMenuPanel');
+    // Função para alternar a abertura do painel do Mega Menu
+    function toggleMegaMenu(e) {
+        e.stopPropagation();
+        const isOpen = megaMenuPanel.classList.toggle('open');
+        megaMenuBtn.classList.toggle('active', isOpen);
+        if (menuArrow) {
+            menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    }
 
-            megaBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                megaPanel.classList.toggle('open');
-                megaBtn.classList.toggle('active');
-            });
+    if (megaMenuBtn && megaMenuPanel) {
+        megaMenuBtn.addEventListener('click', toggleMegaMenu);
+    }
 
-            document.addEventListener('click', (e) => {
-                if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
-                    megaPanel.classList.remove('open');
-                    megaBtn.classList.remove('active');
-                }
-            });
-
-            const catItems = document.querySelectorAll('.mega-cat-item');
-            catItems.forEach(item => {
-                item.addEventListener('mouseenter', () => {
-                    catItems.forEach(i => i.classList.remove('active'));
-                    document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
-                    
-                    item.classList.add('active');
-                    const targetId = item.getAttribute('data-target');
-                    const targetGroup = document.getElementById(targetId);
-                    if (targetGroup) targetGroup.classList.add('active');
-                });
-            });
-
-            // Ativar a primeira categoria por padrão
-            if(catItems.length > 0) {
-                catItems[0].classList.add('active');
-                const firstTarget = catItems[0].getAttribute('data-target');
-                const firstGroup = document.getElementById(firstTarget);
-                if(firstGroup) firstGroup.classList.add('active');
+    // Fechar o menu ao clicar fora dele
+    document.addEventListener('click', (e) => {
+        if (megaMenuPanel && megaMenuPanel.classList.contains('open')) {
+            if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
+                megaMenuPanel.classList.remove('open');
+                megaMenuBtn.classList.remove('active');
+                if (menuArrow) menuArrow.style.transform = 'rotate(0deg)';
             }
+        }
+    });
 
-            // Barra de pesquisa dinâmica
-            const searchInput = document.getElementById('searchInput');
-            if(searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    const term = e.target.value.toLowerCase().trim();
-                    if(term.length > 2) {
-                        const results = productsDatabase.filter(p => p.title.toLowerCase().includes(term) || p.subcat.toLowerCase().includes(term));
-                        document.getElementById('categoryBreadcrumbName').innerText = `Busca: "${term}"`;
-                        document.getElementById('categoryTitle').innerText = `Resultados para "${term}"`;
-                        renderFeed('categoryFeed', results);
-                        switchPage('categoryPage');
-                    } else if(term.length === 0) {
-                        switchPage('homePage');
-                    }
-                });
+    // Navegação interna das categorias (Desktop e Mobile)
+    catItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            if (window.innerWidth > 768) {
+                activateCategory(item);
+            }
+        });
+
+        item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const targetId = item.getAttribute('data-target');
+            const targetGroup = document.getElementById(targetId);
+
+            // No mobile, se já estiver ativo, permite o comportamento de accordion/clique
+            if (window.innerWidth <= 768 && targetGroup) {
+                const isActive = targetGroup.classList.contains('active');
+                
+                // Fecha todos os subcat-groups e remove active dos itens
+                subcatGroups.forEach(g => g.classList.remove('active'));
+                catItems.forEach(ci => ci.classList.remove('active'));
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    targetGroup.classList.add('active');
+                }
+            } else {
+                activateCategory(item);
+            }
+        });
+    });
+
+    function activateCategory(item) {
+        catItems.forEach(ci => ci.classList.remove('active'));
+        subcatGroups.forEach(sg => sg.classList.remove('active'));
+
+        item.classList.add('active');
+        const targetId = item.getAttribute('data-target');
+        const targetSubcat = document.getElementById(targetId);
+        if (targetSubcat) {
+            targetSubcat.classList.add('active');
+        }
+    }
+
+    // Ativa a primeira categoria por padrão ao carregar
+    if (catItems.length > 0 && subcatGroups.length > 0) {
+        catItems[0].classList.add('active');
+        subcatGroups[0].classList.add('active');
+    }
+});
+        
+                   
             }
         });
     </script>
