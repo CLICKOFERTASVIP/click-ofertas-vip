@@ -145,6 +145,45 @@
             border-color: var(--primary);
         }
 
+        .store-card-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #121216;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #2b2b36;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .store-card-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            background: #202028;
+        }
+
+        .store-icon-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            flex-shrink: 0;
+            color: #fff;
+        }
+
+        .store-icon-circle.amazon { background: #FF9900; color: #000; }
+        .store-icon-circle.magalu { background: #0086FF; }
+
+        .store-info-text { display: flex; flex-direction: column; }
+        .store-info-text strong { color: #ffffff; font-size: 14px; }
+        .store-info-text span { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -554,47 +593,6 @@
             background: #e68a00;
         }
 
-        .cupons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .cupom-store-card {
-            background: var(--card-bg);
-            border: 1px solid #2b2b36;
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .cupom-store-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .store-icon-circle {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 18px;
-            flex-shrink: 0;
-            color: #fff;
-        }
-
-        .store-icon-circle.amazon { background: #FF9900; color: #000; }
-        .store-icon-circle.magalu { background: #0086FF; }
-
-        /* Estilos Mobile Ajustados para o Acordeão */
         @media (max-width: 768px) {
             .header-container { flex-direction: column; }
             .search-bar { width: 100%; max-width: 100%; }
@@ -615,16 +613,30 @@
             }
 
             .mega-content {
-                display: none !important;
                 padding: 0;
+                max-height: none;
+                overflow: visible;
+            }
+
+            .subcat-group {
+                display: none;
+                grid-template-columns: 1fr;
+                padding: 12px 15px;
+                background: #121216;
+                border-bottom: 1px solid #23232c;
+                gap: 15px;
+            }
+
+            .subcat-group.active {
+                display: flex;
+                flex-direction: column;
             }
 
             .mega-cat-item {
                 justify-content: space-between;
                 border-bottom: 1px solid #1a1a22;
                 border-radius: 0;
-                padding: 12px 15px;
-                flex-wrap: wrap;
+                padding: 12px 10px;
             }
 
             .mega-cat-item::after {
@@ -637,21 +649,6 @@
 
             .mega-cat-item.active::after {
                 transform: rotate(180deg);
-            }
-
-            .mega-cat-item .subcat-group-mobile {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px 10px 5px 10px;
-                background: #141418;
-                margin-top: 10px;
-                border-top: 1px solid #23232c;
-            }
-
-            .mega-cat-item.active .subcat-group-mobile {
-                display: flex;
             }
 
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
@@ -680,7 +677,7 @@
             
             <div class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" placeholder="Buscar produto, marca ou loja...">
+                <input type="text" placeholder="Buscar produto, marca ou loja...">
             </div>
         </div>
     </header>
@@ -696,10 +693,47 @@
             </button>
 
             <div class="mega-menu-panel" id="megaMenuPanel">
-                <div class="mega-sidebar" id="megaSidebarContainer"></div>
+                <div class="mega-sidebar">
+                    <div class="mega-cat-item" data-target="cat-eletronicos">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <span>Smartphones, Eletrônicos e TV</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-informatica">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
+                        <span>Informática e Games</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-casa">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
+                        <span>Casa e Eletrodomésticos</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-moda">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-shirt"></i></div>
+                        <span>Moda e Beleza</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-esporte">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-dumbbell"></i></div>
+                        <span>Esporte e Lazer</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-bebes">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-baby"></i></div>
+                        <span>Bebês e Brinquedos</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-ferramentas">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-wrench"></i></div>
+                        <span>Ferramentas e Construção</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-automotivo">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-car"></i></div>
+                        <span>Automotivo</span>
+                    </div>
+                    <div class="mega-cat-item" data-target="cat-supermercado">
+                        <div class="cat-icon-circle"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <span>Supermercado e Bebidas</span>
+                    </div>
+                </div>
 
-                <div class="mega-content" id="megaContentDesktop">
-                    <div class="subcat-group" id="d-cat-eletronicos">
+                <div class="mega-content">
+                    <div class="subcat-group" id="cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Celulares e Telefonia</h4>
                             <a onclick="openCategoryPage('Smartphones Android')">Smartphones Android</a>
@@ -723,7 +757,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="d-cat-informatica">
+                    <div class="subcat-group" id="cat-informatica">
                         <div class="subcat-column">
                             <h4>Informática Geral</h4>
                             <a onclick="openCategoryPage('Notebooks')">Notebooks e Laptops</a>
@@ -733,11 +767,8 @@
                         </div>
                         <div class="subcat-column">
                             <h4>Periféricos e Hardware</h4>
-                            <a onclick="openCategoryPage('Mouses')">Mouses</a>
-                            <a onclick="openCategoryPage('Teclados')">Teclados</a>
-                            <a onclick="openCategoryPage('Kits de Teclado e Mouse')">Kits de Teclado e Mouse</a>
-                            <a onclick="openCategoryPage('Placas de Vídeo')">Placas de Vídeo</a>
-                            <a onclick="openCategoryPage('Processadores')">Processadores</a>
+                            <a onclick="openCategoryPage('Mouses e Teclados')">Mouses e Teclados</a>
+                            <a onclick="openCategoryPage('Placas de Vídeo')">Placas de Vídeo e Processadores</a>
                             <a onclick="openCategoryPage('SSDs')">HDs e SSDs Internos/Externos</a>
                             <a onclick="openCategoryPage('Roteadores')">Roteadores e Redes</a>
                         </div>
@@ -750,7 +781,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="d-cat-casa">
+                    <div class="subcat-group" id="cat-casa">
                         <div class="subcat-column">
                             <h4>Eletrodomésticos</h4>
                             <a onclick="openCategoryPage('Geladeiras e Freezers')">Geladeiras e Freezers</a>
@@ -778,7 +809,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="d-cat-moda">
+                    <div class="subcat-group" id="cat-moda">
                         <div class="subcat-column">
                             <h4>Moda Masculina e Feminina</h4>
                             <a onclick="openCategoryPage('Roupas')">Roupas e Camisetas</a>
@@ -799,7 +830,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="d-cat-esporte">
+                    <div class="subcat-group" id="cat-esporte">
                         <div class="subcat-column">
                             <h4>Fitness e Musculação</h4>
                             <a onclick="openCategoryPage('Suplementos')">Suplementos e Whey Protein</a>
@@ -818,7 +849,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="d-cat-bebes">
+                    <div class="subcat-group" id="cat-bebes">
                         <div class="subcat-column">
                             <h4>Mundo Bebê</h4>
                             <a onclick="openCategoryPage('Fraldas')">Fraldas e Lencinhos</a>
@@ -833,7 +864,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="d-cat-ferramentas">
+                    <div class="subcat-group" id="cat-ferramentas">
                         <div class="subcat-column">
                             <h4>Ferramentas Elétricas</h4>
                             <a onclick="openCategoryPage('Furadeiras e Parafusadeiras')">Furadeiras e Parafusadeiras</a>
@@ -846,7 +877,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="d-cat-automotivo">
+                    <div class="subcat-group" id="cat-automotivo">
                         <div class="subcat-column">
                             <h4>Acessórios Automotivos</h4>
                             <a onclick="openCategoryPage('Som Automotivo')">Som e Central Multimídia</a>
@@ -855,7 +886,7 @@
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="d-cat-supermercado">
+                    <div class="subcat-group" id="cat-supermercado">
                         <div class="subcat-column">
                             <h4>Alimentos e Bebidas</h4>
                             <a onclick="openCategoryPage('Café e Chá')">Café, Chás e Cápsulas</a>
@@ -868,6 +899,7 @@
                             <a onclick="openCategoryPage('Detergentes')">Detergentes e Desinfetantes</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -885,6 +917,7 @@
         </div>
 
         <h2 style="font-size:20px; font-weight:800; margin-bottom: 15px;">Destaques do Dia</h2>
+
         <main class="feed-container" id="homeFeed"></main>
     </div>
 
@@ -942,15 +975,33 @@
         <div class="feed-container" id="categoryFeed"></div>
     </div>
 
+    <div id="storePage" class="page-view">
+        <div class="breadcrumb">
+            <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <a href="#">Lojas</a> &gt; <span id="storeBreadcrumbName">Amazon</span>
+        </div>
+
+        <div class="store-page-header">
+            <div class="store-header-logo amazon" id="storeLogoIcon">
+                <i class="fa-brands fa-amazon"></i>
+            </div>
+            <div class="store-header-info">
+                <h1 id="storeTitle">Ofertas Amazon <i class="fa-solid fa-circle-check"></i></h1>
+                <span id="storeDomain">amazon.com.br</span>
+            </div>
+        </div>
+
+        <div class="feed-container" id="storeFeed"></div>
+    </div>
+
     <div id="cuponsHubPage" class="page-view">
         <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons</div>
         <h2>Encontre cupons das melhores lojas</h2>
         <div class="cupons-grid">
-            <div class="cupom-store-card" onclick="openStoreCupons('Amazon')">
+            <div class="cupom-store-card" onclick="openStoreCupons('amazon')">
                 <div class="store-icon-circle amazon"><i class="fa-brands fa-amazon"></i></div>
                 <span>Amazon</span>
             </div>
-            <div class="cupom-store-card" onclick="openStoreCupons('Magazine Luiza')">
+            <div class="cupom-store-card" onclick="openStoreCupons('magalu')">
                 <div class="store-icon-circle magalu">Lu</div>
                 <span>Magazine Luiza</span>
             </div>
@@ -959,271 +1010,1247 @@
 
     <script>
         const productsDatabase = [
+          {
+        id: 'elg-mgcs-mouse-gamer-ceres-hyperlight',
+        title: 'ELG MGCS Mouse Gamer Ceres Hyperlight - Ultraleve 63g, 7200 DPI, 6 Botões, Cabo Paracord, Design Ambidestro, LED Rainbow',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 118,99',
+        price: 'R$ 69,90',
+        discount: '-41%',
+        installments: 'Em até 12x de R$ 6,46 com juros',
+        affiliateLink: 'https://link.amazon/B0cjgHhJ8',
+        images: [
+            'https://m.media-amazon.com/images/I/41pqQYdLGKL._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/51EEdNTnrwL._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/51-BZljGXPL._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/41Q7uNyp1IL._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/512gaKFBAOL._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/41vJ2TiphFL._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/61usUiAVR-L._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/71gXAgvk0yL._AC_SL1500_.jpg'
+        ],
+        rating: '5,0 (3 avaliações)',
+        specs: {
+            'Marca': 'ELG',
+            'Cor': 'Preto',
+            'Material': 'Metal',
+            'Tipo de Movimento': 'Giratório'
+        },
+        about: 'Mouse gamer ultraleve de 63g com sensor óptico de alta precisão de até 7200 DPI, switches Huano de alta durabilidade, cabo Paracord flexível e iluminação LED Rainbow.'
+    },
+    {
+        id: 'elg-cgcs41-kit-gamer-completo',
+        title: 'ELG CGCS41 Kit Gamer Completo - Teclado ABNT2, Mouse LED 7 Cores, Headset Over-Ear, Mousepad Antiderrapante',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 299,90',
+        price: 'R$ 229,90',
+        discount: '-23%',
+        installments: 'Em até 6x de R$ 38,35 sem juros',
+        affiliateLink: 'https://link.amazon/B03RzoPMF',
+        images: [
+            'https://m.media-amazon.com/images/I/71c6+TTf44L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/81Dfe+V-IrL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71uqGsJFpPL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/81SInePt+oL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/81bch810cnL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/712XzYeK9kL._AC_SL1500_.jpg'
+        ],
+        rating: '4,6 (3 avaliações)',
+        specs: {
+            'Marca': 'ELG',
+            'Cor': 'Preto',
+            'Material': 'Metal'
+        },
+        about: 'Kit gamer completo da ELG contendo teclado de membrana ABNT2 com anti-ghosting, mouse com iluminação em 7 cores, headset acolchoado com microfone e mousepad de alta densidade.'
+    },
+    {
+        id: 'mouse-sem-fio-recarregavel-bluetooth-generico',
+        title: 'Mouse Sem Fio Recarregável Wireless Bluetooth Optico Led Rgb Colorido Ergonômico Usb 2.4 Ghz Linha Premium',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 35,00',
+        price: 'R$ 19,00',
+        discount: '-46%',
+        installments: 'Consulte as opções de pagamento',
+        affiliateLink: 'https://link.amazon/B03VKmSgZ',
+        images: [
+            'https://m.media-amazon.com/images/I/51NVWRIcQ2L._AC_SL1024_.jpg',
+            'https://m.media-amazon.com/images/I/51xfGvczkGL._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/61SPNW4lBIL._AC_SL1200_.jpg',
+            'https://m.media-amazon.com/images/I/6133h3k+oiL._AC_SL1200_.jpg',
+            'https://m.media-amazon.com/images/I/717Y-dPHQOL._AC_SL1200_.jpg',
+            'https://m.media-amazon.com/images/I/717moa8Wh-L._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/51+GU4qE3yL._AC_SL1000_.jpg',
+            'https://m.media-amazon.com/images/I/41QuCfYWf8L._AC_.jpg',
+            'https://m.media-amazon.com/images/I/51bgTBHz7IL._AC_.jpg'
+        ],
+        rating: '4,8 (2.357 avaliações)',
+        specs: {
+            'Marca': 'Genérico',
+            'Cor': 'Sortidas',
+            'Tecnologia de Conectividade': 'Bluetooth / USB 2.4Ghz',
+            'Característica Especial': 'Design ergonômico, Sem som'
+        },
+        about: 'Mouse sem fio recarregável com conexão dupla (Bluetooth + USB 2.4GHz), cliques silenciosos, bateria interna de longa duração e iluminação LED RGB.'
+    },
+    {
+        id: 'mouse-gamer-logitech-g203-lightsync',
+        title: 'Mouse Gamer Logitech G203 LIGHTSYNC RGB, Efeito de Ondas de Cores, 6 Botões Programáveis e Até 8.000 DPI - Preto',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 169,99',
+        price: 'R$ 96,90',
+        discount: '-42%',
+        installments: 'Em até 12x de R$ 8,86 com juros',
+        affiliateLink: 'https://link.amazon/B0cmfxSPr',
+        images: [
+            'https://m.media-amazon.com/images/I/61oE1NouXuL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61bQ98if8rL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61h2hdSUU9L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61UxfXTUyvL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/81eZrPE5o6L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71IBvb88ldL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71jLO+Fro6L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61V4PnZYMdL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/615yODwPP-L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61pzLQ7mOWL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61KGY727kkL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/517EGt-N5oL._AC_SL1500_.jpg'
+        ],
+        rating: '4,8 (42.826 avaliações)',
+        specs: {
+            'Marca': 'Logitech G',
+            'Cor': 'Preto',
+            'Tecnologia de Conectividade': 'Com fio',
+            'DPI': 'Até 8.000 DPI'
+        },
+        about: 'O clássico mouse gamer Logitech G203 com sensor de grau para jogos, iluminação RGB LIGHTSYNC vibrante, 6 botões programáveis e design clássico confortável.'
+    },
+    {
+        id: 'mouse-gamer-redragon-storm-pro-rgb-sem-fio',
+        title: 'MOUSE GAMER REDRAGON STORM PRO RGB SEM FIO PRETO',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 233,75',
+        price: 'R$ 169,99',
+        discount: '-27%',
+        installments: 'Em até 5x de R$ 36,03 sem juros',
+        affiliateLink: 'https://link.amazon/B0btwTKvM',
+        images: [
+            'https://m.media-amazon.com/images/I/51c5Y+I7rmL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61kZ2uMTkpL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61tMjFLjNiL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/51w0Y5L+FaL._AC_SL1500_.jpg'
+        ],
+        rating: '4,7 (668 avaliações)',
+        specs: {
+            'Marca': 'Redragon',
+            'Cor': 'Preto',
+            'Tecnologia de Conectividade': 'Wi-Fi / Sem fio',
+            'Característica Especial': 'Botões programáveis'
+        },
+        about: 'Mouse gamer sem fio Redragon Storm Pro com sensor Pixart PAW 3335 de até 16.000 DPI, design ergonômico colmeia leve e iluminação RGB customizável.'
+    },
             {
-                id: 'combo-gamer-4-em-1-mts-nightmare-snow',
-                title: 'Combo GAMER 4 em 1 MTS, Nightmare Snow • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer Branco',
-                store: 'Amazon',
-                subcat: 'Kits de Teclado e Mouse',
-                oldPrice: 'R$ 180,00',
-                price: 'R$ 147,73',
-                discount: '-18%',
-                installments: 'Em até 5x de R$ 31,11 sem juros',
-                affiliateLink: 'https://link.amazon/B0a7GkLaz',
+        id: 'mouse-gamer-redragon-predator-m612',
+        title: 'Mouse Gamer Redragon Predator RGB M612-RGB, Preto',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 159,00',
+        price: 'R$ 79,98',
+        discount: '-49%',
+        installments: 'Em até 12x de R$ 7,39 com juros',
+        affiliateLink: 'https://link.amazon/B03mvuotX',
+        images: [
+            'https://m.media-amazon.com/images/I/51AVGfhKbOL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71n1jxSgxBL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61G6QcoKY5L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61Kll7nEzPL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/615kwi2R1BL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61oi1DRoLfL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61mHaASEPiL._AC_SL1500_.jpg'
+        ],
+        rating: '4,8 (1.135 avaliações)',
+        specs: {
+            'Marca': 'Redragon',
+            'Cor': 'Preto',
+            'Tecnologia de Conectividade': 'USB',
+            'Característica Especial': 'Luzes de LED',
+            'Tecnologia de detecção de movimento': 'Óptico'
+        },
+        about: 'Mouse gamer Redragon RGB equipado com Sensor Pixart PAW 3104 de alta performance, design ergonômico e iluminação marcante.'
+    },
+    {
+        id: 'mouse-gamer-redragon-king-pro-m916',
+        title: 'Mouse Gamer Redragon King Pro Preto Pixart PAW3395 26000DPI M916-PRO-1K',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 297,50',
+        price: 'R$ 179,98',
+        discount: '-39%',
+        installments: 'Em até 6x de R$ 30,63 sem juros',
+        affiliateLink: 'https://link.amazon/B02PzYhQN',
+        images: [
+            'https://m.media-amazon.com/images/I/51D3XVu2TFL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71by4RpcarL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/81DrVDQ4cHL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/610Q2RhwFYL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71igQ4tYhRL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/716fvNP1NYL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61nYD-1AFYL._AC_SL1500_.jpg'
+        ],
+        rating: '4,8 (1.162 avaliações)',
+        specs: {
+            'Marca': 'Redragon',
+            'Cor': 'Preto',
+            'Sensor': 'Pixart PAW3395',
+            'DPI': '26000 DPI'
+        },
+        about: 'Mouse sem fio de alto desempenho dedicado para jogadores de FPS, com atraso zero, macros customizáveis e excelente aderência ergonômica.'
+    },
+    {
+        id: 'mouse-gamer-attack-shark-r1',
+        title: 'Mouse Gamer ATTACK SHARK R1 Sem Fio 18000 DPI Sensor PAW3311 RGB Recarregável',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 199,00',
+        price: 'R$ 137,74',
+        discount: '-31%',
+        installments: 'Em até 4x de R$ 36,27 sem juros',
+        affiliateLink: 'https://link.amazon/B0fh7hPNJ',
+        images: [
+            'https://m.media-amazon.com/images/I/51V7GudgWgL._AC_.jpg',
+            'https://m.media-amazon.com/images/I/615en8TTnfL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61-Qnr9x72L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71sX3xZCFiL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/711CPSmONhL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71PM1TeB2jL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71u3SXy1FQL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61CDB7yOnFL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71wvhQQQqvL._AC_SL1500_.jpg'
+        ],
+        rating: '4,6 (170 avaliações)',
+        specs: {
+            'Marca': 'ATTACK SHARK',
+            'Cor': 'Preto',
+            'Sensor': 'PAW3311',
+            'DPI': '18000 DPI'
+        },
+        about: 'Mouse sem fio ergonômico e de alta precisão com iluminação RGB recarregável e design moderno texturizado.'
+    },
+    {
+        id: 'mouse-gamer-attack-shark-v3',
+        title: 'Mouse Gamer Sem Fio ATTACK SHARK V3, 65g Ultraleve, Sensor Óptico PAW3311 25K DPI',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 169,99',
+        price: 'R$ 151,99',
+        discount: '-11%',
+        installments: 'Em até 5x de R$ 32,03 sem juros',
+        affiliateLink: 'https://link.amazon/B05zwgKzW',
+        images: [
+            'https://m.media-amazon.com/images/I/51O1OmJHIlL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/81RYZdQFlUL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/81KqsE7L-NL._AC_SL1500_.jpg'
+        ],
+        rating: '4,6 (11 avaliações)',
+        specs: {
+            'Marca': 'ATTACK SHARK',
+            'Cor': 'Rosa',
+            'Peso': '65g Ultraleve',
+            'Conectividade': '2.4G / BT / Cabo USB'
+        },
+        about: 'Mouse ultraleve de apenas 65g com triplo modo de conexão (2.4G, Bluetooth e Cabo USB), switch mecânico e sensor óptico de alta precisão.'
+    },
+            {
+        id: 'geladeira-consul-smart-frost-free-inox-377l',
+        title: 'Geladeira/Refrigerador Consul Smart Frost Free Inox Duplex 377L CRM44MKANA',
+        store: 'Magazine Luiza',
+        subcat: 'Geladeiras e Freezers',
+        oldPrice: 'R$ 4.339,00',
+        price: 'R$ 2.997,66',
+        discount: '-31%',
+        installments: 'Em até 10x de R$ 318,90 sem juros',
+        affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
+        images: [
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/46bacfe5ca0279c7f5eabfacee0ad762.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/fa108e35d3552f5555f855160dfd066c.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/e63f7693fa09fe11768cd39d2007d2e6.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/7915f8d13d16c55d9f51e106555d20b5.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/79db67b09f649cd8f393725f1a1977d9.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/acc515478f283cb61fbbe27851c0600d.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/f2b9c9b0cdc69461dfbbff2abfe4d93e.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/fbd5ab30c0729dfe3a07017473cfdc4f.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/2b4d08422f4de9f49f85bd4a868af42d.jpg'
+        ],
+        rating: '4,8 (1.200 avaliações)',
+        specs: {
+            'Marca': 'Consul',
+            'Cor': 'Inox',
+            'Capacidade': '377 Litros',
+            'Tipo': 'Duplex / Frost Free'
+        },
+        about: 'Geladeira Consul Duplex 377 Litros com tecnologia Frost Free (não precisa descongelar nunca), design moderno em Inox e amplo espaço interno.'
+    },
+    {
+        id: 'geladeira-panasonic-frost-free-inverse-titanio-397l',
+        title: 'Geladeira/Refrigerador Panasonic Frost Free - Inverse Titânio 397L NR-BB41PV1T',
+        store: 'Magazine Luiza',
+        subcat: 'Geladeiras e Freezers',
+        oldPrice: 'R$ 4.499,00',
+        price: 'R$ 4.184,07',
+        discount: '-7%',
+        installments: 'Em até 10x de R$ 449,90 sem juros',
+        affiliateLink: 'https://magazineluiza.onelink.me/589508454/lyebzknz',
+        images: [
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-panasonic-frost-free-inverse-titanio-397l-nr-bb41pv1t/magazineluiza/236915000/255afcd37033f8ff60d13123d8d3fa14.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-panasonic-frost-free-inverse-titanio-397l-nr-bb41pv1t/magazineluiza/236915000/2cb1fca21ffcbb347cb15d0210e15e37.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-panasonic-frost-free-inverse-titanio-397l-nr-bb41pv1t/magazineluiza/236915000/76c5e0b7d45c64c9077069ab659dfcfb.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-panasonic-frost-free-inverse-titanio-397l-nr-bb41pv1t/magazineluiza/236915000/73fe6026bfffe673d492d6c9709854fd.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-panasonic-frost-free-inverse-titanio-397l-nr-bb41pv1t/magazineluiza/236915000/7dbf7fa0de90a1ba23039ad78e2015f4.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-panasonic-frost-free-inverse-titanio-397l-nr-bb41pv1t/magazineluiza/236915000/6273c605232fc76a8512dfce5fd5b9e8.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-panasonic-frost-free-inverse-titanio-397l-nr-bb41pv1t/magazineluiza/236915000/cf747ba8316d7bfe1bdfb53277ccfa86.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-panasonic-frost-free-inverse-titanio-397l-nr-bb41pv1t/magazineluiza/236915000/28681b0f037d406500f12c6b6962357a.jpg',
+            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-panasonic-frost-free-inverse-titanio-397l-nr-bb41pv1t/magazineluiza/236915000/55dd6dba9b21d2ff1963a6d459ba0c6a.jpg'
+        ],
+        rating: '4,9 (950 avaliações)',
+        specs: {
+            'Marca': 'Panasonic',
+            'Cor': 'Titânio',
+            'Capacidade': '397 Litros',
+            'Tipo': 'Inverse / Frost Free'
+        },
+        about: 'Geladeira Panasonic Inverse 397 Litros na cor Titânio, com refrigerador em cima e freezer embaixo, tecnologia Econavi que economiza energia e sistema Frost Free.'
+    },
+            {
+        id: 'mouse-gamer-redragon-cobra-v3',
+        title: 'Mouse Gamer Redragon Cobra V3 Preto RGB PMW3327 10000DPI M711 V3',
+        store: 'Amazon',
+        subcat: 'Mouses e Teclados',
+        oldPrice: 'R$ 129,90',
+        price: 'R$ 79,99',
+        discount: '-38%',
+        installments: 'Em até 12x de R$ 7,39 com juros',
+        affiliateLink: 'https://link.amazon/B0640IEBP',
+        images: [
+            'https://m.media-amazon.com/images/I/61saZHQI52L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/718sTt9alHL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71YgpoWLr0L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71OZ9LXH1RL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/71u+f1hTdFL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/612FoVWPNUL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/7176aJujAKL._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/61TrHEhS5vS._AC_SL1500_.jpg'
+        ],
+        rating: '4,8 (8.529 avaliações)',
+        specs: {
+            'Marca': 'Redragon',
+            'Cor': 'Preto',
+            'Tecnologia de Conectividade': 'Com fio',
+            'Característica Especial': 'Design ergonômico',
+            'Tecnologia de detecção de movimento': 'Óptico'
+        },
+        about: 'Mouse gamer de alta performance equipado com Sensor Pixart, iluminação RGB ajustável com sistema Chroma, Polling Rate de 1000hz e 7 botões programáveis para otimizar a sua jogabilidade.'
+    },
+            {
+                id: 'micro-ondas-electrolux-23l-branco-efficient-me23b',
+                title: 'Micro-ondas Electrolux 23L Branco Efficient ME23B',
+                store: 'Magazine Luiza',
+                subcat: 'Micro-ondas',
+                oldPrice: 'R$ 799,00',
+                price: 'R$ 525,00',
+                discount: '',
+                installments: 'Em até 6x de R$ 87,50 sem juros',
+                affiliateLink: 'https://magazineluiza.onelink.me/589508454/8mquibtj',
                 images: [
-                    'https://m.media-amazon.com/images/I/51UgM99EyML._AC_.jpg',
-                    'https://m.media-amazon.com/images/I/41uTaxx6zmL._AC_.jpg',
-                    'https://m.media-amazon.com/images/I/517SuIqVyHL._AC_.jpg'
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/bcf3b36618ecd76886825d237ab9b2ff.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/4dd31c676e078da84ed33a20c2edce1c.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/054d399b0453e74b7efc46aa87ac4d29.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/a7003984ed7d3f6a2e897c3dfc6f672f.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/4935b68d456c2007605711df49c90f8b.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/832c36c1880ad104b98b50a510b9ea75.jpg'
                 ],
-                rating: '5,0 (7 avaliações)',
+                rating: '4,9 (Avaliações verificadas)',
                 specs: {
-                    'Marca': 'Genérico',
-                    'Cor': 'BRANCO',
-                    'Tecnologia de Conectividade': 'Usb',
-                    'Característica Especial': 'Emborrachado, Ergonômico, Mouse 3600 Dpi, Retrilluminado, Stereo'
+                    'Marca': 'Electrolux',
+                    'Modelo': 'ME23B',
+                    'Capacidade': '23 Litros',
+                    'Cor': 'Branco',
+                    'Eficiência Energética': 'Classificação A'
                 },
-                about: 'Combo gamer completo 4 em 1 na cor branca contendo teclado ABNT2 com iluminação LED Rainbow, mouse de alta performance com até 3600 DPI, headset estéreo com microfone e mousepad antiderrapante.'
+                about: 'Micro-ondas Electrolux 23L Branco Efficient ME23B. Design moderno e funcional, ideal para facilitar o dia a dia na cozinha com diversas receitas pré-programadas, função descongelar e excelente aproveitamento de espaço.'
             },
             {
-                id: 'geladeira-consul-smart-frost-free-inox-377l',
-                title: 'Geladeira/Refrigerador Consul Smart Frost Free Inox Duplex 377L CRM44MKANA',
-                store: 'Magazine Luiza',
-                subcat: 'Geladeiras e Freezers',
-                oldPrice: 'R$ 4.339,00',
-                price: 'R$ 2.997,66',
-                discount: '-31%',
-                installments: 'Em até 10x de R$ 318,90 sem juros',
-                affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
+                id: 'lixadeira-orbital-sb200-200w-black-decker',
+                title: 'BLACK+DECKER Lixadeira Orbital SB200 200W 110V',
+                store: 'Amazon',
+                subcat: 'Serras',
+                oldPrice: '',
+                price: 'R$ 196,22',
+                discount: '',
+                installments: 'Em até 6x de R$ 32,72 sem juros',
+                affiliateLink: 'https://link.amazon/B04VWttOi',
                 images: [
-                    'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-377l-magazineluiza/240425200/46bacfe5ca0279c7f5eabfacee0ad762.jpg'
+                    'https://m.media-amazon.com/images/I/61VyQtGt7CL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61BgK3+0OtL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/71ef8ViNZsL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61vK4Ij7XrL._AC_SL1000_.jpg'
                 ],
-                rating: '4,8 (1.200 avaliações)',
+                rating: '4,7 (1.097 avaliações)',
                 specs: {
-                    'Marca': 'Consul',
-                    'Cor': 'Inox',
-                    'Capacidade': '377 Litros',
-                    'Tipo': 'Duplex / Frost Free'
+                    'Marca': 'Black+Decker',
+                    'Potência': '200W',
+                    'Tensão': '110 Volts',
+                    'Tipo de Grão': 'Médio'
                 },
-                about: 'Geladeira Consul Duplex 377 Litros com tecnologia Frost Free.'
+                about: 'Lixadeira orbital 200W, ideal para madeira, metal e plástico. Lixadeira leve e ergonômica para uso confortável e prolongado. Base com fixação eficiente para maior estabilidade ao lixar. Perfeita para reparos, marcenaria e restauração de móveis.'
+            },
+            {
+                id: 'esmerilhadeira-lixadeira-bateria-16-8v-maleta',
+                title: 'Esmerilhadeira Lixadeira Esmerilhadeira 110V/220V Sem Fio Portátil Serra Mármore A Bateria 16,8V (2 Bateria+8 Pcs Discos de Corte) Com Maleta Resistente',
+                store: 'Amazon',
+                subcat: 'Serras',
+                oldPrice: 'R$ 160,00',
+                price: 'R$ 153,33',
+                discount: '',
+                installments: 'Em até 5x de R$ 32,28 sem juros',
+                affiliateLink: 'https://link.amazon/B0iOUrqbh',
+                images: [
+                    'https://m.media-amazon.com/images/I/81sO++-BcML._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71wJEChf9EL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/817XwL5G48L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/811bN405vpL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81MTzR49RYL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81Jqnd01JOL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81974uQ1rNL._AC_SL1500_.jpg'
+                ],
+                rating: '4,0 (1 avaliação)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Material': 'Metal, Plástico',
+                    'Estilo': '2 Bateria + 8 Pcs Discos de Corte',
+                    'Fonte de alimentação': 'Alimentado a bateria'
+                },
+                about: 'A rebarbadora de 16,8V foi projetada para ser leve e pode ser operada com uma mão. Amplamente utilizada para processamento de lixamento, corte, lixamento e polimento de vários materiais, incluindo metal, azulejo, concreto, tubos e conduítes. Acompanha 2 baterias de íon de lítio de 1500mAh, carregador rápido, 8 discos de corte e maleta resistente.'
+            },
+            {
+                id: 'serra-tico-tico-ptt01-philco',
+                title: 'Serra Philco PTT01 450W 127V Preto/Azul',
+                store: 'Amazon',
+                subcat: 'Serras',
+                oldPrice: 'R$ 120,16',
+                price: 'R$ 104,90',
+                discount: '-12%',
+                installments: 'Em até 3x de R$ 34,98 sem juros',
+                affiliateLink: 'https://link.amazon/B0f1q7iA5',
+                images: [
+                    'https://m.media-amazon.com/images/I/51--9njf0pL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61CSJvVSf6L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51hjIomLBxL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/71ZERY-kaXL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/612nZFuKKQL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61XADVrgEJL._AC_SL1200_.jpg'
+                ],
+                rating: '4,5 (1.354 avaliações)',
+                specs: {
+                    'Marca': 'PHILCO',
+                    'Cor': 'Azul e Preto',
+                    'Recomendação de superfície': 'Madeira, Alumínio',
+                    'Fonte de alimentação': 'Elétrico com fio',
+                    'Voltagem': '127 Volts',
+                    'Potência': '450W'
+                },
+                about: 'Base ajustável de 0° a 45°, bocal para sucção para menos poeira no ambiente de trabalho e empunhadura emborrachada para maior firmeza no manuseio. Possui botão de travamento, 3000 GPM e capacidade de corte de até 55mm em madeira e 10mm em alumínio.'
+            },
+            {
+                id: 'serra-psm01-philco',
+                title: 'SERRA PSM01 220V Philco',
+                store: 'Amazon',
+                subcat: 'Serras',
+                oldPrice: 'R$ 329,50',
+                price: 'R$ 275,19',
+                discount: '-16%',
+                installments: 'Em até 6x de R$ 45,89 sem juros',
+                affiliateLink: 'https://link.amazon/B0gpTcDpo',
+                images: [
+                    'https://m.media-amazon.com/images/I/618b+NKS3IL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61ZnxS4pJbL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/510WOr0zNFL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/71uh5-rn7qL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61hml2gFytL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/71AoTTiOSKL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/41LW4Fs3DqL._AC_SL1200_.jpg'
+                ],
+                rating: '4,9 (37 avaliações)',
+                specs: {
+                    'Marca': 'PHILCO',
+                    'Cor': 'Azul',
+                    'Material da lâmina': 'Liga de aço',
+                    'Recomendação de superfície': 'Mármore, Cerâmica',
+                    'Fonte de alimentação': 'Elétrico com fio',
+                    'Voltagem': '220 Volts'
+                },
+                about: 'Disco diamantado, base ajustável, alta rotação, sistema de gatilho duplo e ajuste de profundidade. Ideal para cortes precisos em mármore e cerâmica com total segurança e praticidade.'
+            },
+            {
+                id: 'jogo-de-ferramentas-163-pecas-vonder',
+                title: 'Jogo De Ferramentas Com 163 Peças Vonder',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: 'R$ 617,38',
+                price: 'R$ 320,02',
+                discount: '-48%',
+                installments: 'Em até 6x de R$ 53,37 sem juros',
+                affiliateLink: 'https://link.amazon/B07m8MHgk',
+                images: [
+                    'https://m.media-amazon.com/images/I/81NzamswRGL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81CGdUo7KrL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81ZqiyubOtL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/812He0QfNtL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/816awzBG4FL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81EiTFQgiTL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71zPLle3-RL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71SBUQaDUJL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61j9AR11ftL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71Deil5KsoL._AC_SL1500_.jpg'
+                ],
+                rating: '4,8 (373 avaliações)',
+                specs: {
+                    'Marca': 'VONDER',
+                    'Material': 'Aço e Plástico Resistente',
+                    'Quantidade de Peças': '163 Peças',
+                    'Cor': 'Preto e Amarelo'
+                },
+                about: 'Proporciona maior praticidade, pois com apenas 1 jogo de ferramentas é possível realizar uma série de trabalhos. Acompanha maleta com encaixe perfeito dos acessórios, conferindo organização, praticidade e maior vida útil às ferramentas. Conjunto versátil ideal para diversos tipos de trabalhos e manutenções.'
+            },
+            {
+                id: 'kit-ferramentas-completo-soquetes-catraca',
+                title: 'Kit de Ferramentas Jogo Completo, Soquetes Catraca 46 Peças, Jogo Chaves Combinadas 6,8,10,12,14,16 Ferramentas Manuais, Jogo de Ferramentas Caixas de Ferramentas',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: '',
+                price: 'R$ 132,90',
+                discount: '',
+                installments: 'Em até 4x de R$ 34,99 sem juros',
+                affiliateLink: 'https://link.amazon/B09MK3zb6',
+                images: [
+                    'https://m.media-amazon.com/images/I/71SEcl2MewL._AC_SL1269_.jpg',
+                    'https://m.media-amazon.com/images/I/81r+ctAig-L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71kq0cNqEHL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71zJ0J6KYYL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/81FT9l4BZVL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/715p5XSjDCL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71GPaDT5hFL._AC_SL1402_.jpg',
+                    'https://m.media-amazon.com/images/I/71Wknm15W9L._AC_SL1254_.jpg'
+                ],
+                rating: '4,5 (2 avaliações)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Material': 'Aço e Plástico Resistente',
+                    'Tipo de Produto': 'Kit Completo de Ferramentas Manuais',
+                    'Aplicação': 'Doméstica e Profissional Leve'
+                },
+                about: 'Kit de ferramentas completo com jogo de catraca 46 peças e chaves combinadas (6, 8, 10, 12, 14, 16mm). Seu parceiro ideal para manutenções domésticas, reparos de carro e moto, ajustes, montagens e pequenos reparos do dia a dia. Acompanha maleta organizadora.'
+            },
+            {
+                id: 'jogo-soquete-46-pecas-maleta',
+                title: 'Jogo de Soquete Kit com 46 peças Ferramentas Chave Catraca Conjunto de Soquetes Métricos Sextavadas Chave Allen Torx e Barra de Extensão Reparos Automotivos e Domésticos Premium',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: 'R$ 29,90',
+                price: 'R$ 28,00',
+                discount: '-6%',
+                installments: 'Em até 21x sem juros',
+                affiliateLink: 'https://link.amazon/B02QD7Pl5',
+                images: [
+                    'https://m.media-amazon.com/images/I/71YPW2+s4rL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/610vfoMNvxL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/61gXXDrG1JL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/61BJrwpT55L._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/71YPW2+s4rL._AC_SL1024_.jpg'
+                ],
+                rating: '4,4 (390 avaliações)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Material': 'Aço vanádio cromado',
+                    'Cor': 'Prata',
+                    'Estilo da cabeça': 'Vários',
+                    'Nome do Conjunto': '46'
+                },
+                about: 'Máxima durabilidade e desempenho: Fabricado com aço vanádio cromado premium. Kit completo com 46 peças essenciais: Inclui soquetes, bits, chaves, extensões, adaptador e cabo de catraca. Versatilidade total em qualquer tarefa: Soquetes compatíveis com tamanhos de 4 a 14 mm, pontas PH, PZ, HEX, Torx e muito mais.'
+            },
+            {
+                id: 'kit-ferramentas-58-pecas-maleta',
+                title: 'Kit de Ferramentas Jogo de Soquetes e Chaves com Catraca | em Aço, 58 Peças com Maleta, Completo Premium para Mecânica e Uso Doméstico',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: '',
+                price: 'R$ 75,99',
+                discount: '',
+                installments: 'Em até 2x de R$ 38,00 sem juros',
+                affiliateLink: 'https://link.amazon/B07Iz9ehs',
+                images: [
+                    'https://m.media-amazon.com/images/I/71bIgrhDw7L._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71PcVbM6aNL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71o7D64jxVL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71iwCg8ro5L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71-hD1iu7oL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71wbqvDBoRL._AC_SL1254_.jpg'
+                ],
+                rating: '4,7 (1.250 avaliações)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Material': 'Aço cromado vanádio, Plástico',
+                    'Cor': 'Prateado Com Detalhes Em Amarelo E Azul',
+                    'Comprimento do produto': '35 Centímetros',
+                    'Fabricante': 'Fabricante De Ferramentas Profissionais'
+                },
+                about: 'Kit Completo de Ferramentas: Inclui chaves combinadas, soquetes, extensores e acessórios essenciais para diversos tipos de manutenção. Alta Durabilidade: Produzido em aço de alta resistência, garantindo maior vida útil mesmo em uso intenso. Encaixe Preciso: Ferramentas projetadas para oferecer ajuste firme e seguro, reduzindo riscos de desgaste e danos. Estojo Organizacional Incluso: Acompanha caixa rígida que mantém todas as peças organizadas e fáceis de transportar.'
+            },
+            {
+                id: 'sparta-maleta-ferramentas-129-pecas',
+                title: 'Sparta Maleta de ferramentas kit com 129 peças',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: 'R$ 140,45',
+                price: 'R$ 89,90',
+                discount: '-35%',
+                installments: 'Em até 12x de R$ 8,30 com juros',
+                affiliateLink: 'https://link.amazon/B0dNt2VU0',
+                images: [
+                    'https://m.media-amazon.com/images/I/61ZmjmMLsRL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61lP59FsfYL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51leWV4hz+L._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61yxrSlz7kL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/610DbcuOTrL._AC_SL1000_.jpg'
+                ],
+                rating: '4,7 (18.320 avaliações)',
+                specs: {
+                    'Marca': 'SPARTA',
+                    'Material': 'Liga de aço, Plástico',
+                    'Cor': 'preto',
+                    'Dimensões do produto': '25C x 3,5L x 31A centímetros',
+                    'Nível de Resistência à Água': 'Não resistente à água'
+                },
+                about: 'Kit completo com 129 peças: Inclui chaves, soquetes, alicates, chaves de fenda e muito mais, oferecendo um kit de ferramentas completo para reparos no dia a dia. Maleta organizadora prática: O Sparta kit de ferramentas com maleta mantém cada ferramenta no lugar, facilitando transporte, organização e armazenamento.'
+            },
+            {
+                id: 'furadeira-parafusadeira-impacto-rhead',
+                title: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED 2 Baterias Recarregáveis Bi-volt e Acessórios Maleta Completa',
+                store: 'Amazon',
+                subcat: 'Furadeiras e Parafusadeiras',
+                oldPrice: '',
+                price: 'R$ 102,60',
+                discount: '',
+                installments: 'Em até 3x de R$ 36,00 sem juros',
+                affiliateLink: 'https://link.amazon/B07xTHSpR',
+                images: [
+                    'https://m.media-amazon.com/images/I/61FT94WfQeL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/71k2NAwyzbL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/715FO+3r5IL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/61rnsj2OAGL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/71cO79OV31L._AC_SL1024_.jpg'
+                ],
+                rating: '4,2 (943 avaliações)',
+                specs: {
+                    'Marca': 'RHEAD RED HIGH END STUDIOS',
+                    'Fonte de alimentação': 'Energia elétrica',
+                    'Tensão': '110,22 Volts',
+                    'Componentes Incluídos': 'Parafusadeira e Furadeira Sem Fio 21V com LED, Bateria de 18V, Carregador Bivolt, Maleta, Kit 5 Bits, 6 Brocas',
+                    'Dimensões do produto': '26C x 8L x 29A centímetros'
+                },
+                about: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED, 2 Baterias Recarregáveis Bi-volt, 3 funções em uma única ferramenta (perfura, parafusa e impacta), 25 níveis de torque + 2 velocidades, LED integrado e kit completo com maleta rígida e acessórios.'
+            },
+            {
+                id: 'panela-pressao-eletrica-electrolux-6l-pcc20',
+                title: 'Panela de Pressão Elétrica Electrolux Digital 6L PCC20 Inox Preto (127V - 220V)',
+                store: 'Amazon',
+                subcat: 'Panelas de Pressão Elétricas',
+                oldPrice: 'R$ 739,00',
+                price: 'R$ 525,26',
+                discount: '-29%',
+                installments: 'Em até 10x de R$ 52,58 sem juros',
+                affiliateLink: 'https://link.amazon/B0jbKGyJT',
+                images: [
+                    'https://m.media-amazon.com/images/I/61W25IvSTrL._AC_SL1148_.jpg',
+                    'https://m.media-amazon.com/images/I/61LhWFq-lWL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/71ks1ul7UyL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61K0IPZLgML._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61eZtYLhixL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/71lssCq3wXL._AC_SL1000_.jpg'
+                ],
+                rating: '4,8 (11.352 avaliações)',
+                specs: {
+                    'Marca': 'Electrolux',
+                    'Capacidade': '6 Litros',
+                    'Material': 'Aço inoxidável, Plástico',
+                    'Cor': 'Preto',
+                    'Tipo de Acabamento': 'Metálico',
+                    'Voltagem': '127V - 220V (Disponível nas opções)'
+                },
+                about: 'Capacidade de 6L de alta capacidade para preparar porções maiores. 3 níveis de pressão para alcançar o ponto ideal. 15 receitas pré-programadas com apenas um toque, super segura com 10 dispositivos de segurança e funcionamento silencioso.'
+            },
+            {
+                id: 'microondas-philco-pmo38e-33l',
+                title: 'Micro-ondas 33L Philco Limpa Fácil PMO38E 1400W (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Fornos de Micro-Ondas',
+                oldPrice: 'R$ 741,94',
+                price: 'R$ 629,00',
+                discount: '-15%',
+                installments: 'Em até 10x de R$ 69,97 sem juros',
+                affiliateLink: 'https://link.amazon/B03R73USj',
+                images: [
+                    'https://m.media-amazon.com/images/I/41N2K+L5+zL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51BzAFS++eL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51AyS7L4B8L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/511l-YH73bL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51suuOdpLNL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51aiI5+TQqL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/418j9KMz+cL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/516jCIRNRlL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51HPtahwBnL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51EnFINQtEL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51KaubzxL1L._AC_SL1200_.jpg'
+                ],
+                rating: '4,6 (522 avaliações)',
+                specs: {
+                    'Marca': 'PHILCO',
+                    'Dimensões do produto': '45,3P x 56,9L x 33,2A centímetros',
+                    'Cor': 'Branco',
+                    'Capacidade': '33 Litros',
+                    'Potência': '1400W',
+                    'Voltagem': '110V - 220V (Disponível nas opções)'
+                },
+                about: 'Capacidade generosa com 33 litros, ideal para preparar desde refeições individuais até pratos maiores. Equipado com 1400W de potência e 9 níveis de ajuste. Possui função manter aquecido, tira odor, receitas pré-programadas e pintura limpa fácil.'
+            },
+            {
+                id: 'tramontina-vancouver-effect-4-5l',
+                title: 'Panela de Pressão Tramontina Vancouver Effect em Alumínio com Revestimento Interno e Externo em Antiaderente Starflon Max Preto 20 cm 4,5 L',
+                store: 'Amazon',
+                subcat: 'Panelas de Pressão',
+                oldPrice: 'R$ 241,06',
+                price: 'R$ 171,41',
+                discount: '-29%',
+                installments: 'Em até 5x de R$ 35,98 sem juros',
+                affiliateLink: 'https://link.amazon/B008wULWT',
+                images: [
+                    'https://m.media-amazon.com/images/I/81ubjq2DfxL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/91JMPJv-8GL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/51aRPTA4pVL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/81R3ONlNU5L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81QAyCzBJRL._AC_SL1500_.jpg'
+                ],
+                rating: '4,8 (9.846 avaliações)',
+                specs: {
+                    'Marca': 'Tramontina',
+                    'Material': 'Alumínio com Revestimento Starflon Max',
+                    'Capacidade': '4,5 Litros',
+                    'Cor': 'Preto',
+                    'Fogões Compatíveis': 'Gás, elétrico e vitrocerâmico'
+                },
+                about: 'Corpo de alumínio com espessura de 3,2 mm que proporciona cozimento rápido e uniforme. Com revestimento interno e externo de antiaderente Starflon Max que não gruda, é fácil de limpar, mais durável e não é prejudicial à saúde. Alça, cabos superior e inferior de baquelite antitérmico que oferecem segurança durante o manuseio.'
+            },
+            {
+                id: 'consul-crm50mb',
+                title: 'Geladeira CRM50MB 412 Litros Frost Free Duplex Consul',
+                store: 'Amazon',
+                subcat: 'Geladeiras e Freezers',
+                oldPrice: 'R$ 2.999,00',
+                price: 'R$ 2.699,99',
+                discount: '-9%',
+                installments: 'Em até 12x de R$ 225,10 sem juros',
+                affiliateLink: 'https://link.amazon/B0gBXsKfJ',
+                images: [
+                    'https://m.media-amazon.com/images/I/4173h2WLFLL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/41dkOziMhyL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61q4aT4C3uL._AC_SX522_.jpg'
+                ],
+                rating: '4,8 (5 avaliações)',
+                specs: {
+                    'Dimensões': '72P x 70,2L x 174,5A cm',
+                    'Marca': 'Consul',
+                    'Capacidade': '412 Litros'
+                },
+                about: 'A Geladeira Consul Frost Free 412L tiene freezer espaçoso, Função Turbo e Filtro Antiodor.'
+            },
+            {
+                id: 'consul-crb39mk',
+                title: 'Geladeira Frost Free 337L com Espaço Extra Frio Inox Consul - CRB39MK (110 Volts)',
+                store: 'Amazon',
+                subcat: 'Geladeiras e Freezers',
+                oldPrice: 'R$ 2.179,00',
+                price: 'R$ 2.049,99',
+                discount: '-5%',
+                installments: 'Em até 12x de R$ 170,86 sem juros',
+                affiliateLink: 'https://link.amazon/B06EhGyA2',
+                images: [
+                    'https://m.media-amazon.com/images/I/5137tW5ScKL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/51MtulxaAjL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/61XtSxboE6L._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/61ePcUxgNYL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/61ZpFEUX84L._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/71HuoP6lEjL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/71jvb3IhIyL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/719fAKNoDlL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/7140R2pdrOL._AC_SL1500_.jpg'
+                ],
+                rating: '4,6 (19 avaliações)',
+                specs: {
+                    'Dimensões': '65P x 63L x 172A cm',
+                    'Marca': 'Consul',
+                    'Capacidade': '337 Litros',
+                    'Cor': 'Cinza',
+                    'Característica Especial': 'Livre de gelo'
+                },
+                about: 'O Consul Frost Free 337 litros evita gelo nas paredes, facilita a limpeza e economiza até 13% de energia ao ano. Com congelador espaçoso.'
+            },
+            {
+                id: 'mondial-l99fb',
+                title: 'MONDIAL Liquidificador Turbo Power, Preto, 550W, 220V - L-99 FB',
+                store: 'Amazon',
+                subcat: 'Liquidificadores',
+                oldPrice: 'R$ 159,90',
+                price: 'R$ 85,93',
+                discount: '-46%',
+                installments: 'Em até x sem juros',
+                affiliateLink: 'https://link.amazon/B046VH0Ty',
+                images: [
+                    'https://m.media-amazon.com/images/I/71KFAoTV+hL._AC_SY879_.jpg',
+                    'https://m.media-amazon.com/images/I/71snJPAj-dL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71zq9XPnksL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71mpLyEfFUL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71B-8Yh8JCL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71u1y+7HtVL._AC_SL1500_.jpg'
+                ],
+                rating: '4,7 (10 avaliações)',
+                specs: {
+                    'Marca': 'Mondial',
+                    'Potência': '550W',
+                    'Voltagem': '220V'
+                },
+                about: 'Liquidificador Mondial Turbo Power com 550W de potência, copo resistente e várias velocidades.'
+            },
+            {
+                id: 'electrolux-potes-herm',
+                title: 'Electrolux Kit 12 Potes Herméticos de Plástico Retangulares, Multiuso, Vedação Silicone, BPA Free, Porta Mantimentos',
+                store: 'Amazon',
+                subcat: 'Organização',
+                oldPrice: 'R$ 129,90',
+                price: 'R$ 89,90',
+                discount: '-30%',
+                installments: 'Em até x sem juros',
+                affiliateLink: 'https://link.amazon/B06ra4bMQ',
+                images: [
+                    'https://m.media-amazon.com/images/I/51uccv-jBiL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61mDXbMLe4L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51t1RYU3t9L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/517N5X5p4NL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51BSUCQnNBL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51tw6VngCdL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51kdyALdvCL._AC_SL1000_.jpg'
+                ],
+                rating: '4,9 (15 avaliações)',
+                specs: {
+                    'Marca': 'Electrolux',
+                    'Material': 'Plástico BPA Free',
+                    'Quantidade': 'Kit 12 Potes'
+                },
+                about: 'Kit com 12 potes herméticos Electrolux com vedação em silicone para manter seus mantimentos frescos por mais tempo.'
+            },
+            {
+                id: 'microondas-philco-20l',
+                title: 'Micro-ondas Philco 20L Branco Pmo23b (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Fornos de Micro-Ondas',
+                oldPrice: 'R$ 594,50',
+                price: 'R$ 467,36',
+                discount: '-21%',
+                installments: 'Em até x sem juros',
+                affiliateLink: 'https://link.amazon/B0f7syb1B',
+                images: [
+                    'https://m.media-amazon.com/images/I/41XTKM4Cg4L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51+i9EopBQL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/41CYNPe-nXL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61DsZgIt3aL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61+WX+hOEFL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61WWBUUtS8L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51etb6EHPvL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51j1OrH6cEL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/41HU0t+g+QL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/611ByJFkbZL._AC_SL1200_.jpg'
+                ],
+                rating: '4,8 (20 avaliações)',
+                specs: {
+                    'Marca': 'Philco',
+                    'Capacidade': '20 Litros',
+                    'Voltagem': '110V - 220V (Disponível nas opções)'
+                },
+                about: 'Micro-ondas Philco 20 Litros na cor branca, prático, moderno e ideal para o dia a dia na sua cozinha.'
+            },
+            {
+                id: 'sanduicheira-cadence-click',
+                title: 'Sanduicheira Elétrica Cadence Click (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Sanduicheiras',
+                oldPrice: 'R$ 159,90',
+                price: 'R$ 80,70',
+                discount: '-49%',
+                installments: 'Em até 4x de R$ 20,19 sem juros',
+                affiliateLink: 'https://link.amazon/B02zgdGZU',
+                images: [
+                    'https://m.media-amazon.com/images/I/51UxR8FHe-L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61VaL7UVy1L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/518QD1Eid3L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51drpBM+XuL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61qHCzXP3JL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51mL4PfTVXL._AC_SL1080_.jpg',
+                    'https://m.media-amazon.com/images/I/51NTshP1ENL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51L7l4xirOL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51H3Edmt1EL._AC_SL1080_.jpg'
+                ],
+                rating: '4,8 (20.125 avaliações)',
+                specs: {
+                    'Característica Especial': 'Leve, Revestimento antiaderente',
+                    'Cor': 'Preto',
+                    'Material': 'Plástico',
+                    'Marca': 'Cadence',
+                    'Dimensões do produto': '22,3P x 21,5L x 7,8A centímetros',
+                    'Voltagem': '110V - 220V (Disponível nas opções)'
+                },
+                about: 'Botão Liga/Desliga com LEDs indicadores: Não precisa tirar da tomada. Pés Embutidos mais firmes: A sanduicheira não tomba. Chapas Antiaderentes + Profundas: 80%* + ESPAÇO mais versátil. Chapas + SIMPLES DE LIMPAR: Superior grill, Inferior LISINHA! Alça embutida e Base Porta Fio: Área protegida de aquecimento. 750 W de potência.'
+            },
+            {
+                id: 'potes-vidro-gato-panda',
+                title: 'Kit com 5 Potes de Vidro Gato Panda, 640 ml, Retangular, com Tampa Hermética, Azul',
+                store: 'Amazon',
+                subcat: 'Organização',
+                oldPrice: 'R$ 99,00',
+                price: 'R$ 55,80',
+                discount: '-43%',
+                installments: 'Em até 12x de R$ 5,15 com juros',
+                affiliateLink: 'https://link.amazon/B08ytkGoA',
+                images: [
+                    'https://m.media-amazon.com/images/I/814oRtHfLLL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71HHekURanL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71+5cmHOLeL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71MPEdwKf0L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71UqQ+zutRL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61jZVpYo-TL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71T+U8EtKgL._AC_SL1254_.jpg'
+                ],
+                rating: '4,8 (4.093 avaliações)',
+                specs: {
+                    'Marca': 'GATO PANDA',
+                    'Material': 'Vidro borossilicato',
+                    'Capacidade': '640 Mililitros',
+                    'Cor': 'Azul',
+                    'Característica Especial': 'Seguro para forno, Seguro para micro-ondas, Sem BPA'
+                },
+                about: 'Kit com 5 potes de vidro retangulares com tampa hermética, ideais para o armazenamento de alimentos com segurança e vedação perfeita.'
+            },
+            {
+                id: 'liquidificador-oster-1400',
+                title: 'Liquidificador 1400 Full Oster Preto 3,2L (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Liquidificadores',
+                oldPrice: 'R$ 319,90',
+                price: 'R$ 152,75',
+                discount: '-52%',
+                installments: 'Em até 6x de R$ 25,50 sem juros',
+                affiliateLink: 'https://link.amazon/B03Ac5eHV',
+                images: [
+                    'https://m.media-amazon.com/images/I/51N3Xi4JJML._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61F-MTfNCFL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51ZFXTk4U5L._AC_SL1075_.jpg',
+                    'https://m.media-amazon.com/images/I/61y8EkiSxfL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61f68LW-fBL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61-gsajLCPL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61kQgMgm1+L._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61puv1ZXjaL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61vvN3krAYL._AC_SL1000_.jpg'
+                ],
+                rating: '4,5 (27.745 avaliações)',
+                specs: {
+                    'Marca': 'Oster',
+                    'Potência': '1400W',
+                    'Capacidade': '3,2 Litros',
+                    'Voltagem': '110V - 220V (Disponível nas opções)',
+                    'Dimensões do produto': '22P x 21L x 42A centímetros'
+                },
+                about: 'Super potente: 1400W. 15 velocidades + botão pulsar. Jarra antimicrobiana com 3,2L de capacidade total e tampa medidora de 100ml para facilitar suas receitas.'
+            },
+            {
+                id: 'sanduicheira-britania-bgr27i',
+                title: 'Sanduicheira e Grill Britânia BGR27I Press 2 em 1 850W (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Sanduicheiras',
+                oldPrice: 'R$ 116,68',
+                price: 'R$ 98,09',
+                discount: '-15%',
+                installments: 'Em até 12x com juros',
+                affiliateLink: 'https://link.amazon/B05Lkf5VZ',
+                images: [
+                    'https://m.media-amazon.com/images/I/5136pVcmWhL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51vcouCirqL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51gY4SWuETL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51YGBk-7LlL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51-IzgJehlL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/41tHnxIAkML._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/31oj8E7xUYL._AC_SL1000_.jpg'
+                ],
+                rating: '4,8 (9.068 avaliações)',
+                specs: {
+                    'Marca': 'Britânia',
+                    'Potência': '850W',
+                    'Voltagem': '110V - 220V (Disponível nas opções)',
+                    'Material': 'Aço inoxidável',
+                    'Dimensões do produto': '22P x 26L x 8A centímetros'
+                },
+                about: 'Ideal para o preparo de sanduíches, omeletes, ovos, etc. Chapas com revestimento antiaderente, chapa superior ondulada e inferior lisa, luz indicadora de funcionamento e acabamento em aço inox.'
+            },
+            {
+                id: 'kit-potes-vidro-hermeticos-640ml',
+                title: 'Kit 10 Potes de Vidro Herméticos 640ml com 4 Travas',
+                store: 'Amazon',
+                subcat: 'Organização',
+                oldPrice: 'R$ 120,00',
+                price: 'R$ 91,30',
+                discount: '-24%',
+                installments: 'Em até 6x sem juros',
+                affiliateLink: 'https://link.amazon/B0hvGzee1',
+                images: [
+                    'https://m.media-amazon.com/images/I/51zHBDpNqyL._AC_SL1000_.jpg'
+                ],
+                rating: '4,7 (120 avaliações)',
+                specs: {
+                    'Marca': 'Genérica',
+                    'Material': 'Vidro com 4 Travas',
+                    'Capacidade': '640 ml'
+                },
+                about: 'Kit contendo 10 potes de vidro herméticos de 640ml equipados com tampa de 4 travas, perfeitos para armazenamento seguro de alimentos.'
+            },
+            {
+                id: 'fritadeira-air-fryer-britania-5-5l',
+                title: 'Fritadeira Air Fryer Britânia 5,5L 1500W BFR50 Redstone 220V',
+                store: 'Amazon',
+                subcat: 'Air Fryers',
+                oldPrice: 'R$ 350,00',
+                price: 'R$ 277,00',
+                discount: '-21%',
+                installments: 'Em até 10x sem juros',
+                affiliateLink: 'https://link.amazon/B04eVKa69',
+                images: [
+                    'https://m.media-amazon.com/images/I/51JpNz4jZgL._AC_SL1453_.jpg'
+                ],
+                rating: '4,8 (350 avaliações)',
+                specs: {
+                    'Marca': 'Britânia',
+                    'Potência': '1500W',
+                    'Capacidade': '5,5 Litros',
+                    'Voltagem': '220V'
+                },
+                about: 'Fritadeira Air Fryer Britânia BFR50 Redstone com capacidade de 5,5 litros, 1500W de potência e revestimento especial Redstone.'
             }
         ];
 
-        function renderHomeFeed(products = productsDatabase) {
-            const feed = document.getElementById('homeFeed');
-            feed.innerHTML = '';
-            products.forEach(p => {
-                feed.innerHTML += createCardHTML(p);
-            });
-        }
-
-        function createCardHTML(p) {
+        function renderProductCard(p) {
+            const coverImage = p.images && p.images.length > 0 ? p.images[0] : (p.image || '');
+            const badgeHtml = p.discount ? `<span class="badge-desconto">${p.discount}</span>` : '';
+            const oldPriceHtml = p.oldPrice ? `<span class="old-price">${p.oldPrice}</span>` : '';
             return `
-                <div class="card-oferta" onclick="openProductDetail('${p.id}')">
-                    ${p.discount ? `<span class="badge-desconto">${p.discount}</span>` : ''}
+                <article class="card-oferta" onclick="openProductDetail('${p.id}')">
+                    ${badgeHtml}
                     <div class="img-container">
-                        <img src="${p.images[0]}" alt="${p.title}">
+                        <img src="${coverImage}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/200?text=Produto'">
                     </div>
-                    <div class="store-tag">${p.store}</div>
-                    <div class="card-title">${p.title}</div>
+                    <span class="store-tag">${p.store}</span>
+                    <h2 class="card-title">${p.title}</h2>
                     <div class="price-section">
-                        ${p.oldPrice ? `<div class="old-price">${p.oldPrice}</div>` : ''}
+                        ${oldPriceHtml}
                         <div class="current-price">${p.price}</div>
                     </div>
-                    <span class="btn-pegar">Ver Oferta</span>
-                </div>
+                    <a href="${p.affiliateLink}" target="_blank" onclick="event.stopPropagation()" class="btn-pegar">VER NA LOJA</a>
+                </article>
             `;
+        }
+
+        function loadHomeFeed() {
+            const feed = document.getElementById('homeFeed');
+            feed.innerHTML = productsDatabase.map(p => renderProductCard(p)).join('');
+        }
+
+        function openProductDetail(productId) {
+            const product = productsDatabase.find(p => p.id === productId);
+            if (!product) return;
+
+            const images = product.images && product.images.length > 0 ? product.images : [product.image];
+
+            document.getElementById('detailBreadcrumbCat').innerText = product.subcat;
+            document.getElementById('detailBreadcrumbTitle').innerText = product.title;
+            
+            const detailImg = document.getElementById('detailImg');
+            detailImg.src = images[0];
+            
+            const thumbsContainer = document.getElementById('detailThumbnails');
+            if (images.length > 1) {
+                thumbsContainer.innerHTML = images.map((imgUrl, index) => `
+                    <img src="${imgUrl}" class="thumb-img ${index === 0 ? 'active' : ''}" onclick="changeDetailImage('${imgUrl}', this)" alt="Miniatura ${index + 1}">
+                `).join('');
+            } else {
+                thumbsContainer.innerHTML = '';
+            }
+
+            document.getElementById('detailStore').innerText = product.store;
+            document.getElementById('detailTitle').innerText = product.title;
+            document.getElementById('detailRatingText').innerText = product.rating;
+            
+            const badgeEl = document.getElementById('detailBadge');
+            if (product.discount) {
+                badgeEl.style.display = 'inline-block';
+                badgeEl.innerText = `${product.discount} OFF`;
+            } else {
+                badgeEl.style.display = 'none';
+            }
+
+            const oldPriceEl = document.getElementById('detailOldPrice');
+            if (product.oldPrice) {
+                oldPriceEl.style.display = 'block';
+                oldPriceEl.innerText = `De: ${product.oldPrice}`;
+            } else {
+                oldPriceEl.style.display = 'none';
+            }
+
+            document.getElementById('detailCurrentPrice').innerText = product.price;
+            document.getElementById('detailInstallments').innerText = product.installments;
+            document.getElementById('detailAbout').innerText = product.about;
+            document.getElementById('detailAffiliateLink').href = product.affiliateLink;
+
+            const specsTable = document.getElementById('detailSpecs');
+            specsTable.innerHTML = Object.entries(product.specs).map(([key, val]) => `
+                <tr>
+                    <td>${key}</td>
+                    <td>${val}</td>
+                </tr>
+            `).join('');
+
+            switchPage('productDetailPage');
+        }
+
+        function changeDetailImage(imgUrl, element) {
+            document.getElementById('detailImg').src = imgUrl;
+            document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
         }
 
         function switchPage(pageId) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
             document.getElementById(pageId).classList.add('active-page');
-            document.getElementById('megaMenuPanel').classList.remove('open');
-            document.getElementById('megaMenuBtn').classList.remove('active');
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function openCategoryPage(catName) {
-            document.getElementById('categoryBreadcrumbName').innerText = catName;
-            document.getElementById('categoryTitle').innerText = catName;
-            
-            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === catName.toLowerCase() || p.title.toLowerCase().includes(catName.toLowerCase()) || p.store.toLowerCase() === catName.toLowerCase());
-            const feed = document.getElementById('categoryFeed');
-            feed.innerHTML = '';
-            
-            if(filtered.length > 0) {
-                filtered.forEach(p => feed.innerHTML += createCardHTML(p));
-            } else {
-                feed.innerHTML = `<p style="color:var(--text-muted);">Nenhum produto encontrado nesta categoria no momento.</p>`;
-            }
-
+        function openCategoryPage(categoryName) {
+            megaPanel.classList.remove('open');
+            megaBtn.classList.remove('active');
             switchPage('categoryPage');
-        }
 
-        function openProductDetail(id) {
-            const p = productsDatabase.find(item => item.id === id);
-            if(!p) return;
+            document.getElementById('categoryBreadcrumbName').innerText = categoryName;
+            document.getElementById('categoryTitle').innerText = categoryName;
+            
+            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === categoryName.toLowerCase());
+            const feed = document.getElementById('categoryFeed');
 
-            document.getElementById('detailBreadcrumbCat').innerText = p.subcat;
-            document.getElementById('detailBreadcrumbTitle').innerText = p.title;
-            document.getElementById('detailImg').src = p.images[0];
-            document.getElementById('detailStore').innerText = p.store;
-            document.getElementById('detailTitle').innerText = p.title;
-            document.getElementById('detailRatingText').innerText = p.rating;
-            document.getElementById('detailOldPrice').innerText = p.oldPrice ? `De: ${p.oldPrice}` : '';
-            document.getElementById('detailCurrentPrice').innerText = p.price;
-            document.getElementById('detailInstallments').innerText = p.installments;
-            document.getElementById('detailAbout').innerText = p.about;
-            document.getElementById('detailAffiliateLink').href = p.affiliateLink;
-
-            if(p.discount) {
-                document.getElementById('detailBadge').style.display = 'inline-block';
-                document.getElementById('detailBadge').innerText = `${p.discount} OFF`;
+            if (filtered.length === 0) {
+                feed.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1;">Nenhuma oferta cadastrada nesta subcategoria no momento.</p>`;
             } else {
-                document.getElementById('detailBadge').style.display = 'none';
+                feed.innerHTML = filtered.map(p => renderProductCard(p)).join('');
             }
-
-            const thumbContainer = document.getElementById('detailThumbnails');
-            thumbContainer.innerHTML = '';
-            p.images.forEach((img, idx) => {
-                thumbContainer.innerHTML += `<img src="${img}" class="thumb-img ${idx === 0 ? 'active' : ''}" onclick="changeMainImg('${img}', this)">`;
-            });
-
-            const specsTable = document.getElementById('detailSpecs');
-            specsTable.innerHTML = '';
-            for(const [key, val] of Object.entries(p.specs)) {
-                specsTable.innerHTML += `<tr><td>${key}</td><td>${val}</td></tr>`;
-            }
-
-            switchPage('productDetailPage');
         }
 
-        function changeMainImg(src, element) {
-            document.getElementById('detailImg').src = src;
-            document.querySelectorAll('.thumb-img').forEach(img => img.classList.remove('active'));
-            element.classList.add('active');
+        function openStoreOffers(storeKey) {
+            switchPage('storePage');
+
+            const storeName = storeKey === 'amazon' ? 'Amazon' : 'Magazine Luiza';
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeTitle').innerHTML = `Ofertas ${storeName} <i class="fa-solid fa-circle-check"></i>`;
+            document.getElementById('storeDomain').innerText = storeKey === 'amazon' ? 'amazon.com.br' : 'magazineluiza.com.br';
+
+            const filtered = productsDatabase.filter(p => p.store.toLowerCase().includes(storeKey.toLowerCase()));
+            document.getElementById('storeFeed').innerHTML = filtered.map(p => renderProductCard(p)).join('');
         }
 
-        function openStoreCupons(storeName) {
-            openCategoryPage(storeName);
-        }
+        const megaBtn = document.getElementById('megaMenuBtn');
+        const megaPanel = document.getElementById('megaMenuPanel');
+        const megaContent = document.querySelector('.mega-content');
+        const catItems = document.querySelectorAll('.mega-cat-item');
+        const subcatGroups = document.querySelectorAll('.subcat-group');
 
-        const categoriesData = [
-            { id: 'eletronicos', name: 'Smartphones, Eletrônicos e TV', icon: 'fa-mobile-screen-button' },
-            { id: 'informatica', name: 'Informática e Games', icon: 'fa-gamepad' },
-            { id: 'casa', name: 'Casa e Eletrodomésticos', icon: 'fa-couch' },
-            { id: 'moda', name: 'Moda e Beleza', icon: 'fa-shirt' },
-            { id: 'esporte', name: 'Esporte e Lazer', icon: 'fa-dumbbell' },
-            { id: 'bebes', name: 'Bebês e Brinquedos', icon: 'fa-baby' },
-            { id: 'ferramentas', name: 'Ferramentas e Construção', icon: 'fa-wrench' },
-            { id: 'automotivo', name: 'Automotivo', icon: 'fa-car' },
-            { id: 'supermercado', name: 'Supermercado e Bebidas', icon: 'fa-cart-shopping' }
-        ];
-
-        function buildMegaMenu() {
-            const sidebar = document.getElementById('megaSidebarContainer');
-            sidebar.innerHTML = '';
-
-            categoriesData.forEach((cat) => {
-                const desktopSubcatHTML = document.getElementById(`d-cat-${cat.id}`).innerHTML;
-
-                const item = document.createElement('div');
-                item.className = 'mega-cat-item';
-                item.setAttribute('data-target', cat.id);
-                item.innerHTML = `
-                    <div style="display:flex; align-items:center; gap:12px; flex:1;">
-                        <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
-                        <span>${cat.name}</span>
-                    </div>
-                    <div class="subcat-group-mobile">
-                        ${desktopSubcatHTML}
-                    </div>
-                `;
-                sidebar.appendChild(item);
-            });
-        }
-
-        const megaMenuBtn = document.getElementById('megaMenuBtn');
-        const megaMenuPanel = document.getElementById('megaMenuPanel');
-
-        megaMenuBtn.addEventListener('click', (e) => {
+        megaBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            megaMenuPanel.classList.toggle('open');
-            megaMenuBtn.classList.toggle('active');
+            megaPanel.classList.toggle('open');
+            megaBtn.classList.toggle('active');
         });
 
         document.addEventListener('click', (e) => {
-            if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
-                megaMenuPanel.classList.remove('open');
-                megaMenuBtn.classList.remove('active');
+            if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
+                megaPanel.classList.remove('open');
+                megaBtn.classList.remove('active');
             }
         });
 
-        function initMenuEvents() {
-            const catItems = document.querySelectorAll('.mega-cat-item');
-            const subcatGroups = document.querySelectorAll('#megaContentDesktop .subcat-group');
+        catItems.forEach(item => {
+            const targetId = item.getAttribute('data-target');
+            const targetSubcat = document.getElementById(targetId);
 
-            catItems.forEach(item => {
-                const targetId = item.getAttribute('data-target');
-
-                item.addEventListener('mouseenter', () => {
-                    if(window.innerWidth > 768) {
-                        catItems.forEach(i => i.classList.remove('active'));
-                        subcatGroups.forEach(g => g.classList.remove('active'));
-
-                        item.classList.add('active');
-                        const desktopGroup = document.getElementById(`d-${targetId}`);
-                        if(desktopGroup) desktopGroup.classList.add('active');
+            function setupMenuLayout() {
+                if (window.innerWidth <= 768) {
+                    item.after(targetSubcat);
+                    item.classList.remove('active');
+                    targetSubcat.classList.remove('active');
+                } else {
+                    megaContent.appendChild(targetSubcat);
+                    if (!document.querySelector('.mega-cat-item.active')) {
+                        catItems[0].classList.add('active');
+                        subcatGroups[0].classList.add('active');
                     }
-                });
+                }
+            }
 
-                item.addEventListener('click', (e) => {
-                    if(window.innerWidth <= 768) {
-                        e.stopPropagation();
-                        const isActive = item.classList.contains('active');
-                        
-                        catItems.forEach(i => i.classList.remove('active'));
+            setupMenuLayout();
+            window.addEventListener('resize', setupMenuLayout);
 
-                        if(!isActive) {
-                            item.classList.add('active');
-                        }
-                    }
-                });
+            const toggleCategory = (e) => {
+                e.stopPropagation();
+                const isActive = item.classList.contains('active');
+
+                if (window.innerWidth <= 768 && isActive) {
+                    item.classList.remove('active');
+                    targetSubcat.classList.remove('active');
+                    return;
+                }
+
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => g.classList.remove('active'));
+
+                item.classList.add('active');
+                if (targetSubcat) targetSubcat.classList.add('active');
+            };
+
+            item.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 768) {
+                    catItems.forEach(i => i.classList.remove('active'));
+                    subcatGroups.forEach(g => g.classList.remove('active'));
+                    item.classList.add('active');
+                    if (targetSubcat) targetSubcat.classList.add('active');
+                }
             });
-        }
 
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            if(term.trim() === '') {
-                renderHomeFeed();
-                return;
-            }
-            const filtered = productsDatabase.filter(p => 
-                p.title.toLowerCase().includes(term) || 
-                p.store.toLowerCase().includes(term) || 
-                p.subcat.toLowerCase().includes(term)
-            );
-            const feed = document.getElementById('homeFeed');
-            feed.innerHTML = '';
-            if(filtered.length > 0) {
-                filtered.forEach(p => feed.innerHTML += createCardHTML(p));
-            } else {
-                feed.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center;">Nenhum produto encontrado para "${term}".</p>`;
-            }
-            switchPage('homePage');
+            item.addEventListener('click', toggleCategory);
         });
 
-        window.onload = () => {
-            renderHomeFeed();
-            buildMegaMenu();
-            initMenuEvents();
-
-            const catItems = document.querySelectorAll('.mega-cat-item');
-            const subcatGroups = document.querySelectorAll('#megaContentDesktop .subcat-group');
-            if(catItems.length > 0 && subcatGroups.length > 0) {
-                // Apenas define o primeiro item no desktop para não quebrar a visualização padrão lateral
-                catItems[0].classList.add('active');
-                subcatGroups[0].classList.add('active');
-            }
-        };
+        loadHomeFeed();
     </script>
 </body>
 </html>
