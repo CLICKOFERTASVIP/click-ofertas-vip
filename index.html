@@ -1977,4 +1977,280 @@
                     'Marca': 'Oster',
                     'Potência': '1400W',
                     'Capacidade': '3,2 Litros',
-                    'Voltagem
+                    'Voltagem': '110V - 220V (Disponível nas opções)',
+                    'Dimensões do produto': '22P x 21L x 42A centímetros'
+                },
+                about: 'Super potente: 1400W. 15 velocidades + botão pulsar. Jarra antimicrobiana com 3,2L de capacidade total e tampa medidora de 100ml para facilitar suas receitas.'
+            },
+            {
+                id: 'sanduicheira-britania-bgr27i',
+                title: 'Sanduicheira e Grill Britânia BGR27I Press 2 em 1 850W (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Sanduicheiras',
+                oldPrice: 'R$ 116,68',
+                price: 'R$ 98,09',
+                discount: '-15%',
+                installments: 'Em até 12x com juros',
+                affiliateLink: 'https://link.amazon/B05Lkf5VZ',
+                images: [
+                    'https://m.media-amazon.com/images/I/5136pVcmWhL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51vcouCirqL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51gY4SWuETL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51YGBk-7LlL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51-IzgJehlL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/41tHnxIAkML._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/31oj8E7xUYL._AC_SL1000_.jpg'
+                ],
+                rating: '4,8 (9.068 avaliações)',
+                specs: {
+                    'Marca': 'Britânia',
+                    'Potência': '850W',
+                    'Voltagem': '110V - 220V (Disponível nas opções)',
+                    'Material': 'Aço inoxidável',
+                    'Dimensões do produto': '22P x 26L x 8A centímetros'
+                },
+                about: 'Ideal para o preparo de sanduíches, omeletes, ovos, etc. Chapas com revestimento antiaderente, chapa superior ondulada e inferior lisa, luz indicadora de funcionamento e acabamento em aço inox.'
+            },
+            {
+                id: 'kit-potes-vidro-hermeticos-640ml',
+                title: 'Kit 10 Potes de Vidro Herméticos 640ml com 4 Travas',
+                store: 'Amazon',
+                subcat: 'Organização',
+                oldPrice: 'R$ 120,00',
+                price: 'R$ 91,30',
+                discount: '-24%',
+                installments: 'Em até 6x sem juros',
+                affiliateLink: 'https://link.amazon/B0hvGzee1',
+                images: [
+                    'https://m.media-amazon.com/images/I/51zHBDpNqyL._AC_SL1000_.jpg'
+                ],
+                rating: '4,7 (120 avaliações)',
+                specs: {
+                    'Marca': 'Genérica',
+                    'Material': 'Vidro com 4 Travas',
+                    'Capacidade': '640 ml'
+                },
+                about: 'Kit contendo 10 potes de vidro herméticos de 640ml equipados com tampa de 4 travas, perfeitos para armazenamento seguro de alimentos.'
+            },
+            {
+                id: 'fritadeira-air-fryer-britania-5-5l',
+                title: 'Fritadeira Air Fryer Britânia 5,5L 1500W BFR50 Redstone 220V',
+                store: 'Amazon',
+                subcat: 'Air Fryers',
+                oldPrice: 'R$ 350,00',
+                price: 'R$ 277,00',
+                discount: '-21%',
+                installments: 'Em até 10x sem juros',
+                affiliateLink: 'https://link.amazon/B04eVKa69',
+                images: [
+                    'https://m.media-amazon.com/images/I/51JpNz4jZgL._AC_SL1453_.jpg'
+                ],
+                rating: '4,8 (350 avaliações)',
+                specs: {
+                    'Marca': 'Britânia',
+                    'Potência': '1500W',
+                    'Capacidade': '5,5 Litros',
+                    'Voltagem': '220V'
+                },
+                about: 'Fritadeira Air Fryer Britânia BFR50 Redstone com capacidade de 5,5 litros, 1500W de potência e revestimento especial Redstone.'
+            }
+        ];
+
+        function renderProductCard(p) {
+            const coverImage = p.images && p.images.length > 0 ? p.images[0] : (p.image || '');
+            const badgeHtml = p.discount ? `<span class="badge-desconto">${p.discount}</span>` : '';
+            const oldPriceHtml = p.oldPrice ? `<span class="old-price">${p.oldPrice}</span>` : '';
+            return `
+                <article class="card-oferta" onclick="openProductDetail('${p.id}')">
+                    ${badgeHtml}
+                    <div class="img-container">
+                        <img src="${coverImage}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/200?text=Produto'">
+                    </div>
+                    <span class="store-tag">${p.store}</span>
+                    <h2 class="card-title">${p.title}</h2>
+                    <div class="price-section">
+                        ${oldPriceHtml}
+                        <div class="current-price">${p.price}</div>
+                    </div>
+                    <a href="${p.affiliateLink}" target="_blank" onclick="event.stopPropagation()" class="btn-pegar">VER NA LOJA</a>
+                </article>
+            `;
+        }
+
+        function loadHomeFeed() {
+            const feed = document.getElementById('homeFeed');
+            feed.innerHTML = productsDatabase.map(p => renderProductCard(p)).join('');
+        }
+
+        function openProductDetail(productId) {
+            const product = productsDatabase.find(p => p.id === productId);
+            if (!product) return;
+
+            const images = product.images && product.images.length > 0 ? product.images : [product.image];
+
+            document.getElementById('detailBreadcrumbCat').innerText = product.subcat;
+            document.getElementById('detailBreadcrumbTitle').innerText = product.title;
+            
+            const detailImg = document.getElementById('detailImg');
+            detailImg.src = images[0];
+            
+            const thumbsContainer = document.getElementById('detailThumbnails');
+            if (images.length > 1) {
+                thumbsContainer.innerHTML = images.map((imgUrl, index) => `
+                    <img src="${imgUrl}" class="thumb-img ${index === 0 ? 'active' : ''}" onclick="changeDetailImage('${imgUrl}', this)" alt="Miniatura ${index + 1}">
+                `).join('');
+            } else {
+                thumbsContainer.innerHTML = '';
+            }
+
+            document.getElementById('detailStore').innerText = product.store;
+            document.getElementById('detailTitle').innerText = product.title;
+            document.getElementById('detailRatingText').innerText = product.rating;
+            
+            const badgeEl = document.getElementById('detailBadge');
+            if (product.discount) {
+                badgeEl.style.display = 'inline-block';
+                badgeEl.innerText = `${product.discount} OFF`;
+            } else {
+                badgeEl.style.display = 'none';
+            }
+
+            const oldPriceEl = document.getElementById('detailOldPrice');
+            if (product.oldPrice) {
+                oldPriceEl.style.display = 'block';
+                oldPriceEl.innerText = `De: ${product.oldPrice}`;
+            } else {
+                oldPriceEl.style.display = 'none';
+            }
+
+            document.getElementById('detailCurrentPrice').innerText = product.price;
+            document.getElementById('detailInstallments').innerText = product.installments;
+            document.getElementById('detailAbout').innerText = product.about;
+            document.getElementById('detailAffiliateLink').href = product.affiliateLink;
+
+            const specsTable = document.getElementById('detailSpecs');
+            specsTable.innerHTML = Object.entries(product.specs).map(([key, val]) => `
+                <tr>
+                    <td>${key}</td>
+                    <td>${val}</td>
+                </tr>
+            `).join('');
+
+            switchPage('productDetailPage');
+        }
+
+        function changeDetailImage(imgUrl, element) {
+            document.getElementById('detailImg').src = imgUrl;
+            document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            document.getElementById(pageId).classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openCategoryPage(categoryName) {
+            megaPanel.classList.remove('open');
+            megaBtn.classList.remove('active');
+            switchPage('categoryPage');
+
+            document.getElementById('categoryBreadcrumbName').innerText = categoryName;
+            document.getElementById('categoryTitle').innerText = categoryName;
+            
+            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === categoryName.toLowerCase());
+            const feed = document.getElementById('categoryFeed');
+
+            if (filtered.length === 0) {
+                feed.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1;">Nenhuma oferta cadastrada nesta subcategoria no momento.</p>`;
+            } else {
+                feed.innerHTML = filtered.map(p => renderProductCard(p)).join('');
+            }
+        }
+
+        function openStoreOffers(storeKey) {
+            switchPage('storePage');
+
+            const storeName = storeKey === 'amazon' ? 'Amazon' : 'Magazine Luiza';
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeTitle').innerHTML = `Ofertas ${storeName} <i class="fa-solid fa-circle-check"></i>`;
+            document.getElementById('storeDomain').innerText = storeKey === 'amazon' ? 'amazon.com.br' : 'magazineluiza.com.br';
+
+            const filtered = productsDatabase.filter(p => p.store.toLowerCase().includes(storeKey.toLowerCase()));
+            document.getElementById('storeFeed').innerHTML = filtered.map(p => renderProductCard(p)).join('');
+        }
+
+        const megaBtn = document.getElementById('megaMenuBtn');
+        const megaPanel = document.getElementById('megaMenuPanel');
+        const megaContent = document.querySelector('.mega-content');
+        const catItems = document.querySelectorAll('.mega-cat-item');
+        const subcatGroups = document.querySelectorAll('.subcat-group');
+
+        megaBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            megaPanel.classList.toggle('open');
+            megaBtn.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
+                megaPanel.classList.remove('open');
+                megaBtn.classList.remove('active');
+            }
+        });
+
+        catItems.forEach(item => {
+            const targetId = item.getAttribute('data-target');
+            const targetSubcat = document.getElementById(targetId);
+
+            function setupMenuLayout() {
+                if (window.innerWidth <= 768) {
+                    item.after(targetSubcat);
+                    item.classList.remove('active');
+                    targetSubcat.classList.remove('active');
+                } else {
+                    megaContent.appendChild(targetSubcat);
+                    if (!document.querySelector('.mega-cat-item.active')) {
+                        catItems[0].classList.add('active');
+                        subcatGroups[0].classList.add('active');
+                    }
+                }
+            }
+
+            setupMenuLayout();
+            window.addEventListener('resize', setupMenuLayout);
+
+            const toggleCategory = (e) => {
+                e.stopPropagation();
+                const isActive = item.classList.contains('active');
+
+                if (window.innerWidth <= 768 && isActive) {
+                    item.classList.remove('active');
+                    targetSubcat.classList.remove('active');
+                    return;
+                }
+
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => g.classList.remove('active'));
+
+                item.classList.add('active');
+                if (targetSubcat) targetSubcat.classList.add('active');
+            };
+
+            item.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 768) {
+                    catItems.forEach(i => i.classList.remove('active'));
+                    subcatGroups.forEach(g => g.classList.remove('active'));
+                    item.classList.add('active');
+                    if (targetSubcat) targetSubcat.classList.add('active');
+                }
+            });
+
+            item.addEventListener('click', toggleCategory);
+        });
+
+        loadHomeFeed();
+    </script>
+</body>
+</html>
