@@ -615,7 +615,7 @@
             }
 
             .mega-content {
-                display: none !important; /* Esconde o painel padrão lateral do desktop */
+                display: none !important;
                 padding: 0;
             }
 
@@ -624,7 +624,7 @@
                 border-bottom: 1px solid #1a1a22;
                 border-radius: 0;
                 padding: 12px 15px;
-                flex-wrap: wrap; /* Permite que o subcat-group fique abaixo do item no mobile */
+                flex-wrap: wrap;
             }
 
             .mega-cat-item::after {
@@ -639,7 +639,6 @@
                 transform: rotate(180deg);
             }
 
-            /* Faz com que o grupo de subcategorias apareça direto dentro do item no mobile */
             .mega-cat-item .subcat-group-mobile {
                 display: none;
                 width: 100%;
@@ -697,11 +696,8 @@
             </button>
 
             <div class="mega-menu-panel" id="megaMenuPanel">
-                <div class="mega-sidebar" id="megaSidebarContainer">
-                    <!-- Itens injetados via JS para suportar o formato acordeão mobile -->
-                </div>
+                <div class="mega-sidebar" id="megaSidebarContainer"></div>
 
-                <!-- Conteúdo original mantido para telas grandes (Desktop) -->
                 <div class="mega-content" id="megaContentDesktop">
                     <div class="subcat-group" id="d-cat-eletronicos">
                         <div class="subcat-column">
@@ -1011,7 +1007,6 @@
             }
         ];
 
-        // Renderizar Feed Inicial
         function renderHomeFeed(products = productsDatabase) {
             const feed = document.getElementById('homeFeed');
             feed.innerHTML = '';
@@ -1050,7 +1045,7 @@
             document.getElementById('categoryBreadcrumbName').innerText = catName;
             document.getElementById('categoryTitle').innerText = catName;
             
-            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === catName.toLowerCase() || p.title.toLowerCase().includes(catName.toLowerCase()));
+            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === catName.toLowerCase() || p.title.toLowerCase().includes(catName.toLowerCase()) || p.store.toLowerCase() === catName.toLowerCase());
             const feed = document.getElementById('categoryFeed');
             feed.innerHTML = '';
             
@@ -1111,7 +1106,6 @@
             openCategoryPage(storeName);
         }
 
-        // Construção Dinâmica do Menu Lateral para unificar Desktop e Acordeão Mobile com as respectivas subcategorias
         const categoriesData = [
             { id: 'eletronicos', name: 'Smartphones, Eletrônicos e TV', icon: 'fa-mobile-screen-button' },
             { id: 'informatica', name: 'Informática e Games', icon: 'fa-gamepad' },
@@ -1128,7 +1122,7 @@
             const sidebar = document.getElementById('megaSidebarContainer');
             sidebar.innerHTML = '';
 
-            categoriesData.forEach((cat, index) => {
+            categoriesData.forEach((cat) => {
                 const desktopSubcatHTML = document.getElementById(`d-cat-${cat.id}`).innerHTML;
 
                 const item = document.createElement('div');
@@ -1147,7 +1141,6 @@
             });
         }
 
-        // Controle do Mega Menu
         const megaMenuBtn = document.getElementById('megaMenuBtn');
         const megaMenuPanel = document.getElementById('megaMenuPanel');
 
@@ -1164,7 +1157,6 @@
             }
         });
 
-        // Eventos de clique e hover nas categorias
         function initMenuEvents() {
             const catItems = document.querySelectorAll('.mega-cat-item');
             const subcatGroups = document.querySelectorAll('#megaContentDesktop .subcat-group');
@@ -1188,10 +1180,8 @@
                         e.stopPropagation();
                         const isActive = item.classList.contains('active');
                         
-                        // Fecha todos no mobile
                         catItems.forEach(i => i.classList.remove('active'));
 
-                        // Se não estava aberto, abre este
                         if(!isActive) {
                             item.classList.add('active');
                         }
@@ -1200,7 +1190,6 @@
             });
         }
 
-        // Barra de Pesquisa
         document.getElementById('searchInput').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
             if(term.trim() === '') {
@@ -1222,7 +1211,6 @@
             switchPage('homePage');
         });
 
-        // Inicialização
         window.onload = () => {
             renderHomeFeed();
             buildMegaMenu();
@@ -1231,6 +1219,7 @@
             const catItems = document.querySelectorAll('.mega-cat-item');
             const subcatGroups = document.querySelectorAll('#megaContentDesktop .subcat-group');
             if(catItems.length > 0 && subcatGroups.length > 0) {
+                // Apenas define o primeiro item no desktop para não quebrar a visualização padrão lateral
                 catItems[0].classList.add('active');
                 subcatGroups[0].classList.add('active');
             }
