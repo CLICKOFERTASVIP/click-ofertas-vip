@@ -926,7 +926,7 @@
                     <div class="subcat-group" id="cat-ferramentas">
                         <div class="subcat-column">
                             <h4>Ferramentas Elétricas</h4>
-                            <a onclick="openCategoryPage('Furadeiras')">Furadeiras e Parafusadeiras</a>
+                            <a onclick="openCategoryPage('Furadeiras e Parafusadeiras')">Furadeiras e Parafusadeiras</a>
                             <a onclick="openCategoryPage('Serras')">Serras e Lixadeiras</a>
                         </div>
                         <div class="subcat-column">
@@ -1071,33 +1071,33 @@
 
     <script>
         const productsDatabase = [
-           {
-    id: 'furadeira-parafusadeira-impacto-rhead',
-    title: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED 2 Baterias Recarregáveis Bi-volt e Acessórios Maleta Completa',
-    store: 'Amazon',
-    subcat: 'furadeiras e Parafusadeiras',
-    oldPrice: '',
-    price: 'R$ 102,60',
-    discount: '',
-    installments: 'Em até 3x de R$ 36,00 sem juros',
-    affiliateLink: 'https://link.amazon/B07xTHSpR',
-    images: [
-        'https://m.media-amazon.com/images/I/61FT94WfQeL._AC_SL1024_.jpg',
-        'https://m.media-amazon.com/images/I/71k2NAwyzbL._AC_SL1024_.jpg',
-        'https://m.media-amazon.com/images/I/715FO+3r5IL._AC_SL1024_.jpg',
-        'https://m.media-amazon.com/images/I/61rnsj2OAGL._AC_SL1024_.jpg',
-        'https://m.media-amazon.com/images/I/71cO79OV31L._AC_SL1024_.jpg'
-    ],
-    rating: '4,2 (943 avaliações)',
-    specs: {
-        'Marca': 'RHEAD RED HIGH END STUDIOS',
-        'Fonte de alimentação': 'Energia elétrica',
-        'Tensão': '110,22 Volts',
-        'Componentes Incluídos': 'Parafusadeira e Furadeira Sem Fio 21V com LED, Bateria de 18V, Carregador Bivolt, Maleta, Kit 5 Bits, 6 Brocas',
-        'Dimensões do produto': '26C x 8L x 29A centímetros'
-    },
-    about: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED, 2 Baterias Recarregáveis Bi-volt, 3 funções em uma única ferramenta (perfura, parafusa e impacta), 25 níveis de torque + 2 velocidades, LED integrado e kit completo com maleta rígida e acessórios.'
-},
+            {
+                id: 'furadeira-parafusadeira-impacto-rhead',
+                title: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED 2 Baterias Recarregáveis Bi-volt e Acessórios Maleta Completa',
+                store: 'Amazon',
+                subcat: 'Furadeiras e Parafusadeiras',
+                oldPrice: '',
+                price: 'R$ 102,60',
+                discount: '',
+                installments: 'Em até 3x de R$ 36,00 sem juros',
+                affiliateLink: 'https://link.amazon/B07xTHSpR',
+                images: [
+                    'https://m.media-amazon.com/images/I/61FT94WfQeL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/71k2NAwyzbL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/715FO+3r5IL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/61rnsj2OAGL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/71cO79OV31L._AC_SL1024_.jpg'
+                ],
+                rating: '4,2 (943 avaliações)',
+                specs: {
+                    'Marca': 'RHEAD RED HIGH END STUDIOS',
+                    'Fonte de alimentação': 'Energia elétrica',
+                    'Tensão': '110,22 Volts',
+                    'Componentes Incluídos': 'Parafusadeira e Furadeira Sem Fio 21V com LED, Bateria de 18V, Carregador Bivolt, Maleta, Kit 5 Bits, 6 Brocas',
+                    'Dimensões do produto': '26C x 8L x 29A centímetros'
+                },
+                about: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED, 2 Baterias Recarregáveis Bi-volt, 3 funções em uma única ferramenta (perfura, parafusa e impacta), 25 níveis de torque + 2 velocidades, LED integrado e kit completo com maleta rígida e acessórios.'
+            },
             {
                 id: 'panela-pressao-eletrica-electrolux-6l-pcc20',
                 title: 'Panela de Pressão Elétrica Electrolux Digital 6L PCC20 Inox Preto (127V - 220V)',
@@ -1493,16 +1493,18 @@
 
         function renderProductCard(p) {
             const coverImage = p.images && p.images.length > 0 ? p.images[0] : (p.image || '');
+            const badgeHtml = p.discount ? `<span class="badge-desconto">${p.discount}</span>` : '';
+            const oldPriceHtml = p.oldPrice ? `<span class="old-price">${p.oldPrice}</span>` : '';
             return `
                 <article class="card-oferta" onclick="openProductDetail('${p.id}')">
-                    <span class="badge-desconto">${p.discount}</span>
+                    ${badgeHtml}
                     <div class="img-container">
                         <img src="${coverImage}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/200?text=Produto'">
                     </div>
                     <span class="store-tag">${p.store}</span>
                     <h2 class="card-title">${p.title}</h2>
                     <div class="price-section">
-                        <span class="old-price">${p.oldPrice}</span>
+                        ${oldPriceHtml}
                         <div class="current-price">${p.price}</div>
                     </div>
                     <a href="${p.affiliateLink}" target="_blank" onclick="event.stopPropagation()" class="btn-pegar">VER NA LOJA</a>
@@ -1539,8 +1541,23 @@
             document.getElementById('detailStore').innerText = product.store;
             document.getElementById('detailTitle').innerText = product.title;
             document.getElementById('detailRatingText').innerText = product.rating;
-            document.getElementById('detailBadge').innerText = `${product.discount} OFF`;
-            document.getElementById('detailOldPrice').innerText = `De: ${product.oldPrice}`;
+            
+            const badgeEl = document.getElementById('detailBadge');
+            if (product.discount) {
+                badgeEl.style.display = 'inline-block';
+                badgeEl.innerText = `${product.discount} OFF`;
+            } else {
+                badgeEl.style.display = 'none';
+            }
+
+            const oldPriceEl = document.getElementById('detailOldPrice');
+            if (product.oldPrice) {
+                oldPriceEl.style.display = 'block';
+                oldPriceEl.innerText = `De: ${product.oldPrice}`;
+            } else {
+                oldPriceEl.style.display = 'none';
+            }
+
             document.getElementById('detailCurrentPrice').innerText = product.price;
             document.getElementById('detailInstallments').innerText = product.installments;
             document.getElementById('detailAbout').innerText = product.about;
