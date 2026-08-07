@@ -636,7 +636,8 @@
 
         .logo-amazon { background: #ff9900; color: #111; }
         .logo-shopee { background: #ee4d2d; color: #fff; }
-        .logo-mercadolivre { background: #ffe600; color: #2d327d; }
+        /* CORREÇÃO APLICADA AQUI NO LOGO DO MERCADO LIVRE */
+        .logo-mercadolivre { background: #fff159; color: #2d327d; }
         .logo-magalu { background: #0086ff; color: #fff; }
 
         .loja-cupom-card span {
@@ -2086,7 +2087,6 @@
             }
         ];
 
-        // Função de embaralhamento (Fisher-Yates Shuffle)
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -2276,16 +2276,16 @@
             if (!p) return;
 
             document.getElementById('detailBreadcrumbCat').innerText = p.subcat;
-            document.getElementById('detailBreadcrumbTitle').innerText = p.title;
+            document.getElementById('detailBreadcrumbTitle').innerText = p.title.substring(0, 30) + '...';
             document.getElementById('detailStore').innerText = p.store;
             document.getElementById('detailTitle').innerText = p.title;
-            document.getElementById('detailRatingText').innerText = p.rating;
             document.getElementById('detailBadge').innerText = p.discount + ' OFF';
             document.getElementById('detailOldPrice').innerText = 'De: ' + p.oldPrice;
             document.getElementById('detailCurrentPrice').innerText = p.price;
             document.getElementById('detailInstallments').innerText = p.installments;
             document.getElementById('detailAffiliateLink').href = p.affiliateLink;
             document.getElementById('detailAbout').innerText = p.about;
+            document.getElementById('detailRatingText').innerText = p.rating;
 
             const mainImg = document.getElementById('detailImg');
             mainImg.src = p.images[0];
@@ -2293,22 +2293,22 @@
             const thumbContainer = document.getElementById('detailThumbnails');
             thumbContainer.innerHTML = '';
             p.images.forEach((imgUrl, idx) => {
-                const thumb = document.createElement('img');
-                thumb.className = `thumb-img ${idx === 0 ? 'active' : ''}`;
-                thumb.src = imgUrl;
-                thumb.onclick = () => {
+                const tImg = document.createElement('img');
+                tImg.src = imgUrl;
+                tImg.className = `thumb-img ${idx === 0 ? 'active' : ''}`;
+                tImg.onclick = () => {
                     mainImg.src = imgUrl;
-                    document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
+                    document.querySelectorAll('.thumb-img').forEach(ti => ti.classList.remove('active'));
+                    tImg.classList.add('active');
                 };
-                thumbContainer.appendChild(thumb);
+                thumbContainer.appendChild(tImg);
             });
 
             const specsTable = document.getElementById('detailSpecs');
             specsTable.innerHTML = '';
-            for (const [key, value] of Object.entries(p.specs)) {
+            for (const [key, val] of Object.entries(p.specs)) {
                 const row = document.createElement('tr');
-                row.innerHTML = `<td>${key}</td><td>${value}</td>`;
+                row.innerHTML = `<td>${key}</td><td>${val}</td>`;
                 specsTable.appendChild(row);
             }
 
@@ -2317,78 +2317,76 @@
 
         function openStoreCupons(storeName) {
             document.getElementById('storeBreadcrumbName').innerText = storeName;
-            document.getElementById('storeCuponsTitle').innerText = `Cupons da Loja: ${storeName}`;
+            document.getElementById('storeCuponsTitle').innerText = 'Cupons de Desconto - ' + storeName;
             
             const container = document.getElementById('listaCuponsContainer');
             container.innerHTML = '';
 
-            const cupons = cuponsPorLoja[storeName] || [];
-            if (cupons.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">Nenhum cupom disponível no momento para esta loja.</p>';
+            const list = cuponsPorLoja[storeName] || [];
+            if (list.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted);">Nenhum cupom disponível no momento para esta loja.</p>';
             } else {
-                cupons.forEach(c => {
-                    const cupomCard = document.createElement('div');
-                    cupomCard.className = 'cupom-item-card';
-                    cupomCard.innerHTML = `
+                list.forEach(c => {
+                    const item = document.createElement('div');
+                    item.className = 'cupom-item-card';
+                    item.innerHTML = `
                         <div class="cupom-info">
                             <h4>${storeName}</h4>
                             <p>${c.desc}</p>
                         </div>
                         <div class="cupom-codigo-box">${c.codigo}</div>
-                        <a href="${c.link}" target="_blank" class="btn-pegar">UTILIZAR CUPOM</a>
+                        <a href="${c.link}" target="_blank" class="btn-pegar" style="text-align:center;">IR PARA A LOJA</a>
                     `;
-                    container.appendChild(cupomCard);
+                    container.appendChild(item);
                 });
             }
 
             switchPage('storeCuponsPage');
         }
 
+        let scrollPos = 0;
         function scrollCarousel(direction) {
             const container = document.getElementById('maisVendidosFeed');
             const scrollAmount = 300;
             container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('DOMContentLoaded', () => {
             buildMegaMenu();
 
-            // Renderiza Mais Vendidos (embaralhados ou fixos)
+            const randomHomeProducts = shuffleArray([...productsDatabase]);
+            renderFeed('homeFeed', randomHomeProducts);
+
             const maisVendidosList = productsDatabase.filter(p => p.maisVendido);
-            renderFeed('maisVendidosFeed', maisVendidosList);
+            renderFeed('maisVendidosFeed', maisVendidosList.length > 0 ? maisVendidosList : productsDatabase.slice(0, 8));
 
-            // Renderiza Destaques do Dia (Home Feed) com cópia embaralhada para dinamismo
-            const homeList = [...productsDatabase];
-            shuffleArray(homeList);
-            renderFeed('homeFeed', homeList);
-
-            // Menu de Categorias Dropdown
-            const megaBtn = document.getElementById('megaMenuBtn');
-            const megaPanel = document.getElementById('megaMenuPanel');
+            const megaMenuBtn = document.getElementById('megaMenuBtn');
+            const megaMenuPanel = document.getElementById('megaMenuPanel');
             const menuArrow = document.getElementById('menuArrow');
 
-            megaBtn.addEventListener('click', (e) => {
+            megaMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                megaPanel.classList.toggle('open');
-                megaBtn.classList.toggle('active');
-                if (megaPanel.classList.contains('open')) {
+                megaMenuPanel.classList.toggle('open');
+                megaMenuBtn.classList.toggle('active');
+                if (megaMenuPanel.classList.contains('open')) {
                     menuArrow.style.transform = 'rotate(180deg)';
                 } else {
                     menuArrow.style.transform = 'rotate(0deg)';
                 }
             });
 
-            document.addEventListener('click', (e) => {
-                if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
-                    megaPanel.classList.remove('open');
-                    megaBtn.classList.remove('active');
-                    menuArrow.style.transform = 'rotate(0deg)';
-                }
+            megaMenuPanel.addEventListener('click', (e) => {
+                e.stopPropagation();
             });
 
-            // Barra de Pesquisa global
+            document.addEventListener('click', () => {
+                megaMenuPanel.classList.remove('open');
+                megaMenuBtn.classList.remove('active');
+                menuArrow.style.transform = 'rotate(0deg)';
+            });
+
             const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('keypress', (e) => {
+            searchInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     const query = searchInput.value.trim().toLowerCase();
                     if (query) {
@@ -2399,12 +2397,7 @@
                         document.getElementById('maxPriceSearch').value = '';
                         document.getElementById('sortSearch').value = 'recentes';
 
-                        const matched = productsDatabase.filter(p => 
-                            p.title.toLowerCase().includes(query) || 
-                            p.store.toLowerCase().includes(query) || 
-                            p.subcat.toLowerCase().includes(query)
-                        );
-                        renderFeed('searchFeed', matched);
+                        applySortingAndFiltering('search');
                         switchPage('searchPage');
                     }
                 }
