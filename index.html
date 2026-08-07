@@ -518,29 +518,6 @@
             border-radius: 4px;
         }
 
-        /* Botão de Compartilhar no Card */
-        .card-share-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #2b2b36;
-            color: #fff;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 3;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .card-share-btn:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-
         .img-container {
             width: 100%;
             height: 180px;
@@ -603,15 +580,9 @@
         .old-price { font-size: 12px; color: var(--text-muted); text-decoration: line-through; }
         .current-price { font-size: 18px; font-weight: 800; color: var(--text-dark); }
 
-        .card-actions {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
         .btn-pegar {
             display: block;
-            flex: 1;
+            width: 100%;
             background: var(--primary);
             color: white;
             text-align: center;
@@ -624,6 +595,35 @@
         }
 
         .btn-pegar:hover { background: var(--primary-hover); }
+
+        .share-icons-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .share-icon-btn {
+            background: #2b2b36;
+            color: #a4b0be;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+
+        .share-icon-btn.whatsapp:hover { background: #25D366; color: #fff; }
+        .share-icon-btn.telegram:hover { background: #0088cc; color: #fff; }
+        .share-icon-btn.facebook:hover { background: #1877f2; color: #fff; }
+        .share-icon-btn.copy:hover { background: var(--primary); color: #fff; }
 
         .lojas-cupons-grid {
             display: grid;
@@ -727,35 +727,9 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            position: relative;
         }
 
         .main-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        /* Botão de Compartilhar na Página de Detalhes */
-        .detail-share-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #f1f2f6;
-            color: #2f3640;
-            border: none;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: background 0.2s, transform 0.2s;
-            z-index: 5;
-        }
-        .detail-share-btn:hover {
-            background: var(--primary);
-            color: #fff;
-            transform: scale(1.1);
-        }
 
         .detail-info { display: flex; flex-direction: column; }
         .detail-title { font-size: 22px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; }
@@ -829,124 +803,6 @@
         }
 
         .btn-buy-now:hover { transform: scale(1.02); background: #e68a00; }
-
-        /* Modal de Compartilhamento Personalizado */
-        .share-modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-        }
-        .share-modal-overlay.open {
-            display: flex;
-        }
-        .share-modal-content {
-            background: var(--card-bg);
-            border: 1px solid #2b2b36;
-            border-radius: 16px;
-            width: 100%;
-            max-width: 400px;
-            padding: 24px;
-            position: relative;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.8);
-            animation: modalPop 0.2s ease-out;
-        }
-        @keyframes modalPop {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        .share-modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 18px;
-            cursor: pointer;
-        }
-        .share-modal-close:hover { color: #fff; }
-        .share-modal-title {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 6px;
-            color: #fff;
-        }
-        .share-modal-subtitle {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-        .share-options-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .share-option-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .share-option-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
-        }
-        .share-option-item:hover .share-option-icon { transform: scale(1.08); }
-        .share-whatsapp { background: #25D366; }
-        .share-telegram { background: #0088cc; }
-        .share-twitter { background: #1da1f2; }
-        .share-copy { background: #718093; }
-
-        .share-link-box {
-            display: flex;
-            background: #121216;
-            border: 1px solid #383846;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .share-link-input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #fff;
-            padding: 10px 12px;
-            font-size: 12px;
-            outline: none;
-            width: 100%;
-        }
-        .share-link-copy-btn {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 0 15px;
-            font-weight: bold;
-            font-size: 12px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .share-link-copy-btn:hover { background: var(--primary-hover); }
 
         @media (max-width: 768px) {
             .header-container { flex-direction: column; gap: 12px; padding: 10px 15px; }
@@ -1379,9 +1235,6 @@
         <div class="product-detail-layout">
             <div class="detail-gallery">
                 <div class="main-img-box">
-                    <button class="detail-share-btn" id="detailShareBtn" title="Compartilhar produto">
-                        <i class="fa-solid fa-share-nodes"></i>
-                    </button>
                     <img id="detailImg" src="" alt="Produto">
                 </div>
                 <div class="gallery-thumbnails" id="detailThumbnails"></div>
@@ -1506,39 +1359,6 @@
         <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Copie o código e utilize na finalização da sua compra.</p>
         
         <div class="lista-cupons-container" id="listaCuponsContainer"></div>
-    </div>
-
-    <!-- Modal de Compartilhamento -->
-    <div class="share-modal-overlay" id="shareModal">
-        <div class="share-modal-content">
-            <button class="share-modal-close" onclick="closeShareModal()"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="share-modal-title">Compartilhar Oferta</h3>
-            <p class="share-modal-subtitle" id="shareModalSubtitle">Envie esta super oferta para seus amigos ou redes sociais.</p>
-            
-            <div class="share-options-grid">
-                <a href="#" id="shareWhatsApp" target="_blank" class="share-option-item">
-                    <div class="share-option-icon share-whatsapp"><i class="fa-brands fa-whatsapp"></i></div>
-                    <span>WhatsApp</span>
-                </a>
-                <a href="#" id="shareTelegram" target="_blank" class="share-option-item">
-                    <div class="share-option-icon share-telegram"><i class="fa-brands fa-telegram"></i></div>
-                    <span>Telegram</span>
-                </a>
-                <a href="#" id="shareTwitter" target="_blank" class="share-option-item">
-                    <div class="share-option-icon share-twitter"><i class="fa-brands fa-twitter"></i></div>
-                    <span>Twitter</span>
-                </a>
-                <div class="share-option-item" onclick="copyShareLink()">
-                    <div class="share-option-icon share-copy"><i class="fa-solid fa-copy"></i></div>
-                    <span>Copiar</span>
-                </div>
-            </div>
-
-            <div class="share-link-box">
-                <input type="text" class="share-link-input" id="shareLinkInput" readonly>
-                <button class="share-link-copy-btn" onclick="copyShareLink()">Copiar</button>
-            </div>
-        </div>
     </div>
 
     <script>
@@ -2272,231 +2092,461 @@
             'https://m.media-amazon.com/images/I/81ubjq2DfxL._AC_SL1500_.jpg',
             'https://m.media-amazon.com/images/I/91JMPJv-8GL._AC_SL1500_.jpg',
             'https://m.media-amazon.com/images/I/51aRPTA4pVL._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/8'
-        ]
-    }];
+            'https://m.media-amazon.com/images/I/81R3ONlNU5L._AC_SL1500_.jpg',
+            'https://m.media-amazon.com/images/I/81QAyCzBJRL._AC_SL1500_.jpg'
+        ],
+        rating: '4,8 (9.846 avaliações)',
+        specs: {
+            'Marca': 'Tramontina',
+            'Material': 'Alumínio com Revestimento Starflon Max',
+            'Capacidade': '4,5 Litros',
+            'Cor': 'Preto',
+            'Fogões Compatíveis': 'Gás, elétrico e vitrocerâmico'
+        },
+        about: 'Corpo de alumínio com espessura de 3,2 mm que proporciona cozimento rápido e uniforme. Com revestimento interno e externo de antiaderente Starflon Max que não gruda, é fácil de limpar, mais durável e não é prejudicial à saúde. Alça, cabos superior e inferior de baquelite antitérmico que oferecem segurança durante o manuseio.'
+    },
+    {
+        id: 'consul-crm50mb',
+        title: 'Geladeira CRM50MB 412 Litros Frost Free Duplex Consul',
+        store: 'Amazon',
+        subcat: 'Geladeiras e Freezers',
+        oldPrice: 'R$ 2.999,00',
+        price: 'R$ 2.699,99',
+        discount: '-9%',
+        maisVendido: false,
+        ativo: true,
+        installments: 'Em até 12x de R$ 225,10 sem juros',
+        affiliateLink: 'https://link.amazon/B0gBXsKfJ',
+        images: [
+            'https://m.media-amazon.com/images/I/4173h2WLFLL._AC_SX679_.jpg',
+            'https://m.media-amazon.com/images/I/41dkOziMhyL._AC_SX679_.jpg',
+            'https://m.media-amazon.com/images/I/61q4aT4C3uL._AC_SX522_.jpg'
+        ],
+        rating: '4,8 (5 avaliações)',
+        specs: {
+            'Dimensões': '72P x 70,2L x 174,5A cm',
+            'Marca': 'Consul',
+            'Capacidade': '412 Litros'
+        },
+        about: 'A Geladeira Consul Frost Free 412L tem freezer espaçoso, Função Turbo e Filtro Antiodor.'
+    },
+            {
+                id: 'combo-gamer-4-em-1-mts-nightmare-snow',
+                title: 'Combo GAMER 4 em 1 MTS, Nightmare Snow • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer Branco',
+                store: 'Amazon',
+                subcat: 'PC Gamer',
+                oldPrice: 'R$ 299,90',
+                price: 'R$ 189,90',
+                discount: '-37%',
+                maisVendido: true,
+                ativo: true,
+                installments: 'Em até 6x de R$ 31,65 sem juros',
+                affiliateLink: 'https://link.amazon/B08X5XYZ',
+                images: [
+                    'https://m.media-amazon.com/images/I/71wZqXyZ1SL._AC_SL1500_.jpg'
+                ],
+                rating: '4,7 (340 avaliações)',
+                specs: {
+                    'Marca': 'MTS',
+                    'Cor': 'Branco',
+                    'Tipo': 'Combo Gamer'
+                },
+                about: 'Kit gamer completo com teclado, mouse, headset e mousepad na cor branca.'
+            }
+        ];
 
-    // Funções de Compartilhamento Global
-    function openShareModal(productId, event) {
-        if (event) event.stopPropagation();
-        const product = productsDatabase.find(p => p.id === productId);
-        if (!product) return;
+        let cuponsDatabase = {
+            'Amazon': [
+                { id: 1, title: 'Até R$ 50 OFF em Eletrônicos', desc: 'Válido em produtos selecionados vendidos pela Amazon.', code: 'AMAZON50OFF' },
+                { id: 2, title: 'Frete Grátis Prime', desc: 'Frete grátis em milhares de itens para membros Prime.', code: 'PRIMEFRANQUIA' }
+            ],
+            'Shopee': [
+                { id: 3, title: 'R$ 15 OFF em compras acima de R$ 50', desc: 'Aplicável no app da Shopee.', code: 'SHOPEE15OFF' },
+                { id: 4, title: 'Frete Grátis Sem Valor Mínimo', desc: 'Cupons limitados resgatáveis na página inicial.', code: 'FRETEZERO' }
+            ],
+            'Mercado Livre': [
+                { id: 5, title: 'R$ 100 OFF na Linha Gamer', desc: 'Em compras acima de R$ 500.', code: 'MERCADOGAMER100' },
+                { id: 6, title: '5% OFF em Ferramentas', desc: 'Válido para a categoria de ferramentas e construção.', code: 'FERRAMENTASML' }
+            ],
+            'Magazine Luiza': [
+                { id: 7, title: 'R$ 200 OFF em Eletrodomésticos', desc: 'Válido em geladeiras e micro-ondas selecionados.', code: 'MAGALU200OFF' },
+                { id: 8, title: '10% OFF no APP', desc: 'Use o cupom na primeira compra pelo aplicativo.', code: 'APPMAIS10' }
+            ]
+        };
 
-        const shareUrl = window.location.href.split('#')[0] + '#product=' + product.id;
-        const shareText = `Olha que oferta incrível encontrei no Click Ofertas VIP: ${product.title} por apenas ${product.price}! Confira:`;
+        const categoriesMap = {
+            'eletronicos': { name: 'Eletrônicos, Áudio e Vídeo', icon: 'fa-tv', desktopId: 'desktop-cat-eletronicos' },
+            'informatica': { name: 'Informática e Games', icon: 'fa-laptop', desktopId: 'desktop-cat-informatica' },
+            'casa': { name: 'Casa, Cozinha e Eletro', icon: 'fa-house', desktopId: 'desktop-cat-casa' },
+            'moda': { name: 'Moda, Relógios e Malas', icon: 'fa-shirt', desktopId: 'desktop-cat-moda' },
+            'bebes': { name: 'Bebês, Brinquedos e Hobbies', icon: 'fa-child', desktopId: 'desktop-cat-bebes' },
+            'saude': { name: 'Perfumes, Beleza e Saúde', icon: 'fa-heart-pulse', desktopId: 'desktop-cat-saude' },
+            'esporte': { name: 'Esporte, Lazer e Suplementos', icon: 'fa-dumbbell', desktopId: 'desktop-cat-esporte' },
+            'supermercado': { name: 'Bebidas e Supermercado', icon: 'fa-cart-shopping', desktopId: 'desktop-cat-supermercado' },
+            'ferramentas': { name: 'Ferramentas e Automotivo', icon: 'fa-wrench', desktopId: 'desktop-cat-ferramentas' }
+        };
 
-        document.getElementById('shareModalSubtitle').innerText = product.title;
-        document.getElementById('shareLinkInput').value = shareUrl;
+        function initMegaMenu() {
+            const sidebar = document.getElementById('megaSidebarContainer');
+            if (!sidebar) return;
+            sidebar.innerHTML = '';
+            
+            let first = true;
+            for (let key in categoriesMap) {
+                let cat = categoriesMap[key];
+                let item = document.createElement('div');
+                item.className = 'mega-cat-item' + (first ? ' active' : '');
+                item.innerHTML = `
+                    <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
+                    <span>${cat.name}</span>
+                    <div class="mega-cat-header-mobile">
+                        <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
+                        <span style="flex:1; color:#fff;">${cat.name}</span>
+                        <i class="fa-solid fa-chevron-right" style="color:var(--text-muted); font-size:12px; transition:transform 0.2s;"></i>
+                    </div>
+                    <div class="mega-content-mobile" id="mobile-content-${key}"></div>
+                `;
+                
+                item.addEventListener('mouseenter', () => {
+                    if (window.innerWidth > 768) {
+                        document.querySelectorAll('.mega-cat-item').forEach(el => el.classList.remove('active'));
+                        document.querySelectorAll('.subcat-group').forEach(el => el.classList.remove('active'));
+                        item.classList.add('active');
+                        let targetGroup = document.getElementById(cat.desktopId);
+                        if (targetGroup) targetGroup.classList.add('active');
+                    }
+                });
 
-        // Links diretos para redes sociais
-        document.getElementById('shareWhatsApp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
-        document.getElementById('shareTelegram').href = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
-        document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+                let mobileHeader = item.querySelector('.mega-cat-header-mobile');
+                mobileHeader.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    let isActive = item.classList.contains('active');
+                    document.querySelectorAll('.mega-cat-item').forEach(el => {
+                        el.classList.remove('active');
+                        let mobCont = el.querySelector('.mega-content-mobile');
+                        if (mobCont) mobCont.innerHTML = '';
+                    });
+                    if (!isActive) {
+                        item.classList.add('active');
+                        let desktopGroup = document.getElementById(cat.desktopId);
+                        let mobCont = item.querySelector('.mega-content-mobile');
+                        if (desktopGroup && mobCont) {
+                            mobCont.innerHTML = desktopGroup.innerHTML;
+                        }
+                    }
+                });
 
-        document.getElementById('shareModal').classList.add('open');
-    }
-
-    function closeShareModal() {
-        document.getElementById('shareModal').classList.remove('open');
-    }
-
-    function copyShareLink() {
-        const input = document.getElementById('shareLinkInput');
-        input.select();
-        input.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(input.value).then(() => {
-            alert('Link copiado para a área de transferência!');
-        });
-    }
-
-    // Fechar modal ao clicar fora
-    window.addEventListener('click', function(e) {
-        const modal = document.getElementById('shareModal');
-        if (e.target === modal) {
-            closeShareModal();
-        }
-    });
-
-    // Funções de renderização dos cards (mantendo o padrão original e injetando o botão de compartilhamento)
-    function renderCard(product) {
-        let badgesHTML = '';
-        if (product.discount) {
-            badgesHTML += `<span class="badge-desconto">${product.discount}</span>`;
-        }
-
-        return `
-            <div class="card-oferta" onclick="openProductDetail('${product.id}')">
-                <div class="badges-container">
-                    ${badgesHTML}
-                </div>
-                <button class="card-share-btn" onclick="openShareModal('${product.id}', event)" title="Compartilhar produto">
-                    <i class="fa-solid fa-share-nodes"></i>
-                </button>
-                <div class="img-container">
-                    <img src="${product.images && product.images.length > 0 ? product.images[0] : ''}" alt="${product.title}">
-                </div>
-                <div class="store-tag">${product.store}</div>
-                <h3 class="card-title">${product.title}</h3>
-                <div class="price-section">
-                    ${product.oldPrice ? `<div class="old-price">${product.oldPrice}</div>` : ''}
-                    <div class="current-price">${product.price}</div>
-                </div>
-                <div class="card-actions">
-                    <a href="${product.affiliateLink}" target="_blank" class="btn-pegar" onclick="event.stopPropagation()">Pegar Oferta</a>
-                </div>
-            </div>
-        `;
-    }
-
-    // Função de abertura dos detalhes do produto (atualizada para configurar o botão de compartilhamento na página interna)
-    function openProductDetail(productId) {
-        const product = productsDatabase.find(p => p.id === productId);
-        if (!product) return;
-
-        document.getElementById('detailBreadcrumbCat').innerText = product.subcat || 'Geral';
-        document.getElementById('detailBreadcrumbTitle').innerText = product.title;
-        document.getElementById('detailStore').innerText = product.store;
-        document.getElementById('detailTitle').innerText = product.title;
-        document.getElementById('detailRatingText').innerText = product.rating || '4,8 (5 avaliações)';
-        
-        if (product.discount) {
-            document.getElementById('detailBadge').style.display = 'inline-block';
-            document.getElementById('detailBadge').innerText = product.discount + ' OFF';
-        } else {
-            document.getElementById('detailBadge').style.display = 'none';
-        }
-
-        if (product.oldPrice) {
-            document.getElementById('detailOldPrice').style.display = 'block';
-            document.getElementById('detailOldPrice').innerText = 'De: ' + product.oldPrice;
-        } else {
-            document.getElementById('detailOldPrice').style.display = 'none';
-        }
-
-        document.getElementById('detailCurrentPrice').innerText = product.price;
-        document.getElementById('detailInstallments').innerText = product.installments || '';
-        document.getElementById('detailAbout').innerText = product.about || 'Sem descrição adicional.';
-        document.getElementById('detailAffiliateLink').href = product.affiliateLink;
-
-        // Configurar imagens e miniaturas
-        const mainImg = document.getElementById('detailImg');
-        const thumbsContainer = document.getElementById('detailThumbnails');
-        thumbsContainer.innerHTML = '';
-
-        if (product.images && product.images.length > 0) {
-            mainImg.src = product.images[0];
-            product.images.forEach((imgUrl, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = imgUrl;
-                thumb.className = 'thumb-img' + (index === 0 ? ' active' : '');
-                thumb.onclick = () => {
-                    mainImg.src = imgUrl;
-                    document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                };
-                thumbsContainer.appendChild(thumb);
-            });
-        } else {
-            mainImg.src = '';
-        }
-
-        // Tabela de especificações
-        const specsTable = document.getElementById('detailSpecs');
-        specsTable.innerHTML = '';
-        if (product.specs) {
-            for (let key in product.specs) {
-                specsTable.innerHTML += `<tr><td>${key}</td><td>${product.specs[key]}</td></tr>`;
+                sidebar.appendChild(item);
+                first = false;
             }
         }
 
-        // Configurar botão de compartilhamento na página de detalhes
-        const detailShareBtn = document.getElementById('detailShareBtn');
-        detailShareBtn.onclick = (e) => openShareModal(product.id, e);
-
-        switchPage('productDetailPage');
-    }
-
-    // Funções de navegação básicas do site original preservadas
-    function switchPage(pageId) {
-        document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
-        document.getElementById(pageId).classList.add('active-page');
-        window.scrollTo(0, 0);
-    }
-
-    function scrollCarousel(direction) {
-        const container = document.getElementById('maisVendidosFeed');
-        container.scrollBy({ left: direction * 300, behavior: 'smooth' });
-    }
-
-    function toggleFilterPanel(panelId) {
-        const panel = document.getElementById(panelId);
-        panel.classList.toggle('open');
-    }
-
-    // Inicialização dos feeds ao carregar a página
-    document.addEventListener('DOMContentLoaded', () => {
-        const homeFeed = document.getElementById('homeFeed');
-        const maisVendidosFeed = document.getElementById('maisVendidosFeed');
-
-        if (homeFeed) {
-            homeFeed.innerHTML = productsDatabase.map(p => renderCard(p)).join('');
-        }
-        if (maisVendidosFeed) {
-            const maisVendidos = productsDatabase.slice(0, 6);
-            maisVendidosFeed.innerHTML = maisVendidos.map(p => renderCard(p)).join('');
-        }
-
-        // Configurar mega menu e navegação lateral original
         const megaMenuBtn = document.getElementById('megaMenuBtn');
         const megaMenuPanel = document.getElementById('megaMenuPanel');
-        
+        const menuArrow = document.getElementById('menuArrow');
+
         if (megaMenuBtn && megaMenuPanel) {
-            megaMenuBtn.onclick = (e) => {
+            megaMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 megaMenuPanel.classList.toggle('open');
                 megaMenuBtn.classList.toggle('active');
-            };
+                if(menuArrow) {
+                    menuArrow.style.transform = megaMenuPanel.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            });
+
             document.addEventListener('click', (e) => {
                 if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
                     megaMenuPanel.classList.remove('open');
                     megaMenuBtn.classList.remove('active');
+                    if(menuArrow) menuArrow.style.transform = 'rotate(0deg)';
                 }
             });
         }
-    });
 
-    function openCategoryPage(categoryName) {
-        document.getElementById('categoryBreadcrumbName').innerText = categoryName;
-        document.getElementById('categoryTitle').innerText = categoryName;
-        
-        const filtered = productsDatabase.filter(p => p.subcat && p.subcat.toLowerCase() === categoryName.toLowerCase());
-        const catFeed = document.getElementById('categoryFeed');
-        if (catFeed) {
-            catFeed.innerHTML = filtered.length > 0 ? filtered.map(p => renderCard(p)).join('') : '<p style="color:var(--text-muted)">Nenhum produto encontrado nesta categoria.</p>';
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            let target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active-page');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            if (megaMenuPanel) {
+                megaMenuPanel.classList.remove('open');
+                if(megaMenuBtn) megaMenuBtn.classList.remove('active');
+                if(menuArrow) menuArrow.style.transform = 'rotate(0deg)';
+            }
         }
-        switchPage('categoryPage');
-    }
 
-    function openStoreCupons(storeName) {
-        document.getElementById('storeBreadcrumbName').innerText = storeName;
-        document.getElementById('storeCuponsTitle').innerText = 'Cupons da Loja: ' + storeName;
-        
-        const container = document.getElementById('listaCuponsContainer');
-        container.innerHTML = `
-            <div class="cupom-item-card">
-                <div class="cupom-info">
-                    <h4>Desconto Especial ${storeName}</h4>
-                    <p>Utilize o código abaixo para garantir desconto em sua compra.</p>
+        function renderProductCard(p) {
+            let badgeHtml = p.discount ? `<span class="badge-desconto">${p.discount}</span>` : '';
+            return `
+                <div class="card-oferta" onclick="openProductDetail('${p.id}')">
+                    <div class="badges-container">
+                        ${badgeHtml}
+                    </div>
+                    <div class="img-container">
+                        <img src="${p.images[0]}" alt="${p.title}" loading="lazy">
+                    </div>
+                    <div class="store-tag">${p.store}</div>
+                    <div class="card-title">${p.title}</div>
+                    <div class="price-section">
+                        ${p.oldPrice ? `<div class="old-price">${p.oldPrice}</div>` : '<div class="old-price" style="visibility:hidden;">&nbsp;</div>'}
+                        <div class="current-price">${p.price}</div>
+                    </div>
+                    <a href="${p.affiliateLink}" target="_blank" class="btn-pegar" onclick="event.stopPropagation()">Pegar Promoção</a>
+                    <div class="share-icons-container" onclick="event.stopPropagation()">
+                        <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('Olha que oferta incrível: ' + p.title + ' por ' + p.price + ' - ' + p.affiliateLink)}" target="_blank" class="share-icon-btn whatsapp" title="Compartilhar no WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://t.me/share/url?url=${encodeURIComponent(p.affiliateLink)}&text=${encodeURIComponent('Olha que oferta incrível: ' + p.title + ' por ' + p.price)}" target="_blank" class="share-icon-btn telegram" title="Compartilhar no Telegram"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(p.affiliateLink)}" target="_blank" class="share-icon-btn facebook" title="Compartilhar no Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <button class="share-icon-btn copy" onclick="copyProductLink('${p.affiliateLink}', this)" title="Copiar Link"><i class="fa-solid fa-copy"></i></button>
+                    </div>
                 </div>
-                <div class="cupom-codigo-box">VIP${storeName.toUpperCase().replace(/\s+/g, '')}10</div>
-            </div>
-        `;
-        switchPage('storeCuponsPage');
-    }
+            `;
+        }
 
-    function applySortingAndFiltering(type) {
-        // Função mantida para integridade do sistema de ordenação/filtragem original
-    }
+        function copyProductLink(link, btnElem) {
+            navigator.clipboard.writeText(link).then(() => {
+                let originalHTML = btnElem.innerHTML;
+                btnElem.innerHTML = '<i class="fa-solid fa-check"></i>';
+                setTimeout(() => {
+                    btnElem.innerHTML = originalHTML;
+                }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar link: ', err);
+            });
+        }
+
+        function renderHomeFeeds() {
+            let maisVendidosContainer = document.getElementById('maisVendidosFeed');
+            let homeFeedContainer = document.getElementById('homeFeed');
+
+            if (maisVendidosContainer) {
+                let maisVendidos = productsDatabase.filter(p => p.maisVendido && p.ativo);
+                if (maisVendidos.length === 0) maisVendidos = productsDatabase.slice(0, 8);
+                maisVendidosContainer.innerHTML = maisVendidos.map(p => renderProductCard(p)).join('');
+            }
+
+            if (homeFeedContainer) {
+                let destaques = productsDatabase.filter(p => p.ativo);
+                homeFeedContainer.innerHTML = destaques.map(p => renderProductCard(p)).join('');
+            }
+        }
+
+        function scrollCarousel(direction) {
+            let container = document.getElementById('maisVendidosFeed');
+            if (container) {
+                let scrollAmount = 300 * direction;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        function openProductDetail(productId) {
+            let p = productsDatabase.find(item => item.id === productId);
+            if (!p) return;
+
+            document.getElementById('detailBreadcrumbCat').innerText = p.subcat || 'Geral';
+            document.getElementById('detailBreadcrumbTitle').innerText = p.title;
+            document.getElementById('detailStore').innerText = p.store;
+            document.getElementById('detailTitle').innerText = p.title;
+            document.getElementById('detailImg').src = p.images[0];
+            document.getElementById('detailRatingText').innerText = p.rating || '4,8 (5 avaliações)';
+
+            let badgeOff = document.getElementById('detailBadge');
+            if (p.discount) {
+                badgeOff.style.display = 'inline-block';
+                badgeOff.innerText = p.discount + ' OFF';
+            } else {
+                badgeOff.style.display = 'none';
+            }
+
+            let oldPriceElem = document.getElementById('detailOldPrice');
+            if (p.oldPrice) {
+                oldPriceElem.style.display = 'block';
+                oldPriceElem.innerText = 'De: ' + p.oldPrice;
+            } else {
+                oldPriceElem.style.display = 'none';
+            }
+
+            document.getElementById('detailCurrentPrice').innerText = p.price;
+            document.getElementById('detailInstallments').innerText = p.installments || '';
+            document.getElementById('detailAbout').innerText = p.about || '';
+            document.getElementById('detailAffiliateLink').href = p.affiliateLink;
+
+            let specsTable = document.getElementById('detailSpecs');
+            specsTable.innerHTML = '';
+            if (p.specs) {
+                for (let key in p.specs) {
+                    let row = document.createElement('tr');
+                    row.innerHTML = `<td>${key}</td><td>${p.specs[key]}</td>`;
+                    specsTable.appendChild(row);
+                }
+            }
+
+            let thumbContainer = document.getElementById('detailThumbnails');
+            thumbContainer.innerHTML = '';
+            if (p.images && p.images.length > 1) {
+                p.images.forEach((imgUrl, idx) => {
+                    let thumb = document.createElement('img');
+                    thumb.src = imgUrl;
+                    thumb.className = 'thumb-img' + (idx === 0 ? ' active' : '');
+                    thumb.onclick = () => {
+                        document.getElementById('detailImg').src = imgUrl;
+                        document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    };
+                    thumbContainer.appendChild(thumb);
+                });
+            }
+
+            switchPage('productDetailPage');
+        }
+
+        function openCategoryPage(subcatName) {
+            currentSubcatFilter = subcatName;
+            document.getElementById('categoryBreadcrumbName').innerText = subcatName;
+            document.getElementById('categoryTitle').innerText = subcatName;
+            
+            resetFilters('category');
+            applySortingAndFiltering('category');
+            switchPage('categoryPage');
+        }
+
+        function openStoreCupons(storeName) {
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeCuponsTitle').innerText = 'Cupons da Loja: ' + storeName;
+            
+            let container = document.getElementById('listaCuponsContainer');
+            let cuponsList = cuponsDatabase[storeName] || [];
+
+            if (cuponsList.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted);">Nenhum cupom disponível no momento para esta loja.</p>';
+            } else {
+                container.innerHTML = cuponsList.map(c => `
+                    <div class="cupom-item-card">
+                        <div class="cupom-info">
+                            <h4>${c.title}</h4>
+                            <p>${c.desc}</p>
+                        </div>
+                        <div class="cupom-codigo-box">${c.code}</div>
+                        <button class="btn-pegar" onclick="copyCupomCode('${c.code}', this)">Copiar Código</button>
+                    </div>
+                `).join('');
+            }
+            switchPage('storeCuponsPage');
+        }
+
+        function copyCupomCode(code, btn) {
+            navigator.clipboard.writeText(code).then(() => {
+                let originalText = btn.innerText;
+                btn.innerText = 'Copiado!';
+                btn.style.background = 'var(--green-discount)';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
+
+        function toggleFilterPanel(panelId) {
+            let panel = document.getElementById(panelId);
+            if (panel) {
+                panel.classList.toggle('open');
+            }
+        }
+
+        function resetFilters(type) {
+            let storeElem = document.getElementById(type === 'search' ? 'filterStoreSearch' : 'filterStoreCategory');
+            let minElem = document.getElementById(type === 'search' ? 'minPriceSearch' : 'minPriceCategory');
+            let maxElem = document.getElementById(type === 'search' ? 'maxPriceSearch' : 'maxPriceCategory');
+            let sortElem = document.getElementById(type === 'search' ? 'sortSearch' : 'sortCategory');
+
+            if (storeElem) storeElem.value = 'todas';
+            if (minElem) minElem.value = '';
+            if (maxElem) maxElem.value = '';
+            if (sortElem) sortElem.value = 'recentes';
+        }
+
+        function parsePrice(priceStr) {
+            if (!priceStr) return 0;
+            let clean = priceStr.replace('R$', '').trim().replace(/\./g, '').replace(',', '.');
+            let val = parseFloat(clean);
+            return isNaN(val) ? 0 : val;
+        }
+
+        function applySortingAndFiltering(pageType) {
+            let list = [];
+            let containerId = '';
+            let storeVal, minVal, maxVal, sortVal;
+
+            if (pageType === 'search') {
+                containerId = 'searchFeed';
+                list = productsDatabase.filter(p => p.ativo && p.title.toLowerCase().includes(currentSearchQuery.toLowerCase()));
+                storeVal = document.getElementById('filterStoreSearch').value;
+                minVal = parseFloat(document.getElementById('minPriceSearch').value);
+                maxVal = parseFloat(document.getElementById('maxPriceSearch').value);
+                sortVal = document.getElementById('sortSearch').value;
+            } else {
+                containerId = 'categoryFeed';
+                list = productsDatabase.filter(p => p.ativo && p.subcat === currentSubcatFilter);
+                storeVal = document.getElementById('filterStoreCategory').value;
+                minVal = parseFloat(document.getElementById('minPriceCategory').value);
+                maxVal = parseFloat(document.getElementById('maxPriceCategory').value);
+                sortVal = document.getElementById('sortCategory').value;
+            }
+
+            if (storeVal && storeVal !== 'todas') {
+                list = list.filter(p => p.store === storeVal);
+            }
+            if (!isNaN(minVal)) {
+                list = list.filter(p => parsePrice(p.price) >= minVal);
+            }
+            if (!isNaN(maxVal)) {
+                list = list.filter(p => parsePrice(p.price) <= maxVal);
+            }
+
+            if (sortVal === 'menor-preco') {
+                list.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+            } else if (sortVal === 'maior-preco') {
+                list.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+            } else if (sortVal === 'maior-desconto') {
+                list.sort((a, b) => {
+                    let discA = parseInt((a.discount || '0').replace(/\D/g, '')) || 0;
+                    let discB = parseInt((b.discount || '0').replace(/\D/g, '')) || 0;
+                    return discB - discA;
+                });
+            }
+
+            let container = document.getElementById(containerId);
+            if (container) {
+                if (list.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding: 40px;">Nenhum produto encontrado com esses filtros.</p>';
+                } else {
+                    container.innerHTML = list.map(p => renderProductCard(p)).join('');
+                }
+            }
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    let query = searchInput.value.trim();
+                    if (query) {
+                        currentSearchQuery = query;
+                        document.getElementById('searchTitle').innerText = 'Resultados para: "' + query + '"';
+                        resetFilters('search');
+                        applySortingAndFiltering('search');
+                        switchPage('searchPage');
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initMegaMenu();
+            renderHomeFeeds();
+        });
     </script>
 </body>
 </html>
