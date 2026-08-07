@@ -173,6 +173,8 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
+            max-height: none;
+            overflow-y: visible;
         }
 
         .mega-cat-item {
@@ -214,6 +216,8 @@
             flex: 1;
             padding: 25px;
             background: #18181c;
+            max-height: none;
+            overflow-y: visible;
         }
 
         .subcat-group {
@@ -784,8 +788,8 @@
                 overflow-y: auto;
             }
 
-            .mega-sidebar { width: 100%; max-height: none; border-right: none; padding: 4px; }
-            .mega-content { max-height: none; }
+            .mega-sidebar { width: 100%; max-height: none; border-right: none; padding: 4px; overflow-y: visible; }
+            .mega-content { max-height: none; overflow-y: visible; }
 
             .mega-cat-item { display: flex; flex-direction: column; align-items: stretch; padding: 0; background: #15151a; border-bottom: 1px solid #22222d; border-radius: 0; }
             .mega-cat-item > .cat-icon-circle, .mega-cat-item > span:not(.mega-cat-header-mobile) { display: none !important; }
@@ -1299,7 +1303,7 @@
             </div>
 
             <div class="loja-cupom-card" onclick="openStoreCupons('Shopee')">
-                <div class="loja-logo-circle logo-shopee"><i class="fa-solid fa-bag-shopping"></i></div>
+                <div class="loja-logo-circle logo-shopee"><i class="fa-brands fa-bag-shopping"></i></div>
                 <span>Shopee</span>
             </div>
 
@@ -1347,15 +1351,170 @@
                 images: [
                     'https://m.media-amazon.com/images/I/51UgM99EyML._AC_.jpg',
                     'https://m.media-amazon.com/images/I/41uTaxx6zmL._AC_.jpg',
-                    'https://m.media-amazon.com/images/I/517SuIqVyHL._AC_.jpg'
+                    'https://m.media-amazon.com/images/I/517SuIqVyHL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/71jQnK0cSRL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71j+8ZuYsgL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/61iYkQr7NNL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71orKPQ1jXL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/51JUKJ2u3-L._AC_.jpg'
                 ],
                 rating: '5,0 (7 avaliações)',
                 specs: {
                     'Marca': 'Genérico',
                     'Cor': 'BRANCO',
+                    'Tecnologia de Conectividade': 'Usb',
+                    'Característica Especial': 'Emborrachado, Ergonômico, Mouse 3600 Dpi, Retrilluminado, Stereo'
+                },
+                about: 'Combo gamer completo 4 em 1 na cor branca contendo teclado ABNT2 com iluminação LED Rainbow, mouse de alta performance com até 3600 DPI, headset estéreo com microfone e mousepad antiderrapante.'
+            },
+            {
+                id: 'kit-gamer-mouse-e-teclado-clanm-walker-v2',
+                title: 'Kit Gamer Mouse e Teclado Clanm Walker V2 RGB 60% + Slits V2 DPI 7200 RGB 12 modos',
+                store: 'Amazon',
+                subcat: 'Kits de Teclado e Mouse',
+                oldPrice: 'R$ 180,00',
+                price: 'R$ 147,22',
+                discount: '-18%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 5x de R$ 31,01 sem juros',
+                affiliateLink: 'https://link.amazon/B0bX8fs1J',
+                images: [
+                    'https://m.media-amazon.com/images/I/511thUojzXL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/41LtW8QUayL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/418UsheJ4pL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/41-75M5fpzL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/41EvSbxQ7KL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/412C+7NDg9L._AC_.jpg'
+                ],
+                rating: '5,0 (3 avaliações)',
+                specs: {
+                    'Marca': 'cartucho fácil',
+                    'Cor': 'Branco',
+                    'Peso do Produto': '970 Gramas',
+                    'Precisa de baterias?': 'Não'
+                },
+                about: 'Kit gamer Clanm com teclado mecânico 60% (63 teclas) com switch red silencioso e layout ABNT2, acompanhado de mouse com ajuste de até 7200 DPI e múltiplos efeitos de iluminação RGB.'
+            },
+            {
+                id: 'combo-gamer-4-em-1-mts-nightmare-preto',
+                title: 'Combo GAMER 4 em 1 MTS, Nightmare • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer',
+                store: 'Amazon',
+                subcat: 'Kits de Teclado e Mouse',
+                oldPrice: 'R$ 170,00',
+                price: 'R$ 140,50',
+                discount: '-17%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 4x de R$ 36,99 sem juros',
+                affiliateLink: 'https://link.amazon/B05Xhhrs4',
+                images: [
+                    'https://m.media-amazon.com/images/I/61zkg-q7zEL._AC_SL1080_.jpg',
+                    'https://m.media-amazon.com/images/I/71XZW8ccN+L._AC_SL1080_.jpg',
+                    'https://m.media-amazon.com/images/I/71N+c5TkcPL._AC_SL1080_.jpg',
+                    'https://m.media-amazon.com/images/I/61+BJUiKzuL._AC_SL1080_.jpg',
+                    'https://m.media-amazon.com/images/I/61o0U-jZsWL._AC_SL1080_.jpg',
+                    'https://m.media-amazon.com/images/I/61dUvMkfREL._AC_SL1080_.jpg',
+                    'https://m.media-amazon.com/images/I/71ut4cYTh8L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71uVN61kAuL._AC_SL1500_.jpg'
+                ],
+                rating: '4,0 (40 avaliações)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Cor': 'Preto',
+                    'Tecnologia de Conectividade': 'PS 2, Usb A',
+                    'Característica Especial': 'Emborrachado, Leve, Mouse 3600 Dpi, Retrilluminado, Stereo'
+                },
+                about: 'Combo gamer 4 em 1 na cor preta, composto por teclado ABNT2 com iluminação LED Rainbow e anti-ghosting, mouse de 3600 DPI, headset estéreo com microfone e mousepad texturizado.'
+            },
+            {
+                id: 'kit-mobilador-gamer-com-headset-teclado-single-hand',
+                title: 'Kit Mobilador Gamer Com Headset e Microfone Teclado Single hand Mouse 1600dpi Hub 3.0 (Vermelho)',
+                store: 'Amazon',
+                subcat: 'Kits de Teclado e Mouse',
+                oldPrice: 'R$ 220,00',
+                price: 'R$ 198,90',
+                discount: '-10%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 6x de R$ 33,15 sem juros',
+                affiliateLink: 'https://link.amazon/B0aCT1spC',
+                images: [
+                    'https://m.media-amazon.com/images/I/71PiZaxsASL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/71GUqojSy+L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61hyLPDjr-L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61PqGvTtXcL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61plwVYbybL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/71mi1wCsO-L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61mH3QI-VZL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61ACHJf3rNL._AC_SL1200_.jpg'
+                ],
+                rating: '3,9 (4 avaliações)',
+                specs: {
+                    'Marca': 'Mageon',
+                    'Cor': 'Vermelho',
+                    'Tecnologia de Conectividade': 'Usb',
+                    'Dispositivos Compatíveis': 'Computador pessoal, Console de jogos, Notebook'
+                },
+                about: 'Kit mobilador gamer completo com headset, microfone, teclado single hand, mouse de 1600 DPI, suporte para celular e hub USB 3.0, ideal para jogos no celular ou computador.'
+            },
+            {
+                id: 'combo-teclado-abnt2-led-rainbow-mouse-clanm-blacknox',
+                title: 'Combo Teclado ABNT2 LED Rainbow Anti-Ghosting + Mouse 4 Botões 2400DPI Clanm Blacknox Gamer',
+                store: 'Amazon',
+                subcat: 'Kits de Teclado e Mouse',
+                oldPrice: 'R$ 110,00',
+                price: 'R$ 95,00',
+                discount: '-14%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 3x de R$ 31,68 sem juros',
+                affiliateLink: 'https://link.amazon/B0cQcxf4R',
+                images: [
+                    'https://m.media-amazon.com/images/I/41u4Yi1i8NL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/41H-3UB33uL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/41xyVtvm4VL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/41wuWMD8pGL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/31vkg1sUYTL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/31NOK1ZmZcL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/41cN1FaBCAL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/41+eAi4gvVL._AC_.jpg'
+                ],
+                rating: 'Sem avaliações',
+                specs: {
+                    'Marca': 'Clanm',
+                    'Precisa de baterias?': 'Não',
+                    'Fonte de alimentação': 'Energia elétrica',
+                    'Fabricante': 'Clanm'
+                },
+                about: 'Combo Clanm Blacknox com teclado ABNT2 com iluminação LED Rainbow e anti-ghosting, e mouse com sensor óptico de 2400 DPI e ajuste de altura para maior conforto.'
+            },
+            {
+                id: 'mageon-kit-teclado-semi-mecanico-mouse-gamer-led',
+                title: 'Mageon Kit Teclado Semi Mecânico + Mouse Gamer Led 7 Cores Cor do mouse Preto Cor do teclado Preto',
+                store: 'Amazon',
+                subcat: 'Kits de Teclado e Mouse',
+                oldPrice: 'R$ 150,00',
+                price: 'R$ 130,23',
+                discount: '-13%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 4x de R$ 32,58 sem juros',
+                affiliateLink: 'https://link.amazon/B0fultAmF',
+                images: [
+                    'https://m.media-amazon.com/images/I/41KfJmpOH-L._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/71sGVVAq-2L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/71U1OaQBg5L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61-FUdfXKLL._AC_SL1200_.jpg'
+                ],
+                rating: '4,6 (20 avaliações)',
+                specs: {
+                    'Marca': 'Mageon',
+                    'Descrição do Teclado': 'Teclado semi-mecânico com retroiluminação e design agressivo',
+                    'Cor': 'Preto',
                     'Tecnologia de Conectividade': 'Usb'
                 },
-                about: 'Combo gamer completo 4 em 1 na cor branca contendo teclado ABNT2 com iluminação LED Rainbow, mouse de alta performance e headset.'
+                about: 'Kit Mageon com teclado semi-mecânico de design agressivo com retroiluminação em LED e mouse gamer óptico com LED de 7 cores e 1200 DPI.'
             },
             {
                 id: 'hyperx-teclado-gamer-alloy-core-rgb',
@@ -1371,14 +1530,297 @@
                 affiliateLink: 'https://link.amazon/B0c4stxuD',
                 images: [
                     'https://m.media-amazon.com/images/I/61XRKm0vZaL._AC_SL1500_.jpg',
-                    'https://m.media-amazon.com/images/I/41xydVkK8IL._AC_.jpg'
+                    'https://m.media-amazon.com/images/I/41xydVkK8IL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/51KlE8hSPYL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/61uk4RkAAJL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71ee+pMy7SL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71cDCz7hJ-L._AC_SL1500_.jpg'
                 ],
                 rating: '4,8 (5.707 avaliações)',
                 specs: {
                     'Marca': 'HyperX',
-                    'Tecnologia de Conectividade': 'Micro USB'
+                    'Dispositivos Compatíveis': 'PC',
+                    'Tecnologia de Conectividade': 'Micro USB',
+                    'Adequação do controle por rádio': 'Jogo, Multimídia'
                 },
-                about: 'O HyperX Alloy Core RGB apresenta barra luminosa exclusiva, efeitos de iluminação RGB dinâmicos e teclas silenciosas com anti-ghosting.'
+                about: 'O HyperX Alloy Core RGB apresenta barra luminosa exclusiva, efeitos de iluminação RGB dinâmicos em 5 zonas, teclas silenciosas com anti-ghosting, estrutura de plástico reforçada resistente a líquidos de até 120ml e botões de mídia exclusivos.'
+            },
+            {
+                id: 'teclado-gamer-rgb-107-teclas-revestimento-uv',
+                title: 'Teclado Gamer RGB 107 Teclas Revestiment UV, USB, Cabo 1,5m Cor Sortida | Para Jogos',
+                store: 'Amazon',
+                subcat: 'Teclados',
+                oldPrice: 'R$ 120,00',
+                price: 'R$ 92,70',
+                discount: '-23%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 3x de R$ 30,90 sem juros',
+                affiliateLink: 'https://link.amazon/B017DqyCt',
+                images: [
+                    'https://m.media-amazon.com/images/I/61jxikMER-L._AC_SL1448_.jpg',
+                    'https://m.media-amazon.com/images/I/61NUABnv6qL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/6133wEN5qfL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61t2oKy1BLL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61c-xe0R1GL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/51RyYy0WNIL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/618Si7FJutL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61FfPnLmTeL._AC_SL1500_.jpg'
+                ],
+                rating: '4,6 (3 avaliações)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Dispositivos Compatíveis': 'Computador Desktop, Console De Videogame, Notebook, PC, Smart TV',
+                    'Tecnologia de Conectividade': 'Usb',
+                    'Adequação do controle por rádio': 'Jogos'
+                },
+                about: 'Teclado com layout otimizado para jogos, teclas responsivas com revestimento UV, iluminação LED vibrante para maior visibilidade no escuro e conexão plug-and-play.'
+            },
+            {
+                id: 'teclado-com-fio-compacto-multilaser-tc193',
+                title: 'Teclado Com Fio Compacto Conexão USB Resistente Água Preto Multi - TC193',
+                store: 'Amazon',
+                subcat: 'Teclados',
+                oldPrice: 'R$ 37,90',
+                price: 'R$ 26,56',
+                discount: '-29%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Consulte as opções de pagamento',
+                affiliateLink: 'https://link.amazon/B03yghFR7',
+                images: [
+                    'https://m.media-amazon.com/images/I/51F4d5LTbdL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51EdvrdjnLL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51BCHbgr1PL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/517UYqPAyeL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51FlBG7scOL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51TFYfwzs4L._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61GR2-ASdEL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/41OghVQ5grL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/514Xf6dyaQL._AC_SL1000_.jpg'
+                ],
+                rating: '4,6 (9.217 avaliações)',
+                specs: {
+                    'Marca': 'Multilaser',
+                    'Dispositivos Compatíveis': 'PC',
+                    'Tecnologia de Conectividade': 'USB',
+                    'Descrição do Teclado': 'Membrana'
+                },
+                about: 'Teclado clássico e compacto com formato ergonômico, teclas macias e silenciosas, resistência superior a água graças à impressão a laser e fácil instalação plug-and-play.'
+            },
+            {
+                id: 'teclado-membrana-gamer-redragon-netherbane-k521-rgb',
+                title: 'Teclado Membrana Gamer Redragon Netherbane Preto RGB K521-RGB',
+                store: 'Amazon',
+                subcat: 'Teclados',
+                oldPrice: 'R$ 94,30',
+                price: 'R$ 89,00',
+                discount: '-5%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 12x de R$ 8,22 com juros',
+                affiliateLink: 'https://link.amazon/B07NEkE02',
+                images: [
+                    'https://m.media-amazon.com/images/I/71oevbiISHL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/718TdV7m1IL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/717XJYaH20L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71ezn-zKaML._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/7171Un4JpdL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81eshZgutjL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71B8BVY7V7L._AC_SL1500_.jpg'
+                ],
+                rating: '4,8 (662 avaliações)',
+                specs: {
+                    'Marca': 'Redragon',
+                    'Dispositivos Compatíveis': 'Notebook, PC',
+                    'Tecnologia de Conectividade': 'USB-A',
+                    'Descrição do Teclado': 'Membrana'
+                },
+                about: 'Teclado gamer de membrana com iluminação RGB customizável, design moderno na cor preta e conexão plug and play compatível com computadores e notebooks.'
+            },
+            {
+                id: 'c3tech-teclado-multimidia-kb-m11-abnt2',
+                title: 'C3Tech Teclado Multimídia KB-M11 Preto USB Cabo 2m ABNT2',
+                store: 'Amazon',
+                subcat: 'Teclados',
+                oldPrice: 'R$ 25,90',
+                price: 'R$ 22,00',
+                discount: '-15%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Consulte as opções de pagamento',
+                affiliateLink: 'https://link.amazon/B094nFHcz',
+                images: [
+                    'https://m.media-amazon.com/images/I/51OWp5GuhfL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/41p5shKbynL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51n8VysVYDL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51TpNE14GyL._AC_SL1000_.jpg'
+                ],
+                rating: '4,4 (549 avaliações)',
+                specs: {
+                    'Marca': 'C3TECH',
+                    'Estilo': 'Teclado Multimídia com layout ABNT2 e design slim',
+                    'Dispositivos Compatíveis': 'Notebook, PC',
+                    'Tecnologia de Conectividade': 'USB-A'
+                },
+                about: 'Teclado multimidia com cabo extra longo de 2 metros, 12 teclas de atalho, layout 100% ABNT2, resistência contra respingos e sistema slim de baixo perfil.'
+            },
+            {
+                id: 'teclado-gamer-mecanico-pcyes-kuromori-60-switch-blue',
+                title: 'TECLADO GAMER MECANICO PCYES KUROMORI 60% - SWITCH BLUE - LED RAINBOW - PTKM60BL',
+                store: 'Amazon',
+                subcat: 'Teclados',
+                oldPrice: 'R$ 149,99',
+                price: 'R$ 117,00',
+                discount: '-21%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 3x de R$ 39,00 sem juros',
+                affiliateLink: 'https://link.amazon/B03L8LFnY',
+                images: [
+                    'https://m.media-amazon.com/images/I/61GBH+a1PCL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61-KrlmxivL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61L+pwJROeL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51fUHPJ8bbL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61W+SROfKzL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/415853YKh3L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51sgdNsIIZL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51DL9Df95dL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61Rkizm3y+L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61xlqnjJ8ML._AC_SL1200_.jpg'
+                ],
+                rating: '4,7 (287 avaliações)',
+                specs: {
+                    'Marca': 'PCYES',
+                    'Dispositivos Compatíveis': 'PC',
+                    'Tecnologia de Conectividade': 'USB-A',
+                    'Descrição do Teclado': 'Mecânico'
+                },
+                about: 'Teclado mecânico formato 60% equipado com switches mecânicos Outemu Blue, keycaps tri-color, layout ABNT2, iluminação Rainbow em blocos e cabo removível USB de 1,8m (USB x Type C).'
+            },
+            {
+                id: 'teclado-mecanico-gamer-coibeu-95-teclas-switch-vermelho',
+                title: 'Teclado Mecânico Gamer com Fio 95 Teclas, RGB com 20 Modos de Iluminação, Switch Vermelho Hot Swap, Anti Ghosting, Teclado Compacto USB para PC, Notebook, Windows e Mac (Cinza)',
+                store: 'Amazon',
+                subcat: 'Teclados',
+                oldPrice: 'R$ 180,00',
+                price: 'R$ 142,49',
+                discount: '-21%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 4x de R$ 37,52 sem juros',
+                affiliateLink: 'https://link.amazon/B09BYoWIY',
+                images: [
+                    'https://m.media-amazon.com/images/I/61XAdqx2A9L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71VxC6cdiIL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/7184Jo9JoWL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71mcNHajvnL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71+u-YRh0gL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71bBnoZYXTL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71xnSI0zxrL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71yAcUNpbUL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71jJKOaAveL._AC_SL1500_.jpg'
+                ],
+                rating: '4,4 (15 avaliações)',
+                specs: {
+                    'Marca': 'Coibeu',
+                    'Tecnologia de Conectividade': 'USB-A',
+                    'Descrição do Teclado': 'Mecânico',
+                    'Característica Especial': 'Ergonômico, Pode ser trocado a quente',
+                    'Cor': 'Cinza'
+                },
+                about: 'Teclado mecânico compacto com 95 teclas, switch vermelho com tecnologia hot-swap, anti-ghosting completo, iluminação RGB vibrante com 20 modos e estrutura ergonômica.'
+            },
+            {
+                id: 'elg-mgcs-mouse-gamer-ceres-hyperlight',
+                title: 'ELG MGCS Mouse Gamer Ceres Hyperlight - Ultraleve 63g, 7200 DPI, 6 Botões, Cabo Paracord, Design Ambidestro, LED Rainbow',
+                store: 'Amazon',
+                subcat: 'Mouses',
+                oldPrice: 'R$ 118,99',
+                price: 'R$ 69,90',
+                discount: '-41%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 12x de R$ 6,46 com juros',
+                affiliateLink: 'https://link.amazon/B0cjgHhJ8',
+                images: [
+                    'https://m.media-amazon.com/images/I/41pqQYdLGKL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51EEdNTnrwL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51-BZljGXPL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/41Q7uNyp1IL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/512gaKFBAOL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/41vJ2TiphFL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61usUiAVR-L._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/71gXAgvk0yL._AC_SL1500_.jpg'
+                ],
+                rating: '5,0 (3 avaliações)',
+                specs: {
+                    'Marca': 'ELG',
+                    'Cor': 'Preto',
+                    'Material': 'Metal',
+                    'Tipo de Movimento': 'Giratório'
+                },
+                about: 'Mouse gamer ultraleve de 63g com sensor óptico de alta precisão de até 7200 DPI, switches Huano de alta durabilidade, cabo Paracord flexível e iluminação LED Rainbow.'
+            },
+            {
+                id: 'elg-cgcs41-kit-gamer-completo',
+                title: 'ELG CGCS41 Kit Gamer Completo - Teclado ABNT2, Mouse LED 7 Cores, Headset Over-Ear, Mousepad Antiderrapante',
+                store: 'Amazon',
+                subcat: 'Kits de Teclado e Mouse',
+                oldPrice: 'R$ 299,90',
+                price: 'R$ 229,90',
+                discount: '-23%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 6x de R$ 38,35 sem juros',
+                affiliateLink: 'https://link.amazon/B03RzoPMF',
+                images: [
+                    'https://m.media-amazon.com/images/I/71c6+TTf44L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81Dfe+V-IrL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71uqGsJFpPL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81SInePt+oL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81bch810cnL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/712XzYeK9kL._AC_SL1500_.jpg'
+                ],
+                rating: '4,6 (3 avaliações)',
+                specs: {
+                    'Marca': 'ELG',
+                    'Cor': 'Preto',
+                    'Material': 'Metal'
+                },
+                about: 'Kit gamer completo da ELG contendo teclado de membrana ABNT2 com anti-ghosting, mouse com iluminação em 7 cores, headset acolchoado com microfone e mousepad de alta densidade.'
+            },
+            {
+                id: 'mouse-sem-fio-recarregavel-bluetooth-generico',
+                title: 'Mouse Sem Fio Recarregável Wireless Bluetooth Optico Led Rgb Colorido Ergonômico Usb 2.4 Ghz Linha Premium',
+                store: 'Amazon',
+                subcat: 'Mouses',
+                oldPrice: 'R$ 35,00',
+                price: 'R$ 19,00',
+                discount: '-46%',
+                maisVendido: true,
+                ativo: true,
+                installments: 'Consulte as opções de pagamento',
+                affiliateLink: 'https://link.amazon/B03VKmSgZ',
+                images: [
+                    'https://m.media-amazon.com/images/I/51NVWRIcQ2L._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/51xfGvczkGL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61SPNW4lBIL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/6133h3k+oiL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/717Y-dPHQOL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/717moa8Wh-L._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51+GU4qE3yL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/41QuCfYWf8L._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/51bgTBHz7IL._AC_.jpg'
+                ],
+                rating: '4,8 (2.357 avaliações)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Cor': 'Sortidas',
+                    'Tecnologia de Conectividade': 'Bluetooth / USB 2.4Ghz',
+                    'Característica Especial': 'Design ergonômico, Sem som'
+                },
+                about: 'Mouse sem fio recarregável com conexão dupla (Bluetooth + USB 2.4GHz), cliques silenciosos, bateria interna de longa duração e iluminação LED RGB.'
             },
             {
                 id: 'mouse-gamer-logitech-g203-lightsync',
@@ -1393,108 +1835,264 @@
                 installments: 'Em até 12x de R$ 8,86 com juros',
                 affiliateLink: 'https://link.amazon/B0cmfxSPr',
                 images: [
-                    'https://m.media-amazon.com/images/I/61oE1NouXuL._AC_SL1500_.jpg'
+                    'https://m.media-amazon.com/images/I/61oE1NouXuL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61bQ98if8rL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61h2hdSUU9L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61UxfXTUyvL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81eZrPE5o6L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71IBvb88ldL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71jLO+Fro6L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61V4PnZYMdL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/615yODwPP-L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61pzLQ7mOWL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61KGY727kkL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/517EGt-N5oL._AC_SL1500_.jpg'
                 ],
                 rating: '4,8 (42.826 avaliações)',
                 specs: {
                     'Marca': 'Logitech G',
+                    'Cor': 'Preto',
+                    'Tecnologia de Conectividade': 'Com fio',
                     'DPI': 'Até 8.000 DPI'
                 },
-                about: 'O clássico mouse gamer Logitech G203 com sensor de grau para jogos e iluminação RGB LIGHTSYNC.'
+                about: 'O clássico mouse gamer Logitech G203 com sensor de grau para jogos, iluminação RGB LIGHTSYNC vibrante, 6 botões programáveis e design clássico confortável.'
+            },
+            {
+                id: 'mouse-gamer-redragon-storm-pro-rgb-sem-fio',
+                title: 'MOUSE GAMER REDRAGON STORM PRO RGB SEM FIO PRETO',
+                store: 'Amazon',
+                subcat: 'Mouses',
+                oldPrice: 'R$ 233,75',
+                price: 'R$ 169,99',
+                discount: '-27%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 5x de R$ 36,03 sem juros',
+                affiliateLink: 'https://link.amazon/B0btwTKvM',
+                images: [
+                    'https://m.media-amazon.com/images/I/51c5Y+I7rmL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61kZ2uMTkpL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61tMjFLjNiL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/51w0Y5L+FaL._AC_SL1500_.jpg'
+                ],
+                rating: '4,7 (668 avaliações)',
+                specs: {
+                    'Marca': 'Redragon',
+                    'Cor': 'Preto',
+                    'Tecnologia de Conectividade': 'Wi-Fi / Sem fio',
+                    'Característica Especial': 'Botões programáveis'
+                },
+                about: 'Mouse gamer sem fio Redragon Storm Pro com sensor Pixart PAW 3335 de até 16.000 DPI, design ergonômico colmeia leve e iluminação RGB customizável.'
+            },
+            {
+                id: 'mouse-gamer-redragon-predator-m612',
+                title: 'Mouse Gamer Redragon Predator RGB M612-RGB, Preto',
+                store: 'Amazon',
+                subcat: 'Mouses',
+                oldPrice: 'R$ 159,00',
+                price: 'R$ 79,98',
+                discount: '-49%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 12x de R$ 7,39 com juros',
+                affiliateLink: 'https://link.amazon/B03mvuotX',
+                images: [
+                    'https://m.media-amazon.com/images/I/51AVGfhKbOL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71n1jxSgxBL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61G6QcoKY5L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61Kll7nEzPL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/615kwi2R1BL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61oi1DRoLfL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61mHaASEPiL._AC_SL1500_.jpg'
+                ],
+                rating: '4,8 (1.135 avaliações)',
+                specs: {
+                    'Marca': 'Redragon',
+                    'Cor': 'Preto',
+                    'Tecnologia de Conectividade': 'USB',
+                    'Característica Especial': 'Luzes de LED',
+                    'Tecnologia de detecção de movimento': 'Óptico'
+                },
+                about: 'Mouse gamer Redragon RGB equipado com Sensor Pixart PAW 3104 de alta performance, design ergonômico e iluminação marcante.'
+            },
+            {
+                id: 'mouse-gamer-redragon-king-pro-m916',
+                title: 'Mouse Gamer Redragon King Pro Preto Pixart PAW3395 26000DPI M916-PRO-1K',
+                store: 'Amazon',
+                subcat: 'Mouses',
+                oldPrice: 'R$ 297,50',
+                price: 'R$ 179,98',
+                discount: '-39%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 6x de R$ 30,63 sem juros',
+                affiliateLink: 'https://link.amazon/B02PzYhQN',
+                images: [
+                    'https://m.media-amazon.com/images/I/51D3XVu2TFL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71by4RpcarL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81DrVDQ4cHL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/610Q2RhwFYL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71igQ4tYhRL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/716fvNP1NYL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61nYD-1AFYL._AC_SL1500_.jpg'
+                ],
+                rating: '4,8 (1.162 avaliações)',
+                specs: {
+                    'Marca': 'Redragon',
+                    'Cor': 'Preto',
+                    'Sensor': 'Pixart PAW3395',
+                    'DPI': '26000 DPI'
+                },
+                about: 'Mouse sem fio de alto desempenho dedicado para jogadores de FPS, com atraso zero, macros customizáveis e excelente aderência ergonômica.'
+            },
+            {
+                id: 'mouse-gamer-attack-shark-r1',
+                title: 'Mouse Gamer ATTACK SHARK R1 Sem Fio 18000 DPI Sensor PAW3311 RGB Recarregável',
+                store: 'Amazon',
+                subcat: 'Mouses',
+                oldPrice: 'R$ 199,00',
+                price: 'R$ 137,74',
+                discount: '-31%',
+                maisVendido: false,
+                ativo: true,
+                installments: 'Em até 4x de R$ 36,27 sem juros',
+                affiliateLink: 'https://link.amazon/B0fh7hPNJ',
+                images: [
+                    'https://m.media-amazon.com/images/I/51V7GudgWgL._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/615en8TTnfL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61-Qnr9x72L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71sX3xZCFiL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/711CPSmONhL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71PM1TeB2jL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71u3SXy1FQL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61CDB7yOnFL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71wvhQQQqvL._AC_SL1500_.jpg'
+                ],
+                rating: '4,6 (170 avaliações)',
+                specs: {
+                    'Marca': 'ATTACK SHARK',
+                    'Cor': 'Preto',
+                    'Sensor': 'PAW3311',
+                    'DPI': '18000 DPI'
+                },
+                about: 'Mouse sem fio ergonômico e de alta precisão com iluminação RGB recarregável e design moderno texturizado.'
             }
         ];
 
         const cuponsPorLoja = {
             'Amazon': [
-                { codigo: 'AMAZON10', desc: '10% de desconto em produtos selecionados vendidos pela Amazon.', link: 'https://link.amazon/B04knj9iR' }
+                { codigo: 'AMAZON10', desc: '10% de desconto em produtos selecionados vendidos pela Amazon.', link: 'https://link.amazon/B04knj9iR' },
+                { codigo: 'AMAZON20', desc: '20% de desconto especial em categorias participantes na Amazon.', link: 'https://link.amazon/B04knj9iR' }
             ],
             'Shopee': [
-                { codigo: 'SHOPEE10', desc: '10% de desconto em compras aplicadas no app/site da Shopee.', link: 'https://s.shopee.com.br/70J8l4RyfU' }
+                { codigo: 'SHOPEE10', desc: '10% de desconto em compras aplicadas no app/site da Shopee.', link: 'https://s.shopee.com.br/70J8l4RyfU' },
+                { codigo: 'SHOPEE20', desc: '20% de desconto extra em campanhas selecionadas da Shopee.', link: 'https://s.shopee.com.br/70J8l4RyfU' }
+            ],
+            'Mercado Livre': [
+                { codigo: 'MERCADOLIVRE10', desc: 'Desconto especial de 10% em eletrônicos e produtos Full.', link: 'https://www.mercadolivre.com.br/' },
+                { codigo: 'MERCADO20', desc: '20% de desconto exclusivo em itens selecionados no Mercado Livre.', link: 'https://www.mercadolivre.com.br/' }
+            ],
+            'Magazine Luiza': [
+                { codigo: 'MAGAZINE10', desc: 'Cupom de 10% de desconto válido em eletrodomésticos e tecnologia.', link: 'https://www.magazinevoce.com.br/magazinecasagamer/' },
+                { codigo: 'MAGAZINE20', desc: '20% de desconto imperdível em produtos selecionados na Magalu.', link: 'https://www.magazinevoce.com.br/magazinecasagamer/' }
             ]
         };
 
         const categoriesData = [
             {
+                id: 'eletronicos',
+                icon: 'fa-mobile-screen-button',
+                name: 'Smartphones, Eletrônicos e TV',
+                subcats: [
+                    { title: 'Eletrônicos, Áudio e Vídeo', items: ['Caixa de Som', 'Fone de ouvido', 'Home Theater', 'Projetores', 'Soundbar', 'Suporte para TV', 'TVs'] },
+                    { title: 'Smartphones, Tablets e Telefones', items: ['Acessórios para smartphones', 'Android', 'iPhones', 'Smartwatch e Smartband', 'Tablets'] },
+                    { title: 'Câmeras, Filmadoras e Drones', items: ['Câmera', 'Câmera de ação / GoPro', 'Câmera de segurança', 'Drones'] }
+                ]
+            },
+            {
                 id: 'informatica',
                 icon: 'fa-gamepad',
                 name: 'Informática e Games',
                 subcats: [
-                    { title: 'Informática', items: ['Teclados', 'Mouses', 'Headset', 'Monitor', 'Kits de Teclado e Mouse', 'Notebooks'] }
+                    { title: 'Informática', items: ['Teclados', 'Mouses', 'Headset', 'Monitor', 'Processadores', 'Placa Mãe', 'Coolers', 'HD e SSD', 'PC Gamer', 'Kits de Teclado e Mouse', 'Notebooks', 'Notebook Gamer', 'Cadeira Gamer'] },
+                    { title: 'Games', items: ['Jogos de PC', 'Nintendo Switch', 'Playstation 3', 'Playstation 4', 'Playstation 5', 'Xbox 360', 'Xbox One', 'Xbox Series X | S'] },
+                    { title: 'Aplicativos e Software', items: ['Apps para Android', 'Apps para iOS', 'Apps para Windows Phone', 'Programas Windows'] }
+                ]
+            },
+            {
+                id: 'casa',
+                icon: 'fa-couch',
+                name: 'Casa e Eletrodomésticos',
+                subcats: [
+                    { title: 'Eletroportáteis / Cama, Mesa e Banho', items: ['Aspirador de Pó', 'Batedeira', 'Forno elétrico', 'Fritadeira elétrica', 'Liquidificador e Mixer', 'Robô aspirador de pó', 'Ventiladores', 'Enxoval', 'Jogo de cama', 'Toalha de banho', 'Travesseiros'] },
+                    { title: 'Eletrodomésticos / Utilidades', items: ['Aquecedor', 'Ar condicionado', 'Fogão', 'Geladeiras e Refrigeradores', 'Máquina de Lavar', 'Micro-ondas', 'Acessórios de cozinha', 'Aparelho de jantar', 'Panela de pressão', 'Talheres'] },
+                    { title: 'Móveis e Decoração', items: ['Armários, Cômodas e Sapateiras', 'Cadeiras', 'Rack', 'Sofá'] }
+                ]
+            },
+            {
+                id: 'moda',
+                icon: 'fa-shirt',
+                name: 'Moda e Acessórios',
+                subcats: [
+                    { title: 'Moda Masculina e Malas', items: ['Acessórios masculinos', 'Calçados masculinos', 'Jaquetas e casacos', 'Roupas masculinas', 'Mala de Viagem', 'Mochila infantil', 'Mochila para notebook', 'Mochilas'] },
+                    { title: 'Moda Feminina', items: ['Bolsas e Acessórios', 'Calçados femininos', 'Lingerie', 'Roupas femininas'] },
+                    { title: 'Relógios e Jóias', items: ['Anéis', 'Brincos', 'Pulseiras', 'Relógios'] }
+                ]
+            },
+            {
+                id: 'bebes',
+                icon: 'fa-baby',
+                name: 'Bebês e Crianças',
+                subcats: [
+                    { title: 'Bebês e Crianças', items: ['Berço', 'Cadeirinha para automóvel', 'Calçados infantis', 'Carrinho de Bebê', 'Fraldas', 'Lenço umedecido', 'Roupas infantis'] },
+                    { title: 'Brinquedos e Hobbies', items: ['Barbie', 'Funko Pop', 'Hoverboard', 'Instrumentos Musicais', 'Jogos de tabuleiro', 'Lego'] }
+                ]
+            },
+            {
+                id: 'saude',
+                icon: 'fa-heart',
+                name: 'Saúde e Beleza',
+                subcats: [
+                    { title: 'Perfumes e Beleza', items: ['Barbeador e Aparador de pelos', 'Escova rotativa', 'Maquiagem', 'Perfumes e Colônias', 'Secadores', 'Skin Care'] },
+                    { title: 'Saúde e Higiene', items: ['Desodorante', 'Escova de dente', 'Escova de dente elétrica', 'Monitor cardíaco', 'Protetor solar', 'Sabonete'] }
+                ]
+            },
+            {
+                id: 'esporte',
+                icon: 'fa-dumbbell',
+                name: 'Esporte e Suplementos',
+                subcats: [
+                    { title: 'Esporte e Lazer', items: ['Basquete', 'Bicicleta', 'Camping', 'Cooler e Bolsa Térmica', 'Futebol', 'Natação', 'Patins'] },
+                    { title: 'Suplementos e Fitness', items: ['Aparelhos e Acessórios', 'BCAA', 'Creatina', 'Pré-treino', 'Suplementos', 'Whey Protein'] }
+                ]
+            },
+            {
+                id: 'supermercado',
+                icon: 'fa-cart-shopping',
+                name: 'Supermercado e Delivery',
+                subcats: [
+                    { title: 'Bebidas', items: ['Cervejas', 'Outros destilados', 'Vinhos e Espumantes', 'Vodka', 'Whisky'] },
+                    { title: 'Supermercado', items: ['Comida', 'Itens de Lavanderia', 'Não Alcoólico', 'Produtos de limpeza'] }
+                ]
+            },
+            {
+                id: 'ferramentas',
+                icon: 'fa-screwdriver-wrench',
+                name: 'Ferramentas e Jardim',
+                subcats: [
+                    { title: 'Ferramentas e Jardim', items: ['Compressor de ar', 'Ferramentas manuais', 'Furadeira', 'Lavadora de alta pressão', 'Móveis para ambientes externos', 'Parafusadeira', 'Serra tico-tico', 'Utensílios para jardim'] },
+                    { title: 'Automotivo e Construção', items: ['Acessórios para carros e motos', 'CD e DVD players', 'Central Multimídia', 'Pneus', 'Construção e Reforma'] }
                 ]
             }
         ];
 
-        function removeAccents(str) {
-            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-        }
-
-        function switchPage(pageId) {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
-            const target = document.getElementById(pageId);
-            if (target) {
-                target.classList.add('active-page');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+        function shuffleArray(array) {
+            let arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
-        }
-
-        function openCategoryPage(subcatName) {
-            currentSubcatFilter = subcatName;
-            document.getElementById('categoryBreadcrumbName').innerText = subcatName;
-            document.getElementById('categoryTitle').innerText = `Produtos: ${subcatName}`;
-            document.getElementById('filterStoreCategory').value = 'todas';
-            document.getElementById('minPriceCategory').value = '';
-            document.getElementById('maxPriceCategory').value = '';
-            document.getElementById('sortCategory').value = 'recentes';
-            
-            applySortingAndFiltering('category');
-            switchPage('categoryPage');
-            document.getElementById('megaMenuPanel').classList.remove('open');
-        }
-
-        function openProductDetail(productId) {
-            const prod = productsDatabase.find(p => p.id === productId);
-            if (!prod) return;
-
-            document.getElementById('detailBreadcrumbCat').innerText = prod.subcat;
-            document.getElementById('detailBreadcrumbTitle').innerText = prod.title;
-            document.getElementById('detailStore').innerText = prod.store;
-            document.getElementById('detailTitle').innerText = prod.title;
-            document.getElementById('detailRatingText').innerText = prod.rating;
-            document.getElementById('detailBadge').innerText = prod.discount || '';
-            document.getElementById('detailOldPrice').innerText = prod.oldPrice ? `De: ${prod.oldPrice}` : '';
-            document.getElementById('detailCurrentPrice').innerText = prod.price;
-            document.getElementById('detailInstallments').innerText = prod.installments || '';
-            document.getElementById('detailAbout').innerText = prod.about || '';
-            document.getElementById('detailAffiliateLink').href = prod.affiliateLink;
-
-            const mainImg = document.getElementById('detailImg');
-            mainImg.src = prod.images[0];
-
-            const thumbContainer = document.getElementById('detailThumbnails');
-            thumbContainer.innerHTML = '';
-            prod.images.forEach((imgUrl, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = imgUrl;
-                thumb.className = `thumb-img ${index === 0 ? 'active' : ''}`;
-                thumb.onclick = () => {
-                    mainImg.src = imgUrl;
-                    document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                };
-                thumbContainer.appendChild(thumb);
-            });
-
-            const specsTable = document.getElementById('detailSpecs');
-            specsTable.innerHTML = '';
-            if (prod.specs) {
-                for (let [key, val] of Object.entries(prod.specs)) {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `<td>${key}</td><td>${val}</td>`;
-                    specsTable.appendChild(row);
-                }
-            }
-
-            switchPage('productDetailPage');
+            return arr;
         }
 
         function parsePrice(priceStr) {
@@ -1518,13 +2116,12 @@
             let baseList = [];
 
             if (context === 'category') {
-                baseList = productsDatabase.filter(p => removeAccents(p.subcat).includes(removeAccents(currentSubcatFilter)));
+                baseList = productsDatabase.filter(p => p.subcat.toLowerCase() === currentSubcatFilter.toLowerCase());
             } else if (context === 'search') {
-                const query = removeAccents(currentSearchQuery);
                 baseList = productsDatabase.filter(p => 
-                    removeAccents(p.title).includes(query) || 
-                    removeAccents(p.store).includes(query) || 
-                    removeAccents(p.subcat).includes(query)
+                    (p.title.toLowerCase().includes(currentSearchQuery) || 
+                    p.store.toLowerCase().includes(currentSearchQuery) || 
+                    p.subcat.toLowerCase().includes(currentSearchQuery))
                 );
             }
 
@@ -1551,6 +2148,98 @@
 
             const targetFeedId = context === 'category' ? 'categoryFeed' : 'searchFeed';
             renderFeed(targetFeedId, filtered);
+        }
+
+        function buildMegaMenu() {
+            const sidebarContainer = document.getElementById('megaSidebarContainer');
+            sidebarContainer.innerHTML = '';
+
+            categoriesData.forEach((cat, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `mega-cat-item ${index === 0 && window.innerWidth > 768 ? 'active' : ''}`;
+                itemDiv.setAttribute('data-target', `desktop-cat-${cat.id}`);
+
+                itemDiv.innerHTML = `
+                    <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
+                    <span>${cat.name}</span>
+                    
+                    <div class="mega-cat-header-mobile" onclick="toggleMobileAccordion(this)">
+                        <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
+                        <span style="flex:1;">${cat.name}</span>
+                        <i class="fa-solid fa-chevron-right" style="font-size: 11px; color: var(--text-muted); transition: transform 0.2s;"></i>
+                    </div>
+                    <div class="mega-content-mobile">
+                        ${cat.subcats.map(sub => `
+                            <div class="subcat-column">
+                                <h4>${sub.title}</h4>
+                                ${sub.items.map(subItem => `<a onclick="openCategoryPage('${subItem}')">${subItem}</a>`).join('')}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                itemDiv.addEventListener('mouseenter', () => {
+                    if (window.innerWidth > 768) {
+                        activateDesktopCategory(cat.id);
+                    }
+                });
+
+                sidebarContainer.appendChild(itemDiv);
+            });
+        }
+
+        function toggleMobileAccordion(headerEl) {
+            if (window.innerWidth <= 768) {
+                const parentItem = headerEl.parentElement;
+                const wasActive = parentItem.classList.contains('active');
+                
+                document.querySelectorAll('.mega-cat-item').forEach(i => i.classList.remove('active'));
+                
+                if (!wasActive) {
+                    parentItem.classList.add('active');
+                }
+            }
+        }
+
+        function activateDesktopCategory(catId) {
+            document.querySelectorAll('.mega-cat-item').forEach(i => i.classList.remove('active'));
+            document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+
+            const targetItem = document.querySelector(`[data-target="desktop-cat-${catId}"]`);
+            const targetGroup = document.getElementById(`desktop-cat-${catId}`);
+
+            if (targetItem) targetItem.classList.add('active');
+            if (targetGroup) targetGroup.classList.add('active');
+        }
+
+        function openStoreCupons(storeName) {
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeCuponsTitle').innerText = `Cupons de Desconto - ${storeName}`;
+            
+            const container = document.getElementById('listaCuponsContainer');
+            container.innerHTML = '';
+
+            const cupons = cuponsPorLoja[storeName] || [];
+
+            if (cupons.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted);">Nenhum cupom ativo no momento para esta loja.</p>';
+            } else {
+                cupons.forEach(c => {
+                    const card = document.createElement('div');
+                    card.className = 'cupom-item-card';
+                    card.innerHTML = `
+                        <div class="cupom-info">
+                            <h4>${storeName}</h4>
+                            <p>${c.desc}</p>
+                        </div>
+                        <div class="cupom-codigo-box">${c.codigo}</div>
+                        <a href="${c.link}" target="_blank" class="btn-pegar">Pegar cupom e ir para a loja</a>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            switchPage('storeCuponsPage');
         }
 
         function renderFeed(containerId, items) {
@@ -1589,42 +2278,170 @@
             });
         }
 
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            currentSearchQuery = e.target.value.trim();
-            if (currentSearchQuery.length > 0) {
-                document.getElementById('searchTitle').innerText = `Resultados para: "${currentSearchQuery}"`;
-                document.getElementById('filterStoreSearch').value = 'todas';
-                document.getElementById('minPriceSearch').value = '';
-                document.getElementById('maxPriceSearch').value = '';
-                document.getElementById('sortSearch').value = 'recentes';
-                
-                applySortingAndFiltering('search');
-                switchPage('searchPage');
-            } else {
-                switchPage('homePage');
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderFeed('homeFeed', productsDatabase);
-            renderFeed('maisVendidosFeed', productsDatabase.filter(p => p.maisVendido));
+        function renderMaisVendidosCarousel() {
+            const maisVendidos = productsDatabase.filter(p => p.maisVendido);
+            const container = document.getElementById('maisVendidosFeed');
+            if (!container) return;
+            container.innerHTML = '';
             
-            const megaBtn = document.getElementById('megaMenuBtn');
-            const megaPanel = document.getElementById('megaMenuPanel');
+            if (maisVendidos.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); padding: 10px;">Nenhum produto em destaque no momento.</p>';
+                return;
+            }
 
-            megaBtn.addEventListener('click', (e) => {
+            maisVendidos.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = 'card-oferta';
+                card.onclick = () => openProductDetail(prod.id);
+
+                card.innerHTML = `
+                    <div class="badges-container">
+                        ${prod.discount ? `<span class="badge-desconto">${prod.discount}</span>` : ''}
+                    </div>
+                    <div class="img-container">
+                        <img src="${prod.images[0]}" alt="${prod.title}">
+                    </div>
+                    <div class="store-tag">${prod.store}</div>
+                    <div class="card-title">${prod.title}</div>
+                    <div class="price-section">
+                        <div class="old-price">${prod.oldPrice || ''}</div>
+                        <div class="current-price">${prod.price}</div>
+                    </div>
+                    <a href="${prod.affiliateLink}" target="_blank" class="btn-pegar" onclick="event.stopPropagation()">Pegar Oferta</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function scrollCarousel(direction) {
+            const container = document.getElementById('maisVendidosFeed');
+            if (container) {
+                const scrollAmount = 300 * direction;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active-page');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            const megaMenu = document.getElementById('megaMenuPanel');
+            if (megaMenu) megaMenu.classList.remove('open');
+            const menuArrow = document.getElementById('menuArrow');
+            if (menuArrow) menuArrow.style.transform = 'rotate(0deg)';
+        }
+
+        function openCategoryPage(subcatName) {
+            currentSubcatFilter = subcatName;
+            document.getElementById('categoryBreadcrumbName').innerText = subcatName;
+            document.getElementById('categoryTitle').innerText = subcatName;
+            
+            document.getElementById('filterStoreCategory').value = 'todas';
+            document.getElementById('minPriceCategory').value = '';
+            document.getElementById('maxPriceCategory').value = '';
+            document.getElementById('sortCategory').value = 'recentes';
+            document.getElementById('categoryFilterPanel').classList.remove('open');
+
+            applySortingAndFiltering('category');
+            switchPage('categoryPage');
+        }
+
+        function openProductDetail(productId) {
+            const prod = productsDatabase.find(p => p.id === productId);
+            if (!prod) return;
+
+            document.getElementById('detailBreadcrumbCat').innerText = prod.subcat;
+            document.getElementById('detailBreadcrumbTitle').innerText = prod.title;
+            document.getElementById('detailStore').innerText = prod.store;
+            document.getElementById('detailTitle').innerText = prod.title;
+            document.getElementById('detailBadge').innerText = prod.discount ? `${prod.discount} OFF` : '';
+            document.getElementById('detailOldPrice').innerText = prod.oldPrice ? `De: ${prod.oldPrice}` : '';
+            document.getElementById('detailCurrentPrice').innerText = prod.price;
+            document.getElementById('detailInstallments').innerText = prod.installments || '';
+            document.getElementById('detailAbout').innerText = prod.about || '';
+            document.getElementById('detailAffiliateLink').href = prod.affiliateLink;
+
+            const ratingElem = document.getElementById('detailRatingText');
+            if (ratingElem) ratingElem.innerText = prod.rating || 'Sem avaliações';
+
+            const mainImg = document.getElementById('detailImg');
+            const thumbsContainer = document.getElementById('detailThumbnails');
+            thumbsContainer.innerHTML = '';
+
+            if (prod.images && prod.images.length > 0) {
+                mainImg.src = prod.images[0];
+                prod.images.forEach((imgUrl, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = imgUrl;
+                    thumb.className = `thumb-img ${index === 0 ? 'active' : ''}`;
+                    thumb.onclick = () => {
+                        mainImg.src = imgUrl;
+                        document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    };
+                    thumbsContainer.appendChild(thumb);
+                });
+            }
+
+            const specsTable = document.getElementById('detailSpecs');
+            specsTable.innerHTML = '';
+            if (prod.specs) {
+                for (let [key, value] of Object.entries(prod.specs)) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${key}</td><td>${value}</td>`;
+                    specsTable.appendChild(row);
+                }
+            }
+
+            switchPage('productDetailPage');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            buildMegaMenu();
+
+            const shuffledHome = shuffleArray(productsDatabase);
+            renderFeed('homeFeed', shuffledHome);
+            renderMaisVendidosCarousel();
+
+            const megaMenuBtn = document.getElementById('megaMenuBtn');
+            const megaMenuPanel = document.getElementById('megaMenuPanel');
+            const menuArrow = document.getElementById('menuArrow');
+
+            megaMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                megaPanel.classList.toggle('open');
-                megaBtn.classList.toggle('active');
+                megaMenuPanel.classList.toggle('open');
+                const isOpen = megaMenuPanel.classList.contains('open');
+                menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
             });
 
-            document.addEventListener('click', () => {
-                megaPanel.classList.remove('open');
-                megaBtn.classList.remove('active');
+            document.addEventListener('click', (e) => {
+                if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
+                    megaMenuPanel.classList.remove('open');
+                    menuArrow.style.transform = 'rotate(0deg)';
+                }
             });
 
-            megaPanel.addEventListener('click', (e) => {
-                e.stopPropagation();
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const query = searchInput.value.trim().toLowerCase();
+                    if (query) {
+                        currentSearchQuery = query;
+                        document.getElementById('searchTitle').innerText = `Resultados para: "${searchInput.value}"`;
+                        
+                        document.getElementById('filterStoreSearch').value = 'todas';
+                        document.getElementById('minPriceSearch').value = '';
+                        document.getElementById('maxPriceSearch').value = '';
+                        document.getElementById('sortSearch').value = 'recentes';
+                        document.getElementById('searchFilterPanel').classList.remove('open');
+
+                        applySortingAndFiltering('search');
+                        switchPage('searchPage');
+                    }
+                }
             });
         });
     </script>
