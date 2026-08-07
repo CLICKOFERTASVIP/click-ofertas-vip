@@ -700,7 +700,6 @@
             .subcat-group { display: block !important; }
             .subcat-column { margin-bottom: 12px; }
 
-            /* Mobile Carrossel: Ajusta para caber melhor na tela menor */
             .mais-vendidos-carousel-container .card-oferta {
                 min-width: calc(75% - 10px);
                 flex: 0 0 calc(75% - 10px);
@@ -751,80 +750,275 @@
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <div class="mega-sidebar" id="megaSidebarContainer"></div>
                 <div class="mega-content" id="megaContentDesktop">
+                    
+                    <!-- 1. Smartphones, Eletrônicos e TV -->
                     <div class="subcat-group active" id="desktop-cat-eletronicos">
                         <div class="subcat-column">
-                            <h4>Celulares e Telefonia</h4>
-                            <a onclick="openCategoryPage('Smartphones Android')">Smartphones Android</a>
-                            <a onclick="openCategoryPage('iPhones / iOS')">iPhones / iOS</a>
-                            <a onclick="openCategoryPage('Smartwatches')">Smartwatches e Smartbands</a>
-                            <a onclick="openCategoryPage('Acessórios para Celular')">Acessórios para Celular</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>TV e Vídeo</h4>
-                            <a onclick="openCategoryPage('Smart TVs')">Smart TVs 4K / 8K</a>
+                            <h4>Eletrônicos, Áudio e Vídeo</h4>
+                            <a onclick="openCategoryPage('Caixa de Som')">Caixa de Som</a>
+                            <a onclick="openCategoryPage('Fone de ouvido')">Fone de ouvido</a>
+                            <a onclick="openCategoryPage('Home Theater')">Home Theater</a>
                             <a onclick="openCategoryPage('Projetores')">Projetores</a>
-                            <a onclick="openCategoryPage('TV Box')">TV Box e Streaming Stick</a>
-                            <a onclick="openCategoryPage('Soundbar')">Home Theater e Soundbar</a>
+                            <a onclick="openCategoryPage('Soundbar')">Soundbar</a>
+                            <a onclick="openCategoryPage('Suporte para TV')">Suporte para TV</a>
+                            <a onclick="openCategoryPage('TVs')">TVs</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Áudio e Acessórios</h4>
-                            <a onclick="openCategoryPage('Fones de Ouvido')">Fone de Ouvido Bluetooth</a>
-                            <a onclick="openCategoryPage('Caixas de Som')">Caixas de Som Portáteis</a>
-                            <a onclick="openCategoryPage('Microfones')">Microfones</a>
+                            <h4>Smartphones, Tablets e Telefones</h4>
+                            <a onclick="openCategoryPage('Acessórios para smartphones')">Acessórios para smartphones</a>
+                            <a onclick="openCategoryPage('Android')">Android</a>
+                            <a onclick="openCategoryPage('iPhones')">iPhones</a>
+                            <a onclick="openCategoryPage('Smartwatch e Smartband')">Smartwatch e Smartband</a>
+                            <a onclick="openCategoryPage('Tablets')">Tablets</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Câmeras, Filmadoras e Drones</h4>
+                            <a onclick="openCategoryPage('Câmera')">Câmera</a>
+                            <a onclick="openCategoryPage('Câmera de ação / GoPro')">Câmera de ação / GoPro</a>
+                            <a onclick="openCategoryPage('Câmera de segurança')">Câmera de segurança</a>
+                            <a onclick="openCategoryPage('Drones')">Drones</a>
                         </div>
                     </div>
 
+                    <!-- 2. Informática e Games -->
                     <div class="subcat-group" id="desktop-cat-informatica">
                         <div class="subcat-column">
-                            <h4>Informática Geral</h4>
-                            <a onclick="openCategoryPage('Notebooks')">Notebooks e Laptops</a>
-                            <a onclick="openCategoryPage('Desktops')">Desktops e PC Gamer</a>
-                            <a onclick="openCategoryPage('Monitores')">Monitores</a>
+                            <h4>Informática</h4>
+                            <a onclick="openCategoryPage('Cadeira gamer')">Cadeira gamer</a>
+                            <a onclick="openCategoryPage('Coolers')">Coolers</a>
+                            <a onclick="openCategoryPage('Hardware e periféricos')">Hardware e periféricos</a>
+                            <a onclick="openCategoryPage('HD e SSD')">HD e SSD</a>
+                            <a onclick="openCategoryPage('Monitor')">Monitor</a>
+                            <a onclick="openCategoryPage('Notebook gamer')">Notebook gamer</a>
+                            <a onclick="openCategoryPage('Notebooks')">Notebooks</a>
+                            <a onclick="openCategoryPage('PC gamer')">PC gamer</a>
+                            <a onclick="openCategoryPage('Placa Mãe')">Placa Mãe</a>
+                            <a onclick="openCategoryPage('Processador')">Processador</a>
+                            <a onclick="openCategoryPage('Teclado e Mouse')">Teclado e Mouse</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Periféricos e Hardware</h4>
-                            <a onclick="openCategoryPage('Mouses')">Mouses</a>
-                            <a onclick="openCategoryPage('Teclados')">Teclados</a>
-                            <a onclick="openCategoryPage('Placas de Vídeo')">Placas de Vídeo</a>
-                            <a onclick="openCategoryPage('SSDs')">HDs e SSDs</a>
+                            <h4>Games</h4>
+                            <a onclick="openCategoryPage('Jogos de PC')">Jogos de PC</a>
+                            <a onclick="openCategoryPage('Nintendo Switch')">Nintendo Switch</a>
+                            <a onclick="openCategoryPage('Playstation 3')">Playstation 3</a>
+                            <a onclick="openCategoryPage('Playstation 4')">Playstation 4</a>
+                            <a onclick="openCategoryPage('Playstation 5')">Playstation 5</a>
+                            <a onclick="openCategoryPage('Xbox 360')">Xbox 360</a>
+                            <a onclick="openCategoryPage('Xbox One')">Xbox One</a>
+                            <a onclick="openCategoryPage('Xbox Series X | S')">Xbox Series X | S</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Mundo Gamer</h4>
-                            <a onclick="openCategoryPage('Consoles')">Consoles (PS5, Xbox, Switch)</a>
-                            <a onclick="openCategoryPage('Cadeiras Gamers')">Cadeiras Gamers</a>
+                            <h4>Aplicativos e Software</h4>
+                            <a onclick="openCategoryPage('Apps para Android')">Apps para Android</a>
+                            <a onclick="openCategoryPage('Apps para iOS')">Apps para iOS</a>
+                            <a onclick="openCategoryPage('Apps para Windows Phone')">Apps para Windows Phone</a>
+                            <a onclick="openCategoryPage('Programas Windows')">Programas Windows</a>
                         </div>
                     </div>
 
+                    <!-- 3. Casa e Eletrodomésticos -->
                     <div class="subcat-group" id="desktop-cat-casa">
                         <div class="subcat-column">
-                            <h4>Eletrodomésticos</h4>
-                            <a onclick="openCategoryPage('Geladeiras e Freezers')">Geladeiras e Freezers</a>
-                            <a onclick="openCategoryPage('Lavadoras')">Máquinas de Lavar</a>
-                            <a onclick="openCategoryPage('Ar-Condicionado')">Ar-Condicionado</a>
+                            <h4>Eletroportáteis</h4>
+                            <a onclick="openCategoryPage('Aspirador de Pó')">Aspirador de Pó</a>
+                            <a onclick="openCategoryPage('Batedeira')">Batedeira</a>
+                            <a onclick="openCategoryPage('Forno elétrico')">Forno elétrico</a>
+                            <a onclick="openCategoryPage('Fritadeira elétrica')">Fritadeira elétrica</a>
+                            <a onclick="openCategoryPage('Liquidificador e Mixer')">Liquidificador e Mixer</a>
+                            <a onclick="openCategoryPage('Robô aspirador de pó')">Robô aspirador de pó</a>
+                            <a onclick="openCategoryPage('Ventiladores')">Ventiladores</a>
+                            <h4 style="margin-top: 15px;">Cama, Mesa e Banho</h4>
+                            <a onclick="openCategoryPage('Enxoval')">Enxoval</a>
+                            <a onclick="openCategoryPage('Jogo de cama')">Jogo de cama</a>
+                            <a onclick="openCategoryPage('Toalha de banho')">Toalha de banho</a>
+                            <a onclick="openCategoryPage('Travesseiros')">Travesseiros</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Eletroportáteis</h4>
-                            <a onclick="openCategoryPage('Air Fryers')">Air Fryers</a>
-                            <a onclick="openCategoryPage('Micro-Ondas')">Micro-Ondas</a>
-                            <a onclick="openCategoryPage('Aspiradores')">Aspiradores</a>
+                            <h4>Eletrodomésticos</h4>
+                            <a onclick="openCategoryPage('Aquecedor')">Aquecedor</a>
+                            <a onclick="openCategoryPage('Ar condicionado')">Ar condicionado</a>
+                            <a onclick="openCategoryPage('Fogão')">Fogão</a>
+                            <a onclick="openCategoryPage('Geladeiras e Refrigeradores')">Geladeiras e Refrigeradores</a>
+                            <a onclick="openCategoryPage('Máquina de Lavar')">Máquina de Lavar</a>
+                            <a onclick="openCategoryPage('Micro-ondas')">Micro-ondas</a>
+                            <h4 style="margin-top: 15px;">Utilidades Domésticas</h4>
+                            <a onclick="openCategoryPage('Acessórios de cozinha')">Acessórios de cozinha</a>
+                            <a onclick="openCategoryPage('Aparelho de jantar')">Aparelho de jantar</a>
+                            <a onclick="openCategoryPage('Panela de pressão')">Panela de pressão</a>
+                            <a onclick="openCategoryPage('Talheres')">Talheres</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Móveis e Decoração</h4>
+                            <a onclick="openCategoryPage('Armários, Cômodas e Sapateiras')">Armários, Cômodas e Sapateiras</a>
+                            <a onclick="openCategoryPage('Cadeiras')">Cadeiras</a>
+                            <a onclick="openCategoryPage('Rack')">Rack</a>
+                            <a onclick="openCategoryPage('Sofá')">Sofá</a>
                         </div>
                     </div>
 
+                    <!-- 4. Moda e Acessórios -->
                     <div class="subcat-group" id="desktop-cat-moda">
                         <div class="subcat-column">
-                            <h4>Moda e Beleza</h4>
-                            <a onclick="openCategoryPage('Roupas')">Roupas e Camisetas</a>
-                            <a onclick="openCategoryPage('Perfumes')">Perfumes</a>
+                            <h4>Moda e Calçados masculinos</h4>
+                            <a onclick="openCategoryPage('Acessórios masculinos')">Acessórios masculinos</a>
+                            <a onclick="openCategoryPage('Calçados masculinos')">Calçados masculinos</a>
+                            <a onclick="openCategoryPage('Jaquetas e casacos')">Jaquetas e casacos</a>
+                            <a onclick="openCategoryPage('Roupas masculinas')">Roupas masculinas</a>
+                            <h4 style="margin-top: 15px;">Mochilas e Malas</h4>
+                            <a onclick="openCategoryPage('Mala de Viagem')">Mala de Viagem</a>
+                            <a onclick="openCategoryPage('Mochila infantil')">Mochila infantil</a>
+                            <a onclick="openCategoryPage('Mochila para notebook')">Mochila para notebook</a>
+                            <a onclick="openCategoryPage('Mochilas')">Mochilas</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Moda e Calçados Femininos</h4>
+                            <a onclick="openCategoryPage('Bolsas e Acessórios')">Bolsas e Acessórios</a>
+                            <a onclick="openCategoryPage('Calçados femininos')">Calçados femininos</a>
+                            <a onclick="openCategoryPage('Lingerie')">Lingerie</a>
+                            <a onclick="openCategoryPage('Roupas femininas')">Roupas femininas</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Relógios e Jóias</h4>
+                            <a onclick="openCategoryPage('Anéis')">Anéis</a>
+                            <a onclick="openCategoryPage('Brincos')">Brincos</a>
+                            <a onclick="openCategoryPage('Pulseiras')">Pulseiras</a>
+                            <a onclick="openCategoryPage('Relógios')">Relógios</a>
                         </div>
                     </div>
 
+                    <!-- 5. Bebês e Crianças -->
+                    <div class="subcat-group" id="desktop-cat-bebes">
+                        <div class="subcat-column">
+                            <h4>Bebês e Crianças</h4>
+                            <a onclick="openCategoryPage('Berço')">Berço</a>
+                            <a onclick="openCategoryPage('Cadeirinha para automóvel')">Cadeirinha para automóvel</a>
+                            <a onclick="openCategoryPage('Calçados infantis')">Calçados infantis</a>
+                            <a onclick="openCategoryPage('Carrinho de Bebê')">Carrinho de Bebê</a>
+                            <a onclick="openCategoryPage('Fraldas')">Fraldas</a>
+                            <a onclick="openCategoryPage('Lenço umedecido')">Lenço umedecido</a>
+                            <a onclick="openCategoryPage('Roupas infantis')">Roupas infantis</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Brinquedos e Hobbies</h4>
+                            <a onclick="openCategoryPage('Barbie')">Barbie</a>
+                            <a onclick="openCategoryPage('Funko Pop')">Funko Pop</a>
+                            <a onclick="openCategoryPage('Hoverboard')">Hoverboard</a>
+                            <a onclick="openCategoryPage('Instrumentos Musicais')">Instrumentos Musicais</a>
+                            <a onclick="openCategoryPage('Jogos de tabuleiro')">Jogos de tabuleiro</a>
+                            <a onclick="openCategoryPage('Lego')">Lego</a>
+                        </div>
+                    </div>
+
+                    <!-- 6. Saúde e Beleza -->
+                    <div class="subcat-group" id="desktop-cat-saude">
+                        <div class="subcat-column">
+                            <h4>Perfumes e Beleza</h4>
+                            <a onclick="openCategoryPage('Barbeador e Aparador de pelos')">Barbeador e Aparador de pelos</a>
+                            <a onclick="openCategoryPage('Escova rotativa')">Escova rotativa</a>
+                            <a onclick="openCategoryPage('Maquiagem')">Maquiagem</a>
+                            <a onclick="openCategoryPage('Perfumes e Colônias')">Perfumes e Colônias</a>
+                            <a onclick="openCategoryPage('Secadores')">Secadores</a>
+                            <a onclick="openCategoryPage('Skin Care')">Skin Care</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Saúde e Higiene</h4>
+                            <a onclick="openCategoryPage('Desodorante')">Desodorante</a>
+                            <a onclick="openCategoryPage('Escova de dente')">Escova de dente</a>
+                            <a onclick="openCategoryPage('Escova de dente elétrica')">Escova de dente elétrica</a>
+                            <a onclick="openCategoryPage('Monitor cardíaco')">Monitor cardíaco</a>
+                            <a onclick="openCategoryPage('Protetor solar')">Protetor solar</a>
+                            <a onclick="openCategoryPage('Sabonete')">Sabonete</a>
+                        </div>
+                    </div>
+
+                    <!-- 7. Esporte e Suplementos -->
                     <div class="subcat-group" id="desktop-cat-esporte">
                         <div class="subcat-column">
                             <h4>Esporte e Lazer</h4>
-                            <a onclick="openCategoryPage('Suplementos')">Suplementos e Whey Protein</a>
-                            <a onclick="openCategoryPage('Bicicletas')">Bicicletas</a>
+                            <a onclick="openCategoryPage('Basquete')">Basquete</a>
+                            <a onclick="openCategoryPage('Bicicleta')">Bicicleta</a>
+                            <a onclick="openCategoryPage('Camping')">Camping</a>
+                            <a onclick="openCategoryPage('Cooler e Bolsa Térmica')">Cooler e Bolsa Térmica</a>
+                            <a onclick="openCategoryPage('Futebol')">Futebol</a>
+                            <a onclick="openCategoryPage('Natação')">Natação</a>
+                            <a onclick="openCategoryPage('Patins')">Patins</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Suplementos e Fitness</h4>
+                            <a onclick="openCategoryPage('Aparelhos e Acessórios')">Aparelhos e Acessórios</a>
+                            <a onclick="openCategoryPage('BCAA')">BCAA</a>
+                            <a onclick="openCategoryPage('Creatina')">Creatina</a>
+                            <a onclick="openCategoryPage('Pré-treino')">Pré-treino</a>
+                            <a onclick="openCategoryPage('Suplementos')">Suplementos</a>
+                            <a onclick="openCategoryPage('Whey Protein')">Whey Protein</a>
                         </div>
                     </div>
+
+                    <!-- 8. Supermercado e Delivery -->
+                    <div class="subcat-group" id="desktop-cat-supermercado">
+                        <div class="subcat-column">
+                            <h4>Bebidas</h4>
+                            <a onclick="openCategoryPage('Cervejas')">Cervejas</a>
+                            <a onclick="openCategoryPage('Outros destilados')">Outros destilados</a>
+                            <a onclick="openCategoryPage('Vinhos e Espumantes')">Vinhos e Espumantes</a>
+                            <a onclick="openCategoryPage('Vodka')">Vodka</a>
+                            <a onclick="openCategoryPage('Whisky')">Whisky</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Supermercado e Delivery</h4>
+                            <a onclick="openCategoryPage('Comida')">Comida</a>
+                            <a onclick="openCategoryPage('Itens de Lavanderia')">Itens de Lavanderia</a>
+                            <a onclick="openCategoryPage('Não Alcoólico')">Não Alcoólico</a>
+                            <a onclick="openCategoryPage('Produtos de limpeza')">Produtos de limpeza</a>
+                        </div>
+                    </div>
+
+                    <!-- 9. Livros, Ebooks e eReaders -->
+                    <div class="subcat-group" id="desktop-cat-livros">
+                        <div class="subcat-column">
+                            <h4>Livros, Ebooks e eReaders</h4>
+                            <a onclick="openCategoryPage('Kindle e eReaders')">Kindle e eReaders</a>
+                            <a onclick="openCategoryPage('Livros de Ficção')">Livros de Ficção</a>
+                            <a onclick="openCategoryPage('Livros Técnicos')">Livros Técnicos</a>
+                            <a onclick="openCategoryPage('Mangás e HQs')">Mangás e HQs</a>
+                        </div>
+                    </div>
+
+                    <!-- 10. Ferramentas e Jardim -->
+                    <div class="subcat-group" id="desktop-cat-ferramentas">
+                        <div class="subcat-column">
+                            <h4>Ferramentas e Jardim</h4>
+                            <a onclick="openCategoryPage('Compressor de ar')">Compressor de ar</a>
+                            <a onclick="openCategoryPage('Ferramentas manuais')">Ferramentas manuais</a>
+                            <a onclick="openCategoryPage('Furadeira')">Furadeira</a>
+                            <a onclick="openCategoryPage('Lavadora de alta pressão')">Lavadora de alta pressão</a>
+                            <a onclick="openCategoryPage('Móveis para ambientes externos')">Móveis para ambientes externos</a>
+                            <a onclick="openCategoryPage('Parafusadeira')">Parafusadeira</a>
+                            <a onclick="openCategoryPage('Serra tico-tico')">Serra tico-tico</a>
+                            <a onclick="openCategoryPage('Utensílios para jardim')">Utensílios para jardim</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Peças e Acessórios para automóveis</h4>
+                            <a onclick="openCategoryPage('Acessórios para carros e motos')">Acessórios para carros e motos</a>
+                            <a onclick="openCategoryPage('CD e DVD players')">CD e DVD players</a>
+                            <a onclick="openCategoryPage('Central Multimídia')">Central Multimídia</a>
+                            <a onclick="openCategoryPage('Pneus')">Pneus</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>Casa e Construção</h4>
+                            <a onclick="openCategoryPage('Construção e Reforma')">Construção e Reforma</a>
+                        </div>
+                    </div>
+
+                    <!-- 11. Diversos -->
+                    <div class="subcat-group" id="desktop-cat-diversos">
+                        <div class="subcat-column">
+                            <h4>Diversos</h4>
+                            <a onclick="openCategoryPage('Artigos Gerais')">Artigos Gerais</a>
+                            <a onclick="openCategoryPage('Presentes')">Presentes</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -976,7 +1170,7 @@
                 id: 'combo-gamer-4-em-1-mts-nightmare-snow',
                 title: 'Combo GAMER 4 em 1 MTS, Nightmare Snow • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer Branco',
                 store: 'Amazon',
-                subcat: 'Teclados',
+                subcat: 'Teclado e Mouse',
                 oldPrice: 'R$ 180,00',
                 price: 'R$ 147,73',
                 discount: '-18%',
@@ -996,7 +1190,7 @@
                 id: 'geladeira-consul-smart-frost-free-inox-377l',
                 title: 'Geladeira/Refrigerador Consul Smart Frost Free Inox Duplex 377L CRM44MKANA',
                 store: 'Magazine Luiza',
-                subcat: 'Geladeiras e Freezers',
+                subcat: 'Geladeiras e Refrigeradores',
                 oldPrice: 'R$ 4.339,00',
                 price: 'R$ 2.997,66',
                 discount: '-31%',
@@ -1015,7 +1209,7 @@
                 id: 'smartphone-exemplo-3',
                 title: 'Smartphone Avançado 128GB Câmera Tripla Tela AMOLED',
                 store: 'Shopee',
-                subcat: 'Smartphones Android',
+                subcat: 'Android',
                 oldPrice: 'R$ 1.500,00',
                 price: 'R$ 1.199,00',
                 discount: '-20%',
@@ -1032,7 +1226,7 @@
                 id: 'airfryer-exemplo-4',
                 title: 'Fritadeira Sem Óleo Air Fryer 4L Antiaderente',
                 store: 'Amazon',
-                subcat: 'Air Fryers',
+                subcat: 'Fritadeira elétrica',
                 oldPrice: 'R$ 450,00',
                 price: 'R$ 329,90',
                 discount: '-26%',
@@ -1049,7 +1243,7 @@
                 id: 'headset-exemplo-5',
                 title: 'Headset Gamer com Microfone Redução de Ruído',
                 store: 'Mercado Livre',
-                subcat: 'Fones de Ouvido',
+                subcat: 'Fone de ouvido',
                 oldPrice: 'R$ 220,00',
                 price: 'R$ 159,00',
                 discount: '-27%',
@@ -1089,9 +1283,9 @@
                 icon: 'fa-mobile-screen-button',
                 name: 'Smartphones, Eletrônicos e TV',
                 subcats: [
-                    { title: 'Celulares e Telefonia', items: ['Smartphones Android', 'iPhones / iOS', 'Smartwatches', 'Acessórios para Celular'] },
-                    { title: 'TV e Vídeo', items: ['Smart TVs', 'Projetores', 'TV Box', 'Soundbar'] },
-                    { title: 'Áudio', items: ['Fones de Ouvido', 'Caixas de Som', 'Microfones'] }
+                    { title: 'Eletrônicos, Áudio e Vídeo', items: ['Caixa de Som', 'Fone de ouvido', 'Home Theater', 'Projetores', 'Soundbar', 'Suporte para TV', 'TVs'] },
+                    { title: 'Smartphones, Tablets e Telefones', items: ['Acessórios para smartphones', 'Android', 'iPhones', 'Smartwatch e Smartband', 'Tablets'] },
+                    { title: 'Câmeras, Filmadoras e Drones', items: ['Câmera', 'Câmera de ação / GoPro', 'Câmera de segurança', 'Drones'] }
                 ]
             },
             {
@@ -1099,9 +1293,9 @@
                 icon: 'fa-gamepad',
                 name: 'Informática e Games',
                 subcats: [
-                    { title: 'Informática Geral', items: ['Notebooks', 'Desktops', 'Monitores'] },
-                    { title: 'Periféricos', items: ['Mouses', 'Teclados', 'Placas de Vídeo', 'SSDs'] },
-                    { title: 'Mundo Gamer', items: ['Consoles', 'Cadeiras Gamers'] }
+                    { title: 'Informática', items: ['Cadeira gamer', 'Coolers', 'Hardware e periféricos', 'HD e SSD', 'Monitor', 'Notebook gamer', 'Notebooks', 'PC gamer', 'Placa Mãe', 'Processador', 'Teclado e Mouse'] },
+                    { title: 'Games', items: ['Jogos de PC', 'Nintendo Switch', 'Playstation 3', 'Playstation 4', 'Playstation 5', 'Xbox 360', 'Xbox One', 'Xbox Series X | S'] },
+                    { title: 'Aplicativos e Software', items: ['Apps para Android', 'Apps para iOS', 'Apps para Windows Phone', 'Programas Windows'] }
                 ]
             },
             {
@@ -1109,24 +1303,80 @@
                 icon: 'fa-couch',
                 name: 'Casa e Eletrodomésticos',
                 subcats: [
-                    { title: 'Eletrodomésticos', items: ['Geladeiras e Freezers', 'Lavadoras', 'Ar-Condicionado'] },
-                    { title: 'Eletroportáteis', items: ['Air Fryers', 'Micro-Ondas', 'Aspiradores'] }
+                    { title: 'Eletroportáteis / Cama, Mesa e Banho', items: ['Aspirador de Pó', 'Batedeira', 'Forno elétrico', 'Fritadeira elétrica', 'Liquidificador e Mixer', 'Robô aspirador de pó', 'Ventiladores', 'Enxoval', 'Jogo de cama', 'Toalha de banho', 'Travesseiros'] },
+                    { title: 'Eletrodomésticos / Utilidades', items: ['Aquecedor', 'Ar condicionado', 'Fogão', 'Geladeiras e Refrigeradores', 'Máquina de Lavar', 'Micro-ondas', 'Acessórios de cozinha', 'Aparelho de jantar', 'Panela de pressão', 'Talheres'] },
+                    { title: 'Móveis e Decoração', items: ['Armários, Cômodas e Sapateiras', 'Cadeiras', 'Rack', 'Sofá'] }
                 ]
             },
             {
                 id: 'moda',
                 icon: 'fa-shirt',
-                name: 'Moda e Beleza',
+                name: 'Moda e Acessórios',
                 subcats: [
-                    { title: 'Moda e Beleza', items: ['Roupas', 'Perfumes'] }
+                    { title: 'Moda Masculina e Malas', items: ['Acessórios masculinos', 'Calçados masculinos', 'Jaquetas e casacos', 'Roupas masculinas', 'Mala de Viagem', 'Mochila infantil', 'Mochila para notebook', 'Mochilas'] },
+                    { title: 'Moda Feminina', items: ['Bolsas e Acessórios', 'Calçados femininos', 'Lingerie', 'Roupas femininas'] },
+                    { title: 'Relógios e Jóias', items: ['Anéis', 'Brincos', 'Pulseiras', 'Relógios'] }
+                ]
+            },
+            {
+                id: 'bebes',
+                icon: 'fa-baby',
+                name: 'Bebês e Crianças',
+                subcats: [
+                    { title: 'Bebês e Crianças', items: ['Berço', 'Cadeirinha para automóvel', 'Calçados infantis', 'Carrinho de Bebê', 'Fraldas', 'Lenço umedecido', 'Roupas infantis'] },
+                    { title: 'Brinquedos e Hobbies', items: ['Barbie', 'Funko Pop', 'Hoverboard', 'Instrumentos Musicais', 'Jogos de tabuleiro', 'Lego'] }
+                ]
+            },
+            {
+                id: 'saude',
+                icon: 'fa-heart',
+                name: 'Saúde e Beleza',
+                subcats: [
+                    { title: 'Perfumes e Beleza', items: ['Barbeador e Aparador de pelos', 'Escova rotativa', 'Maquiagem', 'Perfumes e Colônias', 'Secadores', 'Skin Care'] },
+                    { title: 'Saúde e Higiene', items: ['Desodorante', 'Escova de dente', 'Escova de dente elétrica', 'Monitor cardíaco', 'Protetor solar', 'Sabonete'] }
                 ]
             },
             {
                 id: 'esporte',
                 icon: 'fa-dumbbell',
-                name: 'Esporte e Lazer',
+                name: 'Esporte e Suplementos',
                 subcats: [
-                    { title: 'Esporte', items: ['Suplementos', 'Bicicletas'] }
+                    { title: 'Esporte e Lazer', items: ['Basquete', 'Bicicleta', 'Camping', 'Cooler e Bolsa Térmica', 'Futebol', 'Natação', 'Patins'] },
+                    { title: 'Suplementos e Fitness', items: ['Aparelhos e Acessórios', 'BCAA', 'Creatina', 'Pré-treino', 'Suplementos', 'Whey Protein'] }
+                ]
+            },
+            {
+                id: 'supermercado',
+                icon: 'fa-cart-shopping',
+                name: 'Supermercado e Delivery',
+                subcats: [
+                    { title: 'Bebidas', items: ['Cervejas', 'Outros destilados', 'Vinhos e Espumantes', 'Vodka', 'Whisky'] },
+                    { title: 'Supermercado', items: ['Comida', 'Itens de Lavanderia', 'Não Alcoólico', 'Produtos de limpeza'] }
+                ]
+            },
+            {
+                id: 'livros',
+                icon: 'fa-book',
+                name: 'Livros, Ebooks e eReaders',
+                subcats: [
+                    { title: 'Livros e eReaders', items: ['Kindle e eReaders', 'Livros de Ficção', 'Livros Técnicos', 'Mangás e HQs'] }
+                ]
+            },
+            {
+                id: 'ferramentas',
+                icon: 'fa-screwdriver-wrench',
+                name: 'Ferramentas e Jardim',
+                subcats: [
+                    { title: 'Ferramentas e Jardim', items: ['Compressor de ar', 'Ferramentas manuais', 'Furadeira', 'Lavadora de alta pressão', 'Móveis para ambientes externos', 'Parafusadeira', 'Serra tico-tico', 'Utensílios para jardim'] },
+                    { title: 'Automotivo e Construção', items: ['Acessórios para carros e motos', 'CD e DVD players', 'Central Multimídia', 'Pneus', 'Construção e Reforma'] }
+                ]
+            },
+            {
+                id: 'diversos',
+                icon: 'fa-bag-shopping',
+                name: 'Diversos',
+                subcats: [
+                    { title: 'Diversos', items: ['Artigos Gerais', 'Presentes'] }
                 ]
             }
         ];
@@ -1269,16 +1519,13 @@
         }
 
         function renderHomeFeeds() {
-            // Renderiza os Mais Vendidos rotacionando/embaralhando para trocar periodicamente ao atualizar a página
             const maisVendidos = shuffleArray(productsDatabase.filter(p => p.maisVendido === true));
             renderFeed('maisVendidosFeed', maisVendidos);
 
-            // Renderiza o feed principal da home
             const shuffledProducts = shuffleArray(productsDatabase);
             renderFeed('homeFeed', shuffledProducts);
         }
 
-        // Função para mover o carrossel lateral de Mais Vendidos da Semana
         function scrollCarousel(direction) {
             const container = document.getElementById('maisVendidosFeed');
             const scrollAmount = container.clientWidth * 0.75;
