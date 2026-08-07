@@ -409,7 +409,7 @@
 
         .btn-pegar:hover { background: var(--primary-hover); }
 
-        /* Estilos específicos para a Página de Cupons */
+        /* Estilos da Página de Cupons */
         .cupons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -451,6 +451,20 @@
 
         .cupom-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
         .cupom-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+
+        .cupom-box {
+            background: #121216;
+            border: 2px dashed #2b2b36;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--green-discount);
+            margin-bottom: 15px;
+            width: 100%;
+            letter-spacing: 1px;
+        }
 
         .product-detail-layout {
             display: grid;
@@ -784,45 +798,49 @@
         <div class="feed-container" id="categoryFeed"></div>
     </div>
 
-    <!-- PÁGINA DE CUPONS ATUALIZADA -->
+    <!-- PÁGINA DE CUPONS COM OS CÓDIGOS E LOGOS -->
     <div id="cuponsHubPage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons
         </div>
         <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 5px;">Cupons e Ofertas das Lojas</h2>
-        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Aproveite os melhores cupons de desconto ativos nas principais lojas parceiras.</p>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Copie o código do cupom e aproveite os descontos nas principais lojas parceiras.</p>
         
         <div class="cupons-grid">
             <!-- Amazon -->
             <div class="cupom-card">
                 <div class="cupom-logo"><i class="fa-brands fa-amazon"></i></div>
                 <h3>Amazon</h3>
-                <p>Cupons diários, ofertas relâmpago e frete grátis Prime.</p>
-                <a href="SEU_LINK_DE_afiliado_AMAZON" target="_blank" class="btn-pegar">Pegar Cupom</a>
+                <p>Cupons diários e ofertas selecionadas.</p>
+                <div class="cupom-box">AMAZON10</div>
+                <a href="SEU_LINK_DE_afiliado_AMAZON" target="_blank" class="btn-pegar">Ir para a Loja</a>
             </div>
 
             <!-- Shopee -->
             <div class="cupom-card">
                 <div class="cupom-logo"><i class="fa-solid fa-bag-shopping"></i></div>
                 <h3>Shopee</h3>
-                <p>Cupons de frete grátis, moedas e descontos relâmpago.</p>
-                <a href="SEU_LINK_DE_afiliado_SHOPEE" target="_blank" class="btn-pegar">Pegar Cupom</a>
+                <p>Descontos especiais em compras pelo app/site.</p>
+                <div class="cupom-box">SHOPEE10</div>
+                <a href="SEU_LINK_DE_afiliado_SHOPEE" target="_blank" class="btn-pegar">Ir para a Loja</a>
             </div>
 
             <!-- Mercado Livre -->
             <div class="cupom-card">
                 <div class="cupom-logo"><i class="fa-solid fa-handshake"></i></div>
                 <h3>Mercado Livre</h3>
-                <p>Descontos em eletrônicos, casa, mercado e envio Full.</p>
-                <a href="SEU_LINK_DE_afiliado_MERCADOLIVRE" target="_blank" class="btn-pegar">Pegar Cupom</a>
+                <p>Descontos em eletrônicos e envios Full.</p>
+                <div class="cupom-box">MERCADOLIVRE10</div>
+                <a href="SEU_LINK_DE_afiliado_MERCADOLIVRE" target="_blank" class="btn-pegar">Ir para a Loja</a>
             </div>
 
             <!-- Magazine Luiza -->
             <div class="cupom-card">
                 <div class="cupom-logo"><i class="fa-solid fa-store"></i></div>
                 <h3>Magazine Luiza</h3>
-                <p>Ofertas exclusivas no app e cupons em eletrodomésticos.</p>
-                <a href="SEU_LINK_DE_afiliado_MAGALU" target="_blank" class="btn-pegar">Pegar Cupom</a>
+                <p>Cupons válidos em eletro e tecnologia.</p>
+                <div class="cupom-box">MAGAZINE10</div>
+                <a href="SEU_LINK_DE_afiliado_MAGALU" target="_blank" class="btn-pegar">Ir para a Loja</a>
             </div>
         </div>
     </div>
