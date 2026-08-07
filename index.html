@@ -982,7 +982,7 @@
                 discount: '-18%',
                 maisVendido: true,
                 installments: 'Em até 5x de R$ 31,11 sem juros',
-                affiliateLink: 'https://link.amazon/B0a7GkLaz',
+                affiliateLink: 'https://link.amazon/B04knj9iR',
                 ativo: true,
                 images: [
                     'https://m.media-amazon.com/images/I/51UgM99EyML._AC_.jpg',
@@ -1002,7 +1002,7 @@
                 discount: '-31%',
                 maisVendido: true,
                 installments: 'Em até 10x de R$ 318,90 sem juros',
-                affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
+                affiliateLink: 'https://www.magazinevoce.com.br/magazinecasagamer/',
                 ativo: true,
                 images: [
                     'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/46bacfe5ca0279c7f5eabfacee0ad762.jpg'
@@ -1021,7 +1021,7 @@
                 discount: '-20%',
                 maisVendido: true,
                 installments: 'Em até 10x sem juros',
-                affiliateLink: '#',
+                affiliateLink: 'https://s.shopee.com.br/70J8l4RyfU',
                 ativo: true,
                 images: ['https://m.media-amazon.com/images/I/61SUjwuatjL._AC_SL1500_.jpg'],
                 rating: '4,7 (300 avaliações)',
@@ -1038,7 +1038,7 @@
                 discount: '-26%',
                 maisVendido: true,
                 installments: 'Em até 6x sem juros',
-                affiliateLink: '#',
+                affiliateLink: 'https://link.amazon/B04knj9iR',
                 ativo: true,
                 images: ['https://m.media-amazon.com/images/I/61SUjwuatjL._AC_SL1500_.jpg'],
                 rating: '4,9 (850 avaliações)',
@@ -1055,7 +1055,7 @@
                 discount: '-27%',
                 maisVendido: true,
                 installments: 'Em até 4x sem juros',
-                affiliateLink: '#',
+                affiliateLink: 'https://www.mercadolivre.com.br/',
                 ativo: true,
                 images: ['https://m.media-amazon.com/images/I/61SUjwuatjL._AC_SL1500_.jpg'],
                 rating: '4,6 (120 avaliações)',
@@ -1066,20 +1066,20 @@
 
         const cuponsPorLoja = {
             'Amazon': [
-                { codigo: 'AMAZON10', desc: '10% de desconto em produtos selecionados vendidos pela Amazon.', link: 'SEU_LINK_DE_afiliado_AMAZON' },
-                { codigo: 'AMAZON20', desc: '20% de desconto especial em categorias participantes na Amazon.', link: 'SEU_LINK_DE_afiliado_AMAZON' }
+                { codigo: 'AMAZON10', desc: '10% de desconto em produtos selecionados vendidos pela Amazon.', link: 'https://link.amazon/B04knj9iR' },
+                { codigo: 'AMAZON20', desc: '20% de desconto especial em categorias participantes na Amazon.', link: 'https://link.amazon/B04knj9iR' }
             ],
             'Shopee': [
-                { codigo: 'SHOPEE10', desc: '10% de desconto em compras aplicadas no app/site da Shopee.', link: 'SEU_LINK_DE_afiliado_SHOPEE' },
-                { codigo: 'SHOPEE20', desc: '20% de desconto extra em campanhas selecionadas da Shopee.', link: 'SEU_LINK_DE_afiliado_SHOPEE' }
+                { codigo: 'SHOPEE10', desc: '10% de desconto em compras aplicadas no app/site da Shopee.', link: 'https://s.shopee.com.br/70J8l4RyfU' },
+                { codigo: 'SHOPEE20', desc: '20% de desconto extra em campanhas selecionadas da Shopee.', link: 'https://s.shopee.com.br/70J8l4RyfU' }
             ],
             'Mercado Livre': [
-                { codigo: 'MERCADOLIVRE10', desc: 'Desconto especial de 10% em eletrônicos e produtos Full.', link: 'SEU_LINK_DE_afiliado_MERCADOLIVRE' },
-                { codigo: 'MERCADO20', desc: '20% de desconto exclusivo em itens selecionados no Mercado Livre.', link: 'SEU_LINK_DE_afiliado_MERCADOLIVRE' }
+                { codigo: 'MERCADOLIVRE10', desc: 'Desconto especial de 10% em eletrônicos e produtos Full.', link: 'https://www.mercadolivre.com.br/' },
+                { codigo: 'MERCADO20', desc: '20% de desconto exclusivo em itens selecionados no Mercado Livre.', link: 'https://www.mercadolivre.com.br/' }
             ],
             'Magazine Luiza': [
-                { codigo: 'MAGAZINE10', desc: 'Cupom de 10% de desconto válido em eletrodomésticos e tecnologia.', link: 'SEU_LINK_DE_afiliado_MAGALU' },
-                { codigo: 'MAGAZINE20', desc: '20% de desconto imperdível em produtos selecionados na Magalu.', link: 'SEU_LINK_DE_afiliado_MAGALU' }
+                { codigo: 'MAGAZINE10', desc: 'Cupom de 10% de desconto válido em eletrodomésticos e tecnologia.', link: 'https://www.magazinevoce.com.br/magazinecasagamer/' },
+                { codigo: 'MAGAZINE20', desc: '20% de desconto imperdível em produtos selecionados na Magalu.', link: 'https://www.magazinevoce.com.br/magazinecasagamer/' }
             ]
         };
 
@@ -1214,7 +1214,7 @@
                             <p>${c.desc}</p>
                         </div>
                         <div class="cupom-codigo-box">${c.codigo}</div>
-                        <a href="${c.link}" target="_blank" class="btn-pegar">Pegar Cupom / Ir para Loja</a>
+                        <a href="${c.link}" target="_blank" class="btn-pegar">Pegar cupom e ir para a loja</a>
                     `;
                     container.appendChild(card);
                 });
