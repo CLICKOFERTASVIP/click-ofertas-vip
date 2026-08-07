@@ -1303,7 +1303,7 @@
             </div>
 
             <div class="loja-cupom-card" onclick="openStoreCupons('Shopee')">
-                <div class="loja-logo-circle logo-shopee"><i class="fa-solid fa-bag-shopping"></i></div>
+                <div class="loja-logo-circle logo-shopee"><i class="fa-brands fa-bag-shopping"></i></div>
                 <span>Shopee</span>
             </div>
 
@@ -2275,7 +2275,6 @@
             if (!container) return;
             
             if (maisVendidos.length === 0) {
-                // Caso queira exibir produtos recentes caso não haja "mais vendidos" marcados explicitamente
                 renderFeed('maisVendidosFeed', productsDatabase.slice(0, 8));
                 return;
             }
@@ -2290,74 +2289,86 @@
             }
         }
 
+        document.addEventListener('DOMContentLoaded', () => {
+            buildMegaMenu();
+            renderMaisVendidosCarousel();
+            renderFeed('homeFeed', productsDatabase);
+        });
+
+        document.getElementById('megaMenuBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const panel = document.getElementById('megaMenuPanel');
+            panel.classList.toggle('open');
+            document.getElementById('menuArrow').classList.toggle('fa-chevron-up');
+        });
+
+        document.addEventListener('click', (e) => {
+            const panel = document.getElementById('megaMenuPanel');
+            const btn = document.getElementById('megaMenuBtn');
+            if (panel && panel.classList.contains('open') && !panel.contains(e.target) && !btn.contains(e.target)) {
+                panel.classList.remove('open');
+                document.getElementById('menuArrow').classList.remove('fa-chevron-up');
+            }
+        });
+
         function switchPage(pageId) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
             const target = document.getElementById(pageId);
-            if (target) {
-                target.classList.add('active-page');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            document.getElementById('megaMenuPanel').classList.remove('open');
-            document.getElementById('megaMenuBtn').classList.remove('active');
-            document.getElementById('menuArrow').style.transform = 'rotate(0deg)';
+            if (target) target.classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const panel = document.getElementById('megaMenuPanel');
+            if (panel) panel.classList.remove('open');
         }
 
         function openCategoryPage(subcatName) {
             currentSubcatFilter = subcatName;
             document.getElementById('categoryBreadcrumbName').innerText = subcatName;
             document.getElementById('categoryTitle').innerText = subcatName;
-            
-            // Resetar controles de filtro e ordenação da categoria
             document.getElementById('filterStoreCategory').value = 'todas';
             document.getElementById('minPriceCategory').value = '';
             document.getElementById('maxPriceCategory').value = '';
             document.getElementById('sortCategory').value = 'recentes';
-            document.getElementById('categoryFilterPanel').classList.remove('open');
-
             applySortingAndFiltering('category');
             switchPage('categoryPage');
         }
 
-        function openProductDetail(productId) {
-            const prod = productsDatabase.find(p => p.id === productId);
+        function openProductDetail(prodId) {
+            const prod = productsDatabase.find(p => p.id === prodId);
             if (!prod) return;
 
             document.getElementById('detailBreadcrumbCat').innerText = prod.subcat;
             document.getElementById('detailBreadcrumbTitle').innerText = prod.title;
             document.getElementById('detailStore').innerText = prod.store;
             document.getElementById('detailTitle').innerText = prod.title;
-            document.getElementById('detailBadge').innerText = prod.discount ? `${prod.discount} OFF` : '';
+            document.getElementById('detailRatingText').innerText = prod.rating;
+            document.getElementById('detailBadge').innerText = prod.discount || '';
             document.getElementById('detailOldPrice').innerText = prod.oldPrice ? `De: ${prod.oldPrice}` : '';
             document.getElementById('detailCurrentPrice').innerText = prod.price;
             document.getElementById('detailInstallments').innerText = prod.installments || '';
-            document.getElementById('detailAbout').innerText = prod.about || 'Sem descrição detalhada.';
+            document.getElementById('detailAbout').innerText = prod.about || '';
             document.getElementById('detailAffiliateLink').href = prod.affiliateLink;
 
             const mainImg = document.getElementById('detailImg');
-            const thumbsContainer = document.getElementById('detailThumbnails');
-            thumbsContainer.innerHTML = '';
+            mainImg.src = prod.images[0];
 
-            if (prod.images && prod.images.length > 0) {
-                mainImg.src = prod.images[0];
-                prod.images.forEach((imgUrl, index) => {
-                    const thumb = document.createElement('img');
-                    thumb.className = `thumb-img ${index === 0 ? 'active' : ''}`;
-                    thumb.src = imgUrl;
-                    thumb.onclick = () => {
-                        mainImg.src = imgUrl;
-                        document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                        thumb.classList.add('active');
-                    };
-                    thumbsContainer.appendChild(thumb);
-                });
-            } else {
-                mainImg.src = '';
-            }
+            const thumbContainer = document.getElementById('detailThumbnails');
+            thumbContainer.innerHTML = '';
+            prod.images.forEach((imgSrc, idx) => {
+                const thumb = document.createElement('img');
+                thumb.className = `thumb-img ${idx === 0 ? 'active' : ''}`;
+                thumb.src = imgSrc;
+                thumb.onclick = () => {
+                    mainImg.src = imgSrc;
+                    document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                };
+                thumbContainer.appendChild(thumb);
+            });
 
             const specsTable = document.getElementById('detailSpecs');
             specsTable.innerHTML = '';
             if (prod.specs) {
-                for (let [key, val] of Object.entries(prod.specs)) {
+                for (const [key, val] of Object.entries(prod.specs)) {
                     const row = document.createElement('tr');
                     row.innerHTML = `<td>${key}</td><td>${val}</td>`;
                     specsTable.appendChild(row);
@@ -2367,51 +2378,24 @@
             switchPage('productDetailPage');
         }
 
-        // Inicialização dos Eventos e Componentes
-        document.addEventListener('DOMContentLoaded', () => {
-            buildMegaMenu();
-            renderFeed('homeFeed', productsDatabase);
-            renderMaisVendidosCarousel();
-
-            const megaBtn = document.getElementById('megaMenuBtn');
-            const megaPanel = document.getElementById('megaMenuPanel');
-            const menuArrow = document.getElementById('menuArrow');
-
-            megaBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = megaPanel.classList.toggle('open');
-                megaBtn.classList.toggle('active', isOpen);
-                menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
-                    megaPanel.classList.remove('open');
-                    megaBtn.classList.remove('active');
-                    menuArrow.style.transform = 'rotate(0deg)';
-                }
-            });
-
-            const searchInput = document.getElementById('searchInput');
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
             searchInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                     const query = searchInput.value.trim().toLowerCase();
                     if (query) {
                         currentSearchQuery = query;
                         document.getElementById('searchTitle').innerText = `Resultados para: "${searchInput.value}"`;
-                        
                         document.getElementById('filterStoreSearch').value = 'todas';
                         document.getElementById('minPriceSearch').value = '';
                         document.getElementById('maxPriceSearch').value = '';
                         document.getElementById('sortSearch').value = 'recentes';
-                        document.getElementById('searchFilterPanel').classList.remove('open');
-
                         applySortingAndFiltering('search');
                         switchPage('searchPage');
                     }
                 }
             });
-        });
+        }
     </script>
 </body>
 </html>
