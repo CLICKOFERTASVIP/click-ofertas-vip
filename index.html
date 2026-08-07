@@ -42,9 +42,9 @@
         }
 
         .header-container {
-            max-width: 1100px;            
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 12px 20px;
+            padding: 15px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -55,7 +55,7 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
         }
 
@@ -85,24 +85,29 @@
 
         .search-bar {
             flex: 1;
-            max-width: 450px;
+            max-width: 500px;
             position: relative;
         }
 
         .search-bar input {
             width: 100%;
-            padding: 10px 15px 10px 40px;
+            padding: 12px 15px 12px 42px;
             border: 1px solid #23232c;
-            border-radius: 20px;
+            border-radius: 25px;
             background: #18181c;
             color: #fff;
             outline: none;
             font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--primary);
         }
 
         .search-bar i {
             position: absolute;
-            left: 15px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
@@ -114,9 +119,9 @@
         }
 
         .top-nav-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -127,7 +132,7 @@
             background: #18181c;
             color: #fff;
             border: 1px solid #2b2b36;
-            padding: 10px 16px;
+            padding: 10px 18px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
@@ -145,31 +150,32 @@
             border-color: var(--primary);
         }
 
+        /* Mega Menu Estilizado e Robusto */
         .mega-menu-panel {
             display: none;
             position: absolute;
             top: 100%;
             left: 20px;
-            width: 900px;
+            width: 950px;
             background: #18181c;
             border: 1px solid #2b2b36;
             border-radius: 12px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.8);
             z-index: 999;
-            margin-top: 5px;
+            margin-top: 8px;
             overflow: hidden;
         }
 
         .mega-menu-panel.open { display: flex; }
 
         .mega-sidebar {
-            width: 300px;
+            width: 320px;
             background: #121216;
-            padding: 10px;
+            padding: 12px;
             border-right: 1px solid #23232c;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 6px;
             max-height: 520px;
             overflow-y: auto;
         }
@@ -178,7 +184,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 12px;
+            padding: 10px 14px;
             color: var(--text-muted);
             border-radius: 8px;
             cursor: pointer;
@@ -199,7 +205,7 @@
             transition: background-color 0.2s;
         }
 
-        .cat-icon-circle i { color: #4da6ff; font-size: 13px; }
+        .cat-icon-circle i { color: var(--badge-store); font-size: 13px; }
 
         .mega-cat-item:hover, .mega-cat-item.active {
             background: #2b2b36;
@@ -211,7 +217,7 @@
 
         .mega-content {
             flex: 1;
-            padding: 20px;
+            padding: 25px;
             background: #18181c;
             max-height: 520px;
             overflow-y: auto;
@@ -248,8 +254,8 @@
 
         .page-view {
             display: none;
-            max-width: 1100px;
-            margin: 20px auto 0 auto;
+            max-width: 1200px;
+            margin: 25px auto 0 auto;
             padding: 0 20px;
         }
 
@@ -260,7 +266,7 @@
         .banner-content {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
-            padding: 16px 24px;
+            padding: 18px 24px;
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -431,24 +437,11 @@
             padding: 20px;
         }
 
-        .main-img-box img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
+        .main-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        .detail-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .detail-title {
-            font-size: 22px;
-            font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 10px;
-        }
-
+        .detail-info { display: flex; flex-direction: column; }
+        .detail-title { font-size: 22px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; }
+        
         .detail-rating {
             display: flex;
             align-items: center;
@@ -479,24 +472,9 @@
             margin-bottom: 8px;
         }
 
-        .detail-old-price {
-            font-size: 14px;
-            color: var(--text-muted);
-            text-decoration: line-through;
-        }
-
-        .detail-current-price {
-            font-size: 32px;
-            font-weight: 900;
-            color: #ffffff;
-            margin: 4px 0;
-        }
-
-        .detail-installments {
-            font-size: 13px;
-            color: var(--green-discount);
-            font-weight: 600;
-        }
+        .detail-old-price { font-size: 14px; color: var(--text-muted); text-decoration: line-through; }
+        .detail-current-price { font-size: 32px; font-weight: 900; color: #ffffff; margin: 4px 0; }
+        .detail-installments { font-size: 13px; color: var(--green-discount); font-weight: 600; }
 
         .specs-table {
             width: 100%;
@@ -510,27 +488,10 @@
             border-bottom: 1px solid #2b2b36;
         }
 
-        .specs-table td:first-child {
-            color: var(--text-muted);
-            font-weight: 600;
-            width: 40%;
-        }
-
-        .detail-description {
-            margin-top: 20px;
-        }
-
-        .detail-description h4 {
-            font-size: 15px;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .detail-description p {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
+        .specs-table td:first-child { color: var(--text-muted); font-weight: 600; width: 40%; }
+        .detail-description { margin-top: 20px; }
+        .detail-description h4 { font-size: 15px; color: #fff; margin-bottom: 8px; }
+        .detail-description p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
         .btn-buy-now {
             background: #FF9900;
@@ -549,73 +510,54 @@
             transition: transform 0.2s, background 0.2s;
         }
 
-        .btn-buy-now:hover {
-            transform: scale(1.02);
-            background: #e68a00;
-        }
+        .btn-buy-now:hover { transform: scale(1.02); background: #e68a00; }
 
+        /* Ajustes Mobile Responsivo Corrigidos */
         @media (max-width: 768px) {
-            .header-container { flex-direction: column; }
+            .header-container { flex-direction: column; gap: 12px; padding: 10px 15px; }
             .search-bar { width: 100%; max-width: 100%; }
+            .top-nav-container { padding: 8px 15px; }
 
             .mega-menu-panel {
                 flex-direction: column;
                 width: calc(100vw - 20px);
                 left: 10px;
-                max-height: 75vh;
+                max-height: 70vh;
                 overflow-y: auto;
             }
 
             .mega-sidebar {
                 width: 100%;
                 max-height: none;
-                overflow: visible;
                 border-right: none;
+                padding: 6px;
             }
 
             .mega-content {
-                padding: 0;
+                padding: 15px;
+                background: #121216;
                 max-height: none;
-                overflow: visible;
             }
 
             .subcat-group {
                 display: none;
                 grid-template-columns: 1fr;
-                padding: 12px 15px;
-                background: #121216;
-                border-bottom: 1px solid #23232c;
                 gap: 15px;
             }
 
-            .subcat-group.active {
-                display: flex;
-                flex-direction: column;
-            }
+            .subcat-group.active { display: flex; flex-direction: column; }
 
             .mega-cat-item {
                 justify-content: space-between;
-                border-bottom: 1px solid #1a1a22;
-                border-radius: 0;
-                padding: 12px 10px;
-            }
-
-            .mega-cat-item::after {
-                content: '\f078';
-                font-family: 'Font Awesome 6 Free';
-                font-weight: 900;
-                font-size: 11px;
-                transition: transform 0.2s;
-            }
-
-            .mega-cat-item.active::after {
-                transform: rotate(180deg);
+                border-bottom: 1px solid #1f1f28;
+                border-radius: 6px;
+                padding: 10px 12px;
             }
 
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
             .main-img-box { height: 260px; }
             .banner-content { flex-direction: column; text-align: center; gap: 12px; }
-            .feed-container { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+            .feed-container { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
             .card-oferta { padding: 10px; }
             .img-container { height: 130px; }
             .current-price { font-size: 16px; }
@@ -760,8 +702,6 @@
                             <a onclick="openCategoryPage('Aspiradores')">Aspiradores e Robôs</a>
                             <a onclick="openCategoryPage('Cafeteiras')">Cafeteiras Elétricas</a>
                             <a onclick="openCategoryPage('Liquidificadores')">Liquidificadores e Batedeiras</a>
-                            <a onclick="openCategoryPage('Panelas de Pressão')">Panelas de Pressão</a>
-                            <a onclick="openCategoryPage('Panelas de Pressão Elétricas')">Panelas de Pressão Elétricas</a>
                         </div>
                         <div class="subcat-column">
                             <h4>Móveis e Decoração</h4>
@@ -880,11 +820,9 @@
         </div>
 
         <h2 style="font-size:20px; font-weight:800; margin-bottom: 15px;">Destaques do Dia</h2>
-
         <main class="feed-container" id="homeFeed"></main>
     </div>
 
-    <!-- Página de Pesquisa -->
     <div id="searchPage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Busca
@@ -950,83 +888,60 @@
     <div id="cuponsHubPage" class="page-view">
         <div class="breadcrumb"><a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons</div>
         <h2>Encontre cupons das melhores lojas</h2>
-        <div class="cupons-grid">
-            <div class="cupom-store-card" onclick="openStoreCupons('amazon')">
-                <div class="store-icon-circle amazon"><i class="fa-brands fa-amazon"></i></div>
-                <span>Amazon</span>
-            </div>
-            <div class="cupom-store-card" onclick="openStoreCupons('magalu')">
-                <div class="store-icon-circle magalu">Lu</div>
-                <span>Magazine Luiza</span>
-            </div>
-        </div>
     </div>
 
     <script>
         let productsDatabase = [
-          {
-        id: 'combo-gamer-4-em-1-mts-nightmare-snow',
-        title: 'Combo GAMER 4 em 1 MTS, Nightmare Snow • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer Branco',
-        store: 'Amazon',
-        subcat: 'Kits de Teclado e Mouse',
-        oldPrice: 'R$ 180,00',
-        price: 'R$ 147,73',
-        discount: '-18%',
-        installments: 'Em até 5x de R$ 31,11 sem juros',
-        affiliateLink: 'https://link.amazon/B0a7GkLaz',
-        images: [
-            'https://m.media-amazon.com/images/I/51UgM99EyML._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41uTaxx6zmL._AC_.jpg'
-        ],
-        rating: '5,0 (7 avaliações)',
-        specs: {
-            'Marca': 'Genérico',
-            'Cor': 'BRANCO',
-            'Tecnologia de Conectividade': 'Usb'
-        },
-        about: 'Combo gamer completo 4 em 1 na cor branca contendo teclado ABNT2 com iluminação LED Rainbow, mouse de alta performance com até 3600 DPI, headset estéreo com microfone e mousepad antiderrapante.'
-    },
-    {
-        id: 'geladeira-consul-smart-frost-free-inox-377l',
-        title: 'Geladeira/Refrigerador Consul Smart Frost Free Inox Duplex 377L CRM44MKANA',
-        store: 'Magazine Luiza',
-        subcat: 'Geladeiras e Freezers',
-        oldPrice: 'R$ 4.339,00',
-        price: 'R$ 2.997,66',
-        discount: '-31%',
-        installments: 'Em até 10x de R$ 318,90 sem juros',
-        affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
-        images: [
-            'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/46bacfe5ca0279c7f5eabfacee0ad762.jpg'
-        ],
-        rating: '4,8 (1.200 avaliações)',
-        specs: {
-            'Marca': 'Consul',
-            'Cor': 'Inox',
-            'Capacidade': '377 Litros'
-        },
-        about: 'Geladeira Consul Duplex 377 Litros com tecnologia Frost Free (não precisa descongelar nunca), design moderno em Inox e amplo espaço interno.'
-    }
-            // (Outros produtos do banco de dados mantidos...)
+            {
+                id: 'combo-gamer-4-em-1-mts-nightmare-snow',
+                title: 'Combo GAMER 4 em 1 MTS, Nightmare Snow • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer Branco',
+                store: 'Amazon',
+                subcat: 'Kits de Teclado e Mouse',
+                oldPrice: 'R$ 180,00',
+                price: 'R$ 147,73',
+                discount: '-18%',
+                installments: 'Em até 5x de R$ 31,11 sem juros',
+                affiliateLink: 'https://link.amazon/B0a7GkLaz',
+                images: [
+                    'https://m.media-amazon.com/images/I/51UgM99EyML._AC_.jpg',
+                    'https://m.media-amazon.com/images/I/41uTaxx6zmL._AC_.jpg'
+                ],
+                rating: '5,0 (7 avaliações)',
+                specs: { 'Marca': 'Genérico', 'Cor': 'BRANCO', 'Conectividade': 'USB' },
+                about: 'Combo gamer completo 4 em 1 na cor branca contendo teclado ABNT2 com iluminação LED Rainbow, mouse de alta performance com até 3600 DPI, headset estéreo com microfone e mousepad antiderrapante.'
+            },
+            {
+                id: 'geladeira-consul-smart-frost-free-inox-377l',
+                title: 'Geladeira/Refrigerador Consul Smart Frost Free Inox Duplex 377L CRM44MKANA',
+                store: 'Magazine Luiza',
+                subcat: 'Geladeiras e Freezers',
+                oldPrice: 'R$ 4.339,00',
+                price: 'R$ 2.997,66',
+                discount: '-31%',
+                installments: 'Em até 10x de R$ 318,90 sem juros',
+                affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
+                images: [
+                    'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/46bacfe5ca0279c7f5eabfacee0ad762.jpg'
+                ],
+                rating: '4,8 (1.200 avaliações)',
+                specs: { 'Marca': 'Consul', 'Cor': 'Inox', 'Capacidade': '377 Litros' },
+                about: 'Geladeira Consul Duplex 377 Litros com tecnologia Frost Free (não precisa descongelar nunca), design moderno em Inox e amplo espaço interno.'
+            }
         ];
 
-        // FUNÇÃO DE VALIDAÇÃO E REMOÇÃO AUTOMÁTICA DE PRODUTOS QUE CAÍRAM OU SAÍRAM DO AR
         async function checkExpiredProducts() {
             const validProducts = [];
             for (let prod of productsDatabase) {
                 let isValid = true;
-                // Testa se a imagem principal está acessível
                 if (prod.images && prod.images.length > 0) {
                     try {
-                        const response = await fetch(prod.images[0], { method: 'HEAD', mode: 'no-cors' });
-                        // Se houver falha crítica de rede ou erro na requisição, consideramos inválido
+                        await fetch(prod.images[0], { method: 'HEAD', mode: 'no-cors' });
                     } catch (e) {
+                        // Se falhar a checagem da imagem, removemos do feed para não quebrar o layout
                         isValid = false;
                     }
                 }
-                if (isValid) {
-                    validProducts.push(prod);
-                }
+                if (isValid) validProducts.push(prod);
             }
             productsDatabase = validProducts;
             renderHomeFeed();
@@ -1068,7 +983,6 @@
             renderFeed('homeFeed', productsDatabase);
         }
 
-        // BARRA DE PESQUISA FUNCIONAL
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
@@ -1092,6 +1006,10 @@
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
             document.getElementById(pageId).classList.add('active-page');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Fecha o menu mobile ao trocar de página
+            document.getElementById('megaMenuPanel').classList.remove('open');
+            document.getElementById('megaMenuBtn').classList.remove('active');
         }
 
         function openCategoryPage(subcatName) {
@@ -1142,7 +1060,6 @@
             switchPage('productDetailPage');
         }
 
-        // Lógica do Menu de Categorias
         const megaMenuBtn = document.getElementById('megaMenuBtn');
         const megaMenuPanel = document.getElementById('megaMenuPanel');
         
@@ -1163,32 +1080,34 @@
         const subcatGroups = document.querySelectorAll('.subcat-group');
 
         catItems.forEach(item => {
+            // Suporte para Hover no Desktop e Click no Mobile
             item.addEventListener('mouseenter', () => {
-                catItems.forEach(i => i.classList.remove('active'));
-                subcatGroups.forEach(g => g.classList.remove('active'));
-                
-                item.classList.add('active');
-                const targetId = item.getAttribute('data-target');
-                const targetGroup = document.getElementById(targetId);
-                if (targetGroup) targetGroup.classList.add('active');
+                if (window.innerWidth > 768) {
+                    activateCategory(item);
+                }
             });
             
-            item.addEventListener('click', () => {
-                const targetId = item.getAttribute('data-target');
-                subcatGroups.forEach(g => g.classList.remove('active'));
-                const targetGroup = document.getElementById(targetId);
-                if (targetGroup) targetGroup.classList.add('active');
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                activateCategory(item);
             });
         });
 
-        if (catItems.length > 0) catItems[0].classList.add('active');
-        if (subcatGroups.length > 0) subcatGroups[0].classList.add('active');
+        function activateCategory(item) {
+            catItems.forEach(i => i.classList.remove('active'));
+            subcatGroups.forEach(g => g.classList.remove('active'));
+            
+            item.classList.add('active');
+            const targetId = item.getAttribute('data-target');
+            const targetGroup = document.getElementById(targetId);
+            if (targetGroup) targetGroup.classList.add('active');
+        }
 
-        // Inicializa validando links e renderizando a home
+        if (catItems.length > 0) activateCategory(catItems[0]);
+
         window.onload = () => {
             checkExpiredProducts();
         };
     </script>
 </body>
 </html>
-```[cite: 3]
