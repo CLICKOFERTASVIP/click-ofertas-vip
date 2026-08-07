@@ -148,7 +148,7 @@
             border-color: var(--primary);
         }
 
-        /* Mega Menu Padrão Desktop / Sanfonado Mobile */
+        /* Mega Menu Padrão para Desktop */
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -249,6 +249,11 @@
         }
 
         .subcat-column a:hover { color: var(--primary); }
+
+        /* Elementos exclusivos do mobile (escondidos no desktop) */
+        .mega-cat-header-mobile, .mega-content-mobile {
+            display: none;
+        }
 
         .page-view {
             display: none;
@@ -504,7 +509,7 @@
 
         .btn-buy-now:hover { transform: scale(1.02); background: #e68a00; }
 
-        /* Estilo Sanfonado / Acordeão Ajustado para Mobile */
+        /* Estilo Sanfonado Exclusivo para Mobile */
         @media (max-width: 768px) {
             .header-container { flex-direction: column; gap: 12px; padding: 10px 15px; }
             .search-bar { width: 100%; max-width: 100%; }
@@ -525,6 +530,7 @@
                 padding: 4px;
             }
 
+            /* No mobile cada item vira um bloco sanfonado */
             .mega-cat-item {
                 display: flex;
                 flex-direction: column;
@@ -535,8 +541,13 @@
                 border-radius: 0;
             }
 
-            /* Cabeçalho clicável do item sanfonado */
-            .mega-cat-header {
+            /* Mostra a estrutura mobile e esconde o texto normal */
+            .mega-cat-item > .cat-icon-circle, 
+            .mega-cat-item > span:not(.mega-cat-header-mobile) {
+                display: none !important;
+            }
+
+            .mega-cat-header-mobile {
                 display: flex;
                 align-items: center;
                 gap: 12px;
@@ -545,14 +556,19 @@
                 cursor: pointer;
             }
 
-            .mega-cat-item.active .mega-cat-header {
+            .mega-cat-item.active .mega-cat-header-mobile {
                 background: #252530;
             }
 
-            /* Container dos subitens que abre/fecha */
+            /* Gira a setinha quando estiver aberto */
+            .mega-cat-item.active .mega-cat-header-mobile .fa-chevron-right {
+                transform: rotate(90deg);
+                color: var(--primary);
+            }
+
             .mega-content-mobile {
                 display: none;
-                padding: 10px 15px 15px 55px;
+                padding: 10px 15px 15px 50px;
                 background: #101014;
             }
 
@@ -614,10 +630,10 @@
 
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <div class="mega-sidebar" id="megaSidebarContainer">
-                    <!-- Itens gerados dinamicamente para suportar o sanfonado no mobile e o layout padrão no desktop -->
+                    <!-- Itens inseridos via JavaScript -->
                 </div>
 
-                <!-- Conteúdo original para desktop -->
+                <!-- Conteúdo padrão para Desktop -->
                 <div class="mega-content" id="megaContentDesktop">
                     <div class="subcat-group" id="desktop-cat-eletronicos">
                         <div class="subcat-column">
@@ -819,7 +835,6 @@
             }
         ];
 
-        // Estrutura das categorias para alimentar dinamicamente tanto o desktop quanto o mobile sanfonado
         const categoriesData = [
             {
                 id: 'eletronicos',
@@ -877,12 +892,15 @@
                 itemDiv.className = `mega-cat-item ${index === 0 ? 'active' : ''}`;
                 itemDiv.setAttribute('data-target', `desktop-cat-${cat.id}`);
 
-                // HTML interno adaptado para o clique sanfonado no mobile e hover no desktop
+                // Estrutura separada: Visual padrão do Desktop + Cabeçalho com setinha para o Sanfonado Mobile
                 itemDiv.innerHTML = `
-                    <div class="mega-cat-header" onclick="toggleMobileAccordion(this)">
+                    <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
+                    <span>${cat.name}</span>
+                    
+                    <div class="mega-cat-header-mobile" onclick="toggleMobileAccordion(this)">
                         <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
                         <span style="flex:1;">${cat.name}</span>
-                        <i class="fa-solid fa-chevron-down" style="font-size: 11px; color: var(--text-muted); display: none;" id="chev-${cat.id}"></i>
+                        <i class="fa-solid fa-chevron-right" style="font-size: 11px; color: var(--text-muted); transition: transform 0.2s;"></i>
                     </div>
                     <div class="mega-content-mobile">
                         ${cat.subcats.map(sub => `
@@ -894,7 +912,7 @@
                     </div>
                 `;
 
-                // Eventos para Desktop (Hover)
+                // Eventos de Hover para Desktop
                 itemDiv.addEventListener('mouseenter', () => {
                     if (window.innerWidth > 768) {
                         activateDesktopCategory(cat.id);
@@ -910,10 +928,10 @@
                 const parentItem = headerEl.parentElement;
                 const wasActive = parentItem.classList.contains('active');
                 
-                // Fecha todos no mobile
+                // Fecha todas as sanfonas antes de abrir a nova
                 document.querySelectorAll('.mega-cat-item').forEach(i => i.classList.remove('active'));
                 
-                // Se não estava ativo, abre este
+                // Se não estava ativa, abre
                 if (!wasActive) {
                     parentItem.classList.add('active');
                 }
