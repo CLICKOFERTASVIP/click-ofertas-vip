@@ -636,6 +636,7 @@
 
         .logo-amazon { background: #ff9900; color: #111; }
         .logo-shopee { background: #ee4d2d; color: #fff; }
+        /* CORREÇÃO APLICADA AQUI NO LOGO DO MERCADO LIVRE */
         .logo-mercadolivre { background: #fff159; color: #2d327d; }
         .logo-magalu { background: #0086ff; color: #fff; }
 
@@ -2275,15 +2276,16 @@
             if (!p) return;
 
             document.getElementById('detailBreadcrumbCat').innerText = p.subcat;
-            document.getElementById('detailBreadcrumbTitle').innerText = p.title;
+            document.getElementById('detailBreadcrumbTitle').innerText = p.title.substring(0, 30) + '...';
             document.getElementById('detailStore').innerText = p.store;
             document.getElementById('detailTitle').innerText = p.title;
             document.getElementById('detailBadge').innerText = p.discount + ' OFF';
             document.getElementById('detailOldPrice').innerText = 'De: ' + p.oldPrice;
             document.getElementById('detailCurrentPrice').innerText = p.price;
             document.getElementById('detailInstallments').innerText = p.installments;
-            document.getElementById('detailAbout').innerText = p.about;
             document.getElementById('detailAffiliateLink').href = p.affiliateLink;
+            document.getElementById('detailAbout').innerText = p.about;
+            document.getElementById('detailRatingText').innerText = p.rating;
 
             const mainImg = document.getElementById('detailImg');
             mainImg.src = p.images[0];
@@ -2291,15 +2293,15 @@
             const thumbContainer = document.getElementById('detailThumbnails');
             thumbContainer.innerHTML = '';
             p.images.forEach((imgUrl, idx) => {
-                const thumb = document.createElement('img');
-                thumb.src = imgUrl;
-                thumb.className = `thumb-img ${idx === 0 ? 'active' : ''}`;
-                thumb.onclick = () => {
+                const tImg = document.createElement('img');
+                tImg.src = imgUrl;
+                tImg.className = `thumb-img ${idx === 0 ? 'active' : ''}`;
+                tImg.onclick = () => {
                     mainImg.src = imgUrl;
-                    document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
+                    document.querySelectorAll('.thumb-img').forEach(ti => ti.classList.remove('active'));
+                    tImg.classList.add('active');
                 };
-                thumbContainer.appendChild(thumb);
+                thumbContainer.appendChild(tImg);
             });
 
             const specsTable = document.getElementById('detailSpecs');
@@ -2315,14 +2317,14 @@
 
         function openStoreCupons(storeName) {
             document.getElementById('storeBreadcrumbName').innerText = storeName;
-            document.getElementById('storeCuponsTitle').innerText = 'Cupons da Loja: ' + storeName;
+            document.getElementById('storeCuponsTitle').innerText = 'Cupons de Desconto - ' + storeName;
             
             const container = document.getElementById('listaCuponsContainer');
             container.innerHTML = '';
 
             const list = cuponsPorLoja[storeName] || [];
             if (list.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted);">Nenhum cupom disponível no momento.</p>';
+                container.innerHTML = '<p style="color: var(--text-muted);">Nenhum cupom disponível no momento para esta loja.</p>';
             } else {
                 list.forEach(c => {
                     const item = document.createElement('div');
@@ -2333,7 +2335,7 @@
                             <p>${c.desc}</p>
                         </div>
                         <div class="cupom-codigo-box">${c.codigo}</div>
-                        <a href="${c.link}" target="_blank" class="btn-pegar">UTILIZAR CUPOM NA LOJA</a>
+                        <a href="${c.link}" target="_blank" class="btn-pegar" style="text-align:center;">IR PARA A LOJA</a>
                     `;
                     container.appendChild(item);
                 });
@@ -2342,6 +2344,7 @@
             switchPage('storeCuponsPage');
         }
 
+        let scrollPos = 0;
         function scrollCarousel(direction) {
             const container = document.getElementById('maisVendidosFeed');
             const scrollAmount = 300;
@@ -2351,35 +2354,11 @@
         window.addEventListener('DOMContentLoaded', () => {
             buildMegaMenu();
 
-            const randomHome = [...productsDatabase];
-            shuffleArray(randomHome);
-            renderFeed('homeFeed', randomHome);
+            const randomHomeProducts = shuffleArray([...productsDatabase]);
+            renderFeed('homeFeed', randomHomeProducts);
 
-            const maisVendidos = productsDatabase.filter(p => p.maisVendido);
-            renderFeed('maisVendidosFeed', maisVendidos);
-
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    const query = searchInput.value.trim().toLowerCase();
-                    if (query) {
-                        currentSearchQuery = query;
-                        document.getElementById('searchTitle').innerText = `Resultados para: "${searchInput.value}"`;
-                        document.getElementById('filterStoreSearch').value = 'todas';
-                        document.getElementById('minPriceSearch').value = '';
-                        document.getElementById('maxPriceSearch').value = '';
-                        document.getElementById('sortSearch').value = 'recentes';
-
-                        const filtered = productsDatabase.filter(p => 
-                            p.title.toLowerCase().includes(query) || 
-                            p.store.toLowerCase().includes(query) || 
-                            p.subcat.toLowerCase().includes(query)
-                        );
-                        renderFeed('searchFeed', filtered);
-                        switchPage('searchPage');
-                    }
-                }
-            });
+            const maisVendidosList = productsDatabase.filter(p => p.maisVendido);
+            renderFeed('maisVendidosFeed', maisVendidosList.length > 0 ? maisVendidosList : productsDatabase.slice(0, 8));
 
             const megaMenuBtn = document.getElementById('megaMenuBtn');
             const megaMenuPanel = document.getElementById('megaMenuPanel');
@@ -2404,6 +2383,24 @@
                 megaMenuPanel.classList.remove('open');
                 megaMenuBtn.classList.remove('active');
                 menuArrow.style.transform = 'rotate(0deg)';
+            });
+
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const query = searchInput.value.trim().toLowerCase();
+                    if (query) {
+                        currentSearchQuery = query;
+                        document.getElementById('searchTitle').innerText = `Resultados para: "${searchInput.value}"`;
+                        document.getElementById('filterStoreSearch').value = 'todas';
+                        document.getElementById('minPriceSearch').value = '';
+                        document.getElementById('maxPriceSearch').value = '';
+                        document.getElementById('sortSearch').value = 'recentes';
+
+                        applySortingAndFiltering('search');
+                        switchPage('searchPage');
+                    }
+                }
             });
         });
     </script>
