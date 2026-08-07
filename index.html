@@ -1344,7 +1344,7 @@
                 oldPrice: 'R$ 180,00',
                 price: 'R$ 147,73',
                 discount: '-18%',
-                maisVendido: true,
+                maisVendido: false,
                 ativo: true,
                 installments: 'Em até 5x de R$ 31,11 sem juros',
                 affiliateLink: 'https://link.amazon/B0a7GkLaz',
@@ -1375,7 +1375,7 @@
                 oldPrice: 'R$ 180,00',
                 price: 'R$ 147,22',
                 discount: '-18%',
-                maisVendido: true,
+                maisVendido: false,
                 ativo: true,
                 installments: 'Em até 5x de R$ 31,01 sem juros',
                 affiliateLink: 'https://link.amazon/B0bX8fs1J',
@@ -1404,7 +1404,7 @@
                 oldPrice: 'R$ 170,00',
                 price: 'R$ 140,50',
                 discount: '-17%',
-                maisVendido: true,
+                maisVendido: false,
                 ativo: true,
                 installments: 'Em até 4x de R$ 36,99 sem juros',
                 affiliateLink: 'https://link.amazon/B05Xhhrs4',
@@ -1435,7 +1435,7 @@
                 oldPrice: 'R$ 220,00',
                 price: 'R$ 198,90',
                 discount: '-10%',
-                maisVendido: true,
+                maisVendido: false,
                 ativo: true,
                 installments: 'Em até 6x de R$ 33,15 sem juros',
                 affiliateLink: 'https://link.amazon/B0aCT1spC',
@@ -1466,7 +1466,7 @@
                 oldPrice: 'R$ 110,00',
                 price: 'R$ 95,00',
                 discount: '-14%',
-                maisVendido: true,
+                maisVendido: false,
                 ativo: true,
                 installments: 'Em até 3x de R$ 31,68 sem juros',
                 affiliateLink: 'https://link.amazon/B0cQcxf4R',
@@ -1524,7 +1524,7 @@
                 oldPrice: 'R$ 199,99',
                 price: 'R$ 149,99',
                 discount: '-25%',
-                maisVendido: true,
+                maisVendido: false,
                 ativo: true,
                 installments: 'Em até 5x de R$ 35,30 sem juros',
                 affiliateLink: 'https://link.amazon/B0c4stxuD',
@@ -2276,99 +2276,99 @@
         }
 
         function openStoreCupons(storeName) {
-            document.getElementById('storeBreadcrumbName').innerText = storeName;
-            document.getElementById('storeCuponsTitle').innerText = `Cupons de Desconto - ${storeName}`;
-            
             const container = document.getElementById('listaCuponsContainer');
-            container.innerHTML = '';
-
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeCuponsTitle').innerText = `Cupons da Loja: ${storeName}`;
+            
             const cupons = cuponsPorLoja[storeName] || [];
+            container.innerHTML = '';
+            
             if (cupons.length === 0) {
-                container.innerHTML = '<p style="color:var(--text-muted);">Nenhum cupom disponível no momento para esta loja.</p>';
+                container.innerHTML = '<p style="color: var(--text-muted);">Nenhum cupom disponível no momento para esta loja.</p>';
             } else {
                 cupons.forEach(c => {
-                    const card = document.createElement('div');
-                    card.className = 'cupom-item-card';
-                    card.innerHTML = `
+                    const div = document.createElement('div');
+                    div.className = 'cupom-item-card';
+                    div.innerHTML = `
                         <div class="cupom-info">
-                            <h4>Desconto ${storeName}</h4>
+                            <h4>Desconto Especial ${storeName}</h4>
                             <p>${c.desc}</p>
                         </div>
                         <div class="cupom-codigo-box">${c.codigo}</div>
-                        <a href="${c.link}" target="_blank" class="btn-pegar" style="text-align:center;">ACESSAR LOJA E USAR</a>
+                        <a href="${c.link}" target="_blank" class="btn-pegar" style="text-align:center;">UTILIZAR CUPOM</a>
                     `;
-                    container.appendChild(card);
+                    container.appendChild(div);
                 });
             }
             switchPage('storeCuponsPage');
         }
 
-        function renderFeed(containerId, products) {
+        function renderFeed(containerId, list) {
             const container = document.getElementById(containerId);
             if (!container) return;
             container.innerHTML = '';
 
-            if (products.length === 0) {
-                container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding: 30px;">Nenhum produto encontrado.</p>';
+            if (list.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 30px;">Nenhum produto encontrado.</p>';
                 return;
             }
 
-            products.forEach(prod => {
+            list.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'card-oferta';
-                card.onclick = (e) => {
-                    if (!e.target.classList.contains('btn-pegar')) {
-                        openProductDetail(prod.id);
-                    }
-                };
+                card.onclick = () => openProductDetail(p.id);
 
                 card.innerHTML = `
                     <div class="badges-container">
-                        ${prod.discount ? `<span class="badge-desconto">${prod.discount}</span>` : ''}
+                        ${p.discount ? `<span class="badge-desconto">${p.discount}</span>` : ''}
                     </div>
                     <div class="img-container">
-                        <img src="${prod.images && prod.images.length > 0 ? prod.images[0] : ''}" alt="${prod.title}">
+                        <img src="${p.images[0]}" alt="${p.title}">
                     </div>
-                    <span class="store-tag">${prod.store}</span>
-                    <h3 class="card-title">${prod.title}</h3>
+                    <div class="store-tag">${p.store}</div>
+                    <div class="card-title">${p.title}</div>
                     <div class="price-section">
-                        ${prod.oldPrice ? `<div class="old-price">${prod.oldPrice}</div>` : ''}
-                        <div class="current-price">${prod.price}</div>
+                        ${p.oldPrice ? `<div class="old-price">${p.oldPrice}</div>` : ''}
+                        <div class="current-price">${p.price}</div>
                     </div>
-                    <a href="${prod.affiliateLink}" target="_blank" class="btn-pegar">PEGAR OFERTA</a>
+                    <a href="${p.affiliateLink}" target="_blank" class="btn-pegar" onclick="event.stopPropagation()">PEGAR OFERTA</a>
                 `;
                 container.appendChild(card);
             });
         }
 
-        function renderCarousel(containerId, products) {
-            const container = document.getElementById(containerId);
+        function renderMaisVendidos() {
+            const container = document.getElementById('maisVendidosFeed');
             if (!container) return;
             container.innerHTML = '';
 
-            products.forEach(prod => {
+            // Correção aplicada: Filtrar apenas os produtos onde maisVendido é estritamente true e ativo é true
+            const maisVendidosList = productsDatabase.filter(p => p.maisVendido === true && p.ativo);
+
+            if (maisVendidosList.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); padding: 10px;">Nenhum produto mais vendido no momento.</p>';
+                return;
+            }
+
+            maisVendidosList.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'card-oferta';
-                card.onclick = (e) => {
-                    if (!e.target.classList.contains('btn-pegar')) {
-                        openProductDetail(prod.id);
-                    }
-                };
+                card.onclick = () => openProductDetail(p.id);
 
                 card.innerHTML = `
                     <div class="badges-container">
-                        ${prod.discount ? `<span class="badge-desconto">${prod.discount}</span>` : ''}
+                        ${p.discount ? `<span class="badge-desconto">${p.discount}</span>` : ''}
                     </div>
                     <div class="img-container">
-                        <img src="${prod.images && prod.images.length > 0 ? prod.images[0] : ''}" alt="${prod.title}">
+                        <img src="${p.images[0]}" alt="${p.title}">
                     </div>
-                    <span class="store-tag">${prod.store}</span>
-                    <h3 class="card-title">${prod.title}</h3>
+                    <div class="store-tag">${p.store}</div>
+                    <div class="card-title">${p.title}</div>
                     <div class="price-section">
-                        ${prod.oldPrice ? `<div class="old-price">${prod.oldPrice}</div>` : ''}
-                        <div class="current-price">${prod.price}</div>
+                        ${p.oldPrice ? `<div class="old-price">${p.oldPrice}</div>` : ''}
+                        <div class="current-price">${p.price}</div>
                     </div>
-                    <a href="${prod.affiliateLink}" target="_blank" class="btn-pegar">PEGAR OFERTA</a>
+                    <a href="${p.affiliateLink}" target="_blank" class="btn-pegar" onclick="event.stopPropagation()">PEGAR OFERTA</a>
                 `;
                 container.appendChild(card);
             });
@@ -2382,62 +2382,54 @@
             }
         }
 
-        document.getElementById('megaMenuBtn').addEventListener('click', (e) => {
-            e.stopPropagation();
-            const panel = document.getElementById('megaMenuPanel');
-            const arrow = document.getElementById('menuArrow');
-            const btn = document.getElementById('megaMenuBtn');
-            
-            panel.classList.toggle('open');
-            btn.classList.toggle('active');
-            
-            if (panel.classList.contains('open')) {
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            buildMegaMenu();
+            renderMaisVendidos();
+            renderFeed('homeFeed', productsDatabase.filter(p => p.ativo));
 
-        document.getElementById('megaMenuPanel').addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
+            const megaMenuBtn = document.getElementById('megaMenuBtn');
+            const megaMenuPanel = document.getElementById('megaMenuPanel');
+            const menuArrow = document.getElementById('menuArrow');
 
-        window.addEventListener('click', () => {
-            const panel = document.getElementById('megaMenuPanel');
-            const arrow = document.getElementById('menuArrow');
-            const btn = document.getElementById('megaMenuBtn');
-            if (panel.classList.contains('open')) {
-                panel.classList.remove('open');
-                btn.classList.remove('active');
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        });
-
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                const val = e.target.value.trim().toLowerCase();
-                currentSearchQuery = val;
-
-                if (val.length > 0) {
-                    document.getElementById('searchTitle').innerText = `Resultados para: "${e.target.value}"`;
-                    document.getElementById('filterStoreSearch').value = 'todas';
-                    document.getElementById('minPriceSearch').value = '';
-                    document.getElementById('maxPriceSearch').value = '';
-                    document.getElementById('sortSearch').value = 'recentes';
-
-                    applySortingAndFiltering('search');
-                    switchPage('searchPage');
+            megaMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                megaMenuPanel.classList.toggle('open');
+                megaMenuBtn.classList.toggle('active');
+                if (megaMenuPanel.classList.contains('open')) {
+                    menuArrow.style.transform = 'rotate(180deg)';
                 } else {
-                    switchPage('homePage');
+                    menuArrow.style.transform = 'rotate(0deg)';
                 }
             });
-        }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            buildMegaMenu();
-            renderFeed('homeFeed', productsDatabase);
-            renderCarousel('maisVendidosFeed', productsDatabase.filter(p => p.maisVendido || parseDiscount(p.discount) >= 20));
+            document.addEventListener('click', (e) => {
+                if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
+                    megaMenuPanel.classList.remove('open');
+                    megaMenuBtn.classList.remove('active');
+                    menuArrow.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        const query = searchInput.value.trim().toLowerCase();
+                        if (query) {
+                            currentSearchQuery = query;
+                            document.getElementById('searchTitle').innerText = `Resultados para: "${searchInput.value}"`;
+                            
+                            document.getElementById('filterStoreSearch').value = 'todas';
+                            document.getElementById('minPriceSearch').value = '';
+                            document.getElementById('maxPriceSearch').value = '';
+                            document.getElementById('sortSearch').value = 'recentes';
+
+                            applySortingAndFiltering('search');
+                            switchPage('searchPage');
+                        }
+                    }
+                });
+            }
         });
     </script>
 </body>
