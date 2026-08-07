@@ -518,14 +518,13 @@
             border-radius: 4px;
         }
 
-        /* Botão de Compartilhar no Card */
         .card-share-btn {
             position: absolute;
             top: 12px;
             right: 12px;
             background: rgba(24, 24, 28, 0.8);
-            color: #fff;
-            border: 1px solid #383846;
+            color: var(--text-muted);
+            border: 1px solid #2b2b36;
             width: 32px;
             height: 32px;
             border-radius: 50%;
@@ -534,11 +533,12 @@
             justify-content: center;
             cursor: pointer;
             z-index: 3;
-            transition: background 0.2s, color 0.2s;
+            transition: all 0.2s;
         }
 
         .card-share-btn:hover {
             background: var(--primary);
+            color: #fff;
             border-color: var(--primary);
         }
 
@@ -604,15 +604,9 @@
         .old-price { font-size: 12px; color: var(--text-muted); text-decoration: line-through; }
         .current-price { font-size: 18px; font-weight: 800; color: var(--text-dark); }
 
-        .card-actions-bottom {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
         .btn-pegar {
             display: block;
-            flex: 1;
+            width: 100%;
             background: var(--primary);
             color: white;
             text-align: center;
@@ -728,37 +722,38 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            position: relative;
         }
 
         .main-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        .detail-info { display: flex; flex-direction: column; }
-        .detail-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        .detail-title { font-size: 22px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; flex: 1; }
-        
         .detail-share-btn {
-            background: #18181c;
-            color: #fff;
-            border: 1px solid #383846;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #f1f2f6;
+            color: #2f3640;
+            border: 1px solid #dcdde1;
             width: 40px;
             height: 40px;
-            border-radius: 8px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            margin-left: 15px;
-            transition: background 0.2s, border-color 0.2s;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
+
         .detail-share-btn:hover {
             background: var(--primary);
+            color: #fff;
             border-color: var(--primary);
         }
 
+        .detail-info { display: flex; flex-direction: column; }
+        .detail-title { font-size: 22px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; }
+        
         .detail-rating {
             display: flex;
             align-items: center;
@@ -828,37 +823,6 @@
         }
 
         .btn-buy-now:hover { transform: scale(1.02); background: #e68a00; }
-
-        /* Alerta toast customizado */
-        #copyToast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #2ed573;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 12px;
-            position: fixed;
-            z-index: 2000;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            font-size: 14px;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-        #copyToast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-        @keyframes fadein {
-            from {bottom: 0; opacity: 0;}
-            to {bottom: 30px; opacity: 1;}
-        }
-        @keyframes fadeout {
-            from {bottom: 30px; opacity: 1;}
-            to {bottom: 0; opacity: 0;}
-        }
 
         @media (max-width: 768px) {
             .header-container { flex-direction: column; gap: 12px; padding: 10px 15px; }
@@ -1291,6 +1255,9 @@
         <div class="product-detail-layout">
             <div class="detail-gallery">
                 <div class="main-img-box">
+                    <button class="detail-share-btn" onclick="shareCurrentProduct()" title="Compartilhar Produto">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </button>
                     <img id="detailImg" src="" alt="Produto">
                 </div>
                 <div class="gallery-thumbnails" id="detailThumbnails"></div>
@@ -1298,12 +1265,7 @@
 
             <div class="detail-info">
                 <span class="store-tag" id="detailStore">Amazon</span>
-                <div class="detail-header-row">
-                    <h1 class="detail-title" id="detailTitle">Nome do Produto</h1>
-                    <button class="detail-share-btn" id="detailShareBtn" title="Compartilhar Produto">
-                        <i class="fa-solid fa-share-nodes"></i>
-                    </button>
-                </div>
+                <h1 class="detail-title" id="detailTitle">Nome do Produto</h1>
 
                 <div class="detail-rating" id="detailRating">
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
@@ -1422,12 +1384,10 @@
         <div class="lista-cupons-container" id="listaCuponsContainer"></div>
     </div>
 
-    <!-- Elemento de Alerta Toast -->
-    <div id="copyToast">Link copiado para a área de transferência!</div>
-
     <script>
         let currentSubcatFilter = '';
         let currentSearchQuery = '';
+        let currentActiveProductId = null;
 
         let productsDatabase = [
            {
@@ -2192,380 +2152,304 @@
             'Marca': 'Consul',
             'Capacidade': '412 Litros'
         },
-        about: 'A Geladeira Consul Frost Free 412L tem freezer espaçoso, Função Turbo e Filtro Antiodor.'
+        about: 'A Geladeira Consul Frost Free 412L tem freezer espaçoso, Função Frost Free e design moderno.'
     }
         ];
 
-        let couponsDatabase = {
+        let cuponsDatabase = {
             'Amazon': [
-                { title: 'Desconto em Eletrônicos', desc: 'R$ 50 OFF em compras acima de R$ 500', code: 'AMAZON50' },
-                { title: 'Frete Grátis Prime', desc: 'Frete grátis em produtos selados', code: 'PRIMEFRATIS' }
+                { title: 'R$ 20 OFF em Eletrônicos', desc: 'Válido em compras acima de R$ 200', codigo: 'AMAZON20' },
+                { title: '10% de Desconto em Livros', desc: 'Aplicado automaticamente no carrinho', codigo: 'LIVRO10' }
             ],
             'Shopee': [
-                { title: 'Cupom de Frete Grátis', desc: 'Válido para lojistas parceiros', code: 'SHOPEEFRETE' },
-                { title: '10% de Desconto Geral', desc: 'Desconto máximo de R$ 30', code: 'SHOPEE10OFF' }
+                { title: 'Frete Grátis Nacional', desc: 'Para compras acima de R$ 39', codigo: 'FRETEGRATIS' },
+                { title: 'R$ 15 OFF no App', desc: 'Válido para a primeira compra', codigo: 'SHOPEE15' }
             ],
             'Mercado Livre': [
-                { title: 'Oferta Relâmpago', desc: 'R$ 100 OFF em celulares selecionados', code: 'MELI100' }
+                { title: 'R$ 50 OFF em Ferramentas', desc: 'Em produtos selecionados full', codigo: 'MELI50' }
             ],
             'Magazine Luiza': [
-                { title: 'Eletro em Oferta', desc: '5% OFF em linha branca e eletroportáteis', code: 'MAGALU5' }
+                { title: '5% em Eletrodomésticos', desc: 'Exceto itens em marketplace', codigo: 'MAGALU5' }
             ]
         };
 
-        const categoriesStructure = [
-            { id: 'eletronicos', name: 'Eletrônicos, Áudio e Vídeo', icon: 'fa-tv' },
-            { id: 'informatica', name: 'Informática e Games', icon: 'fa-laptop' },
-            { id: 'casa', name: 'Casa, Eletrodomésticos e Móveis', icon: 'fa-house' },
-            { id: 'moda', name: 'Moda, Calçados e Acessórios', icon: 'fa-shirt' },
-            { id: 'bebes', name: 'Bebês, Crianças e Brinquedos', icon: 'fa-child' },
-            { id: 'saude', name: 'Beleza, Perfumes e Saúde', icon: 'fa-heart-pulse' },
-            { id: 'esporte', name: 'Esporte, Lazer e Suplementos', icon: 'fa-dumbbell' },
-            { id: 'supermercado', name: 'Supermercado e Bebidas', icon: 'fa-basket-shopping' },
-            { id: 'ferramentas', name: 'Ferramentas e Automotivo', icon: 'fa-hammer' }
+        const categoryStructure = [
+            { id: 'eletronicos', name: 'Eletrônicos e Áudio', icon: 'fa-tv', target: 'desktop-cat-eletronicos' },
+            { id: 'informatica', name: 'Informática e Games', icon: 'fa-laptop', target: 'desktop-cat-informatica' },
+            { id: 'casa', name: 'Casa e Eletrodomésticos', icon: 'fa-house', target: 'desktop-cat-casa' },
+            { id: 'moda', name: 'Moda e Calçados', icon: 'fa-shirt', target: 'desktop-cat-moda' },
+            { id: 'bebes', name: 'Bebês e Brinquedos', icon: 'fa-child', target: 'desktop-cat-bebes' },
+            { id: 'saude', name: 'Saúde e Beleza', icon: 'fa-heart-pulse', target: 'desktop-cat-saude' },
+            { id: 'esporte', name: 'Esporte e Fitness', icon: 'fa-dumbbell', target: 'desktop-cat-esporte' },
+            { id: 'supermercado', name: 'Supermercado e Bebidas', icon: 'fa-basket-shopping', target: 'desktop-cat-supermercado' },
+            { id: 'ferramentas', name: 'Ferramentas e Automotivo', icon: 'fa-wrench', target: 'desktop-cat-ferramentas' }
         ];
 
-        function renderMegaMenu() {
+        function initMegaMenu() {
             const sidebar = document.getElementById('megaSidebarContainer');
             if (!sidebar) return;
             sidebar.innerHTML = '';
 
-            categoriesStructure.forEach((cat, index) => {
+            categoryStructure.forEach((cat, index) => {
                 const item = document.createElement('div');
                 item.className = `mega-cat-item ${index === 0 ? 'active' : ''}`;
-                item.setAttribute('data-target', cat.id);
                 item.innerHTML = `
                     <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
                     <span>${cat.name}</span>
-                    <div class="mega-cat-header-mobile">
+                    <div class="mega-cat-header-mobile" onclick="toggleMobileCat('${cat.target}', this)">
                         <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
-                        <span style="flex:1;">${cat.name}</span>
-                        <i class="fa-solid fa-chevron-right" style="font-size:12px; color:var(--text-muted);"></i>
+                        <span style="flex:1">${cat.name}</span>
+                        <i class="fa-solid fa-chevron-right" style="font-size:11px; color:var(--text-muted)"></i>
+                    </div>
+                    <div class="mega-content-mobile" id="mobile-content-${cat.target}">
+                        ${document.getElementById(cat.target) ? document.getElementById(cat.target).innerHTML : ''}
                     </div>
                 `;
                 item.addEventListener('mouseenter', () => {
-                    if(window.innerWidth > 768) setActiveMegaCategory(cat.id);
-                });
-                item.addEventListener('click', (e) => {
-                    if(window.innerWidth <= 768) {
-                        item.classList.toggle('active');
-                    } else {
-                        setActiveMegaCategory(cat.id);
+                    if (window.innerWidth > 768) {
+                        document.querySelectorAll('.mega-cat-item').forEach(i => i.classList.remove('active'));
+                        item.classList.add('active');
+                        document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+                        const targetGroup = document.getElementById(cat.target);
+                        if (targetGroup) targetGroup.classList.add('active');
                     }
                 });
                 sidebar.appendChild(item);
             });
         }
 
-        function setActiveMegaCategory(catId) {
-            document.querySelectorAll('.mega-cat-item').forEach(el => el.classList.remove('active'));
-            const targetItem = document.querySelector(`.mega-cat-item[data-target="${catId}"]`);
-            if (targetItem) targetItem.classList.add('active');
-
-            const mapping = {
-                'eletronicos': 'desktop-cat-eletronicos',
-                'informatica': 'desktop-cat-informatica',
-                'casa': 'desktop-cat-casa',
-                'moda': 'desktop-cat-moda',
-                'bebes': 'desktop-cat-bebes',
-                'saude': 'desktop-cat-saude',
-                'esporte': 'desktop-cat-esporte',
-                'supermercado': 'desktop-cat-supermercado',
-                'ferramentas': 'desktop-cat-ferramentas'
-            };
-
-            document.querySelectorAll('.subcat-group').forEach(grp => grp.classList.remove('active'));
-            const targetGrpId = mapping[catId];
-            if (targetGrpId) {
-                const grp = document.getElementById(targetGrpId);
-                if (grp) grp.classList.add('active');
+        function toggleMobileCat(targetId, element) {
+            const parentItem = element.parentElement;
+            const isActive = parentItem.classList.contains('active');
+            document.querySelectorAll('.mega-sidebar .mega-cat-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) {
+                parentItem.classList.add('active');
             }
         }
 
-        function renderFeed(containerId, productsList) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            container.innerHTML = '';
+        const megaMenuBtn = document.getElementById('megaMenuBtn');
+        const megaMenuPanel = document.getElementById('megaMenuPanel');
+        const menuArrow = document.getElementById('menuArrow');
 
-            if (productsList.length === 0) {
-                container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding: 40px;">Nenhum produto encontrado.</p>';
-                return;
-            }
+        if (megaMenuBtn && megaMenuPanel) {
+            megaMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = megaMenuPanel.classList.toggle('open');
+                megaMenuBtn.classList.toggle('active', isOpen);
+                if (menuArrow) menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
 
-            productsList.forEach(prod => {
-                const card = document.createElement('div');
-                card.className = 'card-oferta';
-                card.onclick = (e) => {
-                    if(!e.target.closest('.card-share-btn')) {
-                        openProductDetail(prod.id);
-                    }
-                };
+            megaMenuPanel.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    megaMenuPanel.classList.remove('open');
+                    megaMenuBtn.classList.remove('active');
+                    if (menuArrow) menuArrow.style.transform = 'rotate(0deg)';
+                }
+            });
 
-                let badgeHtml = prod.discount ? `<span class="badge-desconto">${prod.discount}</span>` : '';
-                let mainImg = (prod.images && prod.images.length > 0) ? prod.images[0] : '';
-
-                card.innerHTML = `
-                    <div class="badges-container">${badgeHtml}</div>
-                    <button class="card-share-btn" onclick="event.stopPropagation(); shareProduct('${prod.id}')" title="Compartilhar Produto">
-                        <i class="fa-solid fa-share-nodes" style="font-size: 13px;"></i>
-                    </button>
-                    <div class="img-container">
-                        <img src="${mainImg}" alt="${prod.title}">
-                    </div>
-                    <div class="store-tag">${prod.store}</div>
-                    <div class="card-title">${prod.title}</div>
-                    <div class="price-section">
-                        ${prod.oldPrice ? `<div class="old-price">${prod.oldPrice}</div>` : ''}
-                        <div class="current-price">${prod.price}</div>
-                    </div>
-                    <div class="card-actions-bottom">
-                        <a href="${prod.affiliateLink}" target="_blank" class="btn-pegar" onclick="event.stopPropagation()">Pegar Oferta</a>
-                    </div>
-                `;
-                container.appendChild(card);
+            document.addEventListener('click', (e) => {
+                if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
+                    megaMenuPanel.classList.remove('open');
+                    megaMenuBtn.classList.remove('active');
+                    if (menuArrow) menuArrow.style.transform = 'rotate(0deg)';
+                }
             });
         }
 
-        function renderMaisVendidosCarousel() {
-            const container = document.getElementById('maisVendidosFeed');
-            if (!container) return;
-            container.innerHTML = '';
+        function switchPage(pageId) {
+            if (pageId === 'homePage') {
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active-page');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
 
-            productsDatabase.forEach(prod => {
-                const card = document.createElement('div');
-                card.className = 'card-oferta';
-                card.onclick = (e) => {
-                    if(!e.target.closest('.card-share-btn')) {
-                        openProductDetail(prod.id);
-                    }
-                };
+        function shareSpecificProduct(productId, event) {
+            if (event) event.stopPropagation();
+            const fullUrl = window.location.origin + window.location.pathname + '#produto=' + productId;
+            navigator.clipboard.writeText(fullUrl).then(() => {
+                alert('Link do produto copiado com sucesso!\n' + fullUrl);
+            }).catch(err => {
+                console.error('Erro ao copiar link: ', err);
+            });
+        }
 
-                let badgeHtml = prod.discount ? `<span class="badge-desconto">${prod.discount}</span>` : '';
-                let mainImg = (prod.images && prod.images.length > 0) ? prod.images[0] : '';
+        function shareCurrentProduct() {
+            if (!currentActiveProductId) return;
+            const fullUrl = window.location.origin + window.location.pathname + '#produto=' + currentActiveProductId;
+            navigator.clipboard.writeText(fullUrl).then(() => {
+                alert('Link do produto copiado com sucesso!\n' + fullUrl);
+            }).catch(err => {
+                console.error('Erro ao copiar link: ', err);
+            });
+        }
 
-                card.innerHTML = `
-                    <div class="badges-container">${badgeHtml}</div>
-                    <button class="card-share-btn" onclick="event.stopPropagation(); shareProduct('${prod.id}')" title="Compartilhar Produto">
-                        <i class="fa-solid fa-share-nodes" style="font-size: 13px;"></i>
+        function renderProductCard(p) {
+            return `
+                <div class="card-oferta" onclick="openProductDetail('${p.id}')">
+                    <div class="badges-container">
+                        ${p.discount ? `<span class="badge-desconto">${p.discount}</span>` : ''}
+                    </div>
+                    <button class="card-share-btn" onclick="shareSpecificProduct('${p.id}', event)" title="Compartilhar produto">
+                        <i class="fa-solid fa-share-nodes"></i>
                     </button>
                     <div class="img-container">
-                        <img src="${mainImg}" alt="${prod.title}">
+                        <img src="${p.images[0]}" alt="${p.title}" loading="lazy">
                     </div>
-                    <div class="store-tag">${prod.store}</div>
-                    <div class="card-title">${prod.title}</div>
+                    <div class="store-tag">${p.store}</div>
+                    <h3 class="card-title">${p.title}</h3>
                     <div class="price-section">
-                        ${prod.oldPrice ? `<div class="old-price">${prod.oldPrice}</div>` : ''}
-                        <div class="current-price">${prod.price}</div>
+                        ${p.oldPrice ? `<div class="old-price">${p.oldPrice}</div>` : '<div class="old-price" style="visibility:hidden">0</div>'}
+                        <div class="current-price">${p.price}</div>
                     </div>
-                    <div class="card-actions-bottom">
-                        <a href="${prod.affiliateLink}" target="_blank" class="btn-pegar" onclick="event.stopPropagation()">Pegar Oferta</a>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
+                    <span class="btn-pegar">VER OFERTA</span>
+                </div>
+            `;
+        }
+
+        function loadFeeds() {
+            const homeFeed = document.getElementById('homeFeed');
+            const maisVendidosFeed = document.getElementById('maisVendidosFeed');
+
+            if (homeFeed) {
+                homeFeed.innerHTML = productsDatabase.map(p => renderProductCard(p)).join('');
+            }
+
+            if (maisVendidosFeed) {
+                const maisVendidos = productsDatabase.slice(0, 8);
+                maisVendidosFeed.innerHTML = maisVendidos.map(p => renderProductCard(p)).join('');
+            }
         }
 
         function scrollCarousel(direction) {
             const container = document.getElementById('maisVendidosFeed');
-            if (!container) return;
-            const scrollAmount = 300;
-            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-        }
-
-        function switchPage(pageId) {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
-            const target = document.getElementById(pageId);
-            if (target) target.classList.add('active-page');
-            window.scrollTo(0, 0);
-
-            // Atualiza URL se voltar para home
-            if(pageId === 'homePage') {
-                window.history.pushState({}, '', window.location.pathname);
+            if (container) {
+                const scrollAmount = 300 * direction;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             }
         }
 
         function openProductDetail(productId) {
-            const prod = productsDatabase.find(p => p.id === productId);
-            if (!prod) return;
+            const product = productsDatabase.find(p => p.id === productId);
+            if (!product) return;
 
-            // Atualiza URL do navegador com parâmetro do produto para compartilhamento real
-            const newUrl = `${window.location.pathname}?produto=${prod.id}`;
-            window.history.pushState({ productId: prod.id }, '', newUrl);
+            currentActiveProductId = product.id;
+            window.location.hash = 'produto=' + product.id;
 
-            document.getElementById('detailBreadcrumbCat').innerText = prod.subcat || 'Geral';
-            document.getElementById('detailBreadcrumbTitle').innerText = prod.title;
-            document.getElementById('detailStore').innerText = prod.store;
-            document.getElementById('detailTitle').innerText = prod.title;
-            document.getElementById('detailRatingText').innerText = prod.rating || '4,8 (5 avaliações)';
+            document.getElementById('detailBreadcrumbCat').innerText = product.subcat;
+            document.getElementById('detailBreadcrumbTitle').innerText = product.title;
+            document.getElementById('detailStore').innerText = product.store;
+            document.getElementById('detailTitle').innerText = product.title;
+            document.getElementById('detailRatingText').innerText = product.rating || '4,8 (10 avaliações)';
             
             const badgeEl = document.getElementById('detailBadge');
-            if(prod.discount) {
-                badgeEl.innerText = `${prod.discount} OFF`;
+            if (product.discount) {
                 badgeEl.style.display = 'inline-block';
+                badgeEl.innerText = product.discount + ' OFF';
             } else {
                 badgeEl.style.display = 'none';
             }
 
             const oldPriceEl = document.getElementById('detailOldPrice');
-            if(prod.oldPrice) {
-                oldPriceEl.innerText = `De: ${prod.oldPrice}`;
+            if (product.oldPrice) {
                 oldPriceEl.style.display = 'block';
+                oldPriceEl.innerText = 'De: ' + product.oldPrice;
             } else {
                 oldPriceEl.style.display = 'none';
             }
 
-            document.getElementById('detailCurrentPrice').innerText = prod.price;
-            document.getElementById('detailInstallments').innerText = prod.installments || '';
-            document.getElementById('detailAbout').innerText = prod.about || '';
-            document.getElementById('detailAffiliateLink').href = prod.affiliateLink;
+            document.getElementById('detailCurrentPrice').innerText = product.price;
+            document.getElementById('detailInstallments').innerText = product.installments || '';
+            document.getElementById('detailAbout').innerText = product.about || 'Sem descrição adicional.';
+            document.getElementById('detailAffiliateLink').href = product.affiliateLink;
 
-            // Botão de Compartilhar na página de detalhes
-            const detailShareBtn = document.getElementById('detailShareBtn');
-            detailShareBtn.onclick = () => shareProduct(prod.id);
-
-            // Galeria de Imagens
-            const mainImg = document.getElementById('detailImg');
-            const thumbsContainer = document.getElementById('detailThumbnails');
-            thumbsContainer.innerHTML = '';
-
-            if (prod.images && prod.images.length > 0) {
-                mainImg.src = prod.images[0];
-                prod.images.forEach((imgUrl, idx) => {
-                    const thumb = document.createElement('img');
-                    thumb.className = `thumb-img ${idx === 0 ? 'active' : ''}`;
-                    thumb.src = imgUrl;
-                    thumb.onclick = () => {
-                        mainImg.src = imgUrl;
-                        document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                        thumb.classList.add('active');
-                    };
-                    thumbsContainer.appendChild(thumb);
-                });
+            const specsTable = document.getElementById('detailSpecs');
+            if (product.specs) {
+                specsTable.innerHTML = Object.entries(product.specs).map(([key, val]) => `
+                    <tr><td>${key}</td><td>${val}</td></tr>
+                `).join('');
             } else {
-                mainImg.src = '';
+                specsTable.innerHTML = '<tr><td colspan="2">Informações não disponíveis.</td></tr>';
             }
 
-            // Tabela de Especificações
-            const specsTable = document.getElementById('detailSpecs');
-            specsTable.innerHTML = '';
-            if (prod.specs) {
-                for (let [key, val] of Object.entries(prod.specs)) {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `<td>${key}</td><td>${val}</td>`;
-                    specsTable.appendChild(row);
-                }
+            const mainImg = document.getElementById('detailImg');
+            const thumbsContainer = document.getElementById('detailThumbnails');
+
+            if (product.images && product.images.length > 0) {
+                mainImg.src = product.images[0];
+                thumbsContainer.innerHTML = product.images.map((img, idx) => `
+                    <img src="${img}" class="thumb-img ${idx === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)" alt="Thumbnail">
+                `).join('');
+            } else {
+                mainImg.src = '';
+                thumbsContainer.innerHTML = '';
             }
 
             switchPage('productDetailPage');
         }
 
-        // Função para Copiar Link ou acionar compartilhamento nativo
-        function shareProduct(productId) {
-            const shareUrl = `${window.location.origin}${window.location.pathname}?produto=${productId}`;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Confira esta oferta no Click Ofertas VIP',
-                    url: shareUrl
-                }).catch(() => {});
-            } else {
-                navigator.clipboard.writeText(shareUrl).then(() => {
-                    showToast();
-                }).catch(() => {
-                    prompt("Copie o link abaixo:", shareUrl);
-                });
-            }
-        }
-
-        function showToast() {
-            const toast = document.getElementById('copyToast');
-            toast.className = 'show';
-            setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 3000);
+        function changeMainImage(src, thumbElement) {
+            document.getElementById('detailImg').src = src;
+            document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
+            thumbElement.classList.add('active');
         }
 
         function openCategoryPage(subcatName) {
             currentSubcatFilter = subcatName;
             document.getElementById('categoryBreadcrumbName').innerText = subcatName;
-            document.getElementById('categoryTitle').innerText = subcatName;
+            document.getElementById('categoryTitle').innerText = 'Produtos: ' + subcatName;
             
-            // Limpa filtros adicionais
+            document.getElementById('sortCategory').value = 'recentes';
             document.getElementById('filterStoreCategory').value = 'todas';
             document.getElementById('minPriceCategory').value = '';
             document.getElementById('maxPriceCategory').value = '';
+            document.getElementById('categoryFilterPanel').classList.remove('open');
 
             applySortingAndFiltering('category');
             switchPage('categoryPage');
-
-            const panel = document.getElementById('megaMenuPanel');
-            if (panel) panel.classList.remove('open');
         }
 
-        function applySortingAndFiltering(type) {
-            let list = [...productsDatabase];
+        function openStoreCupons(storeName) {
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeCuponsTitle').innerText = 'Cupons da Loja: ' + storeName;
 
-            if (type === 'category') {
-                if (currentSubcatFilter) {
-                    list = list.filter(p => p.subcat && p.subcat.toLowerCase() === currentSubcatFilter.toLowerCase());
-                }
-                let store = document.getElementById('filterStoreCategory').value;
-                let minP = parseFloat(document.getElementById('minPriceCategory').value) || 0;
-                let maxP = parseFloat(document.getElementById('maxPriceCategory').value) || Infinity;
-                let sort = document.getElementById('sortCategory').value;
+            const container = document.getElementById('listaCuponsContainer');
+            const storeCupons = cuponsDatabase[storeName] || [];
 
-                if (store !== 'todas') {
-                    list = list.filter(p => p.store.toLowerCase() === store.toLowerCase());
-                }
-                list = list.filter(p => {
-                    let numPrice = parsePriceToNumber(p.price);
-                    return numPrice >= minP && numPrice <= maxP;
-                });
-
-                sortList(list, sort);
-                renderFeed('categoryFeed', list);
-            } 
-            else if (type === 'search') {
-                if (currentSearchQuery) {
-                    let q = currentSearchQuery.toLowerCase();
-                    list = list.filter(p => p.title.toLowerCase().includes(q) || p.store.toLowerCase().includes(q) || (p.subcat && p.subcat.toLowerCase().includes(q)));
-                }
-                let store = document.getElementById('filterStoreSearch').value;
-                let minP = parseFloat(document.getElementById('minPriceSearch').value) || 0;
-                let maxP = parseFloat(document.getElementById('maxPriceSearch').value) || Infinity;
-                let sort = document.getElementById('sortSearch').value;
-
-                if (store !== 'todas') {
-                    list = list.filter(p => p.store.toLowerCase() === store.toLowerCase());
-                }
-                list = list.filter(p => {
-                    let numPrice = parsePriceToNumber(p.price);
-                    return numPrice >= minP && numPrice <= maxP;
-                });
-
-                sortList(list, sort);
-                renderFeed('searchFeed', list);
+            if (storeCupons.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted)">Nenhum cupom ativo para esta loja no momento.</p>';
+            } else {
+                container.innerHTML = storeCupons.map(c => `
+                    <div class="cupom-item-card">
+                        <div class="cupom-info">
+                            <h4>${c.title}</h4>
+                            <p>${c.desc}</p>
+                        </div>
+                        <div class="cupom-codigo-box" onclick="copyCupomCode('${c.codigo}', this)" title="Clique para copiar" style="cursor:pointer">
+                            ${c.codigo} <i class="fa-regular fa-copy" style="font-size:14px; margin-left:5px;"></i>
+                        </div>
+                    </div>
+                `).join('');
             }
+            switchPage('storeCuponsPage');
         }
 
-        function sortList(list, sortType) {
-            if (sortType === 'menor-preco') {
-                list.sort((a, b) => parsePriceToNumber(a.price) - parsePriceToNumber(b.price));
-            } else if (sortType === 'maior-preco') {
-                list.sort((a, b) => parsePriceToNumber(b.price) - parsePriceToNumber(a.price));
-            } else if (sortType === 'maior-desconto') {
-                list.sort((a, b) => parseDiscountNumber(b.discount) - parseDiscountNumber(a.discount));
-            }
-        }
-
-        function parsePriceToNumber(priceStr) {
-            if (!priceStr) return 0;
-            let clean = priceStr.replace('R$', '').trim().replace(/\./g, '').replace(',', '.');
-            return parseFloat(clean) || 0;
-        }
-
-        function parseDiscountNumber(discStr) {
-            if (!discStr) return 0;
-            let clean = discStr.replace('%', '').replace('-', '').trim();
-            return parseInt(clean) || 0;
+        function copyCupomCode(code, element) {
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = element.innerHTML;
+                element.innerHTML = 'CUPOM COPIADO! ✓';
+                element.style.color = '#fff';
+                element.style.background = '#2ed573';
+                setTimeout(() => {
+                    element.innerHTML = originalText;
+                    element.style.color = 'var(--green-discount)';
+                    element.style.background = '#121216';
+                }, 2000);
+            });
         }
 
         function toggleFilterPanel(panelId) {
@@ -2573,90 +2457,114 @@
             if (panel) panel.classList.toggle('open');
         }
 
-        function openStoreCupons(storeName) {
-            document.getElementById('storeBreadcrumbName').innerText = storeName;
-            document.getElementById('storeCuponsTitle').innerText = `Cupons da Loja: ${storeName}`;
-            
-            const container = document.getElementById('listaCuponsContainer');
-            if (!container) return;
-            container.innerHTML = '';
-
-            let storeCoupons = couponsDatabase[storeName] || [];
-            if (storeCoupons.length === 0) {
-                container.innerHTML = '<p style="color:var(--text-muted);">Nenhum cupom ativo no momento para esta loja.</p>';
-            } else {
-                storeCoupons.forEach(c => {
-                    const item = document.createElement('div');
-                    item.className = 'cupom-item-card';
-                    item.innerHTML = `
-                        <div class="cupom-info">
-                            <h4>${c.title}</h4>
-                            <p>${c.desc}</p>
-                        </div>
-                        <div class="cupom-codigo-box">${c.code}</div>
-                        <button class="btn-pegar" onclick="navigator.clipboard.writeText('${c.code}'); alert('Cupom ${c.code} copiado!');">Copiar Código</button>
-                    `;
-                    container.appendChild(item);
-                });
-            }
-            switchPage('storeCuponsPage');
+        function parsePriceToFloat(priceStr) {
+            if (!priceStr) return 0;
+            let clean = priceStr.replace('R$', '').trim();
+            clean = clean.replace(/\./g, '').replace(',', '.');
+            return parseFloat(clean) || 0;
         }
 
-        // Inicialização ao carregar a página
-        document.addEventListener('DOMContentLoaded', () => {
-            renderMegaMenu();
-            renderMaisVendidosCarousel();
-            renderFeed('homeFeed', productsDatabase);
+        function applySortingAndFiltering(context) {
+            let filtered = [];
+            let storeFilterVal = 'todas';
+            let minPriceVal = 0;
+            let maxPriceVal = Infinity;
+            let sortVal = 'recentes';
+            let feedContainerId = '';
 
-            // Verificação automática de URL para links diretos de produtos via "?produto=id"
-            const urlParams = new URLSearchParams(window.location.search);
-            const productIdFromUrl = urlParams.get('produto');
-            if (productIdFromUrl) {
-                openProductDetail(productIdFromUrl);
+            if (context === 'category') {
+                filtered = productsDatabase.filter(p => p.subcat === currentSubcatFilter);
+                storeFilterVal = document.getElementById('filterStoreCategory').value;
+                minPriceVal = parseFloat(document.getElementById('minPriceCategory').value) || 0;
+                maxPriceVal = parseFloat(document.getElementById('maxPriceCategory').value) || Infinity;
+                sortVal = document.getElementById('sortCategory').value;
+                feedContainerId = 'categoryFeed';
+            } else if (context === 'search') {
+                const query = currentSearchQuery.toLowerCase();
+                filtered = productsDatabase.filter(p => 
+                    p.title.toLowerCase().includes(query) || 
+                    p.store.toLowerCase().includes(query) || 
+                    p.subcat.toLowerCase().includes(query)
+                );
+                storeFilterVal = document.getElementById('filterStoreSearch').value;
+                minPriceVal = parseFloat(document.getElementById('minPriceSearch').value) || 0;
+                maxPriceVal = parseFloat(document.getElementById('maxPriceSearch').value) || Infinity;
+                sortVal = document.getElementById('sortSearch').value;
+                feedContainerId = 'searchFeed';
             }
 
-            // Menu de categorias interativo (Desktop)
-            const megaMenuBtn = document.getElementById('megaMenuBtn');
-            const megaMenuPanel = document.getElementById('megaMenuPanel');
-            const menuArrow = document.getElementById('menuArrow');
+            if (storeFilterVal !== 'todas') {
+                filtered = filtered.filter(p => p.store === storeFilterVal);
+            }
 
-            if (megaMenuBtn && megaMenuPanel) {
-                megaMenuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    megaMenuPanel.classList.toggle('open');
-                    megaMenuBtn.classList.toggle('active');
-                    if (menuArrow) {
-                        menuArrow.style.transform = megaMenuPanel.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-                    }
-                });
+            filtered = filtered.filter(p => {
+                const pVal = parsePriceToFloat(p.price);
+                return pVal >= minPriceVal && pVal <= maxPriceVal;
+            });
 
-                document.addEventListener('click', (e) => {
-                    if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
-                        megaMenuPanel.classList.remove('open');
-                        megaMenuBtn.classList.remove('active');
-                        if (menuArrow) menuArrow.style.transform = 'rotate(0deg)';
-                    }
+            if (sortVal === 'menor-preco') {
+                filtered.sort((a, b) => parsePriceToFloat(a.price) - parsePriceToFloat(b.price));
+            } else if (sortVal === 'maior-preco') {
+                filtered.sort((a, b) => parsePriceToFloat(b.price) - parsePriceToFloat(a.price));
+            } else if (sortVal === 'maior-desconto') {
+                filtered.sort((a, b) => {
+                    const descA = parseInt((a.discount || '0').replace(/\D/g, '')) || 0;
+                    const descB = parseInt((b.discount || '0').replace(/\D/g, '')) || 0;
+                    return descB - descA;
                 });
             }
 
-            // Barra de Pesquisa
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        let query = searchInput.value.trim();
-                        if (query) {
-                            currentSearchQuery = query;
-                            document.getElementById('searchTitle').innerText = `Resultados para: "${query}"`;
-                            document.getElementById('filterStoreSearch').value = 'todas';
-                            document.getElementById('minPriceSearch').value = '';
-                            document.getElementById('maxPriceSearch').value = '';
-                            applySortingAndFiltering('search');
-                            switchPage('searchPage');
-                        }
-                    }
-                });
+            const container = document.getElementById(feedContainerId);
+            if (container) {
+                if (filtered.length === 0) {
+                    container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align:center; padding: 40px;">Nenhum produto encontrado com estes filtros.</p>';
+                } else {
+                    container.innerHTML = filtered.map(p => renderProductCard(p)).join('');
+                }
             }
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        currentSearchQuery = query;
+                        document.getElementById('searchTitle').innerText = 'Resultados para: "' + query + '"';
+                        
+                        document.getElementById('sortSearch').value = 'recentes';
+                        document.getElementById('filterStoreSearch').value = 'todas';
+                        document.getElementById('minPriceSearch').value = '';
+                        document.getElementById('maxPriceSearch').value = '';
+                        document.getElementById('searchFilterPanel').classList.remove('open');
+
+                        applySortingAndFiltering('search');
+                        switchPage('searchPage');
+                    }
+                }
+            });
+        }
+
+        function checkUrlHash() {
+            const hash = window.location.hash;
+            if (hash.includes('#produto=')) {
+                const prodId = hash.replace('#produto=', '');
+                const exists = productsDatabase.find(p => p.id === prodId);
+                if (exists) {
+                    openProductDetail(prodId);
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initMegaMenu();
+            loadFeeds();
+            checkUrlHash();
+        });
+
+        window.addEventListener('hashchange', () => {
+            checkUrlHash();
         });
     </script>
 </body>
