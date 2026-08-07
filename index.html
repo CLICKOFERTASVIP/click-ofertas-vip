@@ -17,7 +17,6 @@
             --text-muted: #a4b0be;
             --green-discount: #2ed573;
             --badge-store: #70a1ff;
-            --flash-sale: #ffa502;
         }
 
         * {
@@ -149,7 +148,6 @@
             border-color: var(--primary);
         }
 
-        /* Mega Menu Padrão para Desktop */
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -292,30 +290,75 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* Seção de Mais Vendidos da Semana (Carrossel / Grid em Destaque) */
-        .mais-vendidos-section {
-            background: linear-gradient(135deg, #18181c 0%, #252530 100%);
+        /* Seção Mais Vendidos da Semana (Carrossel Horizontal com 4 itens visíveis) */
+        .mais-vendidos-wrapper {
+            background: linear-gradient(135deg, #18181c 0%, #22222d 100%);
             border: 1px solid #2b2b36;
             border-radius: 16px;
             padding: 20px;
             margin-bottom: 30px;
         }
 
-        .mais-vendidos-header {
+        .mais-vendidos-top-header {
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
             margin-bottom: 15px;
         }
 
-        .mais-vendidos-header i {
+        .mais-vendidos-title-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mais-vendidos-title-area i {
             color: #ff4757;
             font-size: 20px;
         }
 
-        .mais-vendidos-header h3 {
+        .mais-vendidos-title-area h3 {
             font-size: 18px;
             font-weight: 800;
+        }
+
+        .carousel-nav-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .carousel-btn {
+            background: #2b2b36;
+            color: #fff;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .carousel-btn:hover { background: var(--primary); }
+
+        .mais-vendidos-carousel-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            padding-bottom: 5px;
+        }
+
+        .mais-vendidos-carousel-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .mais-vendidos-carousel-container .card-oferta {
+            min-width: calc(25% - 12px);
+            flex: 0 0 calc(25% - 12px);
         }
 
         .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
@@ -363,24 +406,6 @@
             font-weight: bold;
             padding: 3px 6px;
             border-radius: 4px;
-        }
-
-        /* Selo especial para Melhor Preço / Relâmpago */
-        @keyframes pulseGlow {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.85; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .badge-especial {
-            background: var(--flash-sale);
-            color: #121216;
-            font-size: 10px;
-            font-weight: 900;
-            padding: 3px 6px;
-            border-radius: 4px;
-            animation: pulseGlow 2s infinite ease-in-out;
-            box-shadow: 0 0 10px rgba(255, 165, 2, 0.5);
         }
 
         .img-container {
@@ -461,7 +486,6 @@
 
         .btn-pegar:hover { background: var(--primary-hover); }
 
-        /* Estilo dos Cards de Lojas (Hub de Cupons) */
         .lojas-cupons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -676,6 +700,12 @@
             .subcat-group { display: block !important; }
             .subcat-column { margin-bottom: 12px; }
 
+            /* Mobile Carrossel: Ajusta para caber melhor na tela menor */
+            .mais-vendidos-carousel-container .card-oferta {
+                min-width: calc(75% - 10px);
+                flex: 0 0 calc(75% - 10px);
+            }
+
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
             .main-img-box { height: 260px; }
             .banner-content { flex-direction: column; text-align: center; gap: 12px; }
@@ -812,13 +842,19 @@
             </a>
         </div>
 
-        <!-- MELHORIA 4: Seção de Mais Vendidos da Semana -->
-        <section class="mais-vendidos-section">
-            <div class="mais-vendidos-header">
-                <i class="fa-solid fa-fire"></i>
-                <h3>Mais Vendidos da Semana</h3>
+        <!-- Seção Mais Vendidos da Semana (Carrossel Horizontal com setas) -->
+        <section class="mais-vendidos-wrapper">
+            <div class="mais-vendidos-top-header">
+                <div class="mais-vendidos-title-area">
+                    <i class="fa-solid fa-fire"></i>
+                    <h3>Mais Vendidos da Semana</h3>
+                </div>
+                <div class="carousel-nav-buttons">
+                    <button class="carousel-btn" onclick="scrollCarousel(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="carousel-btn" onclick="scrollCarousel(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
             </div>
-            <div class="feed-container" id="maisVendidosFeed"></div>
+            <div class="mais-vendidos-carousel-container" id="maisVendidosFeed"></div>
         </section>
 
         <h2 style="font-size:20px; font-weight:800; margin-bottom: 15px;">Destaques do Dia</h2>
@@ -944,8 +980,7 @@
                 oldPrice: 'R$ 180,00',
                 price: 'R$ 147,73',
                 discount: '-18%',
-                tagEspecial: '🔥 Menor Preço', // MELHORIA 3: Marcador especial
-                maisVendido: true,            // MELHORIA 4: Marcado como mais vendido
+                maisVendido: true,
                 installments: 'Em até 5x de R$ 31,11 sem juros',
                 affiliateLink: 'https://link.amazon/B0a7GkLaz',
                 ativo: true,
@@ -965,8 +1000,7 @@
                 oldPrice: 'R$ 4.339,00',
                 price: 'R$ 2.997,66',
                 discount: '-31%',
-                tagEspecial: '⏳ Oferta Relâmpago', // MELHORIA 3: Marcador especial
-                maisVendido: true,              // MELHORIA 4: Marcado como mais vendido
+                maisVendido: true,
                 installments: 'Em até 10x de R$ 318,90 sem juros',
                 affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
                 ativo: true,
@@ -976,6 +1010,57 @@
                 rating: '4,8 (1.200 avaliações)',
                 specs: { 'Marca': 'Consul', 'Cor': 'Inox', 'Capacidade': '377 Litros' },
                 about: 'Geladeira Consul Duplex 377 Litros com tecnologia Frost Free (não precisa descongelar nunca), design moderno em Inox e amplo espaço interno.'
+            },
+            {
+                id: 'smartphone-exemplo-3',
+                title: 'Smartphone Avançado 128GB Câmera Tripla Tela AMOLED',
+                store: 'Shopee',
+                subcat: 'Smartphones Android',
+                oldPrice: 'R$ 1.500,00',
+                price: 'R$ 1.199,00',
+                discount: '-20%',
+                maisVendido: true,
+                installments: 'Em até 10x sem juros',
+                affiliateLink: '#',
+                ativo: true,
+                images: ['https://m.media-amazon.com/images/I/61SUjwuatjL._AC_SL1500_.jpg'],
+                rating: '4,7 (300 avaliações)',
+                specs: { 'Marca': 'Outra', 'Armazenamento': '128GB' },
+                about: 'Smartphone rápido e completo para o dia a dia.'
+            },
+            {
+                id: 'airfryer-exemplo-4',
+                title: 'Fritadeira Sem Óleo Air Fryer 4L Antiaderente',
+                store: 'Amazon',
+                subcat: 'Air Fryers',
+                oldPrice: 'R$ 450,00',
+                price: 'R$ 329,90',
+                discount: '-26%',
+                maisVendido: true,
+                installments: 'Em até 6x sem juros',
+                affiliateLink: '#',
+                ativo: true,
+                images: ['https://m.media-amazon.com/images/I/61SUjwuatjL._AC_SL1500_.jpg'],
+                rating: '4,9 (850 avaliações)',
+                specs: { 'Capacidade': '4 Litros', 'Potência': '1500W' },
+                about: 'Praticidade e saúde para preparar suas receitas favoritas.'
+            },
+            {
+                id: 'headset-exemplo-5',
+                title: 'Headset Gamer com Microfone Redução de Ruído',
+                store: 'Mercado Livre',
+                subcat: 'Fones de Ouvido',
+                oldPrice: 'R$ 220,00',
+                price: 'R$ 159,00',
+                discount: '-27%',
+                maisVendido: true,
+                installments: 'Em até 4x sem juros',
+                affiliateLink: '#',
+                ativo: true,
+                images: ['https://m.media-amazon.com/images/I/61SUjwuatjL._AC_SL1500_.jpg'],
+                rating: '4,6 (120 avaliações)',
+                specs: { 'Conexão': 'P2 / USB' },
+                about: 'Áudio imersivo para suas partidas.'
             }
         ];
 
@@ -1158,7 +1243,6 @@
                 card.innerHTML = `
                     <div class="badges-container">
                         ${prod.discount ? `<span class="badge-desconto">${prod.discount}</span>` : ''}
-                        ${prod.tagEspecial ? `<span class="badge-especial">${prod.tagEspecial}</span>` : ''}
                     </div>
                     <div class="img-container">
                         <img src="${prod.images[0]}" alt="${prod.title}" loading="lazy">
@@ -1185,13 +1269,20 @@
         }
 
         function renderHomeFeeds() {
-            // Renderiza os Mais Vendidos da Semana (filtra os que possuem maisVendido: true)
-            const maisVendidos = productsDatabase.filter(p => p.maisVendido === true);
+            // Renderiza os Mais Vendidos rotacionando/embaralhando para trocar periodicamente ao atualizar a página
+            const maisVendidos = shuffleArray(productsDatabase.filter(p => p.maisVendido === true));
             renderFeed('maisVendidosFeed', maisVendidos);
 
             // Renderiza o feed principal da home
             const shuffledProducts = shuffleArray(productsDatabase);
             renderFeed('homeFeed', shuffledProducts);
+        }
+
+        // Função para mover o carrossel lateral de Mais Vendidos da Semana
+        function scrollCarousel(direction) {
+            const container = document.getElementById('maisVendidosFeed');
+            const scrollAmount = container.clientWidth * 0.75;
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
 
         const searchInput = document.getElementById('searchInput');
