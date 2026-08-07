@@ -2461,70 +2461,105 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderProducts(productsDatabase, 'homeFeed');
+    // Inicialização da home
+    renderProducts(productsDatabase, 'homeFeed');
 
-            const megaMenuBtn = document.getElementById('megaMenuBtn');
-            const megaMenuPanel = document.getElementById('megaMenuPanel');
-            const menuArrow = document.getElementById('menuArrow');
+    const megaMenuBtn = document.getElementById('megaMenuBtn');
+    const megaMenuPanel = document.getElementById('megaMenuPanel');
+    const menuArrow = document.getElementById('menuArrow');
+    const catItems = document.querySelectorAll('.mega-cat-item');
+    const subcatGroups = document.querySelectorAll('.subcat-group');
 
-            megaMenuBtn.onclick = (e) => {
-                e.stopPropagation();
-                const isOpen = megaMenuPanel.classList.toggle('open');
-                menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-            };
+    // 1. Abrir/Fechar o Menu Principal de Categorias
+    megaMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = megaMenuPanel.classList.toggle('open');
+        megaMenuBtn.classList.toggle('active');
+        menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
 
-            document.addEventListener('click', (e) => {
-                if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
-                    megaMenuPanel.classList.remove('open');
-                    menuArrow.style.transform = 'rotate(0deg)';
-                }
-            });
+    // 2. Fechar o menu ao clicar fora dele
+    document.addEventListener('click', (e) => {
+        if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
+            megaMenuPanel.classList.remove('open');
+            megaMenuBtn.classList.remove('active');
+            menuArrow.style.transform = 'rotate(0deg)';
+        }
+    });
 
-            const catItems = document.querySelectorAll('.mega-cat-item');
-            const subcatGroups = document.querySelectorAll('.subcat-group');
+    // 3. Sistema de navegação das categorias (Desktop e Mobile)
+    if (catItems.length > 0 && window.innerWidth > 768) {
+        catItems[0].classList.add('active');
+        const firstTarget = document.getElementById(catItems[0].getAttribute('data-target'));
+        if (firstTarget) firstTarget.classList.add('active');
+    }
 
-            if (catItems.length > 0) {
-                catItems[0].classList.add('active');
-                const targetId = catItems[0].getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
-            }
-
-            catItems.forEach(item => {
-                item.onmouseenter = () => {
-                    catItems.forEach(i => i.classList.remove('active'));
-                    subcatGroups.forEach(g => g.classList.remove('active'));
-                    item.classList.add('active');
-                    const target = document.getElementById(item.getAttribute('data-target'));
-                    if (target) target.classList.add('active');
-                };
-                item.onclick = () => {
-                    const target = document.getElementById(item.getAttribute('data-target'));
-                    if (target) {
-                        subcatGroups.forEach(g => g.classList.remove('active'));
-                        target.classList.add('active');
-                    }
-                };
-            });
-
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.oninput = (e) => {
-                    const term = e.target.value.toLowerCase().trim();
-                    if (term === '') {
-                        renderProducts(productsDatabase, 'homeFeed');
-                        switchPage('homePage');
-                        return;
-                    }
-                    const results = productsDatabase.filter(p => 
-                        p.title.toLowerCase().includes(term) || 
-                        p.store.toLowerCase().includes(term) || 
-                        p.subcat.toLowerCase().includes(term)
-                    );
-                    renderProducts(results, 'homeFeed');
-                    switchPage('homePage');
-                };
+    catItems.forEach(item => {
+        // Suporte a hover no Desktop
+        item.addEventListener('mouseenter', () => {
+            if (window.innerWidth > 768) {
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => g.classList.remove('active'));
+                item.classList.add('active');
+                const target = document.getElementById(item.getAttribute('data-target'));
+                if (target) target.classList.add('active');
             }
         });
+
+        // Suporte a clique (Essencial para Mobile e toque)
+        item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const targetId = item.getAttribute('data-target');
+            const targetGroup = document.getElementById(targetId);
+            const isMobile = window.innerWidth <= 768;
+
+            if (isMobile) {
+                const isActive = item.classList.contains('active');
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => {
+                    g.classList.remove('active');
+                    g.style.display = 'none';
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    if (targetGroup) {
+                        targetGroup.classList.add('active');
+                        targetGroup.style.display = 'flex';
+                    }
+                }
+            } else {
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => {
+                    g.classList.remove('active');
+                    g.style.display = '';
+                });
+                item.classList.add('active');
+                if (targetGroup) targetGroup.classList.add('active');
+            }
+        });
+    });
+
+    // 4. Lógica de Pesquisa de Produtos
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.oninput = (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            if (term === '') {
+                renderProducts(productsDatabase, 'homeFeed');
+                switchPage('homePage');
+                return;
+            }
+            const results = productsDatabase.filter(p => 
+                p.title.toLowerCase().includes(term) || 
+                p.store.toLowerCase().includes(term) || 
+                p.subcat.toLowerCase().includes(term)
+            );
+            renderProducts(results, 'homeFeed');
+            switchPage('homePage');
+        };
+    }
+});
     </script>
 </body>
 </html>
