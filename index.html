@@ -530,7 +530,6 @@
                 padding: 4px;
             }
 
-            /* No mobile cada item vira um bloco sanfonado */
             .mega-cat-item {
                 display: flex;
                 flex-direction: column;
@@ -541,7 +540,6 @@
                 border-radius: 0;
             }
 
-            /* Mostra a estrutura mobile e esconde o texto normal */
             .mega-cat-item > .cat-icon-circle, 
             .mega-cat-item > span:not(.mega-cat-header-mobile) {
                 display: none !important;
@@ -560,7 +558,6 @@
                 background: #252530;
             }
 
-            /* Gira a setinha quando estiver aberto */
             .mega-cat-item.active .mega-cat-header-mobile .fa-chevron-right {
                 transform: rotate(90deg);
                 color: var(--primary);
@@ -576,7 +573,6 @@
                 display: block;
             }
 
-            /* Oculta o painel lateral padrão do desktop no mobile */
             .mega-content { display: none !important; }
 
             .subcat-group {
@@ -633,7 +629,6 @@
                     <!-- Itens injetados via JavaScript -->
                 </div>
 
-                <!-- Conteúdo completo padrão para Desktop -->
                 <div class="mega-content" id="megaContentDesktop">
                     <div class="subcat-group active" id="desktop-cat-eletronicos">
                         <div class="subcat-column">
@@ -797,6 +792,7 @@
     </div>
 
     <script>
+        // Banco de dados com a propriedade 'ativo: true/false' para desativar links caídos
         let productsDatabase = [
             {
                 id: 'combo-gamer-4-em-1-mts-nightmare-snow',
@@ -808,6 +804,7 @@
                 discount: '-18%',
                 installments: 'Em até 5x de R$ 31,11 sem juros',
                 affiliateLink: 'https://link.amazon/B0a7GkLaz',
+                ativo: true, // Mude para 'false' caso o link caia e deseje ocultá-lo automaticamente
                 images: [
                     'https://m.media-amazon.com/images/I/51UgM99EyML._AC_.jpg',
                     'https://m.media-amazon.com/images/I/41uTaxx6zmL._AC_.jpg'
@@ -826,6 +823,7 @@
                 discount: '-31%',
                 installments: 'Em até 10x de R$ 318,90 sem juros',
                 affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
+                ativo: true, // Mude para 'false' caso o link caia e deseje ocultá-lo automaticamente
                 images: [
                     'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/46bacfe5ca0279c7f5eabfacee0ad762.jpg'
                 ],
@@ -950,12 +948,15 @@
             if (!container) return;
             container.innerHTML = '';
             
-            if (items.length === 0) {
+            // Filtra somente os produtos que estão com o link ativo (ignora os inativos/offline)
+            const activeItems = items.filter(p => p.ativo !== false);
+
+            if (activeItems.length === 0) {
                 container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">Nenhum produto encontrado.</p>';
                 return;
             }
 
-            items.forEach(prod => {
+            activeItems.forEach(prod => {
                 const card = document.createElement('div');
                 card.className = 'card-oferta';
                 card.onclick = () => openProductDetail(prod.id);
@@ -977,8 +978,20 @@
             });
         }
 
+        // Função para embaralhar aleatoriamente os produtos na Home Page
+        function shuffleArray(array) {
+            let arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
         function renderHomeFeed() {
-            renderFeed('homeFeed', productsDatabase);
+            // Aplica a rotação/embaralhamento na listagem inicial da home
+            const shuffledProducts = shuffleArray(productsDatabase);
+            renderFeed('homeFeed', shuffledProducts);
         }
 
         const searchInput = document.getElementById('searchInput');
@@ -990,9 +1003,9 @@
                     return;
                 }
                 const filtered = productsDatabase.filter(p => 
-                    p.title.toLowerCase().includes(query) || 
+                    (p.title.toLowerCase().includes(query) || 
                     p.store.toLowerCase().includes(query) || 
-                    p.subcat.toLowerCase().includes(query)
+                    p.subcat.toLowerCase().includes(query))
                 );
                 document.getElementById('searchTitle').innerText = `Resultados para: "${e.target.value}"`;
                 renderFeed('searchFeed', filtered);
