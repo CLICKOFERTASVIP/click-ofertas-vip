@@ -173,8 +173,8 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            max-height: none;
-            overflow-y: visible;
+            max-height: 520px;
+            overflow-y: auto;
         }
 
         .mega-cat-item {
@@ -216,8 +216,8 @@
             flex: 1;
             padding: 25px;
             background: #18181c;
-            max-height: none;
-            overflow-y: visible;
+            max-height: 520px;
+            overflow-y: auto;
         }
 
         .subcat-group {
@@ -260,119 +260,6 @@
 
         .page-view.active-page { display: block; }
 
-        /* ESTILOS DA BARRA DE FILTROS E ORDENAÇÃO */
-        .listing-header-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 20px;
-            background: #18181c;
-            padding: 12px 18px;
-            border-radius: 12px;
-            border: 1px solid #2b2b36;
-        }
-
-        .listing-title-box h2 {
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .controls-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-filter-trigger {
-            background: #0084ff;
-            color: #ffffff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.2s;
-        }
-
-        .btn-filter-trigger:hover {
-            background: #006bcf;
-        }
-
-        .sort-select-box {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .sort-select-box label {
-            font-size: 13px;
-            color: #ffffff;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .sort-select-box select {
-            background: #121216;
-            color: #ffffff;
-            border: 1px solid #383846;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .sort-select-box select:focus {
-            border-color: #0084ff;
-        }
-
-        /* PAINEL DE FILTROS EXPAN SÍVEL */
-        .filter-expand-panel {
-            display: none;
-            width: 100%;
-            margin-top: 10px;
-            padding-top: 15px;
-            border-top: 1px solid #2b2b36;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .filter-expand-panel.open {
-            display: flex;
-        }
-
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .filter-group label {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .filter-group input, .filter-group select {
-            background: #121216;
-            color: #fff;
-            border: 1px solid #383846;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            outline: none;
-        }
-
-        .filter-group input[type="number"] {
-            width: 90px;
-        }
-
         .banner-vip { margin-bottom: 25px; }
 
         .banner-content {
@@ -403,7 +290,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* Seção Mais Vendidos */
+        /* Seção Mais Vendidos da Semana (Carrossel Horizontal com 4 itens visíveis) */
         .mais-vendidos-wrapper {
             background: linear-gradient(135deg, #18181c 0%, #22222d 100%);
             border: 1px solid #2b2b36;
@@ -461,12 +348,12 @@
             gap: 15px;
             overflow-x: auto;
             scroll-behavior: smooth;
-            scrollbar-width: none;
+            scrollbar-width: none; /* Firefox */
             padding-bottom: 5px;
         }
 
         .mais-vendidos-carousel-container::-webkit-scrollbar {
-            display: none;
+            display: none; /* Chrome/Safari */
         }
 
         .mais-vendidos-carousel-container .card-oferta {
@@ -792,9 +679,7 @@
                 overflow-y: auto;
             }
 
-            .mega-sidebar { width: 100%; max-height: none; border-right: none; padding: 4px; overflow-y: visible; }
-            .mega-content { max-height: none; overflow-y: visible; }
-
+            .mega-sidebar { width: 100%; max-height: none; border-right: none; padding: 4px; }
             .mega-cat-item { display: flex; flex-direction: column; align-items: stretch; padding: 0; background: #15151a; border-bottom: 1px solid #22222d; border-radius: 0; }
             .mega-cat-item > .cat-icon-circle, .mega-cat-item > span:not(.mega-cat-header-mobile) { display: none !important; }
 
@@ -815,19 +700,10 @@
             .subcat-group { display: block !important; }
             .subcat-column { margin-bottom: 12px; }
 
+            /* Mobile Carrossel: Ajusta para caber melhor na tela menor */
             .mais-vendidos-carousel-container .card-oferta {
                 min-width: calc(75% - 10px);
                 flex: 0 0 calc(75% - 10px);
-            }
-
-            .listing-header-bar {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .controls-wrapper {
-                justify-content: space-between;
-                width: 100%;
             }
 
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
@@ -875,257 +751,80 @@
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <div class="mega-sidebar" id="megaSidebarContainer"></div>
                 <div class="mega-content" id="megaContentDesktop">
-                    
-                    <!-- 1. Smartphones, Eletrônicos e TV -->
                     <div class="subcat-group active" id="desktop-cat-eletronicos">
                         <div class="subcat-column">
-                            <h4>Eletrônicos, Áudio e Vídeo</h4>
-                            <a onclick="openCategoryPage('Caixa de Som')">Caixa de Som</a>
-                            <a onclick="openCategoryPage('Fone de ouvido')">Fone de ouvido</a>
-                            <a onclick="openCategoryPage('Home Theater')">Home Theater</a>
+                            <h4>Celulares e Telefonia</h4>
+                            <a onclick="openCategoryPage('Smartphones Android')">Smartphones Android</a>
+                            <a onclick="openCategoryPage('iPhones / iOS')">iPhones / iOS</a>
+                            <a onclick="openCategoryPage('Smartwatches')">Smartwatches e Smartbands</a>
+                            <a onclick="openCategoryPage('Acessórios para Celular')">Acessórios para Celular</a>
+                        </div>
+                        <div class="subcat-column">
+                            <h4>TV e Vídeo</h4>
+                            <a onclick="openCategoryPage('Smart TVs')">Smart TVs 4K / 8K</a>
                             <a onclick="openCategoryPage('Projetores')">Projetores</a>
-                            <a onclick="openCategoryPage('Soundbar')">Soundbar</a>
-                            <a onclick="openCategoryPage('Suporte para TV')">Suporte para TV</a>
-                            <a onclick="openCategoryPage('TVs')">TVs</a>
+                            <a onclick="openCategoryPage('TV Box')">TV Box e Streaming Stick</a>
+                            <a onclick="openCategoryPage('Soundbar')">Home Theater e Soundbar</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Smartphones, Tablets e Telefones</h4>
-                            <a onclick="openCategoryPage('Acessórios para smartphones')">Acessórios para smartphones</a>
-                            <a onclick="openCategoryPage('Android')">Android</a>
-                            <a onclick="openCategoryPage('iPhones')">iPhones</a>
-                            <a onclick="openCategoryPage('Smartwatch e Smartband')">Smartwatch e Smartband</a>
-                            <a onclick="openCategoryPage('Tablets')">Tablets</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Câmeras, Filmadoras e Drones</h4>
-                            <a onclick="openCategoryPage('Câmera')">Câmera</a>
-                            <a onclick="openCategoryPage('Câmera de ação / GoPro')">Câmera de ação / GoPro</a>
-                            <a onclick="openCategoryPage('Câmera de segurança')">Câmera de segurança</a>
-                            <a onclick="openCategoryPage('Drones')">Drones</a>
+                            <h4>Áudio e Acessórios</h4>
+                            <a onclick="openCategoryPage('Fones de Ouvido')">Fone de Ouvido Bluetooth</a>
+                            <a onclick="openCategoryPage('Caixas de Som')">Caixas de Som Portáteis</a>
+                            <a onclick="openCategoryPage('Microfones')">Microfones</a>
                         </div>
                     </div>
 
-                    <!-- 2. Informática e Games -->
                     <div class="subcat-group" id="desktop-cat-informatica">
                         <div class="subcat-column">
-                            <h4>Informática</h4>
-                            <a onclick="openCategoryPage('Teclado')">Teclado</a>
-                            <a onclick="openCategoryPage('Mouse')">Mouse</a>
-                            <a onclick="openCategoryPage('Headset')">Headset</a>
-                            <a onclick="openCategoryPage('Monitor')">Monitor</a>
-                            <a onclick="openCategoryPage('Processador')">Processadores</a>
-                            <a onclick="openCategoryPage('Placa Mãe')">Placa Mãe</a>
-                            <a onclick="openCategoryPage('Coolers')">Coolers</a>
-                            <a onclick="openCategoryPage('HD e SSD')">HD e SSD</a>
-                            <a onclick="openCategoryPage('PC Gamer')">PC Gamer</a>
-                            <a onclick="openCategoryPage('Kits de Teclado e Mouse')">Kits de Teclado e Mouse</a>
-                            <a onclick="openCategoryPage('Notebooks')">Notebooks</a>
-                            <a onclick="openCategoryPage('Notebook Gamer')">Notebook Gamer</a>
-                            <a onclick="openCategoryPage('Cadeira Gamer')">Cadeira Gamer</a>
+                            <h4>Informática Geral</h4>
+                            <a onclick="openCategoryPage('Notebooks')">Notebooks e Laptops</a>
+                            <a onclick="openCategoryPage('Desktops')">Desktops e PC Gamer</a>
+                            <a onclick="openCategoryPage('Monitores')">Monitores</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Games</h4>
-                            <a onclick="openCategoryPage('Jogos de PC')">Jogos de PC</a>
-                            <a onclick="openCategoryPage('Nintendo Switch')">Nintendo Switch</a>
-                            <a onclick="openCategoryPage('Playstation 3')">Playstation 3</a>
-                            <a onclick="openCategoryPage('Playstation 4')">Playstation 4</a>
-                            <a onclick="openCategoryPage('Playstation 5')">Playstation 5</a>
-                            <a onclick="openCategoryPage('Xbox 360')">Xbox 360</a>
-                            <a onclick="openCategoryPage('Xbox One')">Xbox One</a>
-                            <a onclick="openCategoryPage('Xbox Series X | S')">Xbox Series X | S</a>
+                            <h4>Periféricos e Hardware</h4>
+                            <a onclick="openCategoryPage('Mouses')">Mouses</a>
+                            <a onclick="openCategoryPage('Teclados')">Teclados</a>
+                            <a onclick="openCategoryPage('Placas de Vídeo')">Placas de Vídeo</a>
+                            <a onclick="openCategoryPage('SSDs')">HDs e SSDs</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Aplicativos e Software</h4>
-                            <a onclick="openCategoryPage('Apps para Android')">Apps para Android</a>
-                            <a onclick="openCategoryPage('Apps para iOS')">Apps para iOS</a>
-                            <a onclick="openCategoryPage('Apps para Windows Phone')">Apps para Windows Phone</a>
-                            <a onclick="openCategoryPage('Programas Windows')">Programas Windows</a>
+                            <h4>Mundo Gamer</h4>
+                            <a onclick="openCategoryPage('Consoles')">Consoles (PS5, Xbox, Switch)</a>
+                            <a onclick="openCategoryPage('Cadeiras Gamers')">Cadeiras Gamers</a>
                         </div>
                     </div>
 
-                    <!-- 3. Casa e Eletrodomésticos -->
                     <div class="subcat-group" id="desktop-cat-casa">
                         <div class="subcat-column">
-                            <h4>Eletroportáteis</h4>
-                            <a onclick="openCategoryPage('Aspirador de Pó')">Aspirador de Pó</a>
-                            <a onclick="openCategoryPage('Batedeira')">Batedeira</a>
-                            <a onclick="openCategoryPage('Forno elétrico')">Forno elétrico</a>
-                            <a onclick="openCategoryPage('Fritadeira elétrica')">Fritadeira elétrica</a>
-                            <a onclick="openCategoryPage('Liquidificador e Mixer')">Liquidificador e Mixer</a>
-                            <a onclick="openCategoryPage('Robô aspirador de pó')">Robô aspirador de pó</a>
-                            <a onclick="openCategoryPage('Ventiladores')">Ventiladores</a>
-                            <h4 style="margin-top: 15px;">Cama, Mesa e Banho</h4>
-                            <a onclick="openCategoryPage('Enxoval')">Enxoval</a>
-                            <a onclick="openCategoryPage('Jogo de cama')">Jogo de cama</a>
-                            <a onclick="openCategoryPage('Toalha de banho')">Toalha de banho</a>
-                            <a onclick="openCategoryPage('Travesseiros')">Travesseiros</a>
-                        </div>
-                        <div class="subcat-column">
                             <h4>Eletrodomésticos</h4>
-                            <a onclick="openCategoryPage('Aquecedor')">Aquecedor</a>
-                            <a onclick="openCategoryPage('Ar condicionado')">Ar condicionado</a>
-                            <a onclick="openCategoryPage('Fogão')">Fogão</a>
-                            <a onclick="openCategoryPage('Geladeiras e Refrigeradores')">Geladeiras e Refrigeradores</a>
-                            <a onclick="openCategoryPage('Máquina de Lavar')">Máquina de Lavar</a>
-                            <a onclick="openCategoryPage('Micro-ondas')">Micro-ondas</a>
-                            <h4 style="margin-top: 15px;">Utilidades Domésticas</h4>
-                            <a onclick="openCategoryPage('Acessórios de cozinha')">Acessórios de cozinha</a>
-                            <a onclick="openCategoryPage('Aparelho de jantar')">Aparelho de jantar</a>
-                            <a onclick="openCategoryPage('Panela de pressão')">Panela de pressão</a>
-                            <a onclick="openCategoryPage('Talheres')">Talheres</a>
+                            <a onclick="openCategoryPage('Geladeiras e Freezers')">Geladeiras e Freezers</a>
+                            <a onclick="openCategoryPage('Lavadoras')">Máquinas de Lavar</a>
+                            <a onclick="openCategoryPage('Ar-Condicionado')">Ar-Condicionado</a>
                         </div>
                         <div class="subcat-column">
-                            <h4>Móveis e Decoração</h4>
-                            <a onclick="openCategoryPage('Armários, Cômodas e Sapateiras')">Armários, Cômodas e Sapateiras</a>
-                            <a onclick="openCategoryPage('Cadeiras')">Cadeiras</a>
-                            <a onclick="openCategoryPage('Rack')">Rack</a>
-                            <a onclick="openCategoryPage('Sofá')">Sofá</a>
+                            <h4>Eletroportáteis</h4>
+                            <a onclick="openCategoryPage('Air Fryers')">Air Fryers</a>
+                            <a onclick="openCategoryPage('Micro-Ondas')">Micro-Ondas</a>
+                            <a onclick="openCategoryPage('Aspiradores')">Aspiradores</a>
                         </div>
                     </div>
 
-                    <!-- 4. Moda e Acessórios -->
                     <div class="subcat-group" id="desktop-cat-moda">
                         <div class="subcat-column">
-                            <h4>Moda e Calçados masculinos</h4>
-                            <a onclick="openCategoryPage('Acessórios masculinos')">Acessórios masculinos</a>
-                            <a onclick="openCategoryPage('Calçados masculinos')">Calçados masculinos</a>
-                            <a onclick="openCategoryPage('Jaquetas e casacos')">Jaquetas e casacos</a>
-                            <a onclick="openCategoryPage('Roupas masculinas')">Roupas masculinas</a>
-                            <h4 style="margin-top: 15px;">Mochilas e Malas</h4>
-                            <a onclick="openCategoryPage('Mala de Viagem')">Mala de Viagem</a>
-                            <a onclick="openCategoryPage('Mochila infantil')">Mochila infantil</a>
-                            <a onclick="openCategoryPage('Mochila para notebook')">Mochila para notebook</a>
-                            <a onclick="openCategoryPage('Mochilas')">Mochilas</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Moda e Calçados Femininos</h4>
-                            <a onclick="openCategoryPage('Bolsas e Acessórios')">Bolsas e Acessórios</a>
-                            <a onclick="openCategoryPage('Calçados femininos')">Calçados femininos</a>
-                            <a onclick="openCategoryPage('Lingerie')">Lingerie</a>
-                            <a onclick="openCategoryPage('Roupas femininas')">Roupas femininas</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Relógios e Jóias</h4>
-                            <a onclick="openCategoryPage('Anéis')">Anéis</a>
-                            <a onclick="openCategoryPage('Brincos')">Brincos</a>
-                            <a onclick="openCategoryPage('Pulseiras')">Pulseiras</a>
-                            <a onclick="openCategoryPage('Relógios')">Relógios</a>
+                            <h4>Moda e Beleza</h4>
+                            <a onclick="openCategoryPage('Roupas')">Roupas e Camisetas</a>
+                            <a onclick="openCategoryPage('Perfumes')">Perfumes</a>
                         </div>
                     </div>
 
-                    <!-- 5. Bebês e Crianças -->
-                    <div class="subcat-group" id="desktop-cat-bebes">
-                        <div class="subcat-column">
-                            <h4>Bebês e Crianças</h4>
-                            <a onclick="openCategoryPage('Berço')">Berço</a>
-                            <a onclick="openCategoryPage('Cadeirinha para automóvel')">Cadeirinha para automóvel</a>
-                            <a onclick="openCategoryPage('Calçados infantis')">Calçados infantis</a>
-                            <a onclick="openCategoryPage('Carrinho de Bebê')">Carrinho de Bebê</a>
-                            <a onclick="openCategoryPage('Fraldas')">Fraldas</a>
-                            <a onclick="openCategoryPage('Lenço umedecido')">Lenço umedecido</a>
-                            <a onclick="openCategoryPage('Roupas infantis')">Roupas infantis</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Brinquedos e Hobbies</h4>
-                            <a onclick="openCategoryPage('Barbie')">Barbie</a>
-                            <a onclick="openCategoryPage('Funko Pop')">Funko Pop</a>
-                            <a onclick="openCategoryPage('Hoverboard')">Hoverboard</a>
-                            <a onclick="openCategoryPage('Instrumentos Musicais')">Instrumentos Musicais</a>
-                            <a onclick="openCategoryPage('Jogos de tabuleiro')">Jogos de tabuleiro</a>
-                            <a onclick="openCategoryPage('Lego')">Lego</a>
-                        </div>
-                    </div>
-
-                    <!-- 6. Saúde e Beleza -->
-                    <div class="subcat-group" id="desktop-cat-saude">
-                        <div class="subcat-column">
-                            <h4>Perfumes e Beleza</h4>
-                            <a onclick="openCategoryPage('Barbeador e Aparador de pelos')">Barbeador e Aparador de pelos</a>
-                            <a onclick="openCategoryPage('Escova rotativa')">Escova rotativa</a>
-                            <a onclick="openCategoryPage('Maquiagem')">Maquiagem</a>
-                            <a onclick="openCategoryPage('Perfumes e Colônias')">Perfumes e Colônias</a>
-                            <a onclick="openCategoryPage('Secadores')">Secadores</a>
-                            <a onclick="openCategoryPage('Skin Care')">Skin Care</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Saúde e Higiene</h4>
-                            <a onclick="openCategoryPage('Desodorante')">Desodorante</a>
-                            <a onclick="openCategoryPage('Escova de dente')">Escova de dente</a>
-                            <a onclick="openCategoryPage('Escova de dente elétrica')">Escova de dente elétrica</a>
-                            <a onclick="openCategoryPage('Monitor cardíaco')">Monitor cardíaco</a>
-                            <a onclick="openCategoryPage('Protetor solar')">Protetor solar</a>
-                            <a onclick="openCategoryPage('Sabonete')">Sabonete</a>
-                        </div>
-                    </div>
-
-                    <!-- 7. Esporte e Suplementos -->
                     <div class="subcat-group" id="desktop-cat-esporte">
                         <div class="subcat-column">
                             <h4>Esporte e Lazer</h4>
-                            <a onclick="openCategoryPage('Basquete')">Basquete</a>
-                            <a onclick="openCategoryPage('Bicicleta')">Bicicleta</a>
-                            <a onclick="openCategoryPage('Camping')">Camping</a>
-                            <a onclick="openCategoryPage('Cooler e Bolsa Térmica')">Cooler e Bolsa Térmica</a>
-                            <a onclick="openCategoryPage('Futebol')">Futebol</a>
-                            <a onclick="openCategoryPage('Natação')">Natação</a>
-                            <a onclick="openCategoryPage('Patins')">Patins</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Suplementos e Fitness</h4>
-                            <a onclick="openCategoryPage('Aparelhos e Acessórios')">Aparelhos e Acessórios</a>
-                            <a onclick="openCategoryPage('BCAA')">BCAA</a>
-                            <a onclick="openCategoryPage('Creatina')">Creatina</a>
-                            <a onclick="openCategoryPage('Pré-treino')">Pré-treino</a>
-                            <a onclick="openCategoryPage('Suplementos')">Suplementos</a>
-                            <a onclick="openCategoryPage('Whey Protein')">Whey Protein</a>
+                            <a onclick="openCategoryPage('Suplementos')">Suplementos e Whey Protein</a>
+                            <a onclick="openCategoryPage('Bicicletas')">Bicicletas</a>
                         </div>
                     </div>
-
-                    <!-- 8. Supermercado e Delivery -->
-                    <div class="subcat-group" id="desktop-cat-supermercado">
-                        <div class="subcat-column">
-                            <h4>Bebidas</h4>
-                            <a onclick="openCategoryPage('Cervejas')">Cervejas</a>
-                            <a onclick="openCategoryPage('Outros destilados')">Outros destilados</a>
-                            <a onclick="openCategoryPage('Vinhos e Espumantes')">Vinhos e Espumantes</a>
-                            <a onclick="openCategoryPage('Vodka')">Vodka</a>
-                            <a onclick="openCategoryPage('Whisky')">Whisky</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Supermercado e Delivery</h4>
-                            <a onclick="openCategoryPage('Comida')">Comida</a>
-                            <a onclick="openCategoryPage('Itens de Lavanderia')">Itens de Lavanderia</a>
-                            <a onclick="openCategoryPage('Não Alcoólico')">Não Alcoólico</a>
-                            <a onclick="openCategoryPage('Produtos de limpeza')">Produtos de limpeza</a>
-                        </div>
-                    </div>
-
-                    <!-- 10. Ferramentas e Jardim -->
-                    <div class="subcat-group" id="desktop-cat-ferramentas">
-                        <div class="subcat-column">
-                            <h4>Ferramentas e Jardim</h4>
-                            <a onclick="openCategoryPage('Compressor de ar')">Compressor de ar</a>
-                            <a onclick="openCategoryPage('Ferramentas manuais')">Ferramentas manuais</a>
-                            <a onclick="openCategoryPage('Furadeira')">Furadeira</a>
-                            <a onclick="openCategoryPage('Lavadora de alta pressão')">Lavadora de alta pressão</a>
-                            <a onclick="openCategoryPage('Móveis para ambientes externos')">Móveis para ambientes externos</a>
-                            <a onclick="openCategoryPage('Parafusadeira')">Parafusadeira</a>
-                            <a onclick="openCategoryPage('Serra tico-tico')">Serra tico-tico</a>
-                            <a onclick="openCategoryPage('Utensílios para jardim')">Utensílios para jardim</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Peças e Acessórios para automóveis</h4>
-                            <a onclick="openCategoryPage('Acessórios para carros e motos')">Acessórios para carros e motos</a>
-                            <a onclick="openCategoryPage('CD e DVD players')">CD e DVD players</a>
-                            <a onclick="openCategoryPage('Central Multimídia')">Central Multimídia</a>
-                            <a onclick="openCategoryPage('Pneus')">Pneus</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Casa e Construção</h4>
-                            <a onclick="openCategoryPage('Construção e Reforma')">Construção e Reforma</a>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -1143,6 +842,7 @@
             </a>
         </div>
 
+        <!-- Seção Mais Vendidos da Semana (Carrossel Horizontal com setas) -->
         <section class="mais-vendidos-wrapper">
             <div class="mais-vendidos-top-header">
                 <div class="mais-vendidos-title-area">
@@ -1166,47 +866,7 @@
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Busca
         </div>
-        
-        <div class="listing-header-bar">
-            <div class="listing-title-box">
-                <h2 id="searchTitle">Resultados da Pesquisa</h2>
-            </div>
-            <div class="controls-wrapper">
-                <button class="btn-filter-trigger" onclick="toggleFilterPanel('searchFilterPanel')">
-                    <i class="fa-solid fa-sliders"></i> Filtrar por
-                </button>
-                <div class="sort-select-box">
-                    <label for="sortSearch">Ordenar por:</label>
-                    <select id="sortSearch" onchange="applySortingAndFiltering('search')">
-                        <option value="recentes">Mais recentes</option>
-                        <option value="menor-preco">Menor preço</option>
-                        <option value="maior-preco">Maior preço</option>
-                        <option value="maior-desconto">Maior desconto</option>
-                    </select>
-                </div>
-            </div>
-            <div class="filter-expand-panel" id="searchFilterPanel">
-                <div class="filter-group">
-                    <label>Loja:</label>
-                    <select id="filterStoreSearch" onchange="applySortingAndFiltering('search')">
-                        <option value="todas">Todas</option>
-                        <option value="Amazon">Amazon</option>
-                        <option value="Shopee">Shopee</option>
-                        <option value="Mercado Livre">Mercado Livre</option>
-                        <option value="Magazine Luiza">Magazine Luiza</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>Preço Mín:</label>
-                    <input type="number" id="minPriceSearch" placeholder="R$" oninput="applySortingAndFiltering('search')">
-                </div>
-                <div class="filter-group">
-                    <label>Preço Máx:</label>
-                    <input type="number" id="maxPriceSearch" placeholder="R$" oninput="applySortingAndFiltering('search')">
-                </div>
-            </div>
-        </div>
-
+        <h2 id="searchTitle" style="font-size: 24px; font-weight: 800; margin-bottom: 20px;">Resultados da Pesquisa</h2>
         <div class="feed-container" id="searchFeed"></div>
     </div>
 
@@ -1262,47 +922,7 @@
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <span id="categoryBreadcrumbName">Categoria</span>
         </div>
-
-        <div class="listing-header-bar">
-            <div class="listing-title-box">
-                <h2 id="categoryTitle">Produtos</h2>
-            </div>
-            <div class="controls-wrapper">
-                <button class="btn-filter-trigger" onclick="toggleFilterPanel('categoryFilterPanel')">
-                    <i class="fa-solid fa-sliders"></i> Filtrar por
-                </button>
-                <div class="sort-select-box">
-                    <label for="sortCategory">Ordenar por:</label>
-                    <select id="sortCategory" onchange="applySortingAndFiltering('category')">
-                        <option value="recentes">Mais recentes</option>
-                        <option value="menor-preco">Menor preço</option>
-                        <option value="maior-preco">Maior preço</option>
-                        <option value="maior-desconto">Maior desconto</option>
-                    </select>
-                </div>
-            </div>
-            <div class="filter-expand-panel" id="categoryFilterPanel">
-                <div class="filter-group">
-                    <label>Loja:</label>
-                    <select id="filterStoreCategory" onchange="applySortingAndFiltering('category')">
-                        <option value="todas">Todas</option>
-                        <option value="Amazon">Amazon</option>
-                        <option value="Shopee">Shopee</option>
-                        <option value="Mercado Livre">Mercado Livre</option>
-                        <option value="Magazine Luiza">Magazine Luiza</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>Preço Mín:</label>
-                    <input type="number" id="minPriceCategory" placeholder="R$" oninput="applySortingAndFiltering('category')">
-                </div>
-                <div class="filter-group">
-                    <label>Preço Máx:</label>
-                    <input type="number" id="maxPriceCategory" placeholder="R$" oninput="applySortingAndFiltering('category')">
-                </div>
-            </div>
-        </div>
-
+        <h2 id="categoryTitle" style="font-size: 24px; font-weight: 800; margin-bottom: 20px;">Produtos</h2>
         <div class="feed-container" id="categoryFeed"></div>
     </div>
 
@@ -1351,15 +971,12 @@
     </div>
 
     <script>
-        let currentSubcatFilter = '';
-        let currentSearchQuery = '';
-
         let productsDatabase = [
             {
                 id: 'combo-gamer-4-em-1-mts-nightmare-snow',
                 title: 'Combo GAMER 4 em 1 MTS, Nightmare Snow • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer Branco',
                 store: 'Amazon',
-                subcat: 'Teclado e Mouse',
+                subcat: 'Teclados',
                 oldPrice: 'R$ 180,00',
                 price: 'R$ 147,73',
                 discount: '-18%',
@@ -1379,7 +996,7 @@
                 id: 'geladeira-consul-smart-frost-free-inox-377l',
                 title: 'Geladeira/Refrigerador Consul Smart Frost Free Inox Duplex 377L CRM44MKANA',
                 store: 'Magazine Luiza',
-                subcat: 'Geladeiras e Refrigeradores',
+                subcat: 'Geladeiras e Freezers',
                 oldPrice: 'R$ 4.339,00',
                 price: 'R$ 2.997,66',
                 discount: '-31%',
@@ -1398,7 +1015,7 @@
                 id: 'smartphone-exemplo-3',
                 title: 'Smartphone Avançado 128GB Câmera Tripla Tela AMOLED',
                 store: 'Shopee',
-                subcat: 'Android',
+                subcat: 'Smartphones Android',
                 oldPrice: 'R$ 1.500,00',
                 price: 'R$ 1.199,00',
                 discount: '-20%',
@@ -1415,7 +1032,7 @@
                 id: 'airfryer-exemplo-4',
                 title: 'Fritadeira Sem Óleo Air Fryer 4L Antiaderente',
                 store: 'Amazon',
-                subcat: 'Fritadeira elétrica',
+                subcat: 'Air Fryers',
                 oldPrice: 'R$ 450,00',
                 price: 'R$ 329,90',
                 discount: '-26%',
@@ -1432,7 +1049,7 @@
                 id: 'headset-exemplo-5',
                 title: 'Headset Gamer com Microfone Redução de Ruído',
                 store: 'Mercado Livre',
-                subcat: 'Fone de ouvido',
+                subcat: 'Fones de Ouvido',
                 oldPrice: 'R$ 220,00',
                 price: 'R$ 159,00',
                 discount: '-27%',
@@ -1472,9 +1089,9 @@
                 icon: 'fa-mobile-screen-button',
                 name: 'Smartphones, Eletrônicos e TV',
                 subcats: [
-                    { title: 'Eletrônicos, Áudio e Vídeo', items: ['Caixa de Som', 'Fone de ouvido', 'Home Theater', 'Projetores', 'Soundbar', 'Suporte para TV', 'TVs'] },
-                    { title: 'Smartphones, Tablets e Telefones', items: ['Acessórios para smartphones', 'Android', 'iPhones', 'Smartwatch e Smartband', 'Tablets'] },
-                    { title: 'Câmeras, Filmadoras e Drones', items: ['Câmera', 'Câmera de ação / GoPro', 'Câmera de segurança', 'Drones'] }
+                    { title: 'Celulares e Telefonia', items: ['Smartphones Android', 'iPhones / iOS', 'Smartwatches', 'Acessórios para Celular'] },
+                    { title: 'TV e Vídeo', items: ['Smart TVs', 'Projetores', 'TV Box', 'Soundbar'] },
+                    { title: 'Áudio', items: ['Fones de Ouvido', 'Caixas de Som', 'Microfones'] }
                 ]
             },
             {
@@ -1482,9 +1099,9 @@
                 icon: 'fa-gamepad',
                 name: 'Informática e Games',
                 subcats: [
-                    { title: 'Informática', items: ['Mouse', 'Headset', 'Monitor', 'Processadores', 'Placa Mãe', 'Coolers', 'HD e SSD', 'PC gamer', 'Kits de Teclado e Mouse', 'Notebooks', 'Notebook Gamer', 'Cadeira Gamer'] },
-                    { title: 'Games', items: ['Jogos de PC', 'Nintendo Switch', 'Playstation 3', 'Playstation 4', 'Playstation 5', 'Xbox 360', 'Xbox One', 'Xbox Series X | S'] },
-                    { title: 'Aplicativos e Software', items: ['Apps para Android', 'Apps para iOS', 'Apps para Windows Phone', 'Programas Windows'] }
+                    { title: 'Informática Geral', items: ['Notebooks', 'Desktops', 'Monitores'] },
+                    { title: 'Periféricos', items: ['Mouses', 'Teclados', 'Placas de Vídeo', 'SSDs'] },
+                    { title: 'Mundo Gamer', items: ['Consoles', 'Cadeiras Gamers'] }
                 ]
             },
             {
@@ -1492,128 +1109,27 @@
                 icon: 'fa-couch',
                 name: 'Casa e Eletrodomésticos',
                 subcats: [
-                    { title: 'Eletroportáteis / Cama, Mesa e Banho', items: ['Aspirador de Pó', 'Batedeira', 'Forno elétrico', 'Fritadeira elétrica', 'Liquidificador e Mixer', 'Robô aspirador de pó', 'Ventiladores', 'Enxoval', 'Jogo de cama', 'Toalha de banho', 'Travesseiros'] },
-                    { title: 'Eletrodomésticos / Utilidades', items: ['Aquecedor', 'Ar condicionado', 'Fogão', 'Geladeiras e Refrigeradores', 'Máquina de Lavar', 'Micro-ondas', 'Acessórios de cozinha', 'Aparelho de jantar', 'Panela de pressão', 'Talheres'] },
-                    { title: 'Móveis e Decoração', items: ['Armários, Cômodas e Sapateiras', 'Cadeiras', 'Rack', 'Sofá'] }
+                    { title: 'Eletrodomésticos', items: ['Geladeiras e Freezers', 'Lavadoras', 'Ar-Condicionado'] },
+                    { title: 'Eletroportáteis', items: ['Air Fryers', 'Micro-Ondas', 'Aspiradores'] }
                 ]
             },
             {
                 id: 'moda',
                 icon: 'fa-shirt',
-                name: 'Moda e Acessórios',
+                name: 'Moda e Beleza',
                 subcats: [
-                    { title: 'Moda Masculina e Malas', items: ['Acessórios masculinos', 'Calçados masculinos', 'Jaquetas e casacos', 'Roupas masculinas', 'Mala de Viagem', 'Mochila infantil', 'Mochila para notebook', 'Mochilas'] },
-                    { title: 'Moda Feminina', items: ['Bolsas e Acessórios', 'Calçados femininos', 'Lingerie', 'Roupas femininas'] },
-                    { title: 'Relógios e Jóias', items: ['Anéis', 'Brincos', 'Pulseiras', 'Relógios'] }
-                ]
-            },
-            {
-                id: 'bebes',
-                icon: 'fa-baby',
-                name: 'Bebês e Crianças',
-                subcats: [
-                    { title: 'Bebês e Crianças', items: ['Berço', 'Cadeirinha para automóvel', 'Calçados infantis', 'Carrinho de Bebê', 'Fraldas', 'Lenço umedecido', 'Roupas infantis'] },
-                    { title: 'Brinquedos e Hobbies', items: ['Barbie', 'Funko Pop', 'Hoverboard', 'Instrumentos Musicais', 'Jogos de tabuleiro', 'Lego'] }
-                ]
-            },
-            {
-                id: 'saude',
-                icon: 'fa-heart',
-                name: 'Saúde e Beleza',
-                subcats: [
-                    { title: 'Perfumes e Beleza', items: ['Barbeador e Aparador de pelos', 'Escova rotativa', 'Maquiagem', 'Perfumes e Colônias', 'Secadores', 'Skin Care'] },
-                    { title: 'Saúde e Higiene', items: ['Desodorante', 'Escova de dente', 'Escova de dente elétrica', 'Monitor cardíaco', 'Protetor solar', 'Sabonete'] }
+                    { title: 'Moda e Beleza', items: ['Roupas', 'Perfumes'] }
                 ]
             },
             {
                 id: 'esporte',
                 icon: 'fa-dumbbell',
-                name: 'Esporte e Suplementos',
+                name: 'Esporte e Lazer',
                 subcats: [
-                    { title: 'Esporte e Lazer', items: ['Basquete', 'Bicicleta', 'Camping', 'Cooler e Bolsa Térmica', 'Futebol', 'Natação', 'Patins'] },
-                    { title: 'Suplementos e Fitness', items: ['Aparelhos e Acessórios', 'BCAA', 'Creatina', 'Pré-treino', 'Suplementos', 'Whey Protein'] }
-                ]
-            },
-            {
-                id: 'supermercado',
-                icon: 'fa-cart-shopping',
-                name: 'Supermercado e Delivery',
-                subcats: [
-                    { title: 'Bebidas', items: ['Cervejas', 'Outros destilados', 'Vinhos e Espumantes', 'Vodka', 'Whisky'] },
-                    { title: 'Supermercado', items: ['Comida', 'Itens de Lavanderia', 'Não Alcoólico', 'Produtos de limpeza'] }
-                ]
-            },
-            {
-                id: 'ferramentas',
-                icon: 'fa-screwdriver-wrench',
-                name: 'Ferramentas e Jardim',
-                subcats: [
-                    { title: 'Ferramentas e Jardim', items: ['Compressor de ar', 'Ferramentas manuais', 'Furadeira', 'Lavadora de alta pressão', 'Móveis para ambientes externos', 'Parafusadeira', 'Serra tico-tico', 'Utensílios para jardim'] },
-                    { title: 'Automotivo e Construção', items: ['Acessórios para carros e motos', 'CD e DVD players', 'Central Multimídia', 'Pneus', 'Construção e Reforma'] }
+                    { title: 'Esporte', items: ['Suplementos', 'Bicicletas'] }
                 ]
             }
         ];
-
-        // AUXILIAR DE PREÇO (NUMÉRICO)
-        function parsePrice(priceStr) {
-            if (!priceStr) return 0;
-            return parseFloat(priceStr.replace('R$', '').replace(/\./g, '').replace(',', '.').trim()) || 0;
-        }
-
-        // AUXILIAR DE DESCONTO (NUMÉRICO)
-        function parseDiscount(discountStr) {
-            if (!discountStr) return 0;
-            return parseFloat(discountStr.replace('-', '').replace('%', '').trim()) || 0;
-        }
-
-        function toggleFilterPanel(panelId) {
-            const panel = document.getElementById(panelId);
-            if (panel) {
-                panel.classList.toggle('open');
-            }
-        }
-
-        function applySortingAndFiltering(context) {
-            let baseList = [];
-
-            if (context === 'category') {
-                baseList = productsDatabase.filter(p => p.subcat.toLowerCase() === currentSubcatFilter.toLowerCase());
-            } else if (context === 'search') {
-                baseList = productsDatabase.filter(p => 
-                    (p.title.toLowerCase().includes(currentSearchQuery) || 
-                    p.store.toLowerCase().includes(currentSearchQuery) || 
-                    p.subcat.toLowerCase().includes(currentSearchQuery))
-                );
-            }
-
-            // Pega parâmetros de filtro
-            const storeFilter = document.getElementById(context === 'category' ? 'filterStoreCategory' : 'filterStoreSearch').value;
-            const minPrice = parseFloat(document.getElementById(context === 'category' ? 'minPriceCategory' : 'minPriceSearch').value) || 0;
-            const maxPrice = parseFloat(document.getElementById(context === 'category' ? 'maxPriceCategory' : 'maxPriceSearch').value) || Infinity;
-            const sortOption = document.getElementById(context === 'category' ? 'sortCategory' : 'sortSearch').value;
-
-            // Aplica filtros de loja e faixa de preço
-            let filtered = baseList.filter(p => {
-                const price = parsePrice(p.price);
-                const matchesStore = (storeFilter === 'todas' || p.store.toLowerCase() === storeFilter.toLowerCase());
-                const matchesMin = price >= minPrice;
-                const matchesMax = price <= maxPrice;
-                return matchesStore && matchesMin && matchesMax;
-            });
-
-            // Aplica Ordenação
-            if (sortOption === 'menor-preco') {
-                filtered.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
-            } else if (sortOption === 'maior-preco') {
-                filtered.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
-            } else if (sortOption === 'maior-desconto') {
-                filtered.sort((a, b) => parseDiscount(b.discount) - parseDiscount(a.discount));
-            }
-            // 'recentes' mantém a ordem padrão original do DB
-
-            const targetFeedId = context === 'category' ? 'categoryFeed' : 'searchFeed';
-            renderFeed(targetFeedId, filtered);
-        }
 
         function buildMegaMenu() {
             const sidebarContainer = document.getElementById('megaSidebarContainer');
@@ -1715,7 +1231,7 @@
             const activeItems = items.filter(p => p.ativo !== false);
 
             if (activeItems.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">Nenhum produto encontrado com estes filtros.</p>';
+                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">Nenhum produto encontrado.</p>';
                 return;
             }
 
@@ -1753,13 +1269,16 @@
         }
 
         function renderHomeFeeds() {
+            // Renderiza os Mais Vendidos rotacionando/embaralhando para trocar periodicamente ao atualizar a página
             const maisVendidos = shuffleArray(productsDatabase.filter(p => p.maisVendido === true));
             renderFeed('maisVendidosFeed', maisVendidos);
 
+            // Renderiza o feed principal da home
             const shuffledProducts = shuffleArray(productsDatabase);
             renderFeed('homeFeed', shuffledProducts);
         }
 
+        // Função para mover o carrossel lateral de Mais Vendidos da Semana
         function scrollCarousel(direction) {
             const container = document.getElementById('maisVendidosFeed');
             const scrollAmount = container.clientWidth * 0.75;
@@ -1770,22 +1289,17 @@
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase().trim();
-                currentSearchQuery = query;
-
                 if (query === '') {
                     switchPage('homePage');
                     return;
                 }
-
+                const filtered = productsDatabase.filter(p => 
+                    (p.title.toLowerCase().includes(query) || 
+                    p.store.toLowerCase().includes(query) || 
+                    p.subcat.toLowerCase().includes(query))
+                );
                 document.getElementById('searchTitle').innerText = `Resultados para: "${e.target.value}"`;
-                
-                // Reseta filtros
-                document.getElementById('sortSearch').value = 'recentes';
-                document.getElementById('filterStoreSearch').value = 'todas';
-                document.getElementById('minPriceSearch').value = '';
-                document.getElementById('maxPriceSearch').value = '';
-
-                applySortingAndFiltering('search');
+                renderFeed('searchFeed', filtered);
                 switchPage('searchPage');
             });
         }
@@ -1800,17 +1314,10 @@
         }
 
         function openCategoryPage(subcatName) {
-            currentSubcatFilter = subcatName;
             document.getElementById('categoryBreadcrumbName').innerText = subcatName;
             document.getElementById('categoryTitle').innerText = subcatName;
-
-            // Reseta filtros da categoria ao entrar em uma nova
-            document.getElementById('sortCategory').value = 'recentes';
-            document.getElementById('filterStoreCategory').value = 'todas';
-            document.getElementById('minPriceCategory').value = '';
-            document.getElementById('maxPriceCategory').value = '';
-
-            applySortingAndFiltering('category');
+            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === subcatName.toLowerCase());
+            renderFeed('categoryFeed', filtered);
             switchPage('categoryPage');
         }
 
