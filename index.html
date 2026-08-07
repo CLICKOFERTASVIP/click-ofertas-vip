@@ -630,12 +630,12 @@
 
             <div class="mega-menu-panel" id="megaMenuPanel">
                 <div class="mega-sidebar" id="megaSidebarContainer">
-                    <!-- Itens inseridos via JavaScript -->
+                    <!-- Itens injetados via JavaScript -->
                 </div>
 
-                <!-- Conteúdo padrão para Desktop -->
+                <!-- Conteúdo completo padrão para Desktop -->
                 <div class="mega-content" id="megaContentDesktop">
-                    <div class="subcat-group" id="desktop-cat-eletronicos">
+                    <div class="subcat-group active" id="desktop-cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Celulares e Telefonia</h4>
                             <a onclick="openCategoryPage('Smartphones Android')">Smartphones Android</a>
@@ -892,7 +892,6 @@
                 itemDiv.className = `mega-cat-item ${index === 0 ? 'active' : ''}`;
                 itemDiv.setAttribute('data-target', `desktop-cat-${cat.id}`);
 
-                // Estrutura separada: Visual padrão do Desktop + Cabeçalho com setinha para o Sanfonado Mobile
                 itemDiv.innerHTML = `
                     <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
                     <span>${cat.name}</span>
@@ -912,7 +911,6 @@
                     </div>
                 `;
 
-                // Eventos de Hover para Desktop
                 itemDiv.addEventListener('mouseenter', () => {
                     if (window.innerWidth > 768) {
                         activateDesktopCategory(cat.id);
@@ -928,10 +926,8 @@
                 const parentItem = headerEl.parentElement;
                 const wasActive = parentItem.classList.contains('active');
                 
-                // Fecha todas as sanfonas antes de abrir a nova
                 document.querySelectorAll('.mega-cat-item').forEach(i => i.classList.remove('active'));
                 
-                // Se não estava ativa, abre
                 if (!wasActive) {
                     parentItem.classList.add('active');
                 }
