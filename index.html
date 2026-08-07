@@ -409,60 +409,89 @@
 
         .btn-pegar:hover { background: var(--primary-hover); }
 
-        /* Estilos da Página de Cupons */
-        .cupons-grid {
+        /* Estilo dos Cards de Lojas (Hub de Cupons) idêntico à imagem */
+        .lojas-cupons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
-        .cupom-card {
+        .loja-cupom-card {
+            background: var(--card-bg);
+            border: 1px solid #2b2b36;
+            border-radius: 12px;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .loja-cupom-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            border-color: var(--primary);
+        }
+
+        /* Logos Redondas Estilizadas */
+        .loja-logo-circle {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Cores oficiais das marcas para os círculos de logo */
+        .logo-amazon { background: #ff9900; color: #111; }
+        .logo-shopee { background: #ee4d2d; color: #fff; }
+        .logo-mercadolivre { background: #ffe600; color: #2d327d; }
+        .logo-magalu { background: #0086ff; color: #fff; }
+
+        .loja-cupom-card span {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Lista de Cupons de uma Loja Específica */
+        .lista-cupons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .cupom-item-card {
             background: var(--card-bg);
             border: 1px solid #2b2b36;
             border-radius: 12px;
             padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+            gap: 12px;
         }
 
-        .cupom-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            border-color: var(--primary);
-        }
+        .cupom-info h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .cupom-info p { font-size: 13px; color: var(--text-muted); }
 
-        .cupom-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .cupom-codigo-box {
             background: #121216;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 12px;
-            border: 1px solid #2b2b36;
-        }
-
-        .cupom-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-        .cupom-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
-
-        .cupom-box {
-            background: #121216;
-            border: 2px dashed #2b2b36;
-            padding: 8px 12px;
+            border: 2px dashed #383846;
+            padding: 10px;
             border-radius: 8px;
+            text-align: center;
             font-family: monospace;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: bold;
             color: var(--green-discount);
-            margin-bottom: 15px;
-            width: 100%;
             letter-spacing: 1px;
         }
 
@@ -602,6 +631,7 @@
             .main-img-box { height: 260px; }
             .banner-content { flex-direction: column; text-align: center; gap: 12px; }
             .feed-container { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+            .lojas-cupons-grid { grid-template-columns: repeat(2, 1fr); }
             .card-oferta { padding: 10px; }
             .img-container { height: 130px; }
             .current-price { font-size: 16px; }
@@ -721,6 +751,7 @@
         </div>
     </nav>
 
+    <!-- PÁGINA HOME -->
     <div id="homePage" class="page-view active-page">
         <div class="banner-vip">
             <a href="https://chat.whatsapp.com/KRbJPdU7pnZDJQurAyGcjd" target="_blank" class="banner-content">
@@ -736,6 +767,7 @@
         <main class="feed-container" id="homeFeed"></main>
     </div>
 
+    <!-- PÁGINA DE BUSCA -->
     <div id="searchPage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Busca
@@ -744,6 +776,7 @@
         <div class="feed-container" id="searchFeed"></div>
     </div>
 
+    <!-- DETALHES DO PRODUTO -->
     <div id="productDetailPage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; 
@@ -790,6 +823,7 @@
         </div>
     </div>
 
+    <!-- PÁGINA DE CATEGORIA -->
     <div id="categoryPage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <span id="categoryBreadcrumbName">Categoria</span>
@@ -798,51 +832,48 @@
         <div class="feed-container" id="categoryFeed"></div>
     </div>
 
-    <!-- PÁGINA DE CUPONS COM OS CÓDIGOS E LOGOS -->
+    <!-- HUB DE CUPONS (ESTILO DA SUA IMAGEM COM OS CARDS REDONDOS) -->
     <div id="cuponsHubPage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons
         </div>
-        <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 5px;">Cupons e Ofertas das Lojas</h2>
-        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Copie o código do cupom e aproveite os descontos nas principais lojas parceiras.</p>
+        <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 5px;">Encontre cupons das melhores lojas</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Selecione uma loja para ver os cupons de desconto ativos.</p>
         
-        <div class="cupons-grid">
-            <!-- Amazon -->
-            <div class="cupom-card">
-                <div class="cupom-logo"><i class="fa-brands fa-amazon"></i></div>
-                <h3>Amazon</h3>
-                <p>Cupons diários e ofertas selecionadas.</p>
-                <div class="cupom-box">AMAZON10</div>
-                <a href="SEU_LINK_DE_afiliado_AMAZON" target="_blank" class="btn-pegar">Ir para a Loja</a>
+        <div class="lojas-cupons-grid">
+            <div class="loja-cupom-card" onclick="openStoreCupons('Amazon')">
+                <div class="loja-logo-circle logo-amazon"><i class="fa-brands fa-amazon"></i></div>
+                <span>Amazon</span>
             </div>
 
-            <!-- Shopee -->
-            <div class="cupom-card">
-                <div class="cupom-logo"><i class="fa-solid fa-bag-shopping"></i></div>
-                <h3>Shopee</h3>
-                <p>Descontos especiais em compras pelo app/site.</p>
-                <div class="cupom-box">SHOPEE10</div>
-                <a href="SEU_LINK_DE_afiliado_SHOPEE" target="_blank" class="btn-pegar">Ir para a Loja</a>
+            <div class="loja-cupom-card" onclick="openStoreCupons('Shopee')">
+                <div class="loja-logo-circle logo-shopee"><i class="fa-solid fa-bag-shopping"></i></div>
+                <span>Shopee</span>
             </div>
 
-            <!-- Mercado Livre -->
-            <div class="cupom-card">
-                <div class="cupom-logo"><i class="fa-solid fa-handshake"></i></div>
-                <h3>Mercado Livre</h3>
-                <p>Descontos em eletrônicos e envios Full.</p>
-                <div class="cupom-box">MERCADOLIVRE10</div>
-                <a href="SEU_LINK_DE_afiliado_MERCADOLIVRE" target="_blank" class="btn-pegar">Ir para a Loja</a>
+            <div class="loja-cupom-card" onclick="openStoreCupons('Mercado Livre')">
+                <div class="loja-logo-circle logo-mercadolivre"><i class="fa-solid fa-handshake"></i></div>
+                <span>Mercado Livre</span>
             </div>
 
-            <!-- Magazine Luiza -->
-            <div class="cupom-card">
-                <div class="cupom-logo"><i class="fa-solid fa-store"></i></div>
-                <h3>Magazine Luiza</h3>
-                <p>Cupons válidos em eletro e tecnologia.</p>
-                <div class="cupom-box">MAGAZINE10</div>
-                <a href="SEU_LINK_DE_afiliado_MAGALU" target="_blank" class="btn-pegar">Ir para a Loja</a>
+            <div class="loja-cupom-card" onclick="openStoreCupons('Magazine Luiza')">
+                <div class="loja-logo-circle logo-magalu"><i class="fa-solid fa-store"></i></div>
+                <span>Magazine Luiza</span>
             </div>
         </div>
+    </div>
+
+    <!-- PÁGINA DE CUPONS ESPECÍFICOS DA LOJA -->
+    <div id="storeCuponsPage" class="page-view">
+        <div class="breadcrumb">
+            <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; 
+            <a href="#" onclick="switchPage('cuponsHubPage')">Cupons</a> &gt; 
+            <span id="storeBreadcrumbName">Loja</span>
+        </div>
+        <h2 id="storeCuponsTitle" style="font-size: 24px; font-weight: 800; margin-bottom: 5px;">Cupons da Loja</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Copie o código e utilize na finalização da sua compra.</p>
+        
+        <div class="lista-cupons-container" id="listaCuponsContainer"></div>
     </div>
 
     <script>
@@ -885,6 +916,22 @@
                 about: 'Geladeira Consul Duplex 377 Litros com tecnologia Frost Free (não precisa descongelar nunca), design moderno em Inox e amplo espaço interno.'
             }
         ];
+
+        // Base de cupons por loja conforme solicitado
+        const cuponsPorLoja = {
+            'Amazon': [
+                { codigo: 'AMAZON10', desc: '10% de desconto em produtos selecionados vendidos pela Amazon.', link: 'SEU_LINK_DE_afiliado_AMAZON' }
+            ],
+            'Shopee': [
+                { codigo: 'SHOPEE10', desc: '10% de desconto em compras aplicadas no app/site da Shopee.', link: 'SEU_LINK_DE_afiliado_SHOPEE' }
+            ],
+            'Mercado Livre': [
+                { codigo: 'MERCADOLIVRE10', desc: 'Desconto especial em eletrônicos e produtos Full.', link: 'SEU_LINK_DE_afiliado_MERCADOLIVRE' }
+            ],
+            'Magazine Luiza': [
+                { codigo: 'MAGAZINE10', desc: 'Cupom de desconto válido em eletrodomésticos e tecnologia.', link: 'SEU_LINK_DE_afiliado_MAGALU' }
+            ]
+        };
 
         const categoriesData = [
             {
@@ -994,6 +1041,36 @@
 
             if (targetItem) targetItem.classList.add('active');
             if (targetGroup) targetGroup.classList.add('active');
+        }
+
+        function openStoreCupons(storeName) {
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeCuponsTitle').innerText = `Cupons de Desconto - ${storeName}`;
+            
+            const container = document.getElementById('listaCuponsContainer');
+            container.innerHTML = '';
+
+            const cupons = cuponsPorLoja[storeName] || [];
+
+            if (cupons.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted);">Nenhum cupom ativo no momento para esta loja.</p>';
+            } else {
+                cupons.forEach(c => {
+                    const card = document.createElement('div');
+                    card.className = 'cupom-item-card';
+                    card.innerHTML = `
+                        <div class="cupom-info">
+                            <h4>${storeName}</h4>
+                            <p>${c.desc}</p>
+                        </div>
+                        <div class="cupom-codigo-box">${c.codigo}</div>
+                        <a href="${c.link}" target="_blank" class="btn-pegar">Pegar Cupom / Ir para Loja</a>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            switchPage('storeCuponsPage');
         }
 
         function renderFeed(containerId, items) {
