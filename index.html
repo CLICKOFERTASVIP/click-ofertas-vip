@@ -17,6 +17,7 @@
             --text-muted: #a4b0be;
             --green-discount: #2ed573;
             --badge-store: #70a1ff;
+            --flash-sale: #ffa502;
         }
 
         * {
@@ -291,6 +292,32 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
+        /* Seção de Mais Vendidos da Semana (Carrossel / Grid em Destaque) */
+        .mais-vendidos-section {
+            background: linear-gradient(135deg, #18181c 0%, #252530 100%);
+            border: 1px solid #2b2b36;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .mais-vendidos-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .mais-vendidos-header i {
+            color: #ff4757;
+            font-size: 20px;
+        }
+
+        .mais-vendidos-header h3 {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
         .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
         .breadcrumb a { color: var(--text-muted); text-decoration: none; }
         .breadcrumb a:hover { color: #fff; }
@@ -318,17 +345,42 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
 
-        .badge-desconto {
+        .badges-container {
             position: absolute;
             top: 12px;
             left: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 2;
+            align-items: flex-start;
+        }
+
+        .badge-desconto {
             background: var(--green-discount);
             color: white;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 6px;
-            z-index: 2;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        /* Selo especial para Melhor Preço / Relâmpago */
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.85; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .badge-especial {
+            background: var(--flash-sale);
+            color: #121216;
+            font-size: 10px;
+            font-weight: 900;
+            padding: 3px 6px;
+            border-radius: 4px;
+            animation: pulseGlow 2s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 165, 2, 0.5);
         }
 
         .img-container {
@@ -409,7 +461,7 @@
 
         .btn-pegar:hover { background: var(--primary-hover); }
 
-        /* Estilo dos Cards de Lojas (Hub de Cupons) idêntico à imagem */
+        /* Estilo dos Cards de Lojas (Hub de Cupons) */
         .lojas-cupons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -436,7 +488,6 @@
             border-color: var(--primary);
         }
 
-        /* Logos Redondas Estilizadas */
         .loja-logo-circle {
             width: 75px;
             height: 75px;
@@ -449,7 +500,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        /* Cores oficiais das marcas para os círculos de logo */
         .logo-amazon { background: #ff9900; color: #111; }
         .logo-shopee { background: #ee4d2d; color: #fff; }
         .logo-mercadolivre { background: #ffe600; color: #2d327d; }
@@ -461,7 +511,6 @@
             color: var(--text-dark);
         }
 
-        /* Lista de Cupons de uma Loja Específica */
         .lista-cupons-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -763,6 +812,15 @@
             </a>
         </div>
 
+        <!-- MELHORIA 4: Seção de Mais Vendidos da Semana -->
+        <section class="mais-vendidos-section">
+            <div class="mais-vendidos-header">
+                <i class="fa-solid fa-fire"></i>
+                <h3>Mais Vendidos da Semana</h3>
+            </div>
+            <div class="feed-container" id="maisVendidosFeed"></div>
+        </section>
+
         <h2 style="font-size:20px; font-weight:800; margin-bottom: 15px;">Destaques do Dia</h2>
         <main class="feed-container" id="homeFeed"></main>
     </div>
@@ -832,7 +890,7 @@
         <div class="feed-container" id="categoryFeed"></div>
     </div>
 
-    <!-- HUB DE CUPONS (ESTILO DA SUA IMAGEM COM OS CARDS REDONDOS) -->
+    <!-- HUB DE CUPONS -->
     <div id="cuponsHubPage" class="page-view">
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Cupons
@@ -886,6 +944,8 @@
                 oldPrice: 'R$ 180,00',
                 price: 'R$ 147,73',
                 discount: '-18%',
+                tagEspecial: '🔥 Menor Preço', // MELHORIA 3: Marcador especial
+                maisVendido: true,            // MELHORIA 4: Marcado como mais vendido
                 installments: 'Em até 5x de R$ 31,11 sem juros',
                 affiliateLink: 'https://link.amazon/B0a7GkLaz',
                 ativo: true,
@@ -905,6 +965,8 @@
                 oldPrice: 'R$ 4.339,00',
                 price: 'R$ 2.997,66',
                 discount: '-31%',
+                tagEspecial: '⏳ Oferta Relâmpago', // MELHORIA 3: Marcador especial
+                maisVendido: true,              // MELHORIA 4: Marcado como mais vendido
                 installments: 'Em até 10x de R$ 318,90 sem juros',
                 affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
                 ativo: true,
@@ -917,12 +979,10 @@
             }
         ];
 
-        // Cupons atualizados com 2 opções por loja
         const cuponsPorLoja = {
             'Amazon': [
                 { codigo: 'AMAZON10', desc: '10% de desconto em produtos selecionados vendidos pela Amazon.', link: 'SEU_LINK_DE_afiliado_AMAZON' },
-                { codigo: 'AMAZON20', desc: '20% de desconto especial em categorias participantes na Amazon.', link: 'SEU_LINK_DE_afiliado_AMAZON' },
-                { codigo: 'AMAZON30', desc: '30% de desconto especial em categorias participantes na Amazon.', link: 'SEU_LINK_DE_afiliado_AMAZON' }
+                { codigo: 'AMAZON20', desc: '20% de desconto especial em categorias participantes na Amazon.', link: 'SEU_LINK_DE_afiliado_AMAZON' }
             ],
             'Shopee': [
                 { codigo: 'SHOPEE10', desc: '10% de desconto em compras aplicadas no app/site da Shopee.', link: 'SEU_LINK_DE_afiliado_SHOPEE' },
@@ -1096,7 +1156,10 @@
                 card.onclick = () => openProductDetail(prod.id);
 
                 card.innerHTML = `
-                    ${prod.discount ? `<span class="badge-desconto">${prod.discount}</span>` : ''}
+                    <div class="badges-container">
+                        ${prod.discount ? `<span class="badge-desconto">${prod.discount}</span>` : ''}
+                        ${prod.tagEspecial ? `<span class="badge-especial">${prod.tagEspecial}</span>` : ''}
+                    </div>
                     <div class="img-container">
                         <img src="${prod.images[0]}" alt="${prod.title}" loading="lazy">
                     </div>
@@ -1121,7 +1184,12 @@
             return arr;
         }
 
-        function renderHomeFeed() {
+        function renderHomeFeeds() {
+            // Renderiza os Mais Vendidos da Semana (filtra os que possuem maisVendido: true)
+            const maisVendidos = productsDatabase.filter(p => p.maisVendido === true);
+            renderFeed('maisVendidosFeed', maisVendidos);
+
+            // Renderiza o feed principal da home
             const shuffledProducts = shuffleArray(productsDatabase);
             renderFeed('homeFeed', shuffledProducts);
         }
@@ -1220,7 +1288,7 @@
 
         window.onload = () => {
             buildMegaMenu();
-            renderHomeFeed();
+            renderHomeFeeds();
         };
     </script>
 </body>
