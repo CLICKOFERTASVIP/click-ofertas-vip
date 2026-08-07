@@ -2284,24 +2284,25 @@
             document.getElementById('detailOldPrice').innerText = 'De: ' + p.oldPrice;
             document.getElementById('detailCurrentPrice').innerText = p.price;
             document.getElementById('detailInstallments').innerText = p.installments;
-            document.getElementById('detailAffiliateLink').href = p.affiliateLink;
             document.getElementById('detailAbout').innerText = p.about;
+            document.getElementById('detailAffiliateLink').href = p.affiliateLink;
 
             const mainImg = document.getElementById('detailImg');
             mainImg.src = p.images[0];
 
-            const thumbContainer = document.getElementById('detailThumbnails');
-            thumbContainer.innerHTML = '';
-            p.images.forEach((imgUrl, idx) => {
+            const thumbsContainer = document.getElementById('detailThumbnails');
+            thumbsContainer.innerHTML = '';
+            p.images.forEach((imgUrl, index) => {
                 const thumb = document.createElement('img');
-                thumb.className = `thumb-img ${idx === 0 ? 'active' : ''}`;
+                thumb.className = `thumb-img ${index === 0 ? 'active' : ''}`;
                 thumb.src = imgUrl;
-                thumb.onclick = () => {
+                thumb.onclick = (e) => {
+                    e.stopPropagation();
                     mainImg.src = imgUrl;
                     document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
                     thumb.classList.add('active');
                 };
-                thumbContainer.appendChild(thumb);
+                thumbsContainer.appendChild(thumb);
             });
 
             const specsTable = document.getElementById('detailSpecs');
@@ -2315,102 +2316,95 @@
             switchPage('productDetailPage');
         }
 
-        function openStoreCupons(storeName) {
-            document.getElementById('storeBreadcrumbName').innerText = storeName;
-            document.getElementById('storeCuponsTitle').innerText = `Cupons da Loja: ${storeName}`;
-            
-            const container = document.getElementById('listaCuponsContainer');
-            container.innerHTML = '';
-
-            const cupons = cuponsPorLoja[storeName] || [];
-            if (cupons.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">Nenhum cupom disponível no momento para esta loja.</p>';
-            } else {
-                cupons.forEach(c => {
-                    const cupomCard = document.createElement('div');
-                    cupomCard.className = 'cupom-item-card';
-                    cupomCard.innerHTML = `
-                        <div class="cupom-info">
-                            <h4>${storeName}</h4>
-                            <p>${c.desc}</p>
-                        </div>
-                        <div class="cupom-codigo-box">${c.codigo}</div>
-                        <a href="${c.link}" target="_blank" class="btn-pegar">UTILIZAR CUPOM</a>
-                    `;
-                    container.appendChild(cupomCard);
-                });
-            }
-
-            switchPage('storeCuponsPage');
-        }
-
         function scrollCarousel(direction) {
             const container = document.getElementById('maisVendidosFeed');
             const scrollAmount = 300;
             container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        function openStoreCupons(storeName) {
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeCuponsTitle').innerText = 'Cupons da Loja: ' + storeName;
+
+            const container = document.getElementById('listaCuponsContainer');
+            container.innerHTML = '';
+
+            const cupons = cuponsPorLoja[storeName] || [];
+            if (cupons.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted);">Nenhum cupom disponível no momento para esta loja.</p>';
+            } else {
+                cupons.forEach(c => {
+                    const item = document.createElement('div');
+                    item.className = 'cupom-item-card';
+                    item.innerHTML = `
+                        <div class="cupom-info">
+                            <h4>${storeName}</h4>
+                            <p>${c.desc}</p>
+                        </div>
+                        <div class="cupom-codigo-box">${c.codigo}</div>
+                        <a href="${c.link}" target="_blank" class="btn-pegar">USAR CUPOM NA LOJA</a>
+                    `;
+                    container.appendChild(item);
+                });
+            }
+
+            switchPage('storeCuponsPage');
+        }
+
+        // Inicialização ao carregar a página
+        window.onload = function() {
+            // 1. Embaralha os produtos a cada atualização da página
+            shuffleArray(productsDatabase);
+
+            // 2. Constrói o menu
             buildMegaMenu();
 
-            // Renderiza Mais Vendidos (embaralhados ou fixos)
-            const maisVendidosList = productsDatabase.filter(p => p.maisVendido);
+            // 3. Renderiza o Feed principal (Destaques do Dia)
+            renderFeed('homeFeed', productsDatabase);
+
+            // 4. Renderiza os Mais Vendidos corrigindo o parâmetro para filtrar estritamente p.maisVendido === true
+            const maisVendidosList = productsDatabase.filter(p => p.maisVendido === true);
             renderFeed('maisVendidosFeed', maisVendidosList);
 
-            // Renderiza Destaques do Dia (Home Feed) com cópia embaralhada para dinamismo
-            const homeList = [...productsDatabase];
-            shuffleArray(homeList);
-            renderFeed('homeFeed', homeList);
-
-            // Menu de Categorias Dropdown
-            const megaBtn = document.getElementById('megaMenuBtn');
-            const megaPanel = document.getElementById('megaMenuPanel');
+            // Configuração do menu dropdown de categorias no topo
+            const megaMenuBtn = document.getElementById('megaMenuBtn');
+            const megaMenuPanel = document.getElementById('megaMenuPanel');
             const menuArrow = document.getElementById('menuArrow');
 
-            megaBtn.addEventListener('click', (e) => {
+            megaMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                megaPanel.classList.toggle('open');
-                megaBtn.classList.toggle('active');
-                if (megaPanel.classList.contains('open')) {
-                    menuArrow.style.transform = 'rotate(180deg)';
-                } else {
-                    menuArrow.style.transform = 'rotate(0deg)';
-                }
+                const isOpen = megaMenuPanel.classList.toggle('open');
+                megaMenuBtn.classList.toggle('active', isOpen);
+                menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
             });
 
             document.addEventListener('click', (e) => {
-                if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
-                    megaPanel.classList.remove('open');
-                    megaBtn.classList.remove('active');
+                if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
+                    megaMenuPanel.classList.remove('open');
+                    megaMenuBtn.classList.remove('active');
                     menuArrow.style.transform = 'rotate(0deg)';
                 }
             });
 
-            // Barra de Pesquisa global
+            // Barra de busca em tempo real
             const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    const query = searchInput.value.trim().toLowerCase();
-                    if (query) {
-                        currentSearchQuery = query;
-                        document.getElementById('searchTitle').innerText = `Resultados para: "${searchInput.value}"`;
-                        document.getElementById('filterStoreSearch').value = 'todas';
-                        document.getElementById('minPriceSearch').value = '';
-                        document.getElementById('maxPriceSearch').value = '';
-                        document.getElementById('sortSearch').value = 'recentes';
-
-                        const matched = productsDatabase.filter(p => 
-                            p.title.toLowerCase().includes(query) || 
-                            p.store.toLowerCase().includes(query) || 
-                            p.subcat.toLowerCase().includes(query)
-                        );
-                        renderFeed('searchFeed', matched);
-                        switchPage('searchPage');
-                    }
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                currentSearchQuery = query;
+                if (query.length > 0) {
+                    document.getElementById('searchTitle').innerText = `Resultados para: "${e.target.value}"`;
+                    document.getElementById('filterStoreSearch').value = 'todas';
+                    document.getElementById('minPriceSearch').value = '';
+                    document.getElementById('maxPriceSearch').value = '';
+                    document.getElementById('sortSearch').value = 'recentes';
+                    
+                    applySortingAndFiltering('search');
+                    switchPage('searchPage');
+                } else {
+                    switchPage('homePage');
                 }
             });
-        });
+        };
     </script>
 </body>
 </html>
-```[cite: 13]
