@@ -1303,7 +1303,7 @@
             </div>
 
             <div class="loja-cupom-card" onclick="openStoreCupons('Shopee')">
-                <div class="loja-logo-circle logo-shopee"><i class="fa-brands fa-bag-shopping"></i></div>
+                <div class="loja-logo-circle logo-shopee"><i class="fa-solid fa-bag-shopping"></i></div>
                 <span>Shopee</span>
             </div>
 
@@ -2105,6 +2105,15 @@
             return parseFloat(discountStr.replace('-', '').replace('%', '').trim()) || 0;
         }
 
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active-page');
+                window.scrollTo(0, 0);
+            }
+        }
+
         function toggleFilterPanel(panelId) {
             const panel = document.getElementById(panelId);
             if (panel) {
@@ -2212,6 +2221,66 @@
             if (targetGroup) targetGroup.classList.add('active');
         }
 
+        function openCategoryPage(subcatName) {
+            currentSubcatFilter = subcatName;
+            document.getElementById('categoryBreadcrumbName').innerText = subcatName;
+            document.getElementById('categoryTitle').innerText = subcatName;
+            
+            document.getElementById('filterStoreCategory').value = 'todas';
+            document.getElementById('minPriceCategory').value = '';
+            document.getElementById('maxPriceCategory').value = '';
+            document.getElementById('sortCategory').value = 'recentes';
+
+            applySortingAndFiltering('category');
+            switchPage('categoryPage');
+        }
+
+        function openProductDetail(productId) {
+            const prod = productsDatabase.find(p => p.id === productId);
+            if (!prod) return;
+
+            document.getElementById('detailBreadcrumbCat').innerText = prod.subcat;
+            document.getElementById('detailBreadcrumbTitle').innerText = prod.title;
+            document.getElementById('detailStore').innerText = prod.store;
+            document.getElementById('detailTitle').innerText = prod.title;
+            document.getElementById('detailImg').src = prod.images[0];
+            document.getElementById('detailBadge').innerText = prod.discount ? `${prod.discount} OFF` : '';
+            document.getElementById('detailOldPrice').innerText = prod.oldPrice ? `De: ${prod.oldPrice}` : '';
+            document.getElementById('detailCurrentPrice').innerText = prod.price;
+            document.getElementById('detailInstallments').innerText = prod.installments || '';
+            document.getElementById('detailAffiliateLink').href = prod.affiliateLink;
+            document.getElementById('detailRatingText').innerText = prod.rating || '';
+            document.getElementById('detailAbout').innerText = prod.about || '';
+
+            const specsTable = document.getElementById('detailSpecs');
+            specsTable.innerHTML = '';
+            if (prod.specs) {
+                for (const [key, value] of Object.entries(prod.specs)) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${key}</td><td>${value}</td>`;
+                    specsTable.appendChild(row);
+                }
+            }
+
+            const thumbContainer = document.getElementById('detailThumbnails');
+            thumbContainer.innerHTML = '';
+            if (prod.images && prod.images.length > 0) {
+                prod.images.forEach((imgSrc, idx) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = imgSrc;
+                    thumb.className = `thumb-img ${idx === 0 ? 'active' : ''}`;
+                    thumb.onclick = () => {
+                        document.getElementById('detailImg').src = imgSrc;
+                        document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    };
+                    thumbContainer.appendChild(thumb);
+                });
+            }
+
+            switchPage('productDetailPage');
+        }
+
         function openStoreCupons(storeName) {
             document.getElementById('storeBreadcrumbName').innerText = storeName;
             document.getElementById('storeCuponsTitle').innerText = `Cupons de Desconto - ${storeName}`;
@@ -2285,7 +2354,7 @@
             container.innerHTML = '';
             
             if (maisVendidos.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); padding: 10px;">Nenhum produto em destaque no momento.</p>';
+                document.querySelector('.mais-vendidos-wrapper').style.display = 'none';
                 return;
             }
 
@@ -2321,90 +2390,10 @@
             }
         }
 
-        function switchPage(pageId) {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
-            const target = document.getElementById(pageId);
-            if (target) {
-                target.classList.add('active-page');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            const megaMenu = document.getElementById('megaMenuPanel');
-            if (megaMenu) megaMenu.classList.remove('open');
-            const menuArrow = document.getElementById('menuArrow');
-            if (menuArrow) menuArrow.style.transform = 'rotate(0deg)';
-        }
-
-        function openCategoryPage(subcatName) {
-            currentSubcatFilter = subcatName;
-            document.getElementById('categoryBreadcrumbName').innerText = subcatName;
-            document.getElementById('categoryTitle').innerText = subcatName;
-            
-            document.getElementById('filterStoreCategory').value = 'todas';
-            document.getElementById('minPriceCategory').value = '';
-            document.getElementById('maxPriceCategory').value = '';
-            document.getElementById('sortCategory').value = 'recentes';
-            document.getElementById('categoryFilterPanel').classList.remove('open');
-
-            applySortingAndFiltering('category');
-            switchPage('categoryPage');
-        }
-
-        function openProductDetail(productId) {
-            const prod = productsDatabase.find(p => p.id === productId);
-            if (!prod) return;
-
-            document.getElementById('detailBreadcrumbCat').innerText = prod.subcat;
-            document.getElementById('detailBreadcrumbTitle').innerText = prod.title;
-            document.getElementById('detailStore').innerText = prod.store;
-            document.getElementById('detailTitle').innerText = prod.title;
-            document.getElementById('detailBadge').innerText = prod.discount ? `${prod.discount} OFF` : '';
-            document.getElementById('detailOldPrice').innerText = prod.oldPrice ? `De: ${prod.oldPrice}` : '';
-            document.getElementById('detailCurrentPrice').innerText = prod.price;
-            document.getElementById('detailInstallments').innerText = prod.installments || '';
-            document.getElementById('detailAbout').innerText = prod.about || '';
-            document.getElementById('detailAffiliateLink').href = prod.affiliateLink;
-
-            const ratingElem = document.getElementById('detailRatingText');
-            if (ratingElem) ratingElem.innerText = prod.rating || 'Sem avaliações';
-
-            const mainImg = document.getElementById('detailImg');
-            const thumbsContainer = document.getElementById('detailThumbnails');
-            thumbsContainer.innerHTML = '';
-
-            if (prod.images && prod.images.length > 0) {
-                mainImg.src = prod.images[0];
-                prod.images.forEach((imgUrl, index) => {
-                    const thumb = document.createElement('img');
-                    thumb.src = imgUrl;
-                    thumb.className = `thumb-img ${index === 0 ? 'active' : ''}`;
-                    thumb.onclick = () => {
-                        mainImg.src = imgUrl;
-                        document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                        thumb.classList.add('active');
-                    };
-                    thumbsContainer.appendChild(thumb);
-                });
-            }
-
-            const specsTable = document.getElementById('detailSpecs');
-            specsTable.innerHTML = '';
-            if (prod.specs) {
-                for (let [key, value] of Object.entries(prod.specs)) {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `<td>${key}</td><td>${value}</td>`;
-                    specsTable.appendChild(row);
-                }
-            }
-
-            switchPage('productDetailPage');
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
+        window.onload = function() {
             buildMegaMenu();
-
-            const shuffledHome = shuffleArray(productsDatabase);
-            renderFeed('homeFeed', shuffledHome);
             renderMaisVendidosCarousel();
+            renderFeed('homeFeed', shuffleArray(productsDatabase));
 
             const megaMenuBtn = document.getElementById('megaMenuBtn');
             const megaMenuPanel = document.getElementById('megaMenuPanel');
@@ -2413,37 +2402,36 @@
             megaMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 megaMenuPanel.classList.toggle('open');
-                const isOpen = megaMenuPanel.classList.contains('open');
-                menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+                megaMenuBtn.classList.toggle('active');
+                menuArrow.style.transform = megaMenuPanel.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
             });
 
             document.addEventListener('click', (e) => {
                 if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
                     megaMenuPanel.classList.remove('open');
+                    megaMenuBtn.classList.remove('active');
                     menuArrow.style.transform = 'rotate(0deg)';
                 }
             });
 
+            // CORREÇÃO DA PESQUISA AQUI
             const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    const query = searchInput.value.trim().toLowerCase();
-                    if (query) {
-                        currentSearchQuery = query;
-                        document.getElementById('searchTitle').innerText = `Resultados para: "${searchInput.value}"`;
-                        
-                        document.getElementById('filterStoreSearch').value = 'todas';
-                        document.getElementById('minPriceSearch').value = '';
-                        document.getElementById('maxPriceSearch').value = '';
-                        document.getElementById('sortSearch').value = 'recentes';
-                        document.getElementById('searchFilterPanel').classList.remove('open');
+            searchInput.addEventListener('input', function() {
+                currentSearchQuery = this.value.toLowerCase().trim();
+                document.getElementById('searchTitle').innerText = currentSearchQuery ? `Resultados para: "${this.value}"` : "Resultados da Pesquisa";
+                switchPage('searchPage');
+                applySortingAndFiltering('search');
+            });
 
-                        applySortingAndFiltering('search');
-                        switchPage('searchPage');
-                    }
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    currentSearchQuery = this.value.toLowerCase().trim();
+                    document.getElementById('searchTitle').innerText = currentSearchQuery ? `Resultados para: "${this.value}"` : "Resultados da Pesquisa";
+                    switchPage('searchPage');
+                    applySortingAndFiltering('search');
                 }
             });
-        });
+        };
     </script>
 </body>
 </html>
