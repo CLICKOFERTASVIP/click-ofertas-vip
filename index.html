@@ -2086,15 +2086,6 @@
             }
         ];
 
-        // Função de embaralhamento (Fisher-Yates Shuffle)
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
         function parsePrice(priceStr) {
             if (!priceStr) return 0;
             return parseFloat(priceStr.replace('R$', '').replace(/\./g, '').replace(',', '.').trim()) || 0;
@@ -2103,18 +2094,6 @@
         function parseDiscount(discountStr) {
             if (!discountStr) return 0;
             return parseFloat(discountStr.replace('-', '').replace('%', '').trim()) || 0;
-        }
-
-        function switchPage(pageId) {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
-            const target = document.getElementById(pageId);
-            if (target) {
-                target.classList.add('active-page');
-                window.scrollTo(0, 0);
-            }
-            document.getElementById('megaMenuPanel').classList.remove('open');
-            document.getElementById('megaMenuBtn').classList.remove('active');
-            document.getElementById('menuArrow').style.transform = 'rotate(0deg)';
         }
 
         function toggleFilterPanel(panelId) {
@@ -2215,196 +2194,224 @@
 
         function activateDesktopCategory(catId) {
             document.querySelectorAll('.mega-cat-item').forEach(i => i.classList.remove('active'));
-            const targetItem = document.querySelector(`.mega-cat-item[data-target="desktop-cat-${catId}"]`);
-            if (targetItem) targetItem.classList.add('active');
-
             document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+
+            const targetItem = document.querySelector(`[data-target="desktop-cat-${catId}"]`);
             const targetGroup = document.getElementById(`desktop-cat-${catId}`);
+
+            if (targetItem) targetItem.classList.add('active');
             if (targetGroup) targetGroup.classList.add('active');
-        }
-
-        function openCategoryPage(subcatName) {
-            currentSubcatFilter = subcatName;
-            document.getElementById('categoryBreadcrumbName').innerText = subcatName;
-            document.getElementById('categoryTitle').innerText = subcatName;
-            document.getElementById('filterStoreCategory').value = 'todas';
-            document.getElementById('minPriceCategory').value = '';
-            document.getElementById('maxPriceCategory').value = '';
-            document.getElementById('sortCategory').value = 'recentes';
-
-            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === subcatName.toLowerCase());
-            renderFeed('categoryFeed', filtered);
-            switchPage('categoryPage');
-        }
-
-        function renderFeed(containerId, list) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-
-            container.innerHTML = '';
-            if (list.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 30px;">Nenhum produto encontrado.</p>';
-                return;
-            }
-
-            list.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'card-oferta';
-                card.onclick = () => openProductDetail(p.id);
-
-                card.innerHTML = `
-                    <div class="badges-container">
-                        <span class="badge-desconto">${p.discount}</span>
-                    </div>
-                    <div class="img-container">
-                        <img src="${p.images[0]}" alt="${p.title}">
-                    </div>
-                    <div class="store-tag">${p.store}</div>
-                    <div class="card-title">${p.title}</div>
-                    <div class="price-section">
-                        <div class="old-price">${p.oldPrice}</div>
-                        <div class="current-price">${p.price}</div>
-                    </div>
-                    <a href="${p.affiliateLink}" target="_blank" class="btn-pegar" onclick="event.stopPropagation()">PEGAR OFERTA</a>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function openProductDetail(productId) {
-            const p = productsDatabase.find(item => item.id === productId);
-            if (!p) return;
-
-            document.getElementById('detailBreadcrumbCat').innerText = p.subcat;
-            document.getElementById('detailBreadcrumbTitle').innerText = p.title;
-            document.getElementById('detailStore').innerText = p.store;
-            document.getElementById('detailTitle').innerText = p.title;
-            document.getElementById('detailRatingText').innerText = p.rating;
-            document.getElementById('detailBadge').innerText = p.discount + ' OFF';
-            document.getElementById('detailOldPrice').innerText = 'De: ' + p.oldPrice;
-            document.getElementById('detailCurrentPrice').innerText = p.price;
-            document.getElementById('detailInstallments').innerText = p.installments;
-            document.getElementById('detailAbout').innerText = p.about;
-            document.getElementById('detailAffiliateLink').href = p.affiliateLink;
-
-            const mainImg = document.getElementById('detailImg');
-            mainImg.src = p.images[0];
-
-            const thumbsContainer = document.getElementById('detailThumbnails');
-            thumbsContainer.innerHTML = '';
-            p.images.forEach((imgUrl, index) => {
-                const thumb = document.createElement('img');
-                thumb.className = `thumb-img ${index === 0 ? 'active' : ''}`;
-                thumb.src = imgUrl;
-                thumb.onclick = (e) => {
-                    e.stopPropagation();
-                    mainImg.src = imgUrl;
-                    document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                };
-                thumbsContainer.appendChild(thumb);
-            });
-
-            const specsTable = document.getElementById('detailSpecs');
-            specsTable.innerHTML = '';
-            for (const [key, value] of Object.entries(p.specs)) {
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${key}</td><td>${value}</td>`;
-                specsTable.appendChild(row);
-            }
-
-            switchPage('productDetailPage');
-        }
-
-        function scrollCarousel(direction) {
-            const container = document.getElementById('maisVendidosFeed');
-            const scrollAmount = 300;
-            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
 
         function openStoreCupons(storeName) {
             document.getElementById('storeBreadcrumbName').innerText = storeName;
-            document.getElementById('storeCuponsTitle').innerText = 'Cupons da Loja: ' + storeName;
-
+            document.getElementById('storeCuponsTitle').innerText = `Cupons de Desconto - ${storeName}`;
+            
             const container = document.getElementById('listaCuponsContainer');
             container.innerHTML = '';
 
             const cupons = cuponsPorLoja[storeName] || [];
+
             if (cupons.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted);">Nenhum cupom disponível no momento para esta loja.</p>';
+                container.innerHTML = '<p style="color: var(--text-muted);">Nenhum cupom ativo no momento para esta loja.</p>';
             } else {
                 cupons.forEach(c => {
-                    const item = document.createElement('div');
-                    item.className = 'cupom-item-card';
-                    item.innerHTML = `
+                    const card = document.createElement('div');
+                    card.className = 'cupom-item-card';
+                    card.innerHTML = `
                         <div class="cupom-info">
                             <h4>${storeName}</h4>
                             <p>${c.desc}</p>
                         </div>
                         <div class="cupom-codigo-box">${c.codigo}</div>
-                        <a href="${c.link}" target="_blank" class="btn-pegar">USAR CUPOM NA LOJA</a>
+                        <a href="${c.link}" target="_blank" class="btn-pegar">Pegar cupom e ir para a loja</a>
                     `;
-                    container.appendChild(item);
+                    container.appendChild(card);
                 });
             }
 
             switchPage('storeCuponsPage');
         }
 
-        // Inicialização ao carregar a página
-        window.onload = function() {
-            // 1. Embaralha os produtos a cada atualização da página
-            shuffleArray(productsDatabase);
+        function renderFeed(containerId, items) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '';
+            
+            const activeItems = items.filter(p => p.ativo !== false);
 
-            // 2. Constrói o menu
+            if (activeItems.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">Nenhum produto encontrado com estes filtros.</p>';
+                return;
+            }
+
+            activeItems.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = 'card-oferta';
+                card.onclick = () => openProductDetail(prod.id);
+
+                card.innerHTML = `
+                    <div class="badges-container">
+                        ${prod.discount ? `<span class="badge-desconto">${prod.discount}</span>` : ''}
+                    </div>
+                    <div class="img-container">
+                        <img src="${prod.images[0]}" alt="${prod.title}">
+                    </div>
+                    <div class="store-tag">${prod.store}</div>
+                    <div class="card-title">${prod.title}</div>
+                    <div class="price-section">
+                        <div class="old-price">${prod.oldPrice || ''}</div>
+                        <div class="current-price">${prod.price}</div>
+                    </div>
+                    <a href="${prod.affiliateLink}" target="_blank" class="btn-pegar" onclick="event.stopPropagation()">Pegar Oferta</a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderMaisVendidosCarousel() {
+            const maisVendidos = productsDatabase.filter(p => p.maisVendido);
+            const container = document.getElementById('maisVendidosFeed');
+            if (!container) return;
+            
+            if (maisVendidos.length === 0) {
+                // Caso queira exibir produtos recentes caso não haja "mais vendidos" marcados explicitamente
+                renderFeed('maisVendidosFeed', productsDatabase.slice(0, 8));
+                return;
+            }
+            renderFeed('maisVendidosFeed', maisVendidos);
+        }
+
+        function scrollCarousel(direction) {
+            const container = document.getElementById('maisVendidosFeed');
+            if (container) {
+                const scrollAmount = 300 * direction;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active-page');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            document.getElementById('megaMenuPanel').classList.remove('open');
+            document.getElementById('megaMenuBtn').classList.remove('active');
+            document.getElementById('menuArrow').style.transform = 'rotate(0deg)';
+        }
+
+        function openCategoryPage(subcatName) {
+            currentSubcatFilter = subcatName;
+            document.getElementById('categoryBreadcrumbName').innerText = subcatName;
+            document.getElementById('categoryTitle').innerText = subcatName;
+            
+            // Resetar controles de filtro e ordenação da categoria
+            document.getElementById('filterStoreCategory').value = 'todas';
+            document.getElementById('minPriceCategory').value = '';
+            document.getElementById('maxPriceCategory').value = '';
+            document.getElementById('sortCategory').value = 'recentes';
+            document.getElementById('categoryFilterPanel').classList.remove('open');
+
+            applySortingAndFiltering('category');
+            switchPage('categoryPage');
+        }
+
+        function openProductDetail(productId) {
+            const prod = productsDatabase.find(p => p.id === productId);
+            if (!prod) return;
+
+            document.getElementById('detailBreadcrumbCat').innerText = prod.subcat;
+            document.getElementById('detailBreadcrumbTitle').innerText = prod.title;
+            document.getElementById('detailStore').innerText = prod.store;
+            document.getElementById('detailTitle').innerText = prod.title;
+            document.getElementById('detailBadge').innerText = prod.discount ? `${prod.discount} OFF` : '';
+            document.getElementById('detailOldPrice').innerText = prod.oldPrice ? `De: ${prod.oldPrice}` : '';
+            document.getElementById('detailCurrentPrice').innerText = prod.price;
+            document.getElementById('detailInstallments').innerText = prod.installments || '';
+            document.getElementById('detailAbout').innerText = prod.about || 'Sem descrição detalhada.';
+            document.getElementById('detailAffiliateLink').href = prod.affiliateLink;
+
+            const mainImg = document.getElementById('detailImg');
+            const thumbsContainer = document.getElementById('detailThumbnails');
+            thumbsContainer.innerHTML = '';
+
+            if (prod.images && prod.images.length > 0) {
+                mainImg.src = prod.images[0];
+                prod.images.forEach((imgUrl, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.className = `thumb-img ${index === 0 ? 'active' : ''}`;
+                    thumb.src = imgUrl;
+                    thumb.onclick = () => {
+                        mainImg.src = imgUrl;
+                        document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    };
+                    thumbsContainer.appendChild(thumb);
+                });
+            } else {
+                mainImg.src = '';
+            }
+
+            const specsTable = document.getElementById('detailSpecs');
+            specsTable.innerHTML = '';
+            if (prod.specs) {
+                for (let [key, val] of Object.entries(prod.specs)) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${key}</td><td>${val}</td>`;
+                    specsTable.appendChild(row);
+                }
+            }
+
+            switchPage('productDetailPage');
+        }
+
+        // Inicialização dos Eventos e Componentes
+        document.addEventListener('DOMContentLoaded', () => {
             buildMegaMenu();
-
-            // 3. Renderiza o Feed principal (Destaques do Dia)
             renderFeed('homeFeed', productsDatabase);
+            renderMaisVendidosCarousel();
 
-            // 4. Renderiza os Mais Vendidos corrigindo o parâmetro para filtrar estritamente p.maisVendido === true
-            const maisVendidosList = productsDatabase.filter(p => p.maisVendido === true);
-            renderFeed('maisVendidosFeed', maisVendidosList);
-
-            // Configuração do menu dropdown de categorias no topo
-            const megaMenuBtn = document.getElementById('megaMenuBtn');
-            const megaMenuPanel = document.getElementById('megaMenuPanel');
+            const megaBtn = document.getElementById('megaMenuBtn');
+            const megaPanel = document.getElementById('megaMenuPanel');
             const menuArrow = document.getElementById('menuArrow');
 
-            megaMenuBtn.addEventListener('click', (e) => {
+            megaBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const isOpen = megaMenuPanel.classList.toggle('open');
-                megaMenuBtn.classList.toggle('active', isOpen);
+                const isOpen = megaPanel.classList.toggle('open');
+                megaBtn.classList.toggle('active', isOpen);
                 menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
             });
 
             document.addEventListener('click', (e) => {
-                if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
-                    megaMenuPanel.classList.remove('open');
-                    megaMenuBtn.classList.remove('active');
+                if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
+                    megaPanel.classList.remove('open');
+                    megaBtn.classList.remove('active');
                     menuArrow.style.transform = 'rotate(0deg)';
                 }
             });
 
-            // Barra de busca em tempo real
             const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                currentSearchQuery = query;
-                if (query.length > 0) {
-                    document.getElementById('searchTitle').innerText = `Resultados para: "${e.target.value}"`;
-                    document.getElementById('filterStoreSearch').value = 'todas';
-                    document.getElementById('minPriceSearch').value = '';
-                    document.getElementById('maxPriceSearch').value = '';
-                    document.getElementById('sortSearch').value = 'recentes';
-                    
-                    applySortingAndFiltering('search');
-                    switchPage('searchPage');
-                } else {
-                    switchPage('homePage');
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const query = searchInput.value.trim().toLowerCase();
+                    if (query) {
+                        currentSearchQuery = query;
+                        document.getElementById('searchTitle').innerText = `Resultados para: "${searchInput.value}"`;
+                        
+                        document.getElementById('filterStoreSearch').value = 'todas';
+                        document.getElementById('minPriceSearch').value = '';
+                        document.getElementById('maxPriceSearch').value = '';
+                        document.getElementById('sortSearch').value = 'recentes';
+                        document.getElementById('searchFilterPanel').classList.remove('open');
+
+                        applySortingAndFiltering('search');
+                        switchPage('searchPage');
+                    }
                 }
             });
-        };
+        });
     </script>
 </body>
 </html>
