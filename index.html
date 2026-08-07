@@ -792,7 +792,6 @@
     </div>
 
     <script>
-        // Banco de dados com a propriedade 'ativo: true/false' para desativar links caídos
         let productsDatabase = [
             {
                 id: 'combo-gamer-4-em-1-mts-nightmare-snow',
@@ -804,7 +803,7 @@
                 discount: '-18%',
                 installments: 'Em até 5x de R$ 31,11 sem juros',
                 affiliateLink: 'https://link.amazon/B0a7GkLaz',
-                ativo: true, // Mude para 'false' caso o link caia e deseje ocultá-lo automaticamente
+                ativo: true,
                 images: [
                     'https://m.media-amazon.com/images/I/51UgM99EyML._AC_.jpg',
                     'https://m.media-amazon.com/images/I/41uTaxx6zmL._AC_.jpg'
@@ -823,7 +822,7 @@
                 discount: '-31%',
                 installments: 'Em até 10x de R$ 318,90 sem juros',
                 affiliateLink: 'https://magazineluiza.onelink.me/589508454/c0d8u826',
-                ativo: true, // Mude para 'false' caso o link caia e deseje ocultá-lo automaticamente
+                ativo: true,
                 images: [
                     'https://a-static.mlcdn.com.br/1500x1500/geladeira-refrigerador-consul-smart-frost-free-inox-duplex-377l-crm44mkana/magazineluiza/240425200/46bacfe5ca0279c7f5eabfacee0ad762.jpg'
                 ],
@@ -887,7 +886,8 @@
 
             categoriesData.forEach((cat, index) => {
                 const itemDiv = document.createElement('div');
-                itemDiv.className = `mega-cat-item ${index === 0 ? 'active' : ''}`;
+                // Mantém a classe 'active' apenas no desktop para o primeiro item, mas no mobile tratamos via CSS/JS para iniciar fechado
+                itemDiv.className = `mega-cat-item ${index === 0 && window.innerWidth > 768 ? 'active' : ''}`;
                 itemDiv.setAttribute('data-target', `desktop-cat-${cat.id}`);
 
                 itemDiv.innerHTML = `
@@ -948,7 +948,6 @@
             if (!container) return;
             container.innerHTML = '';
             
-            // Filtra somente os produtos que estão com o link ativo (ignora os inativos/offline)
             const activeItems = items.filter(p => p.ativo !== false);
 
             if (activeItems.length === 0) {
@@ -978,7 +977,6 @@
             });
         }
 
-        // Função para embaralhar aleatoriamente os produtos na Home Page
         function shuffleArray(array) {
             let arr = [...array];
             for (let i = arr.length - 1; i > 0; i--) {
@@ -989,7 +987,6 @@
         }
 
         function renderHomeFeed() {
-            // Aplica a rotação/embaralhamento na listagem inicial da home
             const shuffledProducts = shuffleArray(productsDatabase);
             renderFeed('homeFeed', shuffledProducts);
         }
