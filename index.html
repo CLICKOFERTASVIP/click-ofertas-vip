@@ -173,8 +173,9 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            max-height: 520px;
-            overflow-y: auto;
+            /* Removido o limite de altura e scroll no desktop */
+            max-height: none;
+            overflow-y: visible;
         }
 
         .mega-cat-item {
@@ -216,8 +217,9 @@
             flex: 1;
             padding: 25px;
             background: #18181c;
-            max-height: 520px;
-            overflow-y: auto;
+            /* Removido o limite de altura e scroll no desktop */
+            max-height: none;
+            overflow-y: visible;
         }
 
         .subcat-group {
@@ -679,7 +681,10 @@
                 overflow-y: auto;
             }
 
-            .mega-sidebar { width: 100%; max-height: none; border-right: none; padding: 4px; }
+            /* Mantém o comportamento original com rolagem funcional apenas no mobile */
+            .mega-sidebar { width: 100%; max-height: none; border-right: none; padding: 4px; overflow-y: visible; }
+            .mega-content { max-height: none; overflow-y: visible; }
+
             .mega-cat-item { display: flex; flex-direction: column; align-items: stretch; padding: 0; background: #15151a; border-bottom: 1px solid #22222d; border-radius: 0; }
             .mega-cat-item > .cat-icon-circle, .mega-cat-item > span:not(.mega-cat-header-mobile) { display: none !important; }
 
