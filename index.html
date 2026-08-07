@@ -101,9 +101,7 @@
             transition: border-color 0.2s;
         }
 
-        .search-bar input:focus {
-            border-color: var(--primary);
-        }
+        .search-bar input:focus { border-color: var(--primary); }
 
         .search-bar i {
             position: absolute;
@@ -150,7 +148,7 @@
             border-color: var(--primary);
         }
 
-        /* Mega Menu Estilizado e Robusto */
+        /* Mega Menu Padrão Desktop / Sanfonado Mobile */
         .mega-menu-panel {
             display: none;
             position: absolute;
@@ -365,9 +363,7 @@
             transition: border-color 0.2s;
         }
 
-        .thumb-img:hover, .thumb-img.active {
-            border-color: var(--primary);
-        }
+        .thumb-img:hover, .thumb-img.active { border-color: var(--primary); }
 
         .store-tag {
             font-size: 11px;
@@ -421,11 +417,7 @@
             padding: 30px;
         }
 
-        .detail-gallery {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .detail-gallery { display: flex; flex-direction: column; gap: 15px; }
 
         .main-img-box {
             background: #ffffff;
@@ -512,7 +504,7 @@
 
         .btn-buy-now:hover { transform: scale(1.02); background: #e68a00; }
 
-        /* Ajustes Mobile Responsivo Corrigidos */
+        /* Estilo Sanfonado / Acordeão Ajustado para Mobile */
         @media (max-width: 768px) {
             .header-container { flex-direction: column; gap: 12px; padding: 10px 15px; }
             .search-bar { width: 100%; max-width: 100%; }
@@ -522,7 +514,7 @@
                 flex-direction: column;
                 width: calc(100vw - 20px);
                 left: 10px;
-                max-height: 70vh;
+                max-height: 75vh;
                 overflow-y: auto;
             }
 
@@ -530,28 +522,53 @@
                 width: 100%;
                 max-height: none;
                 border-right: none;
-                padding: 6px;
+                padding: 4px;
             }
-
-            .mega-content {
-                padding: 15px;
-                background: #121216;
-                max-height: none;
-            }
-
-            .subcat-group {
-                display: none;
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .subcat-group.active { display: flex; flex-direction: column; }
 
             .mega-cat-item {
-                justify-content: space-between;
-                border-bottom: 1px solid #1f1f28;
-                border-radius: 6px;
-                padding: 10px 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0;
+                background: #15151a;
+                border-bottom: 1px solid #22222d;
+                border-radius: 0;
+            }
+
+            /* Cabeçalho clicável do item sanfonado */
+            .mega-cat-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 12px;
+                width: 100%;
+                cursor: pointer;
+            }
+
+            .mega-cat-item.active .mega-cat-header {
+                background: #252530;
+            }
+
+            /* Container dos subitens que abre/fecha */
+            .mega-content-mobile {
+                display: none;
+                padding: 10px 15px 15px 55px;
+                background: #101014;
+            }
+
+            .mega-cat-item.active .mega-content-mobile {
+                display: block;
+            }
+
+            /* Oculta o painel lateral padrão do desktop no mobile */
+            .mega-content { display: none !important; }
+
+            .subcat-group {
+                display: block !important;
+            }
+
+            .subcat-column {
+                margin-bottom: 12px;
             }
 
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
@@ -596,47 +613,13 @@
             </button>
 
             <div class="mega-menu-panel" id="megaMenuPanel">
-                <div class="mega-sidebar">
-                    <div class="mega-cat-item" data-target="cat-eletronicos">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                        <span>Smartphones, Eletrônicos e TV</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-informatica">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-gamepad"></i></div>
-                        <span>Informática e Games</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-casa">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-couch"></i></div>
-                        <span>Casa e Eletrodomésticos</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-moda">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-shirt"></i></div>
-                        <span>Moda e Beleza</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-esporte">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-dumbbell"></i></div>
-                        <span>Esporte e Lazer</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-bebes">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-baby"></i></div>
-                        <span>Bebês e Brinquedos</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-ferramentas">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-wrench"></i></div>
-                        <span>Ferramentas e Construção</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-automotivo">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-car"></i></div>
-                        <span>Automotivo</span>
-                    </div>
-                    <div class="mega-cat-item" data-target="cat-supermercado">
-                        <div class="cat-icon-circle"><i class="fa-solid fa-cart-shopping"></i></div>
-                        <span>Supermercado e Bebidas</span>
-                    </div>
+                <div class="mega-sidebar" id="megaSidebarContainer">
+                    <!-- Itens gerados dinamicamente para suportar o sanfonado no mobile e o layout padrão no desktop -->
                 </div>
 
-                <div class="mega-content">
-                    <div class="subcat-group" id="cat-eletronicos">
+                <!-- Conteúdo original para desktop -->
+                <div class="mega-content" id="megaContentDesktop">
+                    <div class="subcat-group" id="desktop-cat-eletronicos">
                         <div class="subcat-column">
                             <h4>Celulares e Telefonia</h4>
                             <a onclick="openCategoryPage('Smartphones Android')">Smartphones Android</a>
@@ -656,153 +639,60 @@
                             <a onclick="openCategoryPage('Fones de Ouvido')">Fone de Ouvido Bluetooth</a>
                             <a onclick="openCategoryPage('Caixas de Som')">Caixas de Som Portáteis</a>
                             <a onclick="openCategoryPage('Microfones')">Microfones</a>
-                            <a onclick="openCategoryPage('Câmeras')">Câmeras e Filmadora</a>
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-informatica">
+                    <div class="subcat-group" id="desktop-cat-informatica">
                         <div class="subcat-column">
                             <h4>Informática Geral</h4>
                             <a onclick="openCategoryPage('Notebooks')">Notebooks e Laptops</a>
                             <a onclick="openCategoryPage('Desktops')">Desktops e PC Gamer</a>
                             <a onclick="openCategoryPage('Monitores')">Monitores</a>
-                            <a onclick="openCategoryPage('Tablets')">Tablets e Acessórios</a>
                         </div>
                         <div class="subcat-column">
                             <h4>Periféricos e Hardware</h4>
-                            <a onclick="openCategoryPage('Mouses e Teclados')">Mouses</a>
+                            <a onclick="openCategoryPage('Mouses')">Mouses</a>
                             <a onclick="openCategoryPage('Teclados')">Teclados</a>
                             <a onclick="openCategoryPage('Placas de Vídeo')">Placas de Vídeo</a>
-                            <a onclick="openCategoryPage('Processadores')">Processadores</a>
-                            <a onclick="openCategoryPage('SSDs')">HDs e SSDs Internos/Externos</a>
-                            <a onclick="openCategoryPage('Roteadores')">Roteadores e Redes</a>
+                            <a onclick="openCategoryPage('SSDs')">HDs e SSDs</a>
                         </div>
                         <div class="subcat-column">
                             <h4>Mundo Gamer</h4>
                             <a onclick="openCategoryPage('Consoles')">Consoles (PS5, Xbox, Switch)</a>
-                            <a onclick="openCategoryPage('Jogos')">Jogos e Mídias Físicas</a>
                             <a onclick="openCategoryPage('Cadeiras Gamers')">Cadeiras Gamers</a>
-                            <a onclick="openCategoryPage('Controles')">Controles e Volantes</a>
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-casa">
+                    <div class="subcat-group" id="desktop-cat-casa">
                         <div class="subcat-column">
                             <h4>Eletrodomésticos</h4>
                             <a onclick="openCategoryPage('Geladeiras e Freezers')">Geladeiras e Freezers</a>
-                            <a onclick="openCategoryPage('Lavadoras')">Máquinas de Lavar e Secar</a>
-                            <a onclick="openCategoryPage('Fogões')">Fogões e Cooktops</a>
-                            <a onclick="openCategoryPage('Ar-Condicionado')">Ar-Condicionado e Ventiladores</a>
+                            <a onclick="openCategoryPage('Lavadoras')">Máquinas de Lavar</a>
+                            <a onclick="openCategoryPage('Ar-Condicionado')">Ar-Condicionado</a>
                         </div>
                         <div class="subcat-column">
                             <h4>Eletroportáteis</h4>
-                            <a onclick="openCategoryPage('Air Fryers')">Air Fryers e Fritadeiras</a>
-                            <a onclick="openCategoryPage('Fornos de Micro-Ondas')">Fornos de Micro-Ondas</a>
-                            <a onclick="openCategoryPage('Sanduicheiras')">Sanduicheiras e Grill</a>
-                            <a onclick="openCategoryPage('Aspiradores')">Aspiradores e Robôs</a>
-                            <a onclick="openCategoryPage('Cafeteiras')">Cafeteiras Elétricas</a>
-                            <a onclick="openCategoryPage('Liquidificadores')">Liquidificadores e Batedeiras</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Móveis e Decoração</h4>
-                            <a onclick="openCategoryPage('Sofás')">Sofás e Poltronas</a>
-                            <a onclick="openCategoryPage('Camas')">Camas e Colchões</a>
-                            <a onclick="openCategoryPage('Iluminação')">Iluminação e Lâmpadas Smart</a>
-                            <a onclick="openCategoryPage('Organização')">Organização da Casa</a>
+                            <a onclick="openCategoryPage('Air Fryers')">Air Fryers</a>
+                            <a onclick="openCategoryPage('Micro-Ondas')">Micro-Ondas</a>
+                            <a onclick="openCategoryPage('Aspiradores')">Aspiradores</a>
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-moda">
+                    <div class="subcat-group" id="desktop-cat-moda">
                         <div class="subcat-column">
-                            <h4>Moda Masculina e Feminina</h4>
+                            <h4>Moda e Beleza</h4>
                             <a onclick="openCategoryPage('Roupas')">Roupas e Camisetas</a>
-                            <a onclick="openCategoryPage('Calçados')">Tênis e Sapatos</a>
-                            <a onclick="openCategoryPage('Acessórios de Moda')">Relógios e Óculos</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Perfumaria e Cosméticos</h4>
-                            <a onclick="openCategoryPage('Perfumes')">Perfumes Importados e Nacionais</a>
-                            <a onclick="openCategoryPage('Maquiagem')">Maquiagem e Skincare</a>
-                            <a onclick="openCategoryPage('Cabelos')">Cuidado com os Cabelos</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Cuidados Pessoais</h4>
-                            <a onclick="openCategoryPage('Barbeadores')">Barbeadores e Aparadores</a>
-                            <a onclick="openCategoryPage('Secadores')">Secadores e Pranchas</a>
-                            <a onclick="openCategoryPage('Higiene')">Higiene Pessoal</a>
+                            <a onclick="openCategoryPage('Perfumes')">Perfumes</a>
                         </div>
                     </div>
 
-                    <div class="subcat-group" id="cat-esporte">
+                    <div class="subcat-group" id="desktop-cat-esporte">
                         <div class="subcat-column">
-                            <h4>Fitness e Musculação</h4>
+                            <h4>Esporte e Lazer</h4>
                             <a onclick="openCategoryPage('Suplementos')">Suplementos e Whey Protein</a>
-                            <a onclick="openCategoryPage('Equipamentos')">Halteres e Elásticos</a>
-                            <a onclick="openCategoryPage('Roupas Esportivas')">Roupas de Academia</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Ciclismo e Mobilidade</h4>
-                            <a onclick="openCategoryPage('Bicicletas')">Bicicletas e Acessórios</a>
-                            <a onclick="openCategoryPage('Patinetes')">Patinetes Elétricos</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Camping e Lazer</h4>
-                            <a onclick="openCategoryPage('Barracas')">Barracas e Mochilas</a>
-                            <a onclick="openCategoryPage('Garrafas')">Garrafas e Copos Térmicos</a>
+                            <a onclick="openCategoryPage('Bicicletas')">Bicicletas</a>
                         </div>
                     </div>
-
-                    <div class="subcat-group" id="cat-bebes">
-                        <div class="subcat-column">
-                            <h4>Mundo Bebê</h4>
-                            <a onclick="openCategoryPage('Fraldas')">Fraldas e Lencinhos</a>
-                            <a onclick="openCategoryPage('Carrinhos')">Carrinhos de Bebê e Cadeirinhas</a>
-                            <a onclick="openCategoryPage('Alimentação Bebê')">Mamadeiras e Chupetas</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Brinquedos e Jogos</h4>
-                            <a onclick="openCategoryPage('Bonecos')">Bonecos e Action Figures</a>
-                            <a onclick="openCategoryPage('Lego')">Lego e Blocos de Montar</a>
-                            <a onclick="openCategoryPage('Jogos de Tabuleiro')">Jogos de Tabuleiro</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-ferramentas">
-                        <div class="subcat-column">
-                            <h4>Ferramentas Elétricas</h4>
-                            <a onclick="openCategoryPage('Furadeiras e Parafusadeiras')">Furadeiras e Parafusadeiras</a>
-                            <a onclick="openCategoryPage('Serras')">Serras e Lixadeiras</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Manuais e Organização</h4>
-                            <a onclick="openCategoryPage('Maletas de Ferramentas')">Maletas de Ferramentas</a>
-                            <a onclick="openCategoryPage('Kits Ferramentas')">Kits de Chaves e Alicates</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-automotivo">
-                        <div class="subcat-column">
-                            <h4>Acessórios Automotivos</h4>
-                            <a onclick="openCategoryPage('Som Automotivo')">Som e Central Multimídia</a>
-                            <a onclick="openCategoryPage('Pneus')">Pneus e Rodas</a>
-                            <a onclick="openCategoryPage('Manutenção Auto')">Óleos e Limpeza Automotiva</a>
-                        </div>
-                    </div>
-
-                    <div class="subcat-group" id="cat-supermercado">
-                        <div class="subcat-column">
-                            <h4>Alimentos e Bebidas</h4>
-                            <a onclick="openCategoryPage('Café e Chá')">Café, Chás e Cápsulas</a>
-                            <a onclick="openCategoryPage('Chocolates')">Chocolates e Doces</a>
-                            <a onclick="openCategoryPage('Bebidas Alcoólicas')">Cervejas, Vinhos e Destilados</a>
-                        </div>
-                        <div class="subcat-column">
-                            <h4>Limpeza da Casa</h4>
-                            <a onclick="openCategoryPage('Sabão em Pó')">Sabão em Pó e Amaciante</a>
-                            <a onclick="openCategoryPage('Detergentes')">Detergentes e Desinfetantes</a>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -896,7 +786,7 @@
                 id: 'combo-gamer-4-em-1-mts-nightmare-snow',
                 title: 'Combo GAMER 4 em 1 MTS, Nightmare Snow • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer Branco',
                 store: 'Amazon',
-                subcat: 'Kits de Teclado e Mouse',
+                subcat: 'Teclados',
                 oldPrice: 'R$ 180,00',
                 price: 'R$ 147,73',
                 discount: '-18%',
@@ -929,22 +819,116 @@
             }
         ];
 
-        async function checkExpiredProducts() {
-            const validProducts = [];
-            for (let prod of productsDatabase) {
-                let isValid = true;
-                if (prod.images && prod.images.length > 0) {
-                    try {
-                        await fetch(prod.images[0], { method: 'HEAD', mode: 'no-cors' });
-                    } catch (e) {
-                        // Se falhar a checagem da imagem, removemos do feed para não quebrar o layout
-                        isValid = false;
-                    }
-                }
-                if (isValid) validProducts.push(prod);
+        // Estrutura das categorias para alimentar dinamicamente tanto o desktop quanto o mobile sanfonado
+        const categoriesData = [
+            {
+                id: 'eletronicos',
+                icon: 'fa-mobile-screen-button',
+                name: 'Smartphones, Eletrônicos e TV',
+                subcats: [
+                    { title: 'Celulares e Telefonia', items: ['Smartphones Android', 'iPhones / iOS', 'Smartwatches', 'Acessórios para Celular'] },
+                    { title: 'TV e Vídeo', items: ['Smart TVs', 'Projetores', 'TV Box', 'Soundbar'] },
+                    { title: 'Áudio', items: ['Fones de Ouvido', 'Caixas de Som', 'Microfones'] }
+                ]
+            },
+            {
+                id: 'informatica',
+                icon: 'fa-gamepad',
+                name: 'Informática e Games',
+                subcats: [
+                    { title: 'Informática Geral', items: ['Notebooks', 'Desktops', 'Monitores'] },
+                    { title: 'Periféricos', items: ['Mouses', 'Teclados', 'Placas de Vídeo', 'SSDs'] },
+                    { title: 'Mundo Gamer', items: ['Consoles', 'Cadeiras Gamers'] }
+                ]
+            },
+            {
+                id: 'casa',
+                icon: 'fa-couch',
+                name: 'Casa e Eletrodomésticos',
+                subcats: [
+                    { title: 'Eletrodomésticos', items: ['Geladeiras e Freezers', 'Lavadoras', 'Ar-Condicionado'] },
+                    { title: 'Eletroportáteis', items: ['Air Fryers', 'Micro-Ondas', 'Aspiradores'] }
+                ]
+            },
+            {
+                id: 'moda',
+                icon: 'fa-shirt',
+                name: 'Moda e Beleza',
+                subcats: [
+                    { title: 'Moda e Beleza', items: ['Roupas', 'Perfumes'] }
+                ]
+            },
+            {
+                id: 'esporte',
+                icon: 'fa-dumbbell',
+                name: 'Esporte e Lazer',
+                subcats: [
+                    { title: 'Esporte', items: ['Suplementos', 'Bicicletas'] }
+                ]
             }
-            productsDatabase = validProducts;
-            renderHomeFeed();
+        ];
+
+        function buildMegaMenu() {
+            const sidebarContainer = document.getElementById('megaSidebarContainer');
+            sidebarContainer.innerHTML = '';
+
+            categoriesData.forEach((cat, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `mega-cat-item ${index === 0 ? 'active' : ''}`;
+                itemDiv.setAttribute('data-target', `desktop-cat-${cat.id}`);
+
+                // HTML interno adaptado para o clique sanfonado no mobile e hover no desktop
+                itemDiv.innerHTML = `
+                    <div class="mega-cat-header" onclick="toggleMobileAccordion(this)">
+                        <div class="cat-icon-circle"><i class="fa-solid ${cat.icon}"></i></div>
+                        <span style="flex:1;">${cat.name}</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 11px; color: var(--text-muted); display: none;" id="chev-${cat.id}"></i>
+                    </div>
+                    <div class="mega-content-mobile">
+                        ${cat.subcats.map(sub => `
+                            <div class="subcat-column">
+                                <h4>${sub.title}</h4>
+                                ${sub.items.map(subItem => `<a onclick="openCategoryPage('${subItem}')">${subItem}</a>`).join('')}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                // Eventos para Desktop (Hover)
+                itemDiv.addEventListener('mouseenter', () => {
+                    if (window.innerWidth > 768) {
+                        activateDesktopCategory(cat.id);
+                    }
+                });
+
+                sidebarContainer.appendChild(itemDiv);
+            });
+        }
+
+        function toggleMobileAccordion(headerEl) {
+            if (window.innerWidth <= 768) {
+                const parentItem = headerEl.parentElement;
+                const wasActive = parentItem.classList.contains('active');
+                
+                // Fecha todos no mobile
+                document.querySelectorAll('.mega-cat-item').forEach(i => i.classList.remove('active'));
+                
+                // Se não estava ativo, abre este
+                if (!wasActive) {
+                    parentItem.classList.add('active');
+                }
+            }
+        }
+
+        function activateDesktopCategory(catId) {
+            document.querySelectorAll('.mega-cat-item').forEach(i => i.classList.remove('active'));
+            document.querySelectorAll('.subcat-group').forEach(g => g.classList.remove('active'));
+
+            const targetItem = document.querySelector(`[data-target="desktop-cat-${catId}"]`);
+            const targetGroup = document.getElementById(`desktop-cat-${catId}`);
+
+            if (targetItem) targetItem.classList.add('active');
+            if (targetGroup) targetGroup.classList.add('active');
         }
 
         function renderFeed(containerId, items) {
@@ -1007,7 +991,6 @@
             document.getElementById(pageId).classList.add('active-page');
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            // Fecha o menu mobile ao trocar de página
             document.getElementById('megaMenuPanel').classList.remove('open');
             document.getElementById('megaMenuBtn').classList.remove('active');
         }
@@ -1076,37 +1059,9 @@
             }
         });
 
-        const catItems = document.querySelectorAll('.mega-cat-item');
-        const subcatGroups = document.querySelectorAll('.subcat-group');
-
-        catItems.forEach(item => {
-            // Suporte para Hover no Desktop e Click no Mobile
-            item.addEventListener('mouseenter', () => {
-                if (window.innerWidth > 768) {
-                    activateCategory(item);
-                }
-            });
-            
-            item.addEventListener('click', (e) => {
-                e.stopPropagation();
-                activateCategory(item);
-            });
-        });
-
-        function activateCategory(item) {
-            catItems.forEach(i => i.classList.remove('active'));
-            subcatGroups.forEach(g => g.classList.remove('active'));
-            
-            item.classList.add('active');
-            const targetId = item.getAttribute('data-target');
-            const targetGroup = document.getElementById(targetId);
-            if (targetGroup) targetGroup.classList.add('active');
-        }
-
-        if (catItems.length > 0) activateCategory(catItems[0]);
-
         window.onload = () => {
-            checkExpiredProducts();
+            buildMegaMenu();
+            renderHomeFeed();
         };
     </script>
 </body>
