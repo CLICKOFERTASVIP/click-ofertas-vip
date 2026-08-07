@@ -677,7 +677,7 @@
             
             <div class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" placeholder="Buscar produto, marca ou loja...">
+                <input type="text" placeholder="Buscar produto, marca ou loja...">
             </div>
         </div>
     </header>
@@ -767,7 +767,8 @@
                         </div>
                         <div class="subcat-column">
                             <h4>Periféricos e Hardware</h4>
-                            <a onclick="openCategoryPage('Mouses')">Mouses</a>
+                            <a onclick="openCategoryPage('Mouses e Teclados')">Mouses e Teclados</a>
+                            <a onclick="openCategoryPage('Placas de Vídeo')">Placas de Vídeo e Processadores</a>
                             <a onclick="openCategoryPage('SSDs')">HDs e SSDs Internos/Externos</a>
                             <a onclick="openCategoryPage('Roteadores')">Roteadores e Redes</a>
                         </div>
@@ -1009,381 +1010,11 @@
 
     <script>
         const productsDatabase = [
-
-            {
-        id: 'combo-gamer-4-em-1-mts-nightmare-snow',
-        title: 'Combo GAMER 4 em 1 MTS, Nightmare Snow • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer Branco',
-        store: 'Amazon',
-        subcat: 'Kits de Teclado e Mouse',
-        oldPrice: 'R$ 180,00',
-        price: 'R$ 147,73',
-        discount: '-18%',
-        installments: 'Em até 5x de R$ 31,11 sem juros',
-        affiliateLink: 'https://link.amazon/B0a7GkLaz',
-        images: [
-            'https://m.media-amazon.com/images/I/51UgM99EyML._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41uTaxx6zmL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/517SuIqVyHL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/71jQnK0cSRL._AC_SL1254_.jpg',
-            'https://m.media-amazon.com/images/I/71j+8ZuYsgL._AC_SL1254_.jpg',
-            'https://m.media-amazon.com/images/I/61iYkQr7NNL._AC_SL1254_.jpg',
-            'https://m.media-amazon.com/images/I/71orKPQ1jXL._AC_SL1254_.jpg',
-            'https://m.media-amazon.com/images/I/51JUKJ2u3-L._AC_.jpg'
-        ],
-        rating: '5,0 (7 avaliações)',
-        specs: {
-            'Marca': 'Genérico',
-            'Cor': 'BRANCO',
-            'Tecnologia de Conectividade': 'Usb',
-            'Característica Especial': 'Emborrachado, Ergonômico, Mouse 3600 Dpi, Retrilluminado, Stereo'
-        },
-        about: 'Combo gamer completo 4 em 1 na cor branca contendo teclado ABNT2 com iluminação LED Rainbow, mouse de alta performance com até 3600 DPI, headset estéreo com microfone e mousepad antiderrapante.'
-    },
-    {
-        id: 'kit-gamer-mouse-e-teclado-clanm-walker-v2',
-        title: 'Kit Gamer Mouse e Teclado Clanm Walker V2 RGB 60% + Slits V2 DPI 7200 RGB 12 modos',
-        store: 'Amazon',
-        subcat: 'Kits de Teclado e Mouse',
-        oldPrice: 'R$ 180,00',
-        price: 'R$ 147,22',
-        discount: '-18%',
-        installments: 'Em até 5x de R$ 31,01 sem juros',
-        affiliateLink: 'https://link.amazon/B0bX8fs1J',
-        images: [
-            'https://m.media-amazon.com/images/I/511thUojzXL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41LtW8QUayL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/418UsheJ4pL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41-75M5fpzL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41EvSbxQ7KL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/412C+7NDg9L._AC_.jpg'
-        ],
-        rating: '5,0 (3 avaliações)',
-        specs: {
-            'Marca': 'cartucho fácil',
-            'Cor': 'Branco',
-            'Peso do Produto': '970 Gramas',
-            'Precisa de baterias?': 'Não'
-        },
-        about: 'Kit gamer Clanm com teclado mecânico 60% (63 teclas) com switch red silencioso e layout ABNT2, acompanhado de mouse com ajuste de até 7200 DPI e múltiplos efeitos de iluminação RGB.'
-    },
-    {
-        id: 'combo-gamer-4-em-1-mts-nightmare-preto',
-        title: 'Combo GAMER 4 em 1 MTS, Nightmare • Mouse 4D - 3600 Dpi • Teclado RGB LED Rainbow Anti-Ghosting • Fone e Microfone Headset 45mW Stereo • Mousepad 290x250 • Quality Premium • Setup Gamer',
-        store: 'Amazon',
-        subcat: 'Kits de Teclado e Mouse',
-        oldPrice: 'R$ 170,00',
-        price: 'R$ 140,50',
-        discount: '-17%',
-        installments: 'Em até 4x de R$ 36,99 sem juros',
-        affiliateLink: 'https://link.amazon/B05Xhhrs4',
-        images: [
-            'https://m.media-amazon.com/images/I/61zkg-q7zEL._AC_SL1080_.jpg',
-            'https://m.media-amazon.com/images/I/71XZW8ccN+L._AC_SL1080_.jpg',
-            'https://m.media-amazon.com/images/I/71N+c5TkcPL._AC_SL1080_.jpg',
-            'https://m.media-amazon.com/images/I/61+BJUiKzuL._AC_SL1080_.jpg',
-            'https://m.media-amazon.com/images/I/61o0U-jZsWL._AC_SL1080_.jpg',
-            'https://m.media-amazon.com/images/I/61dUvMkfREL._AC_SL1080_.jpg',
-            'https://m.media-amazon.com/images/I/71ut4cYTh8L._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71uVN61kAuL._AC_SL1500_.jpg'
-        ],
-        rating: '4,0 (40 avaliações)',
-        specs: {
-            'Marca': 'Genérico',
-            'Cor': 'Preto',
-            'Tecnologia de Conectividade': 'PS 2, Usb A',
-            'Característica Especial': 'Emborrachado, Leve, Mouse 3600 Dpi, Retrilluminado, Stereo'
-        },
-        about: 'Combo gamer 4 em 1 na cor preta, composto por teclado ABNT2 com iluminação LED Rainbow e anti-ghosting, mouse de 3600 DPI, headset estéreo com microfone e mousepad texturizado.'
-    },
-    {
-        id: 'kit-mobilador-gamer-com-headset-teclado-single-hand',
-        title: 'Kit Mobilador Gamer Com Headset e Microfone Teclado Single hand Mouse 1600dpi Hub 3.0 (Vermelho)',
-        store: 'Amazon',
-        subcat: 'Kits de Teclado e Mouse',
-        oldPrice: 'R$ 220,00',
-        price: 'R$ 198,90',
-        discount: '-10%',
-        installments: 'Em até 6x de R$ 33,15 sem juros',
-        affiliateLink: 'https://link.amazon/B0aCT1spC',
-        images: [
-            'https://m.media-amazon.com/images/I/71PiZaxsASL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/71GUqojSy+L._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61hyLPDjr-L._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61PqGvTtXcL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61plwVYbybL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/71mi1wCsO-L._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61mH3QI-VZL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61ACHJf3rNL._AC_SL1200_.jpg'
-        ],
-        rating: '3,9 (4 avaliações)',
-        specs: {
-            'Marca': 'Mageon',
-            'Cor': 'Vermelho',
-            'Tecnologia de Conectividade': 'Usb',
-            'Dispositivos Compatíveis': 'Computador pessoal, Console de jogos, Notebook'
-        },
-        about: 'Kit mobilador gamer completo com headset, microfone, teclado single hand, mouse de 1600 DPI, suporte para celular e hub USB 3.0, ideal para jogos no celular ou computador.'
-    },
-    {
-        id: 'combo-teclado-abnt2-led-rainbow-mouse-clanm-blacknox',
-        title: 'Combo Teclado ABNT2 LED Rainbow Anti-Ghosting + Mouse 4 Botões 2400DPI Clanm Blacknox Gamer',
-        store: 'Amazon',
-        subcat: 'Kits de Teclado e Mouse',
-        oldPrice: 'R$ 110,00',
-        price: 'R$ 95,00',
-        discount: '-14%',
-        installments: 'Em até 3x de R$ 31,68 sem juros',
-        affiliateLink: 'https://link.amazon/B0cQcxf4R',
-        images: [
-            'https://m.media-amazon.com/images/I/41u4Yi1i8NL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41H-3UB33uL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41xyVtvm4VL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41wuWMD8pGL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/31vkg1sUYTL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/31NOK1ZmZcL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41cN1FaBCAL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/41+eAi4gvVL._AC_.jpg'
-        ],
-        rating: 'Sem avaliações',
-        specs: {
-            'Marca': 'Clanm',
-            'Precisa de baterias?': 'Não',
-            'Fonte de alimentação': 'Energia elétrica',
-            'Fabricante': 'Clanm'
-        },
-        about: 'Combo Clanm Blacknox com teclado ABNT2 com iluminação LED Rainbow e anti-ghosting, e mouse com sensor óptico de 2400 DPI e ajuste de altura para maior conforto.'
-    },
-    {
-        id: 'mageon-kit-teclado-semi-mecanico-mouse-gamer-led',
-        title: 'Mageon Kit Teclado Semi Mecânico + Mouse Gamer Led 7 Cores Cor do mouse Preto Cor do teclado Preto',
-        store: 'Amazon',
-        subcat: 'Kits de Teclado e Mouse',
-        oldPrice: 'R$ 150,00',
-        price: 'R$ 130,23',
-        discount: '-13%',
-        installments: 'Em até 4x de R$ 32,58 sem juros',
-        affiliateLink: 'https://link.amazon/B0fultAmF',
-        images: [
-            'https://m.media-amazon.com/images/I/41KfJmpOH-L._AC_.jpg',
-            'https://m.media-amazon.com/images/I/71sGVVAq-2L._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/71U1OaQBg5L._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61-FUdfXKLL._AC_SL1200_.jpg'
-        ],
-        rating: '4,6 (20 avaliações)',
-        specs: {
-            'Marca': 'Mageon',
-            'Descrição do Teclado': 'Teclado semi-mecânico com retroiluminação e design agressivo',
-            'Cor': 'Preto',
-            'Tecnologia de Conectividade': 'Usb'
-        },
-        about: 'Kit Mageon com teclado semi-mecânico de design agressivo com retroiluminação em LED e mouse gamer óptico com LED de 7 cores e 1200 DPI.'
-    },
-            {
-        id: 'hyperx-teclado-gamer-alloy-core-rgb',
-        title: 'HyperX Teclado Gamer HyperX Alloy Core RGB, ABNT2, PRETO',
-        store: 'Amazon',
-        subcat: 'Teclados',
-        oldPrice: 'R$ 199,99',
-        price: 'R$ 149,99',
-        discount: '-25%',
-        installments: 'Em até 5x de R$ 35,30 sem juros',
-        affiliateLink: 'https://link.amazon/B0c4stxuD',
-        images: [
-            'https://m.media-amazon.com/images/I/61XRKm0vZaL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/41xydVkK8IL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/51KlE8hSPYL._AC_.jpg',
-            'https://m.media-amazon.com/images/I/61uk4RkAAJL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71ee+pMy7SL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71cDCz7hJ-L._AC_SL1500_.jpg'
-        ],
-        rating: '4,8 (5.707 avaliações)',
-        specs: {
-            'Marca': 'HyperX',
-            'Dispositivos Compatíveis': 'PC',
-            'Tecnologia de Conectividade': 'Micro USB',
-            'Adequação do controle por rádio': 'Jogo, Multimídia'
-        },
-        about: 'O HyperX Alloy Core RGB apresenta barra luminosa exclusiva, efeitos de iluminação RGB dinâmicos em 5 zonas, teclas silenciosas com anti-ghosting, estrutura de plástico reforçada resistente a líquidos de até 120ml e botões de mídia exclusivos.'
-    },
-    {
-        id: 'teclado-gamer-rgb-107-teclas-revestimento-uv',
-        title: 'Teclado Gamer RGB 107 Teclas Revestiment UV, USB, Cabo 1,5m Cor Sortida | Para Jogos',
-        store: 'Amazon',
-        subcat: 'Teclados',
-        oldPrice: 'R$ 120,00',
-        price: 'R$ 92,70',
-        discount: '-23%',
-        installments: 'Em até 3x de R$ 30,90 sem juros',
-        affiliateLink: 'https://link.amazon/B017DqyCt',
-        images: [
-            'https://m.media-amazon.com/images/I/61jxikMER-L._AC_SL1448_.jpg',
-            'https://m.media-amazon.com/images/I/61NUABnv6qL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/6133wEN5qfL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/61t2oKy1BLL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/61c-xe0R1GL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/51RyYy0WNIL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/618Si7FJutL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/61FfPnLmTeL._AC_SL1500_.jpg'
-        ],
-        rating: '4,6 (3 avaliações)',
-        specs: {
-            'Marca': 'Genérico',
-            'Dispositivos Compatíveis': 'Computador Desktop, Console De Videogame, Notebook, PC, Smart TV',
-            'Tecnologia de Conectividade': 'Usb',
-            'Adequação do controle por rádio': 'Jogos'
-        },
-        about: 'Teclado com layout otimizado para jogos, teclas responsivas com revestimento UV, iluminação LED vibrante para maior visibilidade no escuro e conexão plug-and-play.'
-    },
-    {
-        id: 'teclado-com-fio-compacto-multilaser-tc193',
-        title: 'Teclado Com Fio Compacto Conexão USB Resistente Água Preto Multi - TC193',
-        store: 'Amazon',
-        subcat: 'Teclados',
-        oldPrice: 'R$ 37,90',
-        price: 'R$ 26,56',
-        discount: '-29%',
-        installments: 'Consulte as opções de pagamento',
-        affiliateLink: 'https://link.amazon/B03yghFR7',
-        images: [
-            'https://m.media-amazon.com/images/I/51F4d5LTbdL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51EdvrdjnLL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51BCHbgr1PL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/517UYqPAyeL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51FlBG7scOL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51TFYfwzs4L._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/61GR2-ASdEL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/41OghVQ5grL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/514Xf6dyaQL._AC_SL1000_.jpg'
-        ],
-        rating: '4,6 (9.217 avaliações)',
-        specs: {
-            'Marca': 'Multilaser',
-            'Dispositivos Compatíveis': 'PC',
-            'Tecnologia de Conectividade': 'USB',
-            'Descrição do Teclado': 'Membrana'
-        },
-        about: 'Teclado clássico e compacto com formato ergonômico, teclas macias e silenciosas, resistência superior a água graças à impressão a laser e fácil instalação plug-and-play.'
-    },
-    {
-        id: 'teclado-membrana-gamer-redragon-netherbane-k521-rgb',
-        title: 'Teclado Membrana Gamer Redragon Netherbane Preto RGB K521-RGB',
-        store: 'Amazon',
-        subcat: 'Teclados',
-        oldPrice: 'R$ 94,30',
-        price: 'R$ 89,00',
-        discount: '-5%',
-        installments: 'Em até 12x de R$ 8,22 com juros',
-        affiliateLink: 'https://link.amazon/B07NEkE02',
-        images: [
-            'https://m.media-amazon.com/images/I/71oevbiISHL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/718TdV7m1IL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/717XJYaH20L._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71ezn-zKaML._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/7171Un4JpdL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/81eshZgutjL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71B8BVY7V7L._AC_SL1500_.jpg'
-        ],
-        rating: '4,8 (662 avaliações)',
-        specs: {
-            'Marca': 'Redragon',
-            'Dispositivos Compatíveis': 'Notebook, PC',
-            'Tecnologia de Conectividade': 'USB-A',
-            'Descrição do Teclado': 'Membrana'
-        },
-        about: 'Teclado gamer de membrana com iluminação RGB customizável, design moderno na cor preta e conexão plug and play compatível com computadores e notebooks.'
-    },
-    {
-        id: 'c3tech-teclado-multimidia-kb-m11-abnt2',
-        title: 'C3Tech Teclado Multimídia KB-M11 Preto USB Cabo 2m ABNT2',
-        store: 'Amazon',
-        subcat: 'Teclados',
-        oldPrice: 'R$ 25,90',
-        price: 'R$ 22,00',
-        discount: '-15%',
-        installments: 'Consulte as opções de pagamento',
-        affiliateLink: 'https://link.amazon/B094nFHcz',
-        images: [
-            'https://m.media-amazon.com/images/I/51OWp5GuhfL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/41p5shKbynL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51n8VysVYDL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51TpNE14GyL._AC_SL1000_.jpg'
-        ],
-        rating: '4,4 (549 avaliações)',
-        specs: {
-            'Marca': 'C3TECH',
-            'Estilo': 'Teclado Multimídia com layout ABNT2 e design slim',
-            'Dispositivos Compatíveis': 'Notebook, PC',
-            'Tecnologia de Conectividade': 'USB-A'
-        },
-        about: 'Teclado multimidia com cabo extra longo de 2 metros, 12 teclas de atalho, layout 100% ABNT2, resistência contra respingos e sistema slim de baixo perfil.'
-    },
-    {
-        id: 'teclado-gamer-mecanico-pcyes-kuromori-60-switch-blue',
-        title: 'TECLADO GAMER MECANICO PCYES KUROMORI 60% - SWITCH BLUE - LED RAINBOW - PTKM60BL',
-        store: 'Amazon',
-        subcat: 'Teclados',
-        oldPrice: 'R$ 149,99',
-        price: 'R$ 117,00',
-        discount: '-21%',
-        installments: 'Em até 3x de R$ 39,00 sem juros',
-        affiliateLink: 'https://link.amazon/B03L8LFnY',
-        images: [
-            'https://m.media-amazon.com/images/I/61GBH+a1PCL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61-KrlmxivL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61L+pwJROeL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51fUHPJ8bbL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61W+SROfKzL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/415853YKh3L._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51sgdNsIIZL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51DL9Df95dL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61Rkizm3y+L._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61xlqnjJ8ML._AC_SL1200_.jpg'
-        ],
-        rating: '4,7 (287 avaliações)',
-        specs: {
-            'Marca': 'PCYES',
-            'Dispositivos Compatíveis': 'PC',
-            'Tecnologia de Conectividade': 'USB-A',
-            'Descrição do Teclado': 'Mecânico'
-        },
-        about: 'Teclado mecânico formato 60% equipado com switches mecânicos Outemu Blue, keycaps tri-color, layout ABNT2, iluminação Rainbow em blocos e cabo removível USB de 1,8m (USB x Type C).'
-    },
-    {
-        id: 'teclado-mecanico-gamer-coibeu-95-teclas-switch-vermelho',
-        title: 'Teclado Mecânico Gamer com Fio 95 Teclas, RGB com 20 Modos de Iluminação, Switch Vermelho Hot Swap, Anti Ghosting, Teclado Compacto USB para PC, Notebook, Windows e Mac (Cinza)',
-        store: 'Amazon',
-        subcat: 'Teclados',
-        oldPrice: 'R$ 180,00',
-        price: 'R$ 142,49',
-        discount: '-21%',
-        installments: 'Em até 4x de R$ 37,52 sem juros',
-        affiliateLink: 'https://link.amazon/B09BYoWIY',
-        images: [
-            'https://m.media-amazon.com/images/I/61XAdqx2A9L._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71VxC6cdiIL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/7184Jo9JoWL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71mcNHajvnL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71+u-YRh0gL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71bBnoZYXTL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71xnSI0zxrL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71yAcUNpbUL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71jJKOaAveL._AC_SL1500_.jpg'
-        ],
-        rating: '4,4 (15 avaliações)',
-        specs: {
-            'Marca': 'Coibeu',
-            'Tecnologia de Conectividade': 'USB-A',
-            'Descrição do Teclado': 'Mecânico',
-            'Característica Especial': 'Ergonômico, Pode ser trocado a quente',
-            'Cor': 'Cinza'
-        },
-        about: 'Teclado mecânico compacto com 95 teclas, switch vermelho com tecnologia hot-swap, anti-ghosting completo, iluminação RGB vibrante com 20 modos e estrutura ergonômica.'
-    },
           {
         id: 'elg-mgcs-mouse-gamer-ceres-hyperlight',
         title: 'ELG MGCS Mouse Gamer Ceres Hyperlight - Ultraleve 63g, 7200 DPI, 6 Botões, Cabo Paracord, Design Ambidestro, LED Rainbow',
         store: 'Amazon',
-        subcat: 'Mouses',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 118,99',
         price: 'R$ 69,90',
         discount: '-41%',
@@ -1412,7 +1043,7 @@
         id: 'elg-cgcs41-kit-gamer-completo',
         title: 'ELG CGCS41 Kit Gamer Completo - Teclado ABNT2, Mouse LED 7 Cores, Headset Over-Ear, Mousepad Antiderrapante',
         store: 'Amazon',
-        subcat: 'Kits de Teclado e Mouse',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 299,90',
         price: 'R$ 229,90',
         discount: '-23%',
@@ -1438,7 +1069,7 @@
         id: 'mouse-sem-fio-recarregavel-bluetooth-generico',
         title: 'Mouse Sem Fio Recarregável Wireless Bluetooth Optico Led Rgb Colorido Ergonômico Usb 2.4 Ghz Linha Premium',
         store: 'Amazon',
-        subcat: 'Mouses',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 35,00',
         price: 'R$ 19,00',
         discount: '-46%',
@@ -1468,7 +1099,7 @@
         id: 'mouse-gamer-logitech-g203-lightsync',
         title: 'Mouse Gamer Logitech G203 LIGHTSYNC RGB, Efeito de Ondas de Cores, 6 Botões Programáveis e Até 8.000 DPI - Preto',
         store: 'Amazon',
-        subcat: 'Mouses',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 169,99',
         price: 'R$ 96,90',
         discount: '-42%',
@@ -1501,7 +1132,7 @@
         id: 'mouse-gamer-redragon-storm-pro-rgb-sem-fio',
         title: 'MOUSE GAMER REDRAGON STORM PRO RGB SEM FIO PRETO',
         store: 'Amazon',
-        subcat: 'Mouses',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 233,75',
         price: 'R$ 169,99',
         discount: '-27%',
@@ -1522,11 +1153,11 @@
         },
         about: 'Mouse gamer sem fio Redragon Storm Pro com sensor Pixart PAW 3335 de até 16.000 DPI, design ergonômico colmeia leve e iluminação RGB customizável.'
     },
-    {
+            {
         id: 'mouse-gamer-redragon-predator-m612',
         title: 'Mouse Gamer Redragon Predator RGB M612-RGB, Preto',
         store: 'Amazon',
-        subcat: 'Mouses',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 159,00',
         price: 'R$ 79,98',
         discount: '-49%',
@@ -1555,7 +1186,7 @@
         id: 'mouse-gamer-redragon-king-pro-m916',
         title: 'Mouse Gamer Redragon King Pro Preto Pixart PAW3395 26000DPI M916-PRO-1K',
         store: 'Amazon',
-        subcat: 'Mouses',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 297,50',
         price: 'R$ 179,98',
         discount: '-39%',
@@ -1583,7 +1214,7 @@
         id: 'mouse-gamer-attack-shark-r1',
         title: 'Mouse Gamer ATTACK SHARK R1 Sem Fio 18000 DPI Sensor PAW3311 RGB Recarregável',
         store: 'Amazon',
-        subcat: 'Mouses',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 199,00',
         price: 'R$ 137,74',
         discount: '-31%',
@@ -1613,7 +1244,7 @@
         id: 'mouse-gamer-attack-shark-v3',
         title: 'Mouse Gamer Sem Fio ATTACK SHARK V3, 65g Ultraleve, Sensor Óptico PAW3311 25K DPI',
         store: 'Amazon',
-        subcat: 'Mouses',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 169,99',
         price: 'R$ 151,99',
         discount: '-11%',
@@ -1633,7 +1264,7 @@
         },
         about: 'Mouse ultraleve de apenas 65g com triplo modo de conexão (2.4G, Bluetooth e Cabo USB), switch mecânico e sensor óptico de alta precisão.'
     },
-    {
+            {
         id: 'geladeira-consul-smart-frost-free-inox-377l',
         title: 'Geladeira/Refrigerador Consul Smart Frost Free Inox Duplex 377L CRM44MKANA',
         store: 'Magazine Luiza',
@@ -1693,11 +1324,11 @@
         },
         about: 'Geladeira Panasonic Inverse 397 Litros na cor Titânio, com refrigerador em cima e freezer embaixo, tecnologia Econavi que economiza energia e sistema Frost Free.'
     },
-    {
+            {
         id: 'mouse-gamer-redragon-cobra-v3',
         title: 'Mouse Gamer Redragon Cobra V3 Preto RGB PMW3327 10000DPI M711 V3',
         store: 'Amazon',
-        subcat: 'Mouses',
+        subcat: 'Mouses e Teclados',
         oldPrice: 'R$ 129,90',
         price: 'R$ 79,99',
         discount: '-38%',
@@ -1723,804 +1354,903 @@
         },
         about: 'Mouse gamer de alta performance equipado com Sensor Pixart, iluminação RGB ajustável com sistema Chroma, Polling Rate de 1000hz e 7 botões programáveis para otimizar a sua jogabilidade.'
     },
-    {
-        id: 'micro-ondas-electrolux-23l-branco-efficient-me23b',
-        title: 'Micro-ondas Electrolux 23L Branco Efficient ME23B',
-        store: 'Magazine Luiza',
-        subcat: 'Fornos de Micro-Ondas',
-        oldPrice: 'R$ 799,00',
-        price: 'R$ 525,00',
-        discount: '',
-        installments: 'Em até 6x de R$ 87,50 sem juros',
-        affiliateLink: 'https://magazineluiza.onelink.me/589508454/8mquibtj',
-        images: [
-            'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/bcf3b36618ecd76886825d237ab9b2ff.jpg',
-            'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/4dd31c676e078da84ed33a20c2edce1c.jpg',
-            'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/054d399b0453e74b7efc46aa87ac4d29.jpg',
-            'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/a7003984ed7d3f6a2e897c3dfc6f672f.jpg',
-            'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/4935b68d456c2007605711df49c90f8b.jpg',
-            'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/832c36c1880ad104b98b50a510b9ea75.jpg'
-        ],
-        rating: '4,9 (Avaliações verificadas)',
-        specs: {
-            'Marca': 'Electrolux',
-            'Modelo': 'ME23B',
-            'Capacidade': '23 Litros',
-            'Cor': 'Branco',
-            'Eficiência Energética': 'Classificação A'
-        },
-        about: 'Micro-ondas Electrolux 23L Branco Efficient ME23B. Design moderno e funcional, ideal para facilitar o dia a dia na cozinha com diversas receitas pré-programadas, função descongelar e excelente aproveitamento de espaço.'
-    },
-    {
-        id: 'lixadeira-orbital-sb200-200w-black-decker',
-        title: 'BLACK+DECKER Lixadeira Orbital SB200 200W 110V',
-        store: 'Amazon',
-        subcat: 'Serras',
-        oldPrice: '',
-        price: 'R$ 196,22',
-        discount: '',
-        installments: 'Em até 6x de R$ 32,72 sem juros',
-        affiliateLink: 'https://link.amazon/B04VWttOi',
-        images: [
-            'https://m.media-amazon.com/images/I/61VyQtGt7CL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/61BgK3+0OtL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/71ef8ViNZsL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/61vK4Ij7XrL._AC_SL1000_.jpg'
-        ],
-        rating: '4,7 (1.097 avaliações)',
-        specs: {
-            'Marca': 'Black+Decker',
-            'Potência': '200W',
-            'Tensão': '110 Volts',
-            'Tipo de Grão': 'Médio'
-        },
-        about: 'Lixadeira orbital 200W, ideal para madeira, metal e plástico. Lixadeira leve e ergonômica para uso confortável e prolongado. Base com fixação eficiente para maior estabilidade ao lixar. Perfeita para reparos, marcenaria e restauração de móveis.'
-    },
-    {
-        id: 'esmerilhadeira-lixadeira-bateria-16-8v-maleta',
-        title: 'Esmerilhadeira Lixadeira Esmerilhadeira 110V/220V Sem Fio Portátil Serra Mármore A Bateria 16,8V (2 Bateria+8 Pcs Discos de Corte) Com Maleta Resistente',
-        store: 'Amazon',
-        subcat: 'Serras',
-        oldPrice: 'R$ 160,00',
-        price: 'R$ 153,33',
-        discount: '',
-        installments: 'Em até 5x de R$ 32,28 sem juros',
-        affiliateLink: 'https://link.amazon/B0iOUrqbh',
-        images: [
-            'https://m.media-amazon.com/images/I/81sO++-BcML._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71wJEChf9EL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/817XwL5G48L._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/811bN405vpL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/81MTzR49RYL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/81Jqnd01JOL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/81974uQ1rNL._AC_SL1500_.jpg'
-        ],
-        rating: '4,0 (1 avaliação)',
-        specs: {
-            'Marca': 'Genérico',
-            'Material': 'Metal, Plástico',
-            'Estilo': '2 Bateria + 8 Pcs Discos de Corte',
-            'Fonte de alimentação': 'Alimentado a bateria'
-        },
-        about: 'A rebarbadora de 16,8V foi projetada para ser leve e pode ser operada com uma mão. Amplamente utilizada para processamento de lixamento, corte, lixamento e polimento de vários materiais, incluindo metal, azulejo, concreto, tubos e conduítes. Acompanha 2 baterias de íon de lítio de 1500mAh, carregador rápido, 8 discos de corte e maleta resistente.'
-    },
-    {
-        id: 'serra-tico-tico-ptt01-philco',
-        title: 'Serra Philco PTT01 450W 127V Preto/Azul',
-        store: 'Amazon',
-        subcat: 'Serras',
-        oldPrice: 'R$ 120,16',
-        price: 'R$ 104,90',
-        discount: '-12%',
-        installments: 'Em até 3x de R$ 34,98 sem juros',
-        affiliateLink: 'https://link.amazon/B0f1q7iA5',
-        images: [
-            'https://m.media-amazon.com/images/I/51--9njf0pL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61CSJvVSf6L._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51hjIomLBxL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/71ZERY-kaXL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/612nZFuKKQL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61XADVrgEJL._AC_SL1200_.jpg'
-        ],
-        rating: '4,5 (1.354 avaliações)',
-        specs: {
-            'Marca': 'PHILCO',
-            'Cor': 'Azul e Preto',
-            'Recomendação de superfície': 'Madeira, Alumínio',
-            'Fonte de alimentação': 'Elétrico com fio',
-            'Voltagem': '127 Volts',
-            'Potência': '450W'
-        },
-        about: 'Base ajustável de 0° a 45°, bocal para sucção para menos poeira no ambiente de trabalho e empunhadura emborrachada para maior firmeza no manuseio. Possui botão de travamento, 3000 GPM e capacidade de corte de até 55mm em madeira e 10mm em alumínio.'
-    },
-    {
-        id: 'serra-psm01-philco',
-        title: 'SERRA PSM01 220V Philco',
-        store: 'Amazon',
-        subcat: 'Serras',
-        oldPrice: 'R$ 329,50',
-        price: 'R$ 275,19',
-        discount: '-16%',
-        installments: 'Em até 6x de R$ 45,89 sem juros',
-        affiliateLink: 'https://link.amazon/B0gpTcDpo',
-        images: [
-            'https://m.media-amazon.com/images/I/618b+NKS3IL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61ZnxS4pJbL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/510WOr0zNFL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/71uh5-rn7qL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/61hml2gFytL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/71AoTTiOSKL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/41LW4Fs3DqL._AC_SL1200_.jpg'
-        ],
-        rating: '4,9 (37 avaliações)',
-        specs: {
-            'Marca': 'PHILCO',
-            'Cor': 'Azul',
-            'Material da lâmina': 'Liga de aço',
-            'Recomendação de superfície': 'Mármore, Cerâmica',
-            'Fonte de alimentação': 'Elétrico com fio',
-            'Voltagem': '220 Volts'
-        },
-        about: 'Disco diamantado, base ajustável, alta rotação, sistema de gatilho duplo e ajuste de profundidade. Ideal para cortes precisos em mármore e cerâmica com total segurança e praticidade.'
-    },
-    {
-        id: 'jogo-de-ferramentas-163-pecas-vonder',
-        title: 'Jogo De Ferramentas Com 163 Peças Vonder',
-        store: 'Amazon',
-        subcat: 'Maletas de Ferramentas',
-        oldPrice: 'R$ 617,38',
-        price: 'R$ 320,02',
-        discount: '-48%',
-        installments: 'Em até 6x de R$ 53,37 sem juros',
-        affiliateLink: 'https://link.amazon/B07m8MHgk',
-        images: [
-            'https://m.media-amazon.com/images/I/81NzamswRGL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/81CGdUo7KrL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/81ZqiyubOtL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/812He0QfNtL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/816awzBG4FL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/81EiTFQgiTL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71zPLle3-RL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71SBUQaDUJL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/61j9AR11ftL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71Deil5KsoL._AC_SL1500_.jpg'
-        ],
-        rating: '4,8 (373 avaliações)',
-        specs: {
-            'Marca': 'VONDER',
-            'Material': 'Aço e Plástico Resistente',
-            'Quantidade de Peças': '163 Peças',
-            'Cor': 'Preto e Amarelo'
-        },
-        about: 'Proporciona maior praticidade, pois com apenas 1 jogo de ferramentas é possível realizar uma série de trabalhos. Acompanha maleta com encaixe perfeito dos acessórios, conferindo organização, praticidade e maior vida útil às ferramentas. Conjunto versátil ideal para diversos tipos de trabalhos e manutenções.'
-    },
-    {
-        id: 'kit-ferramentas-completo-soquetes-catraca',
-        title: 'Kit de Ferramentas Jogo Completo, Soquetes Catraca 46 Peças, Jogo Chaves Combinadas 6,8,10,12,14,16 Ferramentas Manuais, Jogo de Ferramentas Caixas de Ferramentas',
-        store: 'Amazon',
-        subcat: 'Maletas de Ferramentas',
-        oldPrice: '',
-        price: 'R$ 132,90',
-        discount: '',
-        installments: 'Em até 4x de R$ 34,99 sem juros',
-        affiliateLink: 'https://link.amazon/B09MK3zb6',
-        images: [
-            'https://m.media-amazon.com/images/I/71SEcl2MewL._AC_SL1269_.jpg',
-            'https://m.media-amazon.com/images/I/81r+ctAig-L._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71kq0cNqEHL._AC_SL1254_.jpg',
-            'https://m.media-amazon.com/images/I/71zJ0J6KYYL._AC_SL1254_.jpg',
-            'https://m.media-amazon.com/images/I/81FT9l4BZVL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/715p5XSjDCL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71GPaDT5hFL._AC_SL1402_.jpg',
-            'https://m.media-amazon.com/images/I/71Wknm15W9L._AC_SL1254_.jpg'
-        ],
-        rating: '4,5 (2 avaliações)',
-        specs: {
-            'Marca': 'Genérico',
-            'Material': 'Aço e Plástico Resistente',
-            'Tipo de Produto': 'Kit Completo de Ferramentas Manuais',
-            'Aplicação': 'Doméstica e Profissional Leve'
-        },
-        about: 'Kit de ferramentas completo com jogo de catraca 46 peças e chaves combinadas (6, 8, 10, 12, 14, 16mm). Seu parceiro ideal para manutenções domésticas, reparos de carro e moto, ajustes, montagens e pequenos reparos do dia a dia. Acompanha maleta organizadora.'
-    },
-    {
-        id: 'jogo-soquete-46-pecas-maleta',
-        title: 'Jogo de Soquete Kit com 46 peças Ferramentas Chave Catraca Conjunto de Soquetes Métricos Sextavadas Chave Allen Torx e Barra de Extensão Reparos Automotivos e Domésticos Premium',
-        store: 'Amazon',
-        subcat: 'Maletas de Ferramentas',
-        oldPrice: 'R$ 29,90',
-        price: 'R$ 28,00',
-        discount: '-6%',
-        installments: 'Em até 21x sem juros',
-        affiliateLink: 'https://link.amazon/B02QD7Pl5',
-        images: [
-            'https://m.media-amazon.com/images/I/71YPW2+s4rL._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/610vfoMNvxL._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/61gXXDrG1JL._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/61BJrwpT55L._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/71YPW2+s4rL._AC_SL1024_.jpg'
-        ],
-        rating: '4,4 (390 avaliações)',
-        specs: {
-            'Marca': 'Genérico',
-            'Material': 'Aço vanádio cromado',
-            'Cor': 'Prata',
-            'Estilo da cabeça': 'Vários',
-            'Nome do Conjunto': '46'
-        },
-        about: 'Máxima durabilidade e desempenho: Fabricado com aço vanádio cromado premium. Kit completo com 46 peças essenciais: Inclui soquetes, bits, chaves, extensões, adaptador e cabo de catraca. Versatilidade total em qualquer tarefa: Soquetes compatíveis com tamanhos de 4 a 14 mm, pontas PH, PZ, HEX, Torx e muito mais.'
-    },
-    {
-        id: 'kit-ferramentas-58-pecas-maleta',
-        title: 'Kit de Ferramentas Jogo de Soquetes e Chaves com Catraca | em Aço, 58 Peças com Maleta, Completo Premium para Mecânica e Uso Doméstico',
-        store: 'Amazon',
-        subcat: 'Maletas de Ferramentas',
-        oldPrice: '',
-        price: 'R$ 75,99',
-        discount: '',
-        installments: 'Em até 2x de R$ 38,00 sem juros',
-        affiliateLink: 'https://link.amazon/B07Iz9ehs',
-        images: [
-            'https://m.media-amazon.com/images/I/71bIgrhDw7L._AC_SL1254_.jpg',
-            'https://m.media-amazon.com/images/I/71PcVbM6aNL._AC_SL1254_.jpg',
-            'https://m.media-amazon.com/images/I/71o7D64jxVL._AC_SL1254_.jpg',
-            'https://m.media-amazon.com/images/I/71iwCg8ro5L._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71-hD1iu7oL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71wbqvDBoRL._AC_SL1254_.jpg'
-        ],
-        rating: '4,7 (1.250 avaliações)',
-        specs: {
-            'Marca': 'Genérico',
-            'Material': 'Aço cromado vanádio, Plástico',
-            'Cor': 'Prateado Com Detalhes Em Amarelo E Azul',
-            'Comprimento do produto': '35 Centímetros',
-            'Fabricante': 'Fabricante De Ferramentas Profissionais'
-        },
-        about: 'Kit Completo de Ferramentas: Inclui chaves combinadas, soquetes, extensores e acessórios essenciais para diversos tipos de manutenção. Alta Durabilidade: Produzido em aço de alta resistência, garantindo maior vida útil mesmo em uso intenso. Encaixe Preciso: Ferramentas projetadas para oferecer ajuste firme e seguro, reduzindo riscos de desgaste e danos. Estojo Organizacional Incluso: Acompanha caixa rígida que mantém todas as peças organizadas e fáceis de transportar.'
-    },
-    {
-        id: 'sparta-maleta-ferramentas-129-pecas',
-        title: 'Sparta Maleta de ferramentas kit com 129 peças',
-        store: 'Amazon',
-        subcat: 'Maletas de Ferramentas',
-        oldPrice: 'R$ 140,45',
-        price: 'R$ 89,90',
-        discount: '-35%',
-        installments: 'Em até 12x de R$ 8,30 com juros',
-        affiliateLink: 'https://link.amazon/B0dNt2VU0',
-        images: [
-            'https://m.media-amazon.com/images/I/61ZmjmMLsRL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/61lP59FsfYL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51leWV4hz+L._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/61yxrSlz7kL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/610DbcuOTrL._AC_SL1000_.jpg'
-        ],
-        rating: '4,7 (18.320 avaliações)',
-        specs: {
-            'Marca': 'SPARTA',
-            'Material': 'Liga de aço, Plástico',
-            'Cor': 'preto',
-            'Dimensões do produto': '25C x 3,5L x 31A centímetros',
-            'Nível de Resistência à Água': 'Não resistente à água'
-        },
-        about: 'Kit completo com 129 peças: Inclui chaves, soquetes, alicates, chaves de fenda e muito mais, oferecendo um kit de ferramentas completo para reparos no dia a dia. Maleta organizadora prática: O Sparta kit de ferramentas com maleta mantém cada ferramenta no lugar, facilitando transporte, organização e armazenamento.'
-    },
-    {
-        id: 'furadeira-parafusadeira-impacto-rhead',
-        title: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED 2 Baterias Recarregáveis Bi-volt e Acessórios Maleta Completa',
-        store: 'Amazon',
-        subcat: 'Furadeiras e Parafusadeiras',
-        oldPrice: '',
-        price: 'R$ 102,60',
-        discount: '',
-        installments: 'Em até 3x de R$ 36,00 sem juros',
-        affiliateLink: 'https://link.amazon/B07xTHSpR',
-        images: [
-            'https://m.media-amazon.com/images/I/61FT94WfQeL._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/71k2NAwyzbL._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/715FO+3r5IL._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/61rnsj2OAGL._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/71cO79OV31L._AC_SL1024_.jpg'
-        ],
-        rating: '4,2 (943 avaliações)',
-        specs: {
-            'Marca': 'RHEAD RED HIGH END STUDIOS',
-            'Fonte de alimentação': 'Energia elétrica',
-            'Tensão': '110,22 Volts',
-            'Componentes Incluídos': 'Parafusadeira e Furadeira Sem Fio 21V com LED, Bateria de 18V, Carregador Bivolt, Maleta, Kit 5 Bits, 6 Brocas',
-            'Dimensões do produto': '26C x 8L x 29A centímetros'
-        },
-        about: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED, 2 Baterias Recarregáveis Bi-volt, 3 funções em uma única ferramenta (perfura, parafusa e impacta), 25 níveis de torque + 2 velocidades, LED integrado e kit completo com maleta rígida e acessórios.'
-    },
-    {
-        id: 'panela-pressao-eletrica-electrolux-6l-pcc20',
-        title: 'Panela de Pressão Elétrica Electrolux Digital 6L PCC20 Inox Preto (127V - 220V)',
-        store: 'Amazon',
-        subcat: 'Panelas de Pressão Elétricas',
-        oldPrice: 'R$ 739,00',
-        price: 'R$ 525,26',
-        discount: '-29%',
-        installments: 'Em até 10x de R$ 52,58 sem juros',
-        affiliateLink: 'https://link.amazon/B0jbKGyJT',
-        images: [
-            'https://m.media-amazon.com/images/I/61W25IvSTrL._AC_SL1148_.jpg',
-            'https://m.media-amazon.com/images/I/61LhWFq-lWL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/71ks1ul7UyL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/61K0IPZLgML._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/61eZtYLhixL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/71lssCq3wXL._AC_SL1000_.jpg'
-        ],
-        rating: '4,8 (11.352 avaliações)',
-        specs: {
-            'Marca': 'Electrolux',
-            'Capacidade': '6 Litros',
-            'Material': 'Aço inoxidável, Plástico',
-            'Cor': 'Preto',
-            'Tipo de Acabamento': 'Metálico',
-            'Voltagem': '127V - 220V (Disponível nas opções)'
-        },
-        about: 'Capacidade de 6L de alta capacidade para preparar porções maiores. 3 níveis de pressão para alcançar o ponto ideal. 15 receitas pré-programadas com apenas um toque, super segura com 10 dispositivos de segurança e funcionamento silencioso.'
-    },
-    {
-        id: 'microondas-philco-pmo38e-33l',
-        title: 'Micro-ondas 33L Philco Limpa Fácil PMO38E 1400W (110V - 220V)',
-        store: 'Amazon',
-        subcat: 'Fornos de Micro-Ondas',
-        oldPrice: 'R$ 741,94',
-        price: 'R$ 629,00',
-        discount: '-15%',
-        installments: 'Em até 10x de R$ 69,97 sem juros',
-        affiliateLink: 'https://link.amazon/B03R73USj',
-        images: [
-            'https://m.media-amazon.com/images/I/41N2K+L5+zL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51BzAFS++eL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51AyS7L4B8L._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/511l-YH73bL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51suuOdpLNL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51aiI5+TQqL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/418j9KMz+cL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/516jCIRNRlL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51HPtahwBnL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51EnFINQtEL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51KaubzxL1L._AC_SL1200_.jpg'
-        ],
-        rating: '4,6 (522 avaliações)',
-        specs: {
-            'Marca': 'PHILCO',
-            'Dimensões do produto': '45,3P x 56,9L x 33,2A centímetros',
-            'Cor': 'Branco',
-            'Capacidade': '33 Litros',
-            'Potência': '1400W',
-            'Voltagem': '110V - 220V (Disponível nas opções)'
-        },
-        about: 'Capacidade generosa com 33 litros, ideal para preparar desde refeições individuais até pratos maiores. Equipado com 1400W de potência e 9 níveis de ajuste. Possui função manter aquecido, tira odor, receitas pré-programadas e pintura limpa fácil.'
-    },
-    {
-        id: 'tramontina-vancouver-effect-4-5l',
-        title: 'Panela de Pressão Tramontina Vancouver Effect em Alumínio com Revestimento Interno e Externo em Antiaderente Starflon Max Preto 20 cm 4,5 L',
-        store: 'Amazon',
-        subcat: 'Panelas de Pressão',
-        oldPrice: 'R$ 241,06',
-        price: 'R$ 171,41',
-        discount: '-29%',
-        installments: 'Em até 5x de R$ 35,98 sem juros',
-        affiliateLink: 'https://link.amazon/B008wULWT',
-        images: [
-            'https://m.media-amazon.com/images/I/81ubjq2DfxL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/91JMPJv-8GL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/51aRPTA4pVL._AC_SL1024_.jpg',
-            'https://m.media-amazon.com/images/I/81R3ONlNU5L._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/81QAyCzBJRL._AC_SL1500_.jpg'
-        ],
-        rating: '4,8 (9.846 avaliações)',
-        specs: {
-            'Marca': 'Tramontina',
-            'Material': 'Alumínio com Revestimento Starflon Max',
-            'Capacidade': '4,5 Litros',
-            'Cor': 'Preto',
-            'Fogões Compatíveis': 'Gás, elétrico e vitrocerâmico'
-        },
-        about: 'Corpo de alumínio com espessura de 3,2 mm que proporciona cozimento rápido e uniforme. Com revestimento interno e externo de antiaderente Starflon Max que não gruda, é fácil de limpar, mais durável e não é prejudicial à saúde. Alça, cabos superior e inferior de baquelite antitérmico que oferecem segurança durante o manuseio.'
-    },
-    {
-        id: 'consul-crm50mb',
-        title: 'Geladeira CRM50MB 412 Litros Frost Free Duplex Consul',
-        store: 'Amazon',
-        subcat: 'Geladeiras e Freezers',
-        oldPrice: 'R$ 2.999,00',
-        price: 'R$ 2.699,99',
-        discount: '-9%',
-        installments: 'Em até 12x de R$ 225,10 sem juros',
-        affiliateLink: 'https://link.amazon/B0gBXsKfJ',
-        images: [
-            'https://m.media-amazon.com/images/I/4173h2WLFLL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/41dkOziMhyL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/61q4aT4C3uL._AC_SX522_.jpg'
-        ],
-        rating: '4,8 (5 avaliações)',
-        specs: {
-            'Dimensões': '72P x 70,2L x 174,5A cm',
-            'Marca': 'Consul',
-            'Capacidade': '412 Litros'
-        },
-        about: 'A Geladeira Consul Frost Free 412L tem freezer espaçoso, Função Turbo e Filtro Antiodor.'
-    },
-    {
-        id: 'consul-crb39mk',
-        title: 'Geladeira Frost Free 337L com Espaço Extra Frio Inox Consul - CRB39MK (110 Volts)',
-        store: 'Amazon',
-        subcat: 'Geladeiras e Freezers',
-        oldPrice: 'R$ 2.179,00',
-        price: 'R$ 2.049,99',
-        discount: '-5%',
-        installments: 'Em até 12x de R$ 170,86 sem juros',
-        affiliateLink: 'https://link.amazon/B06EhGyA2',
-        images: [
-            'https://m.media-amazon.com/images/I/5137tW5ScKL._AC_SX522_.jpg',
-            'https://m.media-amazon.com/images/I/51MtulxaAjL._AC_SX522_.jpg',
-            'https://m.media-amazon.com/images/I/61XtSxboE6L._AC_SX522_.jpg',
-            'https://m.media-amazon.com/images/I/61ePcUxgNYL._AC_SX522_.jpg',
-            'https://m.media-amazon.com/images/I/61ZpFEUX84L._AC_SX522_.jpg',
-            'https://m.media-amazon.com/images/I/71HuoP6lEjL._AC_SX522_.jpg',
-            'https://m.media-amazon.com/images/I/71jvb3IhIyL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/719fAKNoDlL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/7140R2pdrOL._AC_SL1500_.jpg'
-        ],
-        rating: '4,6 (19 avaliações)',
-        specs: {
-            'Dimensões': '65P x 63L x 172A cm',
-            'Marca': 'Consul',
-            'Capacidade': '337 Litros',
-            'Cor': 'Cinza',
-            'Característica Especial': 'Livre de gelo'
-        },
-        about: 'O Consul Frost Free 337 litros evita gelo nas paredes, facilita a limpeza e economiza até 13% de energia ao ano. Com congelador espaçoso.'
-    },
-    {
-        id: 'mondial-l99fb',
-        title: 'MONDIAL Liquidificador Turbo Power, Preto, 550W, 220V - L-99 FB',
-        store: 'Amazon',
-        subcat: 'Liquidificadores',
-        oldPrice: 'R$ 159,90',
-        price: 'R$ 85,93',
-        discount: '-46%',
-        installments: 'Em até x sem juros',
-        affiliateLink: 'https://link.amazon/B046VH0Ty',
-        images: [
-            'https://m.media-amazon.com/images/I/71KFAoTV+hL._AC_SY879_.jpg',
-            'https://m.media-amazon.com/images/I/71snJPAj-dL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/71zq9XPnksL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/71mpLyEfFUL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/71B-8Yh8JCL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/71u1y+7HtVL._AC_SL1500_.jpg'
-        ],
-        rating: '4,7 (10 avaliações)',
-        specs: {
-            'Marca': 'Mondial',
-            'Potência': '550W',
-            'Voltagem': '220V'
-        },
-        about: 'Liquidificador Mondial Turbo Power com 550W de potência, copo resistente e várias velocidades.'
-    },
-    {
-        id: 'electrolux-potes-herm',
-        title: 'Electrolux Kit 12 Potes Herméticos de Plástico Retangulares, Multiuso, Vedação Silicone, BPA Free, Porta Mantimentos',
-        store: 'Amazon',
-        subcat: 'Organização',
-        oldPrice: 'R$ 129,90',
-        price: 'R$ 89,90',
-        discount: '-30%',
-        installments: 'Em até x sem juros',
-        affiliateLink: 'https://link.amazon/B06ra4bMQ',
-        images: [
-            'https://m.media-amazon.com/images/I/51uccv-jBiL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/61mDXbMLe4L._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/51t1RYU3t9L._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/517N5X5p4NL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/51BSUCQnNBL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/51tw6VngCdL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51kdyALdvCL._AC_SL1000_.jpg'
-        ],
-        rating: '4,9 (15 avaliações)',
-        specs: {
-            'Marca': 'Electrolux',
-            'Material': 'Plástico BPA Free',
-            'Quantidade': 'Kit 12 Potes'
-        },
-        about: 'Kit com 12 potes herméticos Electrolux com vedação em silicone para manter seus mantimentos frescos por mais tempo.'
-    },
-    {
-        id: 'microondas-philco-20l',
-        title: 'Micro-ondas Philco 20L Branco Pmo23b (110V - 220V)',
-        store: 'Amazon',
-        subcat: 'Fornos de Micro-Ondas',
-        oldPrice: 'R$ 594,50',
-        price: 'R$ 467,36',
-        discount: '-21%',
-        installments: 'Em até x sem juros',
-        affiliateLink: 'https://link.amazon/B0f7syb1B',
-        images: [
-            'https://m.media-amazon.com/images/I/41XTKM4Cg4L._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/51+i9EopBQL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/41CYNPe-nXL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/61DsZgIt3aL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/61+WX+hOEFL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/61WWBUUtS8L._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51etb6EHPvL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/51j1OrH6cEL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/41HU0t+g+QL._AC_SL1200_.jpg',
-            'https://m.media-amazon.com/images/I/611ByJFkbZL._AC_SL1200_.jpg'
-        ],
-        rating: '4,8 (20 avaliações)',
-        specs: {
-            'Marca': 'Philco',
-            'Capacidade': '20 Litros',
-            'Voltagem': '110V - 220V (Disponível nas opções)'
-        },
-        about: 'Micro-ondas Philco 20 Litros na cor branca, prático, moderno e ideal para o dia a dia na sua cozinha.'
-    },
-    {
-        id: 'sanduicheira-cadence-click',
-        title: 'Sanduicheira Elétrica Cadence Click (110V - 220V)',
-        store: 'Amazon',
-        subcat: 'Sanduicheiras',
-        oldPrice: 'R$ 159,90',
-        price: 'R$ 80,70',
-        discount: '-49%',
-        installments: 'Em até 4x de R$ 20,19 sem juros',
-        affiliateLink: 'https://link.amazon/B02zgdGZU',
-        images: [
-            'https://m.media-amazon.com/images/I/51UxR8FHe-L._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/61VaL7UVy1L._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/518QD1Eid3L._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/51drpBM+XuL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/61qHCzXP3JL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/51mL4PfTVXL._AC_SL1080_.jpg',
-            'https://m.media-amazon.com/images/I/51NTshP1ENL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51L7l4xirOL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51H3Edmt1EL._AC_SL1080_.jpg'
-        ],
-        rating: '4,8 (20.125 avaliações)',
-        specs: {
-            'Característica Especial': 'Leve, Revestimento antiaderente',
-            'Cor': 'Preto',
-            'Material': 'Plástico',
-            'Marca': 'Cadence',
-            'Dimensões do produto': '22,3P x 21,5L x 7,8A centímetros',
-            'Voltagem': '110V - 220V (Disponível nas opções)'
-        },
-        about: 'Botão Liga/Desliga com LEDs indicadores: Não precisa tirar da tomada. Pés Embutidos mais firmes: A sanduicheira não tomba. Chapas Antiaderentes + Profundas: 80%* + ESPAÇO mais versátil. Chapas + SIMPLES DE LIMPAR: Superior grill, Inferior LISINHA! Alça embutida e Base Porta Fio: Área protegida de aquecimento. 750 W de potência.'
-    },
-    {
-        id: 'potes-vidro-gato-panda',
-        title: 'Kit com 5 Potes de Vidro Gato Panda, 640 ml, Retangular, com Tampa Hermética, Azul',
-        store: 'Amazon',
-        subcat: 'Organização',
-        oldPrice: 'R$ 99,00',
-        price: 'R$ 55,80',
-        discount: '-43%',
-        installments: 'Em até 12x de R$ 5,15 com juros',
-        affiliateLink: 'https://link.amazon/B08ytkGoA',
-        images: [
-            'https://m.media-amazon.com/images/I/814oRtHfLLL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/71HHekURanL._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/71+5cmHOLeL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71MPEdwKf0L._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71UqQ+zutRL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/61jZVpYo-TL._AC_SL1500_.jpg',
-            'https://m.media-amazon.com/images/I/71T+U8EtKgL._AC_SL1254_.jpg'
-        ],
-        rating: '4,8 (4.093 avaliações)',
-        specs: {
-            'Marca': 'GATO PANDA',
-            'Material': 'Vidro borossilicato',
-            'Capacidade': '640 Mililitros',
-            'Cor': 'Azul',
-            'Característica Especial': 'Seguro para forno, Seguro para micro-ondas, Sem BPA'
-        },
-        about: 'Kit com 5 potes de vidro retangulares com tampa hermética, ideais para o armazenamento de alimentos com segurança e vedação perfeita.'
-    },
-    {
-        id: 'liquidificador-oster-1400',
-        title: 'Liquidificador 1400 Full Oster Preto 3,2L (110V - 220V)',
-        store: 'Amazon',
-        subcat: 'Liquidificadores',
-        oldPrice: 'R$ 319,90',
-        price: 'R$ 152,75',
-        discount: '-52%',
-        installments: 'Em até 6x de R$ 25,50 sem juros',
-        affiliateLink: 'https://link.amazon/B03Ac5eHV',
-        images: [
-            'https://m.media-amazon.com/images/I/51N3Xi4JJML._AC_SX679_.jpg',
-            'https://m.media-amazon.com/images/I/61F-MTfNCFL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/51ZFXTk4U5L._AC_SL1075_.jpg',
-            'https://m.media-amazon.com/images/I/61y8EkiSxfL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/61f68LW-fBL._AC_SL1000_.jpg',
-            'https://m.media-amazon.com/images/I/61-gsajLCPL._AC_SL1000_.jpg'
-        ],
-        rating: '4,6 (3.420 avaliações)',
-        specs: {
-            'Marca': 'Oster',
-            'Cor': 'Preto',
-            'Capacidade': '3,2 Litros',
-            'Potência': '1400W'
-        },
-        about: 'Liquidificador Oster 1400 Full com jarra de 3,2L resistente, motor potente de 1400W e alta durabilidade para preparar receitas pesadas.'
-    }
-    ];
-
-        function renderProducts(products, containerId) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            container.innerHTML = '';
-            
-            if (products.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">Nenhum produto encontrado.</p>';
-                return;
+            {
+                id: 'micro-ondas-electrolux-23l-branco-efficient-me23b',
+                title: 'Micro-ondas Electrolux 23L Branco Efficient ME23B',
+                store: 'Magazine Luiza',
+                subcat: 'Micro-ondas',
+                oldPrice: 'R$ 799,00',
+                price: 'R$ 525,00',
+                discount: '',
+                installments: 'Em até 6x de R$ 87,50 sem juros',
+                affiliateLink: 'https://magazineluiza.onelink.me/589508454/8mquibtj',
+                images: [
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/bcf3b36618ecd76886825d237ab9b2ff.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/4dd31c676e078da84ed33a20c2edce1c.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/054d399b0453e74b7efc46aa87ac4d29.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/a7003984ed7d3f6a2e897c3dfc6f672f.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/4935b68d456c2007605711df49c90f8b.jpg',
+                    'https://a-static.mlcdn.com.br/1500x1500/micro-ondas-electrolux-23l-branco-efficient-me23b/magazineluiza/235613900/832c36c1880ad104b98b50a510b9ea75.jpg'
+                ],
+                rating: '4,9 (Avaliações verificadas)',
+                specs: {
+                    'Marca': 'Electrolux',
+                    'Modelo': 'ME23B',
+                    'Capacidade': '23 Litros',
+                    'Cor': 'Branco',
+                    'Eficiência Energética': 'Classificação A'
+                },
+                about: 'Micro-ondas Electrolux 23L Branco Efficient ME23B. Design moderno e funcional, ideal para facilitar o dia a dia na cozinha com diversas receitas pré-programadas, função descongelar e excelente aproveitamento de espaço.'
+            },
+            {
+                id: 'lixadeira-orbital-sb200-200w-black-decker',
+                title: 'BLACK+DECKER Lixadeira Orbital SB200 200W 110V',
+                store: 'Amazon',
+                subcat: 'Serras',
+                oldPrice: '',
+                price: 'R$ 196,22',
+                discount: '',
+                installments: 'Em até 6x de R$ 32,72 sem juros',
+                affiliateLink: 'https://link.amazon/B04VWttOi',
+                images: [
+                    'https://m.media-amazon.com/images/I/61VyQtGt7CL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61BgK3+0OtL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/71ef8ViNZsL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61vK4Ij7XrL._AC_SL1000_.jpg'
+                ],
+                rating: '4,7 (1.097 avaliações)',
+                specs: {
+                    'Marca': 'Black+Decker',
+                    'Potência': '200W',
+                    'Tensão': '110 Volts',
+                    'Tipo de Grão': 'Médio'
+                },
+                about: 'Lixadeira orbital 200W, ideal para madeira, metal e plástico. Lixadeira leve e ergonômica para uso confortável e prolongado. Base com fixação eficiente para maior estabilidade ao lixar. Perfeita para reparos, marcenaria e restauração de móveis.'
+            },
+            {
+                id: 'esmerilhadeira-lixadeira-bateria-16-8v-maleta',
+                title: 'Esmerilhadeira Lixadeira Esmerilhadeira 110V/220V Sem Fio Portátil Serra Mármore A Bateria 16,8V (2 Bateria+8 Pcs Discos de Corte) Com Maleta Resistente',
+                store: 'Amazon',
+                subcat: 'Serras',
+                oldPrice: 'R$ 160,00',
+                price: 'R$ 153,33',
+                discount: '',
+                installments: 'Em até 5x de R$ 32,28 sem juros',
+                affiliateLink: 'https://link.amazon/B0iOUrqbh',
+                images: [
+                    'https://m.media-amazon.com/images/I/81sO++-BcML._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71wJEChf9EL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/817XwL5G48L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/811bN405vpL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81MTzR49RYL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81Jqnd01JOL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81974uQ1rNL._AC_SL1500_.jpg'
+                ],
+                rating: '4,0 (1 avaliação)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Material': 'Metal, Plástico',
+                    'Estilo': '2 Bateria + 8 Pcs Discos de Corte',
+                    'Fonte de alimentação': 'Alimentado a bateria'
+                },
+                about: 'A rebarbadora de 16,8V foi projetada para ser leve e pode ser operada com uma mão. Amplamente utilizada para processamento de lixamento, corte, lixamento e polimento de vários materiais, incluindo metal, azulejo, concreto, tubos e conduítes. Acompanha 2 baterias de íon de lítio de 1500mAh, carregador rápido, 8 discos de corte e maleta resistente.'
+            },
+            {
+                id: 'serra-tico-tico-ptt01-philco',
+                title: 'Serra Philco PTT01 450W 127V Preto/Azul',
+                store: 'Amazon',
+                subcat: 'Serras',
+                oldPrice: 'R$ 120,16',
+                price: 'R$ 104,90',
+                discount: '-12%',
+                installments: 'Em até 3x de R$ 34,98 sem juros',
+                affiliateLink: 'https://link.amazon/B0f1q7iA5',
+                images: [
+                    'https://m.media-amazon.com/images/I/51--9njf0pL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61CSJvVSf6L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51hjIomLBxL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/71ZERY-kaXL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/612nZFuKKQL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61XADVrgEJL._AC_SL1200_.jpg'
+                ],
+                rating: '4,5 (1.354 avaliações)',
+                specs: {
+                    'Marca': 'PHILCO',
+                    'Cor': 'Azul e Preto',
+                    'Recomendação de superfície': 'Madeira, Alumínio',
+                    'Fonte de alimentação': 'Elétrico com fio',
+                    'Voltagem': '127 Volts',
+                    'Potência': '450W'
+                },
+                about: 'Base ajustável de 0° a 45°, bocal para sucção para menos poeira no ambiente de trabalho e empunhadura emborrachada para maior firmeza no manuseio. Possui botão de travamento, 3000 GPM e capacidade de corte de até 55mm em madeira e 10mm em alumínio.'
+            },
+            {
+                id: 'serra-psm01-philco',
+                title: 'SERRA PSM01 220V Philco',
+                store: 'Amazon',
+                subcat: 'Serras',
+                oldPrice: 'R$ 329,50',
+                price: 'R$ 275,19',
+                discount: '-16%',
+                installments: 'Em até 6x de R$ 45,89 sem juros',
+                affiliateLink: 'https://link.amazon/B0gpTcDpo',
+                images: [
+                    'https://m.media-amazon.com/images/I/618b+NKS3IL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61ZnxS4pJbL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/510WOr0zNFL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/71uh5-rn7qL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/61hml2gFytL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/71AoTTiOSKL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/41LW4Fs3DqL._AC_SL1200_.jpg'
+                ],
+                rating: '4,9 (37 avaliações)',
+                specs: {
+                    'Marca': 'PHILCO',
+                    'Cor': 'Azul',
+                    'Material da lâmina': 'Liga de aço',
+                    'Recomendação de superfície': 'Mármore, Cerâmica',
+                    'Fonte de alimentação': 'Elétrico com fio',
+                    'Voltagem': '220 Volts'
+                },
+                about: 'Disco diamantado, base ajustável, alta rotação, sistema de gatilho duplo e ajuste de profundidade. Ideal para cortes precisos em mármore e cerâmica com total segurança e praticidade.'
+            },
+            {
+                id: 'jogo-de-ferramentas-163-pecas-vonder',
+                title: 'Jogo De Ferramentas Com 163 Peças Vonder',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: 'R$ 617,38',
+                price: 'R$ 320,02',
+                discount: '-48%',
+                installments: 'Em até 6x de R$ 53,37 sem juros',
+                affiliateLink: 'https://link.amazon/B07m8MHgk',
+                images: [
+                    'https://m.media-amazon.com/images/I/81NzamswRGL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81CGdUo7KrL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81ZqiyubOtL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/812He0QfNtL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/816awzBG4FL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81EiTFQgiTL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71zPLle3-RL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71SBUQaDUJL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61j9AR11ftL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71Deil5KsoL._AC_SL1500_.jpg'
+                ],
+                rating: '4,8 (373 avaliações)',
+                specs: {
+                    'Marca': 'VONDER',
+                    'Material': 'Aço e Plástico Resistente',
+                    'Quantidade de Peças': '163 Peças',
+                    'Cor': 'Preto e Amarelo'
+                },
+                about: 'Proporciona maior praticidade, pois com apenas 1 jogo de ferramentas é possível realizar uma série de trabalhos. Acompanha maleta com encaixe perfeito dos acessórios, conferindo organização, praticidade e maior vida útil às ferramentas. Conjunto versátil ideal para diversos tipos de trabalhos e manutenções.'
+            },
+            {
+                id: 'kit-ferramentas-completo-soquetes-catraca',
+                title: 'Kit de Ferramentas Jogo Completo, Soquetes Catraca 46 Peças, Jogo Chaves Combinadas 6,8,10,12,14,16 Ferramentas Manuais, Jogo de Ferramentas Caixas de Ferramentas',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: '',
+                price: 'R$ 132,90',
+                discount: '',
+                installments: 'Em até 4x de R$ 34,99 sem juros',
+                affiliateLink: 'https://link.amazon/B09MK3zb6',
+                images: [
+                    'https://m.media-amazon.com/images/I/71SEcl2MewL._AC_SL1269_.jpg',
+                    'https://m.media-amazon.com/images/I/81r+ctAig-L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71kq0cNqEHL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71zJ0J6KYYL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/81FT9l4BZVL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/715p5XSjDCL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71GPaDT5hFL._AC_SL1402_.jpg',
+                    'https://m.media-amazon.com/images/I/71Wknm15W9L._AC_SL1254_.jpg'
+                ],
+                rating: '4,5 (2 avaliações)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Material': 'Aço e Plástico Resistente',
+                    'Tipo de Produto': 'Kit Completo de Ferramentas Manuais',
+                    'Aplicação': 'Doméstica e Profissional Leve'
+                },
+                about: 'Kit de ferramentas completo com jogo de catraca 46 peças e chaves combinadas (6, 8, 10, 12, 14, 16mm). Seu parceiro ideal para manutenções domésticas, reparos de carro e moto, ajustes, montagens e pequenos reparos do dia a dia. Acompanha maleta organizadora.'
+            },
+            {
+                id: 'jogo-soquete-46-pecas-maleta',
+                title: 'Jogo de Soquete Kit com 46 peças Ferramentas Chave Catraca Conjunto de Soquetes Métricos Sextavadas Chave Allen Torx e Barra de Extensão Reparos Automotivos e Domésticos Premium',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: 'R$ 29,90',
+                price: 'R$ 28,00',
+                discount: '-6%',
+                installments: 'Em até 21x sem juros',
+                affiliateLink: 'https://link.amazon/B02QD7Pl5',
+                images: [
+                    'https://m.media-amazon.com/images/I/71YPW2+s4rL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/610vfoMNvxL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/61gXXDrG1JL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/61BJrwpT55L._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/71YPW2+s4rL._AC_SL1024_.jpg'
+                ],
+                rating: '4,4 (390 avaliações)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Material': 'Aço vanádio cromado',
+                    'Cor': 'Prata',
+                    'Estilo da cabeça': 'Vários',
+                    'Nome do Conjunto': '46'
+                },
+                about: 'Máxima durabilidade e desempenho: Fabricado com aço vanádio cromado premium. Kit completo com 46 peças essenciais: Inclui soquetes, bits, chaves, extensões, adaptador e cabo de catraca. Versatilidade total em qualquer tarefa: Soquetes compatíveis com tamanhos de 4 a 14 mm, pontas PH, PZ, HEX, Torx e muito mais.'
+            },
+            {
+                id: 'kit-ferramentas-58-pecas-maleta',
+                title: 'Kit de Ferramentas Jogo de Soquetes e Chaves com Catraca | em Aço, 58 Peças com Maleta, Completo Premium para Mecânica e Uso Doméstico',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: '',
+                price: 'R$ 75,99',
+                discount: '',
+                installments: 'Em até 2x de R$ 38,00 sem juros',
+                affiliateLink: 'https://link.amazon/B07Iz9ehs',
+                images: [
+                    'https://m.media-amazon.com/images/I/71bIgrhDw7L._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71PcVbM6aNL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71o7D64jxVL._AC_SL1254_.jpg',
+                    'https://m.media-amazon.com/images/I/71iwCg8ro5L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71-hD1iu7oL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71wbqvDBoRL._AC_SL1254_.jpg'
+                ],
+                rating: '4,7 (1.250 avaliações)',
+                specs: {
+                    'Marca': 'Genérico',
+                    'Material': 'Aço cromado vanádio, Plástico',
+                    'Cor': 'Prateado Com Detalhes Em Amarelo E Azul',
+                    'Comprimento do produto': '35 Centímetros',
+                    'Fabricante': 'Fabricante De Ferramentas Profissionais'
+                },
+                about: 'Kit Completo de Ferramentas: Inclui chaves combinadas, soquetes, extensores e acessórios essenciais para diversos tipos de manutenção. Alta Durabilidade: Produzido em aço de alta resistência, garantindo maior vida útil mesmo em uso intenso. Encaixe Preciso: Ferramentas projetadas para oferecer ajuste firme e seguro, reduzindo riscos de desgaste e danos. Estojo Organizacional Incluso: Acompanha caixa rígida que mantém todas as peças organizadas e fáceis de transportar.'
+            },
+            {
+                id: 'sparta-maleta-ferramentas-129-pecas',
+                title: 'Sparta Maleta de ferramentas kit com 129 peças',
+                store: 'Amazon',
+                subcat: 'Maletas de Ferramentas',
+                oldPrice: 'R$ 140,45',
+                price: 'R$ 89,90',
+                discount: '-35%',
+                installments: 'Em até 12x de R$ 8,30 com juros',
+                affiliateLink: 'https://link.amazon/B0dNt2VU0',
+                images: [
+                    'https://m.media-amazon.com/images/I/61ZmjmMLsRL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61lP59FsfYL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51leWV4hz+L._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61yxrSlz7kL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/610DbcuOTrL._AC_SL1000_.jpg'
+                ],
+                rating: '4,7 (18.320 avaliações)',
+                specs: {
+                    'Marca': 'SPARTA',
+                    'Material': 'Liga de aço, Plástico',
+                    'Cor': 'preto',
+                    'Dimensões do produto': '25C x 3,5L x 31A centímetros',
+                    'Nível de Resistência à Água': 'Não resistente à água'
+                },
+                about: 'Kit completo com 129 peças: Inclui chaves, soquetes, alicates, chaves de fenda e muito mais, oferecendo um kit de ferramentas completo para reparos no dia a dia. Maleta organizadora prática: O Sparta kit de ferramentas com maleta mantém cada ferramenta no lugar, facilitando transporte, organização e armazenamento.'
+            },
+            {
+                id: 'furadeira-parafusadeira-impacto-rhead',
+                title: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED 2 Baterias Recarregáveis Bi-volt e Acessórios Maleta Completa',
+                store: 'Amazon',
+                subcat: 'Furadeiras e Parafusadeiras',
+                oldPrice: '',
+                price: 'R$ 102,60',
+                discount: '',
+                installments: 'Em até 3x de R$ 36,00 sem juros',
+                affiliateLink: 'https://link.amazon/B07xTHSpR',
+                images: [
+                    'https://m.media-amazon.com/images/I/61FT94WfQeL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/71k2NAwyzbL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/715FO+3r5IL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/61rnsj2OAGL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/71cO79OV31L._AC_SL1024_.jpg'
+                ],
+                rating: '4,2 (943 avaliações)',
+                specs: {
+                    'Marca': 'RHEAD RED HIGH END STUDIOS',
+                    'Fonte de alimentação': 'Energia elétrica',
+                    'Tensão': '110,22 Volts',
+                    'Componentes Incluídos': 'Parafusadeira e Furadeira Sem Fio 21V com LED, Bateria de 18V, Carregador Bivolt, Maleta, Kit 5 Bits, 6 Brocas',
+                    'Dimensões do produto': '26C x 8L x 29A centímetros'
+                },
+                about: 'Furadeira e Parafusadeira de Impacto Sem Fio com LED, 2 Baterias Recarregáveis Bi-volt, 3 funções em uma única ferramenta (perfura, parafusa e impacta), 25 níveis de torque + 2 velocidades, LED integrado e kit completo com maleta rígida e acessórios.'
+            },
+            {
+                id: 'panela-pressao-eletrica-electrolux-6l-pcc20',
+                title: 'Panela de Pressão Elétrica Electrolux Digital 6L PCC20 Inox Preto (127V - 220V)',
+                store: 'Amazon',
+                subcat: 'Panelas de Pressão Elétricas',
+                oldPrice: 'R$ 739,00',
+                price: 'R$ 525,26',
+                discount: '-29%',
+                installments: 'Em até 10x de R$ 52,58 sem juros',
+                affiliateLink: 'https://link.amazon/B0jbKGyJT',
+                images: [
+                    'https://m.media-amazon.com/images/I/61W25IvSTrL._AC_SL1148_.jpg',
+                    'https://m.media-amazon.com/images/I/61LhWFq-lWL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/71ks1ul7UyL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61K0IPZLgML._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61eZtYLhixL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/71lssCq3wXL._AC_SL1000_.jpg'
+                ],
+                rating: '4,8 (11.352 avaliações)',
+                specs: {
+                    'Marca': 'Electrolux',
+                    'Capacidade': '6 Litros',
+                    'Material': 'Aço inoxidável, Plástico',
+                    'Cor': 'Preto',
+                    'Tipo de Acabamento': 'Metálico',
+                    'Voltagem': '127V - 220V (Disponível nas opções)'
+                },
+                about: 'Capacidade de 6L de alta capacidade para preparar porções maiores. 3 níveis de pressão para alcançar o ponto ideal. 15 receitas pré-programadas com apenas um toque, super segura com 10 dispositivos de segurança e funcionamento silencioso.'
+            },
+            {
+                id: 'microondas-philco-pmo38e-33l',
+                title: 'Micro-ondas 33L Philco Limpa Fácil PMO38E 1400W (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Fornos de Micro-Ondas',
+                oldPrice: 'R$ 741,94',
+                price: 'R$ 629,00',
+                discount: '-15%',
+                installments: 'Em até 10x de R$ 69,97 sem juros',
+                affiliateLink: 'https://link.amazon/B03R73USj',
+                images: [
+                    'https://m.media-amazon.com/images/I/41N2K+L5+zL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51BzAFS++eL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51AyS7L4B8L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/511l-YH73bL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51suuOdpLNL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51aiI5+TQqL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/418j9KMz+cL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/516jCIRNRlL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51HPtahwBnL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51EnFINQtEL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51KaubzxL1L._AC_SL1200_.jpg'
+                ],
+                rating: '4,6 (522 avaliações)',
+                specs: {
+                    'Marca': 'PHILCO',
+                    'Dimensões do produto': '45,3P x 56,9L x 33,2A centímetros',
+                    'Cor': 'Branco',
+                    'Capacidade': '33 Litros',
+                    'Potência': '1400W',
+                    'Voltagem': '110V - 220V (Disponível nas opções)'
+                },
+                about: 'Capacidade generosa com 33 litros, ideal para preparar desde refeições individuais até pratos maiores. Equipado com 1400W de potência e 9 níveis de ajuste. Possui função manter aquecido, tira odor, receitas pré-programadas e pintura limpa fácil.'
+            },
+            {
+                id: 'tramontina-vancouver-effect-4-5l',
+                title: 'Panela de Pressão Tramontina Vancouver Effect em Alumínio com Revestimento Interno e Externo em Antiaderente Starflon Max Preto 20 cm 4,5 L',
+                store: 'Amazon',
+                subcat: 'Panelas de Pressão',
+                oldPrice: 'R$ 241,06',
+                price: 'R$ 171,41',
+                discount: '-29%',
+                installments: 'Em até 5x de R$ 35,98 sem juros',
+                affiliateLink: 'https://link.amazon/B008wULWT',
+                images: [
+                    'https://m.media-amazon.com/images/I/81ubjq2DfxL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/91JMPJv-8GL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/51aRPTA4pVL._AC_SL1024_.jpg',
+                    'https://m.media-amazon.com/images/I/81R3ONlNU5L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/81QAyCzBJRL._AC_SL1500_.jpg'
+                ],
+                rating: '4,8 (9.846 avaliações)',
+                specs: {
+                    'Marca': 'Tramontina',
+                    'Material': 'Alumínio com Revestimento Starflon Max',
+                    'Capacidade': '4,5 Litros',
+                    'Cor': 'Preto',
+                    'Fogões Compatíveis': 'Gás, elétrico e vitrocerâmico'
+                },
+                about: 'Corpo de alumínio com espessura de 3,2 mm que proporciona cozimento rápido e uniforme. Com revestimento interno e externo de antiaderente Starflon Max que não gruda, é fácil de limpar, mais durável e não é prejudicial à saúde. Alça, cabos superior e inferior de baquelite antitérmico que oferecem segurança durante o manuseio.'
+            },
+            {
+                id: 'consul-crm50mb',
+                title: 'Geladeira CRM50MB 412 Litros Frost Free Duplex Consul',
+                store: 'Amazon',
+                subcat: 'Geladeiras e Freezers',
+                oldPrice: 'R$ 2.999,00',
+                price: 'R$ 2.699,99',
+                discount: '-9%',
+                installments: 'Em até 12x de R$ 225,10 sem juros',
+                affiliateLink: 'https://link.amazon/B0gBXsKfJ',
+                images: [
+                    'https://m.media-amazon.com/images/I/4173h2WLFLL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/41dkOziMhyL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61q4aT4C3uL._AC_SX522_.jpg'
+                ],
+                rating: '4,8 (5 avaliações)',
+                specs: {
+                    'Dimensões': '72P x 70,2L x 174,5A cm',
+                    'Marca': 'Consul',
+                    'Capacidade': '412 Litros'
+                },
+                about: 'A Geladeira Consul Frost Free 412L tiene freezer espaçoso, Função Turbo e Filtro Antiodor.'
+            },
+            {
+                id: 'consul-crb39mk',
+                title: 'Geladeira Frost Free 337L com Espaço Extra Frio Inox Consul - CRB39MK (110 Volts)',
+                store: 'Amazon',
+                subcat: 'Geladeiras e Freezers',
+                oldPrice: 'R$ 2.179,00',
+                price: 'R$ 2.049,99',
+                discount: '-5%',
+                installments: 'Em até 12x de R$ 170,86 sem juros',
+                affiliateLink: 'https://link.amazon/B06EhGyA2',
+                images: [
+                    'https://m.media-amazon.com/images/I/5137tW5ScKL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/51MtulxaAjL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/61XtSxboE6L._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/61ePcUxgNYL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/61ZpFEUX84L._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/71HuoP6lEjL._AC_SX522_.jpg',
+                    'https://m.media-amazon.com/images/I/71jvb3IhIyL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/719fAKNoDlL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/7140R2pdrOL._AC_SL1500_.jpg'
+                ],
+                rating: '4,6 (19 avaliações)',
+                specs: {
+                    'Dimensões': '65P x 63L x 172A cm',
+                    'Marca': 'Consul',
+                    'Capacidade': '337 Litros',
+                    'Cor': 'Cinza',
+                    'Característica Especial': 'Livre de gelo'
+                },
+                about: 'O Consul Frost Free 337 litros evita gelo nas paredes, facilita a limpeza e economiza até 13% de energia ao ano. Com congelador espaçoso.'
+            },
+            {
+                id: 'mondial-l99fb',
+                title: 'MONDIAL Liquidificador Turbo Power, Preto, 550W, 220V - L-99 FB',
+                store: 'Amazon',
+                subcat: 'Liquidificadores',
+                oldPrice: 'R$ 159,90',
+                price: 'R$ 85,93',
+                discount: '-46%',
+                installments: 'Em até x sem juros',
+                affiliateLink: 'https://link.amazon/B046VH0Ty',
+                images: [
+                    'https://m.media-amazon.com/images/I/71KFAoTV+hL._AC_SY879_.jpg',
+                    'https://m.media-amazon.com/images/I/71snJPAj-dL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71zq9XPnksL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71mpLyEfFUL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71B-8Yh8JCL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71u1y+7HtVL._AC_SL1500_.jpg'
+                ],
+                rating: '4,7 (10 avaliações)',
+                specs: {
+                    'Marca': 'Mondial',
+                    'Potência': '550W',
+                    'Voltagem': '220V'
+                },
+                about: 'Liquidificador Mondial Turbo Power com 550W de potência, copo resistente e várias velocidades.'
+            },
+            {
+                id: 'electrolux-potes-herm',
+                title: 'Electrolux Kit 12 Potes Herméticos de Plástico Retangulares, Multiuso, Vedação Silicone, BPA Free, Porta Mantimentos',
+                store: 'Amazon',
+                subcat: 'Organização',
+                oldPrice: 'R$ 129,90',
+                price: 'R$ 89,90',
+                discount: '-30%',
+                installments: 'Em até x sem juros',
+                affiliateLink: 'https://link.amazon/B06ra4bMQ',
+                images: [
+                    'https://m.media-amazon.com/images/I/51uccv-jBiL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61mDXbMLe4L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51t1RYU3t9L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/517N5X5p4NL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51BSUCQnNBL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51tw6VngCdL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51kdyALdvCL._AC_SL1000_.jpg'
+                ],
+                rating: '4,9 (15 avaliações)',
+                specs: {
+                    'Marca': 'Electrolux',
+                    'Material': 'Plástico BPA Free',
+                    'Quantidade': 'Kit 12 Potes'
+                },
+                about: 'Kit com 12 potes herméticos Electrolux com vedação em silicone para manter seus mantimentos frescos por mais tempo.'
+            },
+            {
+                id: 'microondas-philco-20l',
+                title: 'Micro-ondas Philco 20L Branco Pmo23b (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Fornos de Micro-Ondas',
+                oldPrice: 'R$ 594,50',
+                price: 'R$ 467,36',
+                discount: '-21%',
+                installments: 'Em até x sem juros',
+                affiliateLink: 'https://link.amazon/B0f7syb1B',
+                images: [
+                    'https://m.media-amazon.com/images/I/41XTKM4Cg4L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51+i9EopBQL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/41CYNPe-nXL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61DsZgIt3aL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61+WX+hOEFL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61WWBUUtS8L._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51etb6EHPvL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/51j1OrH6cEL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/41HU0t+g+QL._AC_SL1200_.jpg',
+                    'https://m.media-amazon.com/images/I/611ByJFkbZL._AC_SL1200_.jpg'
+                ],
+                rating: '4,8 (20 avaliações)',
+                specs: {
+                    'Marca': 'Philco',
+                    'Capacidade': '20 Litros',
+                    'Voltagem': '110V - 220V (Disponível nas opções)'
+                },
+                about: 'Micro-ondas Philco 20 Litros na cor branca, prático, moderno e ideal para o dia a dia na sua cozinha.'
+            },
+            {
+                id: 'sanduicheira-cadence-click',
+                title: 'Sanduicheira Elétrica Cadence Click (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Sanduicheiras',
+                oldPrice: 'R$ 159,90',
+                price: 'R$ 80,70',
+                discount: '-49%',
+                installments: 'Em até 4x de R$ 20,19 sem juros',
+                affiliateLink: 'https://link.amazon/B02zgdGZU',
+                images: [
+                    'https://m.media-amazon.com/images/I/51UxR8FHe-L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61VaL7UVy1L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/518QD1Eid3L._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51drpBM+XuL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61qHCzXP3JL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/51mL4PfTVXL._AC_SL1080_.jpg',
+                    'https://m.media-amazon.com/images/I/51NTshP1ENL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51L7l4xirOL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51H3Edmt1EL._AC_SL1080_.jpg'
+                ],
+                rating: '4,8 (20.125 avaliações)',
+                specs: {
+                    'Característica Especial': 'Leve, Revestimento antiaderente',
+                    'Cor': 'Preto',
+                    'Material': 'Plástico',
+                    'Marca': 'Cadence',
+                    'Dimensões do produto': '22,3P x 21,5L x 7,8A centímetros',
+                    'Voltagem': '110V - 220V (Disponível nas opções)'
+                },
+                about: 'Botão Liga/Desliga com LEDs indicadores: Não precisa tirar da tomada. Pés Embutidos mais firmes: A sanduicheira não tomba. Chapas Antiaderentes + Profundas: 80%* + ESPAÇO mais versátil. Chapas + SIMPLES DE LIMPAR: Superior grill, Inferior LISINHA! Alça embutida e Base Porta Fio: Área protegida de aquecimento. 750 W de potência.'
+            },
+            {
+                id: 'potes-vidro-gato-panda',
+                title: 'Kit com 5 Potes de Vidro Gato Panda, 640 ml, Retangular, com Tampa Hermética, Azul',
+                store: 'Amazon',
+                subcat: 'Organização',
+                oldPrice: 'R$ 99,00',
+                price: 'R$ 55,80',
+                discount: '-43%',
+                installments: 'Em até 12x de R$ 5,15 com juros',
+                affiliateLink: 'https://link.amazon/B08ytkGoA',
+                images: [
+                    'https://m.media-amazon.com/images/I/814oRtHfLLL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71HHekURanL._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/71+5cmHOLeL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71MPEdwKf0L._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71UqQ+zutRL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/61jZVpYo-TL._AC_SL1500_.jpg',
+                    'https://m.media-amazon.com/images/I/71T+U8EtKgL._AC_SL1254_.jpg'
+                ],
+                rating: '4,8 (4.093 avaliações)',
+                specs: {
+                    'Marca': 'GATO PANDA',
+                    'Material': 'Vidro borossilicato',
+                    'Capacidade': '640 Mililitros',
+                    'Cor': 'Azul',
+                    'Característica Especial': 'Seguro para forno, Seguro para micro-ondas, Sem BPA'
+                },
+                about: 'Kit com 5 potes de vidro retangulares com tampa hermética, ideais para o armazenamento de alimentos com segurança e vedação perfeita.'
+            },
+            {
+                id: 'liquidificador-oster-1400',
+                title: 'Liquidificador 1400 Full Oster Preto 3,2L (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Liquidificadores',
+                oldPrice: 'R$ 319,90',
+                price: 'R$ 152,75',
+                discount: '-52%',
+                installments: 'Em até 6x de R$ 25,50 sem juros',
+                affiliateLink: 'https://link.amazon/B03Ac5eHV',
+                images: [
+                    'https://m.media-amazon.com/images/I/51N3Xi4JJML._AC_SX679_.jpg',
+                    'https://m.media-amazon.com/images/I/61F-MTfNCFL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51ZFXTk4U5L._AC_SL1075_.jpg',
+                    'https://m.media-amazon.com/images/I/61y8EkiSxfL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61f68LW-fBL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61-gsajLCPL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61kQgMgm1+L._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61puv1ZXjaL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/61vvN3krAYL._AC_SL1000_.jpg'
+                ],
+                rating: '4,5 (27.745 avaliações)',
+                specs: {
+                    'Marca': 'Oster',
+                    'Potência': '1400W',
+                    'Capacidade': '3,2 Litros',
+                    'Voltagem': '110V - 220V (Disponível nas opções)',
+                    'Dimensões do produto': '22P x 21L x 42A centímetros'
+                },
+                about: 'Super potente: 1400W. 15 velocidades + botão pulsar. Jarra antimicrobiana com 3,2L de capacidade total e tampa medidora de 100ml para facilitar suas receitas.'
+            },
+            {
+                id: 'sanduicheira-britania-bgr27i',
+                title: 'Sanduicheira e Grill Britânia BGR27I Press 2 em 1 850W (110V - 220V)',
+                store: 'Amazon',
+                subcat: 'Sanduicheiras',
+                oldPrice: 'R$ 116,68',
+                price: 'R$ 98,09',
+                discount: '-15%',
+                installments: 'Em até 12x com juros',
+                affiliateLink: 'https://link.amazon/B05Lkf5VZ',
+                images: [
+                    'https://m.media-amazon.com/images/I/5136pVcmWhL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51vcouCirqL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51gY4SWuETL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51YGBk-7LlL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/51-IzgJehlL._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/41tHnxIAkML._AC_SL1000_.jpg',
+                    'https://m.media-amazon.com/images/I/31oj8E7xUYL._AC_SL1000_.jpg'
+                ],
+                rating: '4,8 (9.068 avaliações)',
+                specs: {
+                    'Marca': 'Britânia',
+                    'Potência': '850W',
+                    'Voltagem': '110V - 220V (Disponível nas opções)',
+                    'Material': 'Aço inoxidável',
+                    'Dimensões do produto': '22P x 26L x 8A centímetros'
+                },
+                about: 'Ideal para o preparo de sanduíches, omeletes, ovos, etc. Chapas com revestimento antiaderente, chapa superior ondulada e inferior lisa, luz indicadora de funcionamento e acabamento em aço inox.'
+            },
+            {
+                id: 'kit-potes-vidro-hermeticos-640ml',
+                title: 'Kit 10 Potes de Vidro Herméticos 640ml com 4 Travas',
+                store: 'Amazon',
+                subcat: 'Organização',
+                oldPrice: 'R$ 120,00',
+                price: 'R$ 91,30',
+                discount: '-24%',
+                installments: 'Em até 6x sem juros',
+                affiliateLink: 'https://link.amazon/B0hvGzee1',
+                images: [
+                    'https://m.media-amazon.com/images/I/51zHBDpNqyL._AC_SL1000_.jpg'
+                ],
+                rating: '4,7 (120 avaliações)',
+                specs: {
+                    'Marca': 'Genérica',
+                    'Material': 'Vidro com 4 Travas',
+                    'Capacidade': '640 ml'
+                },
+                about: 'Kit contendo 10 potes de vidro herméticos de 640ml equipados com tampa de 4 travas, perfeitos para armazenamento seguro de alimentos.'
+            },
+            {
+                id: 'fritadeira-air-fryer-britania-5-5l',
+                title: 'Fritadeira Air Fryer Britânia 5,5L 1500W BFR50 Redstone 220V',
+                store: 'Amazon',
+                subcat: 'Air Fryers',
+                oldPrice: 'R$ 350,00',
+                price: 'R$ 277,00',
+                discount: '-21%',
+                installments: 'Em até 10x sem juros',
+                affiliateLink: 'https://link.amazon/B04eVKa69',
+                images: [
+                    'https://m.media-amazon.com/images/I/51JpNz4jZgL._AC_SL1453_.jpg'
+                ],
+                rating: '4,8 (350 avaliações)',
+                specs: {
+                    'Marca': 'Britânia',
+                    'Potência': '1500W',
+                    'Capacidade': '5,5 Litros',
+                    'Voltagem': '220V'
+                },
+                about: 'Fritadeira Air Fryer Britânia BFR50 Redstone com capacidade de 5,5 litros, 1500W de potência e revestimento especial Redstone.'
             }
+        ];
 
-            products.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'card-oferta';
-                card.onclick = () => openProductDetail(p.id);
-
-                let badgeHTML = p.discount ? `<span class="badge-desconto">${p.discount}</span>` : '';
-                let oldPriceHTML = p.oldPrice ? `<div class="old-price">${p.oldPrice}</div>` : '';
-
-                card.innerHTML = `
-                    ${badgeHTML}
+        function renderProductCard(p) {
+            const coverImage = p.images && p.images.length > 0 ? p.images[0] : (p.image || '');
+            const badgeHtml = p.discount ? `<span class="badge-desconto">${p.discount}</span>` : '';
+            const oldPriceHtml = p.oldPrice ? `<span class="old-price">${p.oldPrice}</span>` : '';
+            return `
+                <article class="card-oferta" onclick="openProductDetail('${p.id}')">
+                    ${badgeHtml}
                     <div class="img-container">
-                        <img src="${p.images[0]}" alt="${p.title}" loading="lazy">
+                        <img src="${coverImage}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/200?text=Produto'">
                     </div>
-                    <div class="store-tag">${p.store}</div>
-                    <div class="card-title">${p.title}</div>
+                    <span class="store-tag">${p.store}</span>
+                    <h2 class="card-title">${p.title}</h2>
                     <div class="price-section">
-                        ${oldPriceHTML}
+                        ${oldPriceHtml}
                         <div class="current-price">${p.price}</div>
                     </div>
-                    <span class="btn-pegar">PEGAR OFERTA</span>
-                `;
-                container.appendChild(card);
-            });
+                    <a href="${p.affiliateLink}" target="_blank" onclick="event.stopPropagation()" class="btn-pegar">VER NA LOJA</a>
+                </article>
+            `;
         }
 
-        function switchPage(pageId) {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
-            document.getElementById(pageId).classList.add('active-page');
-            window.scrollTo(0, 0);
+        function loadHomeFeed() {
+            const feed = document.getElementById('homeFeed');
+            feed.innerHTML = productsDatabase.map(p => renderProductCard(p)).join('');
         }
 
         function openProductDetail(productId) {
-            const p = productsDatabase.find(item => item.id === productId);
-            if (!p) return;
+            const product = productsDatabase.find(p => p.id === productId);
+            if (!product) return;
 
-            document.getElementById('detailBreadcrumbCat').innerText = p.subcat;
-            document.getElementById('detailBreadcrumbTitle').innerText = p.title;
-            document.getElementById('detailImg').src = p.images[0];
-            document.getElementById('detailStore').innerText = p.store;
-            document.getElementById('detailTitle').innerText = p.title;
-            document.getElementById('detailRatingText').innerText = p.rating;
+            const images = product.images && product.images.length > 0 ? product.images : [product.image];
+
+            document.getElementById('detailBreadcrumbCat').innerText = product.subcat;
+            document.getElementById('detailBreadcrumbTitle').innerText = product.title;
+            
+            const detailImg = document.getElementById('detailImg');
+            detailImg.src = images[0];
+            
+            const thumbsContainer = document.getElementById('detailThumbnails');
+            if (images.length > 1) {
+                thumbsContainer.innerHTML = images.map((imgUrl, index) => `
+                    <img src="${imgUrl}" class="thumb-img ${index === 0 ? 'active' : ''}" onclick="changeDetailImage('${imgUrl}', this)" alt="Miniatura ${index + 1}">
+                `).join('');
+            } else {
+                thumbsContainer.innerHTML = '';
+            }
+
+            document.getElementById('detailStore').innerText = product.store;
+            document.getElementById('detailTitle').innerText = product.title;
+            document.getElementById('detailRatingText').innerText = product.rating;
             
             const badgeEl = document.getElementById('detailBadge');
-            if (p.discount) {
+            if (product.discount) {
                 badgeEl.style.display = 'inline-block';
-                badgeEl.innerText = `${p.discount} OFF`;
+                badgeEl.innerText = `${product.discount} OFF`;
             } else {
                 badgeEl.style.display = 'none';
             }
 
             const oldPriceEl = document.getElementById('detailOldPrice');
-            if (p.oldPrice) {
+            if (product.oldPrice) {
                 oldPriceEl.style.display = 'block';
-                oldPriceEl.innerText = `De: ${p.oldPrice}`;
+                oldPriceEl.innerText = `De: ${product.oldPrice}`;
             } else {
                 oldPriceEl.style.display = 'none';
             }
 
-            document.getElementById('detailCurrentPrice').innerText = p.price;
-            document.getElementById('detailInstallments').innerText = p.installments;
-            document.getElementById('detailAbout').innerText = p.about;
-            document.getElementById('detailAffiliateLink').href = p.affiliateLink;
+            document.getElementById('detailCurrentPrice').innerText = product.price;
+            document.getElementById('detailInstallments').innerText = product.installments;
+            document.getElementById('detailAbout').innerText = product.about;
+            document.getElementById('detailAffiliateLink').href = product.affiliateLink;
 
             const specsTable = document.getElementById('detailSpecs');
-            specsTable.innerHTML = '';
-            for (const [key, value] of Object.entries(p.specs)) {
-                specsTable.innerHTML += `<tr><td>${key}</td><td>${value}</td></tr>`;
-            }
-
-            const thumbContainer = document.getElementById('detailThumbnails');
-            thumbContainer.innerHTML = '';
-            p.images.forEach((imgUrl, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = imgUrl;
-                thumb.className = 'thumb-img' + (index === 0 ? ' active' : '');
-                thumb.onclick = (e) => {
-                    e.stopPropagation();
-                    document.getElementById('detailImg').src = imgUrl;
-                    document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                };
-                thumbContainer.appendChild(thumb);
-            });
+            specsTable.innerHTML = Object.entries(product.specs).map(([key, val]) => `
+                <tr>
+                    <td>${key}</td>
+                    <td>${val}</td>
+                </tr>
+            `).join('');
 
             switchPage('productDetailPage');
         }
 
-        function openCategoryPage(subcatName) {
-            document.getElementById('categoryBreadcrumbName').innerText = subcatName;
-            document.getElementById('categoryTitle').innerText = subcatName;
-            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === subcatName.toLowerCase());
-            renderProducts(filtered, 'categoryFeed');
-            document.getElementById('megaMenuPanel').classList.remove('open');
-            document.getElementById('menuArrow').style.transform = 'rotate(0deg)';
-            switchPage('categoryPage');
+        function changeDetailImage(imgUrl, element) {
+            document.getElementById('detailImg').src = imgUrl;
+            document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProducts(productsDatabase, 'homeFeed');
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            document.getElementById(pageId).classList.add('active-page');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            const megaMenuBtn = document.getElementById('megaMenuBtn');
-            const megaMenuPanel = document.getElementById('megaMenuPanel');
-            const menuArrow = document.getElementById('menuArrow');
+        function openCategoryPage(categoryName) {
+            megaPanel.classList.remove('open');
+            megaBtn.classList.remove('active');
+            switchPage('categoryPage');
 
-            megaMenuBtn.onclick = (e) => {
-                e.stopPropagation();
-                const isOpen = megaMenuPanel.classList.toggle('open');
-                menuArrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-            };
+            document.getElementById('categoryBreadcrumbName').innerText = categoryName;
+            document.getElementById('categoryTitle').innerText = categoryName;
+            
+            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === categoryName.toLowerCase());
+            const feed = document.getElementById('categoryFeed');
 
-            document.addEventListener('click', (e) => {
-                if (!megaMenuPanel.contains(e.target) && !megaMenuBtn.contains(e.target)) {
-                    megaMenuPanel.classList.remove('open');
-                    menuArrow.style.transform = 'rotate(0deg)';
+            if (filtered.length === 0) {
+                feed.innerHTML = `<p style="color:var(--text-muted); grid-column: 1/-1;">Nenhuma oferta cadastrada nesta subcategoria no momento.</p>`;
+            } else {
+                feed.innerHTML = filtered.map(p => renderProductCard(p)).join('');
+            }
+        }
+
+        function openStoreOffers(storeKey) {
+            switchPage('storePage');
+
+            const storeName = storeKey === 'amazon' ? 'Amazon' : 'Magazine Luiza';
+            document.getElementById('storeBreadcrumbName').innerText = storeName;
+            document.getElementById('storeTitle').innerHTML = `Ofertas ${storeName} <i class="fa-solid fa-circle-check"></i>`;
+            document.getElementById('storeDomain').innerText = storeKey === 'amazon' ? 'amazon.com.br' : 'magazineluiza.com.br';
+
+            const filtered = productsDatabase.filter(p => p.store.toLowerCase().includes(storeKey.toLowerCase()));
+            document.getElementById('storeFeed').innerHTML = filtered.map(p => renderProductCard(p)).join('');
+        }
+
+        const megaBtn = document.getElementById('megaMenuBtn');
+        const megaPanel = document.getElementById('megaMenuPanel');
+        const megaContent = document.querySelector('.mega-content');
+        const catItems = document.querySelectorAll('.mega-cat-item');
+        const subcatGroups = document.querySelectorAll('.subcat-group');
+
+        megaBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            megaPanel.classList.toggle('open');
+            megaBtn.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!megaPanel.contains(e.target) && !megaBtn.contains(e.target)) {
+                megaPanel.classList.remove('open');
+                megaBtn.classList.remove('active');
+            }
+        });
+
+        catItems.forEach(item => {
+            const targetId = item.getAttribute('data-target');
+            const targetSubcat = document.getElementById(targetId);
+
+            function setupMenuLayout() {
+                if (window.innerWidth <= 768) {
+                    item.after(targetSubcat);
+                    item.classList.remove('active');
+                    targetSubcat.classList.remove('active');
+                } else {
+                    megaContent.appendChild(targetSubcat);
+                    if (!document.querySelector('.mega-cat-item.active')) {
+                        catItems[0].classList.add('active');
+                        subcatGroups[0].classList.add('active');
+                    }
                 }
-            });
-
-            const catItems = document.querySelectorAll('.mega-cat-item');
-            const subcatGroups = document.querySelectorAll('.subcat-group');
-
-            if (catItems.length > 0) {
-                catItems[0].classList.add('active');
-                const targetId = catItems[0].getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
             }
 
-            catItems.forEach(item => {
-                item.onmouseenter = () => {
+            setupMenuLayout();
+            window.addEventListener('resize', setupMenuLayout);
+
+            const toggleCategory = (e) => {
+                e.stopPropagation();
+                const isActive = item.classList.contains('active');
+
+                if (window.innerWidth <= 768 && isActive) {
+                    item.classList.remove('active');
+                    targetSubcat.classList.remove('active');
+                    return;
+                }
+
+                catItems.forEach(i => i.classList.remove('active'));
+                subcatGroups.forEach(g => g.classList.remove('active'));
+
+                item.classList.add('active');
+                if (targetSubcat) targetSubcat.classList.add('active');
+            };
+
+            item.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 768) {
                     catItems.forEach(i => i.classList.remove('active'));
                     subcatGroups.forEach(g => g.classList.remove('active'));
                     item.classList.add('active');
-                    const target = document.getElementById(item.getAttribute('data-target'));
-                    if (target) target.classList.add('active');
-                };
-                item.onclick = () => {
-                    const target = document.getElementById(item.getAttribute('data-target'));
-                    if (target) {
-                        subcatGroups.forEach(g => g.classList.remove('active'));
-                        target.classList.add('active');
-                    }
-                };
+                    if (targetSubcat) targetSubcat.classList.add('active');
+                }
             });
 
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.oninput = (e) => {
-                    const term = e.target.value.toLowerCase().trim();
-                    if (term === '') {
-                        renderProducts(productsDatabase, 'homeFeed');
-                        switchPage('homePage');
-                        return;
-                    }
-                    const results = productsDatabase.filter(p => 
-                        p.title.toLowerCase().includes(term) || 
-                        p.store.toLowerCase().includes(term) || 
-                        p.subcat.toLowerCase().includes(term)
-                    );
-                    renderProducts(results, 'homeFeed');
-                    switchPage('homePage');
-                };
-            }
+            item.addEventListener('click', toggleCategory);
         });
+
+        loadHomeFeed();
     </script>
 </body>
 </html>
