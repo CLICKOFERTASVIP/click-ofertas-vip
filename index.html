@@ -173,7 +173,6 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            /* Removido o limite de altura e scroll no desktop */
             max-height: none;
             overflow-y: visible;
         }
@@ -217,7 +216,6 @@
             flex: 1;
             padding: 25px;
             background: #18181c;
-            /* Removido o limite de altura e scroll no desktop */
             max-height: none;
             overflow-y: visible;
         }
@@ -262,6 +260,119 @@
 
         .page-view.active-page { display: block; }
 
+        /* ESTILOS DA BARRA DE FILTROS E ORDENAÇÃO */
+        .listing-header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: #18181c;
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid #2b2b36;
+        }
+
+        .listing-title-box h2 {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .controls-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-filter-trigger {
+            background: #0084ff;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-filter-trigger:hover {
+            background: #006bcf;
+        }
+
+        .sort-select-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sort-select-box label {
+            font-size: 13px;
+            color: #ffffff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .sort-select-box select {
+            background: #121216;
+            color: #ffffff;
+            border: 1px solid #383846;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .sort-select-box select:focus {
+            border-color: #0084ff;
+        }
+
+        /* PAINEL DE FILTROS EXPAN SÍVEL */
+        .filter-expand-panel {
+            display: none;
+            width: 100%;
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 1px solid #2b2b36;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-expand-panel.open {
+            display: flex;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .filter-group input, .filter-group select {
+            background: #121216;
+            color: #fff;
+            border: 1px solid #383846;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .filter-group input[type="number"] {
+            width: 90px;
+        }
+
         .banner-vip { margin-bottom: 25px; }
 
         .banner-content {
@@ -292,7 +403,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* Seção Mais Vendidos da Semana (Carrossel Horizontal com 4 itens visíveis) */
+        /* Seção Mais Vendidos */
         .mais-vendidos-wrapper {
             background: linear-gradient(135deg, #18181c 0%, #22222d 100%);
             border: 1px solid #2b2b36;
@@ -350,12 +461,12 @@
             gap: 15px;
             overflow-x: auto;
             scroll-behavior: smooth;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
             padding-bottom: 5px;
         }
 
         .mais-vendidos-carousel-container::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none;
         }
 
         .mais-vendidos-carousel-container .card-oferta {
@@ -681,7 +792,6 @@
                 overflow-y: auto;
             }
 
-            /* Mantém o comportamento original com rolagem funcional apenas no mobile */
             .mega-sidebar { width: 100%; max-height: none; border-right: none; padding: 4px; overflow-y: visible; }
             .mega-content { max-height: none; overflow-y: visible; }
 
@@ -708,6 +818,16 @@
             .mais-vendidos-carousel-container .card-oferta {
                 min-width: calc(75% - 10px);
                 flex: 0 0 calc(75% - 10px);
+            }
+
+            .listing-header-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .controls-wrapper {
+                justify-content: space-between;
+                width: 100%;
             }
 
             .product-detail-layout { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
@@ -1021,7 +1141,6 @@
             </a>
         </div>
 
-        <!-- Seção Mais Vendidos da Semana (Carrossel Horizontal com setas) -->
         <section class="mais-vendidos-wrapper">
             <div class="mais-vendidos-top-header">
                 <div class="mais-vendidos-title-area">
@@ -1045,7 +1164,47 @@
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; Busca
         </div>
-        <h2 id="searchTitle" style="font-size: 24px; font-weight: 800; margin-bottom: 20px;">Resultados da Pesquisa</h2>
+        
+        <div class="listing-header-bar">
+            <div class="listing-title-box">
+                <h2 id="searchTitle">Resultados da Pesquisa</h2>
+            </div>
+            <div class="controls-wrapper">
+                <button class="btn-filter-trigger" onclick="toggleFilterPanel('searchFilterPanel')">
+                    <i class="fa-solid fa-sliders"></i> Filtrar por
+                </button>
+                <div class="sort-select-box">
+                    <label for="sortSearch">Ordenar por:</label>
+                    <select id="sortSearch" onchange="applySortingAndFiltering('search')">
+                        <option value="recentes">Mais recentes</option>
+                        <option value="menor-preco">Menor preço</option>
+                        <option value="maior-preco">Maior preço</option>
+                        <option value="maior-desconto">Maior desconto</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-expand-panel" id="searchFilterPanel">
+                <div class="filter-group">
+                    <label>Loja:</label>
+                    <select id="filterStoreSearch" onchange="applySortingAndFiltering('search')">
+                        <option value="todas">Todas</option>
+                        <option value="Amazon">Amazon</option>
+                        <option value="Shopee">Shopee</option>
+                        <option value="Mercado Livre">Mercado Livre</option>
+                        <option value="Magazine Luiza">Magazine Luiza</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Preço Mín:</label>
+                    <input type="number" id="minPriceSearch" placeholder="R$" oninput="applySortingAndFiltering('search')">
+                </div>
+                <div class="filter-group">
+                    <label>Preço Máx:</label>
+                    <input type="number" id="maxPriceSearch" placeholder="R$" oninput="applySortingAndFiltering('search')">
+                </div>
+            </div>
+        </div>
+
         <div class="feed-container" id="searchFeed"></div>
     </div>
 
@@ -1101,7 +1260,47 @@
         <div class="breadcrumb">
             <a href="#" onclick="switchPage('homePage')"><i class="fa-solid fa-house"></i> Home</a> &gt; <span id="categoryBreadcrumbName">Categoria</span>
         </div>
-        <h2 id="categoryTitle" style="font-size: 24px; font-weight: 800; margin-bottom: 20px;">Produtos</h2>
+
+        <div class="listing-header-bar">
+            <div class="listing-title-box">
+                <h2 id="categoryTitle">Produtos</h2>
+            </div>
+            <div class="controls-wrapper">
+                <button class="btn-filter-trigger" onclick="toggleFilterPanel('categoryFilterPanel')">
+                    <i class="fa-solid fa-sliders"></i> Filtrar por
+                </button>
+                <div class="sort-select-box">
+                    <label for="sortCategory">Ordenar por:</label>
+                    <select id="sortCategory" onchange="applySortingAndFiltering('category')">
+                        <option value="recentes">Mais recentes</option>
+                        <option value="menor-preco">Menor preço</option>
+                        <option value="maior-preco">Maior preço</option>
+                        <option value="maior-desconto">Maior desconto</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-expand-panel" id="categoryFilterPanel">
+                <div class="filter-group">
+                    <label>Loja:</label>
+                    <select id="filterStoreCategory" onchange="applySortingAndFiltering('category')">
+                        <option value="todas">Todas</option>
+                        <option value="Amazon">Amazon</option>
+                        <option value="Shopee">Shopee</option>
+                        <option value="Mercado Livre">Mercado Livre</option>
+                        <option value="Magazine Luiza">Magazine Luiza</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Preço Mín:</label>
+                    <input type="number" id="minPriceCategory" placeholder="R$" oninput="applySortingAndFiltering('category')">
+                </div>
+                <div class="filter-group">
+                    <label>Preço Máx:</label>
+                    <input type="number" id="maxPriceCategory" placeholder="R$" oninput="applySortingAndFiltering('category')">
+                </div>
+            </div>
+        </div>
+
         <div class="feed-container" id="categoryFeed"></div>
     </div>
 
@@ -1150,6 +1349,9 @@
     </div>
 
     <script>
+        let currentSubcatFilter = '';
+        let currentSearchQuery = '';
+
         let productsDatabase = [
             {
                 id: 'combo-gamer-4-em-1-mts-nightmare-snow',
@@ -1347,9 +1549,69 @@
                     { title: 'Ferramentas e Jardim', items: ['Compressor de ar', 'Ferramentas manuais', 'Furadeira', 'Lavadora de alta pressão', 'Móveis para ambientes externos', 'Parafusadeira', 'Serra tico-tico', 'Utensílios para jardim'] },
                     { title: 'Automotivo e Construção', items: ['Acessórios para carros e motos', 'CD e DVD players', 'Central Multimídia', 'Pneus', 'Construção e Reforma'] }
                 ]
-            },
-            
+            }
         ];
+
+        // AUXILIAR DE PREÇO (NUMÉRICO)
+        function parsePrice(priceStr) {
+            if (!priceStr) return 0;
+            return parseFloat(priceStr.replace('R$', '').replace(/\./g, '').replace(',', '.').trim()) || 0;
+        }
+
+        // AUXILIAR DE DESCONTO (NUMÉRICO)
+        function parseDiscount(discountStr) {
+            if (!discountStr) return 0;
+            return parseFloat(discountStr.replace('-', '').replace('%', '').trim()) || 0;
+        }
+
+        function toggleFilterPanel(panelId) {
+            const panel = document.getElementById(panelId);
+            if (panel) {
+                panel.classList.toggle('open');
+            }
+        }
+
+        function applySortingAndFiltering(context) {
+            let baseList = [];
+
+            if (context === 'category') {
+                baseList = productsDatabase.filter(p => p.subcat.toLowerCase() === currentSubcatFilter.toLowerCase());
+            } else if (context === 'search') {
+                baseList = productsDatabase.filter(p => 
+                    (p.title.toLowerCase().includes(currentSearchQuery) || 
+                    p.store.toLowerCase().includes(currentSearchQuery) || 
+                    p.subcat.toLowerCase().includes(currentSearchQuery))
+                );
+            }
+
+            // Pega parâmetros de filtro
+            const storeFilter = document.getElementById(context === 'category' ? 'filterStoreCategory' : 'filterStoreSearch').value;
+            const minPrice = parseFloat(document.getElementById(context === 'category' ? 'minPriceCategory' : 'minPriceSearch').value) || 0;
+            const maxPrice = parseFloat(document.getElementById(context === 'category' ? 'maxPriceCategory' : 'maxPriceSearch').value) || Infinity;
+            const sortOption = document.getElementById(context === 'category' ? 'sortCategory' : 'sortSearch').value;
+
+            // Aplica filtros de loja e faixa de preço
+            let filtered = baseList.filter(p => {
+                const price = parsePrice(p.price);
+                const matchesStore = (storeFilter === 'todas' || p.store.toLowerCase() === storeFilter.toLowerCase());
+                const matchesMin = price >= minPrice;
+                const matchesMax = price <= maxPrice;
+                return matchesStore && matchesMin && matchesMax;
+            });
+
+            // Aplica Ordenação
+            if (sortOption === 'menor-preco') {
+                filtered.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+            } else if (sortOption === 'maior-preco') {
+                filtered.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+            } else if (sortOption === 'maior-desconto') {
+                filtered.sort((a, b) => parseDiscount(b.discount) - parseDiscount(a.discount));
+            }
+            // 'recentes' mantém a ordem padrão original do DB
+
+            const targetFeedId = context === 'category' ? 'categoryFeed' : 'searchFeed';
+            renderFeed(targetFeedId, filtered);
+        }
 
         function buildMegaMenu() {
             const sidebarContainer = document.getElementById('megaSidebarContainer');
@@ -1451,7 +1713,7 @@
             const activeItems = items.filter(p => p.ativo !== false);
 
             if (activeItems.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">Nenhum produto encontrado.</p>';
+                container.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 40px;">Nenhum produto encontrado com estes filtros.</p>';
                 return;
             }
 
@@ -1506,17 +1768,22 @@
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
                 const query = e.target.value.toLowerCase().trim();
+                currentSearchQuery = query;
+
                 if (query === '') {
                     switchPage('homePage');
                     return;
                 }
-                const filtered = productsDatabase.filter(p => 
-                    (p.title.toLowerCase().includes(query) || 
-                    p.store.toLowerCase().includes(query) || 
-                    p.subcat.toLowerCase().includes(query))
-                );
+
                 document.getElementById('searchTitle').innerText = `Resultados para: "${e.target.value}"`;
-                renderFeed('searchFeed', filtered);
+                
+                // Reseta filtros
+                document.getElementById('sortSearch').value = 'recentes';
+                document.getElementById('filterStoreSearch').value = 'todas';
+                document.getElementById('minPriceSearch').value = '';
+                document.getElementById('maxPriceSearch').value = '';
+
+                applySortingAndFiltering('search');
                 switchPage('searchPage');
             });
         }
@@ -1531,10 +1798,17 @@
         }
 
         function openCategoryPage(subcatName) {
+            currentSubcatFilter = subcatName;
             document.getElementById('categoryBreadcrumbName').innerText = subcatName;
             document.getElementById('categoryTitle').innerText = subcatName;
-            const filtered = productsDatabase.filter(p => p.subcat.toLowerCase() === subcatName.toLowerCase());
-            renderFeed('categoryFeed', filtered);
+
+            // Reseta filtros da categoria ao entrar em uma nova
+            document.getElementById('sortCategory').value = 'recentes';
+            document.getElementById('filterStoreCategory').value = 'todas';
+            document.getElementById('minPriceCategory').value = '';
+            document.getElementById('maxPriceCategory').value = '';
+
+            applySortingAndFiltering('category');
             switchPage('categoryPage');
         }
 
