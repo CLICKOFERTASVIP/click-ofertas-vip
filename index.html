@@ -775,6 +775,28 @@
 
         .btn-buy-now:hover { transform: scale(1.02); background: #e68a00; }
 
+        /* ===== MENU DE COMPARTILHAMENTO — BLOCO ISOLADO ===== */
+        .co-share-btn{position:absolute;top:10px;right:10px;width:32px;height:32px;border:1px solid #2b2b36;border-radius:50%;background:#121216;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;font-size:13px;transition:background .2s,border-color .2s,transform .2s}
+        .co-share-btn:hover{background:#2b2b36;border-color:var(--primary);transform:scale(1.06)}
+        .co-share-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:10000}
+        .co-share-overlay.co-open{display:flex}
+        .co-share-modal{width:min(100%,400px);background:#1e1e24;border:1px solid #383846;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.65);padding:22px;position:relative;animation:coShareIn .18s ease-out}
+        @keyframes coShareIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+        .co-share-close{position:absolute;top:12px;right:14px;border:0;background:transparent;color:#a4b0be;font-size:22px;line-height:1;cursor:pointer}
+        .co-share-close:hover{color:#fff}
+        .co-share-title{font-size:18px;font-weight:800;color:#fff;padding-right:30px;margin-bottom:6px}
+        .co-share-product{color:#a4b0be;font-size:12px;line-height:1.45;margin-bottom:18px}
+        .co-share-options{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+        .co-share-option{border:0;background:transparent;color:#fff;cursor:pointer;text-align:center;font-size:11px;font-weight:700;padding:0}
+        .co-share-icon{width:48px;height:48px;border-radius:50%;margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:19px}
+        .co-share-whatsapp{background:#25D366}.co-share-telegram{background:#229ED9}.co-share-twitter{background:#1DA1F2}.co-share-copy{background:#718096}
+        .co-share-link-row{display:flex;width:100%}
+        .co-share-link-input{min-width:0;flex:1;height:38px;padding:0 11px;background:#121216;color:#fff;border:1px solid #383846;border-radius:8px 0 0 8px;outline:none;font-size:11px}
+        .co-share-copy-main{width:68px;border:0;border-radius:0 8px 8px 0;background:var(--primary);color:#fff;font-weight:800;cursor:pointer}
+        .co-share-copy-main:hover{background:var(--primary-hover)}
+        @media(max-width:768px){.co-share-overlay{padding:14px}.co-share-modal{padding:20px 16px}.co-share-options{gap:6px}.co-share-icon{width:44px;height:44px;font-size:17px}}
+        /* ===== FIM DO MENU DE COMPARTILHAMENTO ===== */
+
         @media (max-width: 768px) {
             .header-container { flex-direction: column; gap: 12px; padding: 10px 15px; }
             .search-bar { width: 100%; max-width: 100%; }
@@ -841,7 +863,7 @@
 
     <header>
         <div class="header-container">
-            <div class="brand-logo" onclick="switchPage('homePage')">
+            <div class="brand-logo" onclick="history.replaceState({}, '', window.location.pathname); switchPage('homePage')">
                 <div class="brand-logo-icon">
                     <i class="fa-solid fa-bolt"></i>
                 </div>
@@ -3023,6 +3045,10 @@
                     <div class="badges-container">
                         <span class="badge-desconto">${p.discount}</span>
                     </div>
+                    <button type="button" class="co-share-btn" title="Compartilhar oferta" aria-label="Compartilhar oferta"
+                        onclick="event.stopPropagation(); openShareModal('${p.id}')">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </button>
                     <div class="img-container">
                         <img src="${p.images[0]}" alt="${p.title}">
                     </div>
@@ -3037,6 +3063,81 @@
                 container.appendChild(card);
             });
         }
+
+        // ===== MENU DE COMPARTILHAMENTO — BLOCO ISOLADO =====
+        let coShareProductId = null;
+
+        function getShareUrl(productId) {
+            const url = new URL(window.location.href);
+            url.search = '';
+            url.hash = '';
+            url.searchParams.set('produto', productId);
+            return url.href;
+        }
+
+        function openShareModal(productId) {
+            const p = productsDatabase.find(item => item.id === productId);
+            if (!p) return;
+            coShareProductId = productId;
+            document.getElementById('coShareProduct').innerText = p.title;
+            document.getElementById('coShareLink').value = getShareUrl(productId);
+            const overlay = document.getElementById('coShareOverlay');
+            overlay.classList.add('co-open');
+            overlay.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeShareModal() {
+            const overlay = document.getElementById('coShareOverlay');
+            overlay.classList.remove('co-open');
+            overlay.setAttribute('aria-hidden', 'true');
+        }
+
+        function getCurrentShareData() {
+            const p = productsDatabase.find(item => item.id === coShareProductId);
+            if (!p) return null;
+            return {title:p.title,url:getShareUrl(p.id),text:`Confira esta oferta: ${p.title} - ${p.price}`};
+        }
+
+        async function copyShareLink() {
+            const data = getCurrentShareData();
+            if (!data) return;
+            try {
+                await navigator.clipboard.writeText(data.url);
+            } catch (err) {
+                const input = document.getElementById('coShareLink');
+                input.focus(); input.select(); document.execCommand('copy');
+            }
+            const main = document.querySelector('.co-share-copy-main');
+            if (main) {
+                main.innerText = 'Copiado!';
+                setTimeout(() => { main.innerText = 'Copiar'; }, 1400);
+            }
+        }
+
+        function shareToWhatsApp() {
+            const data = getCurrentShareData();
+            if (data) window.open('https://wa.me/?text=' + encodeURIComponent(data.text + ' ' + data.url), '_blank', 'noopener,noreferrer');
+        }
+
+        function shareToTelegram() {
+            const data = getCurrentShareData();
+            if (data) window.open('https://t.me/share/url?url=' + encodeURIComponent(data.url) + '&text=' + encodeURIComponent(data.text), '_blank', 'noopener,noreferrer');
+        }
+
+        function shareToTwitter() {
+            const data = getCurrentShareData();
+            if (data) window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(data.text) + '&url=' + encodeURIComponent(data.url), '_blank', 'noopener,noreferrer');
+        }
+
+        document.addEventListener('click', function(e) {
+            const overlay = document.getElementById('coShareOverlay');
+            if (overlay && e.target === overlay) closeShareModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeShareModal();
+        });
+        // ===== FIM DO MENU DE COMPARTILHAMENTO =====
 
         function openProductDetail(productId) {
             const p = productsDatabase.find(item => item.id === productId);
@@ -3081,6 +3182,10 @@
             }
 
             switchPage('productDetailPage');
+
+            const shareUrl = new URL(window.location.href);
+            shareUrl.searchParams.set('produto', productId);
+            history.replaceState({ produto: productId }, '', shareUrl.href);
         }
 
         function scrollCarousel(direction) {
@@ -3153,6 +3258,13 @@
                 }
             });
 
+            // Se a página foi aberta por um link compartilhado, abre o produto diretamente.
+            const sharedProductId = new URLSearchParams(window.location.search).get('produto');
+            if (sharedProductId) {
+                const sharedProduct = productsDatabase.find(p => p.id === sharedProductId);
+                if (sharedProduct) openProductDetail(sharedProductId);
+            }
+
             // Barra de busca em tempo real
             const searchInput = document.getElementById('searchInput');
             searchInput.addEventListener('input', (e) => {
@@ -3173,5 +3285,25 @@
             });
         };
     </script>
+    <!-- ===== MODAL DE COMPARTILHAMENTO — BLOCO ISOLADO ===== -->
+    <div class="co-share-overlay" id="coShareOverlay" aria-hidden="true">
+        <div class="co-share-modal" role="dialog" aria-modal="true" aria-labelledby="coShareTitle">
+            <button class="co-share-close" type="button" aria-label="Fechar" onclick="closeShareModal()">&times;</button>
+            <div class="co-share-title" id="coShareTitle">Compartilhar Oferta</div>
+            <div class="co-share-product" id="coShareProduct"></div>
+            <div class="co-share-options">
+                <button type="button" class="co-share-option" onclick="shareToWhatsApp()"><span class="co-share-icon co-share-whatsapp"><i class="fa-brands fa-whatsapp"></i></span>WhatsApp</button>
+                <button type="button" class="co-share-option" onclick="shareToTelegram()"><span class="co-share-icon co-share-telegram"><i class="fa-brands fa-telegram"></i></span>Telegram</button>
+                <button type="button" class="co-share-option" onclick="shareToTwitter()"><span class="co-share-icon co-share-twitter"><i class="fa-brands fa-x-twitter"></i></span>Twitter</button>
+                <button type="button" class="co-share-option" onclick="copyShareLink()"><span class="co-share-icon co-share-copy"><i class="fa-solid fa-copy"></i></span>Copiar</button>
+            </div>
+            <div class="co-share-link-row">
+                <input class="co-share-link-input" id="coShareLink" type="text" readonly aria-label="Link da oferta">
+                <button class="co-share-copy-main" type="button" onclick="copyShareLink()">Copiar</button>
+            </div>
+        </div>
+    </div>
+    <!-- ===== FIM DO MODAL DE COMPARTILHAMENTO ===== -->
+
 </body>
 </html>
