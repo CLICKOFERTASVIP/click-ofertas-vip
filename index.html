@@ -700,7 +700,72 @@
             padding: 20px;
         }
 
-        .main-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .main-img-box {
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: pan-y;
+        }
+
+        .main-img-box.dragging { cursor: grabbing; }
+        .main-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none; user-select: none; -webkit-user-drag: none; }
+
+        .detail-gallery-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            min-height: 14px;
+            margin-top: -4px;
+        }
+
+        .detail-gallery-dot {
+            width: 7px;
+            height: 7px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: #3b3f46;
+            cursor: pointer;
+            transition: transform .18s, background .18s;
+        }
+
+        .detail-gallery-dot.active {
+            background: var(--primary);
+            transform: scale(1.15);
+        }
+
+        .detail-gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(20,20,24,.62);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity .2s, background .2s;
+        }
+
+        .main-img-box:hover .detail-gallery-arrow, .main-img-box:focus-within .detail-gallery-arrow { opacity: 1; }
+        .detail-gallery-arrow:hover { background: rgba(20,20,24,.85); }
+        .detail-gallery-arrow.prev { left: 12px; }
+        .detail-gallery-arrow.next { right: 12px; }
+
+        @media (max-width: 768px) {
+            .detail-gallery-arrow { display: none; }
+            .detail-gallery-dots { margin-top: 0; }
+            .main-img-box { cursor: default; }
+        }
 
         .detail-info { display: flex; flex-direction: column; }
         .detail-title { font-size: 22px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; }
@@ -1227,9 +1292,12 @@
 
         <div class="product-detail-layout">
             <div class="detail-gallery">
-                <div class="main-img-box">
-                    <img id="detailImg" src="" alt="Produto">
+                <div class="main-img-box" id="detailMainImageBox" tabindex="0" aria-label="Galeria de fotos do produto">
+                    <button type="button" class="detail-gallery-arrow prev" id="detailPrevImage" aria-label="Foto anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                    <img id="detailImg" src="" alt="Produto" draggable="false">
+                    <button type="button" class="detail-gallery-arrow next" id="detailNextImage" aria-label="Próxima foto"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
+                <div class="detail-gallery-dots" id="detailGalleryDots" aria-label="Fotos do produto"></div>
                 <div class="gallery-thumbnails" id="detailThumbnails"></div>
             </div>
 
@@ -1359,41 +1427,6 @@
         let currentSearchQuery = '';
 
         let productsDatabase = [
-            {
-    id: 'ventilador-mesa-ventisol-turbo-10-40cm',
-    title: 'Ventilador de Mesa 40cm 6 Pás com 3 Velocidades Ventisol Turbo 6',
-    store: 'Shopee',
-    subcat: 'Ventiladores',
-    oldPrice: 'R$ 180,00',
-    price: 'R$ 142,41',
-    discount: '-21%',
-    maisVendido: false,
-    ativo: true,
-    installments: 'Em até 12x de R$ 14,30',
-    affiliateLink: 'https://s.shopee.com.br/9fJvNNn8XW',
-    images: [
-        'https://down-br.img.susercontent.com/file/br-11134207-81ztf-ml3q0qav7pj6f2.webp',
-        'https://down-br.img.susercontent.com/file/br-11134207-81ztq-ml3q0qav6ayqf8.webp',
-        'https://down-br.img.susercontent.com/file/br-11134207-81ztr-mknwrvblgykj7f.webp',
-        'https://down-br.img.susercontent.com/file/br-11134207-81ztx-mknwrvblnzer57.webp',
-        'https://down-br.img.susercontent.com/file/br-11134207-81ztx-ml3q0qav943ma2.webp',
-        'https://down-br.img.susercontent.com/file/br-11134207-81ztr-mknwrvblpdz73e.webp',
-        'https://down-br.img.susercontent.com/file/br-11134207-81zty-mknwrvblmkub23.webp',
-        'https://down-br.img.susercontent.com/file/br-11134207-81ztr-mknwrvbljrpfed.webp',
-        'https://down-br.img.susercontent.com/file/br-11134207-81ztu-mknwrvbll69v42.webp'
-    ],
-    rating: '4.8 (10,9k avaliações)',
-    specs: {
-        'Marca': 'Ventisol',
-        'Tipo': 'Ventilador de Mesa',
-        'Diâmetro': '40cm',
-        'Quantidade de Pás': '6 Pás',
-        'Velocidades': '3 Velocidades (Baixa, Média, Alta)',
-        'Voltagem': '127V / 220V',
-        'Garantia': '12 Meses (Fabricante)'
-    },
-    about: 'O Ventilador de Mesa Ventisol Turbo 40cm proporciona ventilação eficiente, silenciosa e moderna. Possui 3 velocidades ajustáveis, oscilação horizontal de 80° para distribuição uniforme do ar e design compacto ideal para quartos, salas e escritórios.'
-},
            {
         id: 'consul-crb39mk',
         title: 'Geladeira Frost Free 337L com Espaço Extra Frio Inox Consul - CRB39MK (110 Volts)',
@@ -1744,7 +1777,7 @@
         oldPrice: '',
         price: 'R$ 196,22',
         discount: '',
-        maisVendido: true,
+        maisVendido: false,
         ativo: true,
         installments: 'Em até 6x de R$ 32,72 sem juros',
         affiliateLink: 'https://link.amazon/B04VWttOi',
@@ -3174,6 +3207,127 @@
         });
         // ===== FIM DO MENU DE COMPARTILHAMENTO =====
 
+        // ===== GALERIA DE FOTOS: SWIPE MOBILE + ARRASTAR COM MOUSE =====
+        let coGalleryImages = [];
+        let coGalleryIndex = 0;
+        let coGalleryStartX = 0;
+        let coGalleryCurrentX = 0;
+        let coGalleryDragging = false;
+        let coGalleryMoved = false;
+
+        function renderDetailGallery() {
+            const mainImg = document.getElementById('detailImg');
+            const thumbsContainer = document.getElementById('detailThumbnails');
+            const dotsContainer = document.getElementById('detailGalleryDots');
+            const prevBtn = document.getElementById('detailPrevImage');
+            const nextBtn = document.getElementById('detailNextImage');
+            if (!mainImg) return;
+
+            const total = coGalleryImages.length;
+            if (!total) return;
+
+            mainImg.src = coGalleryImages[coGalleryIndex];
+            mainImg.alt = `Foto ${coGalleryIndex + 1} do produto`;
+
+            if (thumbsContainer) {
+                thumbsContainer.querySelectorAll('.thumb-img').forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === coGalleryIndex);
+                });
+            }
+
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                coGalleryImages.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = `detail-gallery-dot ${i === coGalleryIndex ? 'active' : ''}`;
+                    dot.setAttribute('aria-label', `Ver foto ${i + 1}`);
+                    dot.onclick = (e) => {
+                        e.stopPropagation();
+                        goToDetailImage(i);
+                    };
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            const multi = total > 1;
+            if (prevBtn) prevBtn.style.display = multi ? 'flex' : 'none';
+            if (nextBtn) nextBtn.style.display = multi ? 'flex' : 'none';
+            if (dotsContainer) dotsContainer.style.display = multi ? 'flex' : 'none';
+        }
+
+        function goToDetailImage(index) {
+            if (!coGalleryImages.length) return;
+            coGalleryIndex = (index + coGalleryImages.length) % coGalleryImages.length;
+            renderDetailGallery();
+        }
+
+        function nextDetailImage() { goToDetailImage(coGalleryIndex + 1); }
+        function prevDetailImage() { goToDetailImage(coGalleryIndex - 1); }
+
+        function setupDetailGalleryGestures() {
+            const box = document.getElementById('detailMainImageBox');
+            if (!box || box.dataset.galleryReady === '1') return;
+            box.dataset.galleryReady = '1';
+
+            const threshold = 45;
+
+            box.addEventListener('pointerdown', (e) => {
+                if (e.target.closest('button')) return;
+                coGalleryStartX = e.clientX;
+                coGalleryCurrentX = e.clientX;
+                coGalleryDragging = true;
+                coGalleryMoved = false;
+                box.classList.add('dragging');
+                if (e.pointerType === 'mouse') box.setPointerCapture?.(e.pointerId);
+            });
+
+            box.addEventListener('pointermove', (e) => {
+                if (!coGalleryDragging) return;
+                coGalleryCurrentX = e.clientX;
+                if (Math.abs(coGalleryCurrentX - coGalleryStartX) > 8) coGalleryMoved = true;
+            });
+
+            const finishGesture = (e) => {
+                if (!coGalleryDragging) return;
+                const delta = coGalleryCurrentX - coGalleryStartX;
+                coGalleryDragging = false;
+                box.classList.remove('dragging');
+
+                if (Math.abs(delta) >= threshold && coGalleryImages.length > 1) {
+                    if (delta < 0) nextDetailImage();
+                    else prevDetailImage();
+                }
+            };
+
+            box.addEventListener('pointerup', finishGesture);
+            box.addEventListener('pointercancel', finishGesture);
+            box.addEventListener('pointerleave', (e) => {
+                if (e.pointerType === 'mouse' && coGalleryDragging) finishGesture(e);
+            });
+
+            box.addEventListener('click', (e) => {
+                if (coGalleryMoved) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
+
+            document.getElementById('detailPrevImage')?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                prevDetailImage();
+            });
+            document.getElementById('detailNextImage')?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nextDetailImage();
+            });
+
+            box.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevDetailImage();
+                if (e.key === 'ArrowRight') nextDetailImage();
+            });
+        }
+
         function openProductDetail(productId) {
             const p = productsDatabase.find(item => item.id === productId);
             if (!p) return;
@@ -3190,8 +3344,8 @@
             document.getElementById('detailAbout').innerText = p.about;
             document.getElementById('detailAffiliateLink').href = p.affiliateLink;
 
-            const mainImg = document.getElementById('detailImg');
-            mainImg.src = p.images[0];
+            coGalleryImages = Array.isArray(p.images) ? p.images : [];
+            coGalleryIndex = 0;
 
             const thumbsContainer = document.getElementById('detailThumbnails');
             thumbsContainer.innerHTML = '';
@@ -3199,14 +3353,16 @@
                 const thumb = document.createElement('img');
                 thumb.className = `thumb-img ${index === 0 ? 'active' : ''}`;
                 thumb.src = imgUrl;
+                thumb.alt = `Miniatura ${index + 1}`;
+                thumb.draggable = false;
                 thumb.onclick = (e) => {
                     e.stopPropagation();
-                    mainImg.src = imgUrl;
-                    document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
+                    goToDetailImage(index);
                 };
                 thumbsContainer.appendChild(thumb);
             });
+            renderDetailGallery();
+            setupDetailGalleryGestures();
 
             const specsTable = document.getElementById('detailSpecs');
             specsTable.innerHTML = '';
